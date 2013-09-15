@@ -143,7 +143,7 @@
                 "first_words"
             ], 
             "homophones": {
-                    "close2": "clothes"
+                    "close2":["clothes"]
                 }, 
             "pronunciations": [
                 "close1", 
@@ -257,7 +257,7 @@
                 "first_words"
             ], 
             "homophones": {
-                    "uk": ["pour", "poor"]
+                    "uk": ["pour", "poor", "pore"]
                 },
             "tags": [
                 "'aw'"
@@ -275,6 +275,9 @@
             "collections": [
                 "first_words"
             ], 
+            "homophones": {
+                    "uk": ["pour", "paw", "pore"]
+                },
             "word": "poor"
         }, 
         {
@@ -282,7 +285,7 @@
                 "first_words"
             ], 
             "homophones": {
-                    "uk": ["paw", "pour"], 
+                    "uk": ["paw", "pour", "poor"], 
                     "us": ["pour"]
                 }, 
             "tags": [
@@ -301,7 +304,7 @@
                 "first_words"
             ], 
             "homophones": {
-                    "uk": ["paw", "pore"], 
+                    "uk": ["paw", "pore", "poor"], 
                     "us": ["pore"]
                 }, 
             "word": "pour"
@@ -311,8 +314,8 @@
                 "first_words"
             ], 
             "homophones": {
-                    "read1": "reed",
-                    "read2": "red"
+                    "read1": ["reed"],
+                    "read2": ["red"]
                 }, 
             "pronunciations": [
                 "read1", 
@@ -394,8 +397,7 @@
                 "first_words"
             ], 
             "homophones": {
-                    "sow1": "so",
-                    "sow1": "sew"
+                    "sow1": ["so","sew"]
                 },
             "pronunciations": [
                 "sow1", 

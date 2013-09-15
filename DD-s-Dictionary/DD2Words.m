@@ -147,10 +147,9 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
                         
                         if ([[rawWord objectForKey:@"pronunciations"] count] >1) {
                             NSLog(@"word is a heteronym with homophones");
-                            //TO DO The really tricky ones!!
+                            locHomophones = homophonesElementDictionary;
                         } else {
-                            NSLog(@"word has localised homophones");
-                            NSLog(@"my homophonesElement = %@", homophonesElement);
+                            NSLog(@"word has localised homophones element = %@", homophonesElement);
                             locHomophones = [homophonesElementDictionary objectForKey:locale];
                         }
                     } else {
@@ -272,7 +271,7 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
     } else {
         homophones = [word objectForKey:@"locHomophones"];
     }
-    NSLog(@"homophones =%@", homophones);
+    NSLog(@"homophones for pronunciation (%@) = %@",pronunciation, homophones);
     return homophones;
 }
 
