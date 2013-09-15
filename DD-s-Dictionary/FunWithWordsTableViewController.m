@@ -42,7 +42,7 @@
     return _taggedGroupsOfWords;
 }
 
-- (NSArray *)allwords
+- (NSArray *)allWords
 {
     if(!_allWords) _allWords = [DD2Words allWordsWithSpellingVariant:self.spellingVariant];
     return _allWords;
@@ -291,23 +291,21 @@
             NSLog(@"Cell Label = %@", cell.textLabel.text);
             
             NSInteger switchValue;  //not really used yet, set up incase options got out of control
-            NSString *stringForPredicate = @"";
             NSPredicate *selectionPredicate;
             
             if ([cell.textLabel.text isEqualToString:@"homophones"]) {
                 switchValue = 0;
-                selectionPredicate = [NSPredicate predicateWithFormat:@"homophone.@count > 1"];
+                selectionPredicate = [NSPredicate predicateWithFormat:@"homophones.@count > 0"];
             } else if ([cell.textLabel.text isEqualToString:@"heteronyms"]) {
                 switchValue = 1;
                 selectionPredicate = [NSPredicate predicateWithFormat:@"pronunciations.@count > 1"];
                 // from http://www.raywenderlich.com/14742/core-data-on-ios-5-tutorial-how-to-work-with-relations-and-predicates
             } else {
                 switchValue = 5;
-                [segue.destinationViewController setWordListData:[self.taggedGroupsOfWords objectForKey:cell.textLabel.text]];
-
+                //[segue.destinationViewController setWordListData:[self.taggedGroupsOfWords objectForKey:cell.textLabel.text]];
+                selectionPredicate = [NSPredicate predicateWithFormat:@"SELF.tags contains[c] %@",cell.textLabel.text];
             }
             
-            if (![stringForPredicate isEqualToString:@""]) selectionPredicate = [NSPredicate predicateWithFormat:@"%@ IN SELF.inGroups.displayName", cell.textLabel.text];
             //selectionPredicate = [NSPredicate predicateWithFormat:@"SELF.spelling contains[cd] %@", stringForPredicate];
             //selectionPredicate = [NSPredicate predicateWithFormat:@"inGroups.@count > 0"]; //worked
             //selectionPredicate = [NSPredicate predicateWithFormat:@"%@ IN SELF.inGroups.displayName", cell.textLabel.text];
@@ -316,8 +314,7 @@
             if (LOG_PREDICATE_RESULTS) [DD2GlobalHelper testWordPredicate:selectionPredicate onWords:self.allWords];
             
             [segue.destinationViewController setTitle:cell.textLabel.text];
-            //[segue.destinationViewController setStringForTitle:cell.textLabel.text];
-            //[segue.destinationViewController setFilterPredicate:selectionPredicate];
+            [segue.destinationViewController setWordListData:[NSMutableArray arrayWithArray:[self.allWords filteredArrayUsingPredicate:selectionPredicate]]];
 
         }
     }

@@ -73,7 +73,7 @@
     if ([words isKindOfClass:[NSArray class]]) {
         NSArray *nsaWords = (NSArray *)words;
         NSArray *filteredWords = [NSArray arrayWithArray:[nsaWords filteredArrayUsingPredicate:predicate]];
-        NSArray *sortedFilteredWords = [filteredWords sortedArrayUsingDescriptors:[NSArray arrayWithObject:sortDescriptors]];
+        NSArray *sortedFilteredWords = [filteredWords sortedArrayUsingDescriptors:sortDescriptors];
         if (LOG_PREDICATE_RESULTS) {
             NSLog(@"number of matches = %d", [filteredWords count]);
             for (NSDictionary *word in sortedFilteredWords) {
