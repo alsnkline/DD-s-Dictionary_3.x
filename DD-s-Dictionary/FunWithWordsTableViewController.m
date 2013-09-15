@@ -8,6 +8,7 @@
 
 #import "FunWithWordsTableViewController.h"
 #import "NSUserDefaultKeys.h"
+#import "DD2WordListTableViewController.h"
 
 @interface FunWithWordsTableViewController ()
 
@@ -274,17 +275,17 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    //need to implement push segue called "Fun Group Selected"
+    //need to implement push segue called "Fun Tag Selected"
     
     NSLog(@"Indexpath of Selected Cell = %@", indexPath);
     UITableViewCell *selectedCell = [self.tableView cellForRowAtIndexPath:indexPath];
     
-    [self performSegueWithIdentifier:@"Fun Group Selected" sender:selectedCell];
+    [self performSegueWithIdentifier:@"Fun Tag Selected" sender:selectedCell];
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([segue.identifier isEqualToString:@"Fun Group Selected"]) {
+    if ([segue.identifier isEqualToString:@"Fun Tag Selected"]) {
         if ([sender isKindOfClass:[UITableViewCell class]]) {
             UITableViewCell *cell = (UITableViewCell *)sender;
             NSLog(@"Cell Label = %@", cell.textLabel.text);
@@ -302,8 +303,8 @@
                 // from http://www.raywenderlich.com/14742/core-data-on-ios-5-tutorial-how-to-work-with-relations-and-predicates
             } else {
                 switchValue = 5;
-                NSCharacterSet *charactersToRemove = [NSCharacterSet characterSetWithCharactersInString:@"'"];
-                stringForPredicate = [cell.textLabel.text stringByTrimmingCharactersInSet:charactersToRemove];
+                [segue.destinationViewController setWordListData:[self.taggedGroupsOfWords objectForKey:cell.textLabel.text]];
+
             }
             
             if (![stringForPredicate isEqualToString:@""]) selectionPredicate = [NSPredicate predicateWithFormat:@"%@ IN SELF.inGroups.displayName", cell.textLabel.text];
@@ -314,8 +315,7 @@
             NSLog(@"predicate = %@", selectionPredicate);
             if (LOG_PREDICATE_RESULTS) [DD2GlobalHelper testWordPredicate:selectionPredicate onWords:self.allWords];
             
-            [segue.destinationViewController setCustomBackgroundColor:self.customBackgroundColor];
-            [segue.destinationViewController setUseDyslexieFont:self.useDyslexieFont];
+            [segue.destinationViewController setTitle:cell.textLabel.text];
             //[segue.destinationViewController setStringForTitle:cell.textLabel.text];
             //[segue.destinationViewController setFilterPredicate:selectionPredicate];
 

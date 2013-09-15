@@ -67,7 +67,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BSl-WD-xpv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="394" y="-725"/>
+            <point key="canvasLocation" x="418" y="-728"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="nEQ-P3-tbz">
@@ -754,48 +754,62 @@ All rights reserved.</string>
                     </tableView>
                     <navigationItem key="navigationItem" title="Fun With Words" id="pnU-J3-92K"/>
                     <connections>
-                        <segue destination="zz9-vn-0jO" kind="push" identifier="Fun Tag Selected" id="jvR-I1-olC"/>
+                        <segue destination="E2V-bL-zxU" kind="push" identifier="Fun Tag Selected" id="uRj-Lg-Yoy"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n5q-r7-CDp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="386" y="758"/>
         </scene>
-        <!--Dictionary Table View Controller - Root View Controller-->
-        <scene sceneID="E1p-yW-bec">
+        <!--Word List Table View Controller-->
+        <scene sceneID="Uzf-td-gR1">
             <objects>
-                <tableViewController id="zz9-vn-0jO" customClass="DD2DictionaryTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="55" sectionHeaderHeight="22" sectionFooterHeight="22" id="7AT-E1-5up">
+                <viewController id="E2V-bL-zxU" customClass="DD2WordListTableViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="A8e-oW-zwI">
                         <rect key="frame" x="0.0" y="64" width="320" height="455"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Collection Word" textLabel="irq-2t-iXF" style="IBUITableViewCellStyleDefault" id="Kyd-5t-R0y">
-                                <rect key="frame" x="0.0" y="22" width="320" height="55"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="300" height="54"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="irq-2t-iXF">
-                                            <rect key="frame" x="10" y="0.0" width="280" height="54"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="55" sectionHeaderHeight="22" sectionFooterHeight="22" id="39P-Oj-qQN">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="List Word" textLabel="t9c-pM-ifj" style="IBUITableViewCellStyleDefault" id="Xil-el-c8g">
+                                        <rect key="frame" x="0.0" y="22" width="320" height="55"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="300" height="54"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        </label>
-                                    </subviews>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </view>
-                            </tableViewCell>
-                        </prototypes>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="vIv-wu-OfZ"/>
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="lfo-8T-Ts1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="t9c-pM-ifj">
+                                                    <rect key="frame" x="10" y="0.0" width="280" height="54"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="E2V-bL-zxU" id="FVJ-ni-dfB"/>
+                                    <outlet property="delegate" destination="E2V-bL-zxU" id="vo3-Pu-ci9"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Kx2-Ds-Lt4"/>
+                    <connections>
+                        <outlet property="tableView" destination="39P-Oj-qQN" id="Sr8-eO-Q2F"/>
+                        <segue destination="dSV-C7-sB1" kind="push" identifier="Word Selected" id="y23-72-2jL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ggR-Ai-fR5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="861" y="758"/>
+            <point key="canvasLocation" x="877" y="758"/>
         </scene>
     </scenes>
     <resources>
@@ -804,85 +818,12 @@ All rights reserved.</string>
         <image name="resources.bundle/Images/DyDiWrite32-32.png" width="16" height="16"/>
         <image name="resources.bundle/Images/FunWithWordsIconV1.png" width="16" height="16"/>
     </resources>
-    <classes>
-        <class className="DD2AllWordSearchViewController" superclassName="DD2SetTrackTableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DD2AllWordSearchViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
-                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="DD2SetTrackTableViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DD2SetTrackTableViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="DD2TabBarController" superclassName="UITabBarController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DD2TabBarController.h"/>
-        </class>
-        <class className="DD2WordListTableViewController" superclassName="DD2SetTrackTableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DD2WordListTableViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="DisplayWordViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DisplayWordViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="homoymnButtonPressed:" candidateClass="UIButton"/>
-                <relationship kind="action" name="listenToWord:"/>
-                <relationship kind="outlet" name="heteronymListenButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="homophoneButton1" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="homophoneButton2" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="homophoneButton3" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="homophoneButton4" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="homophoneButton5" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="homophoneButton6" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="listenButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="spelling" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="toolbar" candidateClass="UIToolbar"/>
-                <relationship kind="outlet" name="wordView" candidateClass="UIView"/>
-            </relationships>
-        </class>
-        <class className="FunWithWordsTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FunWithWordsTableViewController.h"/>
-        </class>
-        <class className="SettingsTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingsTableViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="backgroundHueSliderChanged:" candidateClass="UISlider"/>
-                <relationship kind="action" name="backgroundSaturationSliderChanged:" candidateClass="UISlider"/>
-                <relationship kind="action" name="playOnSelectionSwitchChanged:" candidateClass="UISwitch"/>
-                <relationship kind="action" name="sendEmail:"/>
-                <relationship kind="action" name="spellingVariantSliderChanged:" candidateClass="UISlider"/>
-                <relationship kind="action" name="useDyslexieFontSwitchChanged:" candidateClass="UISwitch"/>
-                <relationship kind="action" name="voiceHintsSwitchChanged:" candidateClass="UISwitch"/>
-                <relationship kind="outlet" name="backgroundHueSlider" candidateClass="UISlider"/>
-                <relationship kind="outlet" name="backgroundSaturationSlider" candidateClass="UISlider"/>
-                <relationship kind="outlet" name="customBackgroundColorLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="customSpellingVariantLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="playOnSelectionSwitch" candidateClass="UISwitch"/>
-                <relationship kind="outlet" name="spellingVariantSlider" candidateClass="UISlider"/>
-                <relationship kind="outlet" name="useDyslexieFont" candidateClass="UISwitch"/>
-                <relationship kind="outlet" name="useVoiceHints" candidateClass="UISwitch"/>
-                <relationship kind="outlet" name="versionLable" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="voiceHintsTableCell" candidateClass="UITableViewCell"/>
-            </relationships>
-        </class>
-        <class className="htmlPageViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/htmlPageViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="n3n-aH-KiR"/>
+        <segue reference="y23-72-2jL"/>
     </inferredMetricsTieBreakers>
 </document>

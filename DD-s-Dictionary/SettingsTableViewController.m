@@ -254,7 +254,7 @@
 {
     [super viewDidLoad];
     
-    self.versionLable.text = [NSString stringWithFormat:@"Version: %ld",(long)[DD2GlobalHelper version]];
+    self.versionLable.text = [NSString stringWithFormat:@"Version: %@", [DD2GlobalHelper version]];
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     self.voiceHintsAvailable = [defaults boolForKey:VOICE_HINT_AVAILABLE];
@@ -361,7 +361,7 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if ([indexPath isEqual:[NSIndexPath indexPathForItem:1 inSection:0]] && !self.voiceHintsAvailable) {
+    if ([indexPath isEqual:[NSIndexPath indexPathForItem:2 inSection:0]] && !self.voiceHintsAvailable) {
         return 0;
     } else {
         return 45;
