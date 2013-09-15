@@ -1,23 +1,306 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2519" systemVersion="12A206j" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12E55" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="bQA-Nz-KmE">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1856"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
     <scenes>
-        <!--class Prefix:identifier View Controller-->
-        <scene sceneID="4">
+        <!--Search View Controller - Search-->
+        <scene sceneID="Rnb-rP-KXe">
             <objects>
-                <viewController id="2" customClass="DD2ViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="5">
-                        <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                <viewController id="kWx-qh-5Ug" customClass="DD2SearchViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0IA-t8-o74">
+                        <rect key="frame" x="0.0" y="64" width="320" height="739"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="04z-5R-Lqt">
+                                <rect key="frame" x="0.0" y="44" width="320" height="695"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="Search Word" textLabel="9p3-0Q-XBR" style="IBUITableViewCellStyleDefault" id="tKr-Nv-K5p">
+                                        <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="9p3-0Q-XBR">
+                                                    <rect key="frame" x="10" y="0.0" width="300" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <searchBar contentMode="redraw" id="lCw-UZ-ZAL">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="kWx-qh-5Ug" id="2sd-BT-tA8"/>
+                                </connections>
+                            </searchBar>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Search" id="mGH-Cz-NNI"/>
+                    <connections>
+                        <outlet property="searchDisplayController" destination="yUw-bW-qEn" id="T5l-0U-PHj"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="3" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UyG-oT-VT2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="yUw-bW-qEn">
+                    <connections>
+                        <outlet property="delegate" destination="kWx-qh-5Ug" id="RVA-8x-BR9"/>
+                        <outlet property="searchBar" destination="lCw-UZ-ZAL" id="Zew-Vn-AoO"/>
+                        <outlet property="searchContentsController" destination="kWx-qh-5Ug" id="OuX-J9-Avp"/>
+                        <outlet property="searchResultsDataSource" destination="kWx-qh-5Ug" id="izn-EI-mL1"/>
+                        <outlet property="searchResultsDelegate" destination="kWx-qh-5Ug" id="dM9-Qj-bWT"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
+            <point key="canvasLocation" x="806" y="-2288"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="SKd-uS-hHC">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="EJc-Mv-Lkz" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" systemItem="search" id="ODQ-pm-dhQ"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="bSK-9q-VFO">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="kWx-qh-5Ug" kind="relationship" relationship="rootViewController" id="t39-TW-PJV"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PzH-hl-AFP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="314" y="-2268"/>
+        </scene>
+        <!--Settings Table View Controller - Root View Controller-->
+        <scene sceneID="Jtk-Nq-9ta">
+            <objects>
+                <tableViewController id="uIe-5Q-xzB" customClass="SettingsTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="kxy-pG-oeY">
+                        <rect key="frame" x="0.0" y="64" width="320" height="739"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="4aK-7r-shh">
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </tableViewCell>
+                        </prototypes>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Root View Controller" id="7bP-mZ-YOF"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mVL-fj-7Wj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="806" y="-1280"/>
+        </scene>
+        <!--Navigation Controller - Settings-->
+        <scene sceneID="uWE-8d-g1D">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="cdi-G2-xGi" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Settings" image="resources.bundle/Images/20-gear2.png" id="fRd-LI-pTy"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="irD-g5-7fA">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="uIe-5Q-xzB" kind="relationship" relationship="rootViewController" id="zED-af-iCt"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8xn-ls-Qww" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="314" y="-1280"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="RhN-6I-Sgy">
+            <objects>
+                <tabBarController definesPresentationContext="YES" id="Xek-9k-Wk8" sceneMemberID="viewController">
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="zRd-o4-24o">
+                        <rect key="frame" x="129" y="330" width="163" height="49"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="cdi-G2-xGi" kind="relationship" relationship="viewControllers" id="zVH-tg-f39"/>
+                        <segue destination="EJc-Mv-Lkz" kind="relationship" relationship="viewControllers" id="F6x-kD-Wyc"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gpL-dL-0Ny" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-384" y="-1881"/>
+        </scene>
+        <!--Split View Controller-->
+        <scene sceneID="WMU-5K-T3L">
+            <objects>
+                <splitViewController id="bQA-Nz-KmE" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <connections>
+                        <segue destination="L1r-PX-mtS" kind="relationship" relationship="detailViewController" id="sYq-aN-8V4"/>
+                        <segue destination="Xek-9k-Wk8" kind="relationship" relationship="masterViewController" id="Azd-RD-mp0"/>
+                    </connections>
+                </splitViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Lo3-AU-e0G" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1376" y="-772"/>
+        </scene>
+        <!--Display Word View Controller-->
+        <scene sceneID="KKt-Xb-DI4">
+            <objects>
+                <viewController id="L1r-PX-mtS" customClass="DisplayWordViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="USL-ZD-Xdt">
+                        <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" id="fDM-h4-7IS">
+                                <rect key="frame" x="37" y="265" width="694" height="474"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="pick a word" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="Tth-iQ-4Pa">
+                                        <rect key="frame" x="-19" y="0.0" width="732" height="209"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="140"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" id="ETf-3j-9NL">
+                                        <rect key="frame" x="171" y="210" width="357" height="229"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <button hidden="YES" opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Ic2-7m-h61">
+                                                <rect key="frame" x="227" y="0.0" width="72" height="72"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                <state key="normal" image="resources.bundle/Images/DyDiListen72-72.png">
+                                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <state key="highlighted">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="listenToWord:" destination="L1r-PX-mtS" eventType="touchDown" id="o3k-2r-HoB"/>
+                                                </connections>
+                                            </button>
+                                            <button hidden="YES" opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="4vB-KF-i9t">
+                                                <rect key="frame" x="56" y="0.0" width="72" height="72"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                <state key="normal" image="resources.bundle/Images/DyDiListen72-72.png">
+                                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <state key="highlighted">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="listenToWord:" destination="L1r-PX-mtS" eventType="touchDown" id="izO-Hd-oe2"/>
+                                                </connections>
+                                            </button>
+                                            <button hidden="YES" opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="O5M-GB-5WO">
+                                                <rect key="frame" x="11" y="132" width="163" height="38"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                                <state key="normal" title="spelling" image="resources.bundle/Images/DyDiWrite32-32.png">
+                                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <state key="highlighted">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="homoymnButtonPressed:" destination="L1r-PX-mtS" eventType="touchUpInside" id="azH-nW-WWa"/>
+                                                </connections>
+                                            </button>
+                                            <button hidden="YES" opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="YCL-FH-ihq">
+                                                <rect key="frame" x="11" y="191" width="163" height="38"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                                <state key="normal" title="spelling" image="resources.bundle/Images/DyDiWrite32-32.png">
+                                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <state key="highlighted">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="homoymnButtonPressed:" destination="L1r-PX-mtS" eventType="touchUpInside" id="ZOk-cR-70I"/>
+                                                </connections>
+                                            </button>
+                                            <button hidden="YES" opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="1zd-vL-IZF">
+                                                <rect key="frame" x="182" y="132" width="163" height="38"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                                <state key="normal" title="spelling" image="resources.bundle/Images/DyDiWrite32-32.png">
+                                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <state key="highlighted">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="homoymnButtonPressed:" destination="L1r-PX-mtS" eventType="touchUpInside" id="v6T-HS-B9G"/>
+                                                </connections>
+                                            </button>
+                                            <button hidden="YES" opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="wvC-Es-5K2">
+                                                <rect key="frame" x="182" y="191" width="163" height="38"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                                <state key="normal" title="spelling" image="resources.bundle/Images/DyDiWrite32-32.png">
+                                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <state key="highlighted">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="homoymnButtonPressed:" destination="L1r-PX-mtS" eventType="touchUpInside" id="5cK-Jl-Fpc"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <toolbarItems/>
+                    <connections>
+                        <outlet property="heteronymListenButton" destination="Ic2-7m-h61" id="jzv-KP-wwU"/>
+                        <outlet property="homonymButton1" destination="O5M-GB-5WO" id="3Yq-Es-6ER"/>
+                        <outlet property="homonymButton2" destination="YCL-FH-ihq" id="9NX-EH-Cul"/>
+                        <outlet property="homonymButton3" destination="1zd-vL-IZF" id="lXL-xa-xVc"/>
+                        <outlet property="homonymButton4" destination="wvC-Es-5K2" id="OHR-Rh-HO8"/>
+                        <outlet property="listenButton" destination="4vB-KF-i9t" id="vUL-SP-HrF"/>
+                        <outlet property="spelling" destination="Tth-iQ-4Pa" id="Pkr-gr-N5Y"/>
+                        <outlet property="wordView" destination="fDM-h4-7IS" id="LrA-ts-82t"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SbM-JO-x14" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-374" y="-252"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="resources.bundle/Images/20-gear2.png" width="16" height="16"/>
+        <image name="resources.bundle/Images/DyDiListen72-72.png" width="16" height="16"/>
+        <image name="resources.bundle/Images/DyDiWrite32-32.png" width="16" height="16"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
         <simulatedOrientationMetrics key="orientation"/>

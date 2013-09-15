@@ -1,0 +1,570 @@
+{
+    "words": [
+        {
+            "word": "accountant"
+        }, 
+        {
+            "collections": [
+                "first_words"
+            ], 
+            "word": "add"
+        }, 
+        {
+            "collections": [
+                "first_words"
+            ], 
+            "word": "already"
+        }, 
+        {
+            "collections": [
+                "first_words"
+            ], 
+            "word": "altered"
+        }, 
+        {
+            "collections": [
+                "first_words"
+            ], 
+            "pronunciations": [
+                "arent"
+            ], 
+            "word": "aren't"
+        }, 
+        {
+            "collections": [
+                "first_words"
+            ], 
+            "word": "author"
+        }, 
+        {
+            "collections": [
+                "first_words"
+            ], 
+            "word": "ban"
+        }, 
+        {
+            "collections": [
+                "first_words"
+            ], 
+            "word": "banana"
+        }, 
+        {
+            "collections": [
+                "first_words"
+            ], 
+            "word": "band"
+        }, 
+        {
+            "collections": [
+                "first_words"
+            ], 
+            "homophones": [
+                "been"
+            ], 
+            "word": "bean"
+        }, 
+        {
+            "collections": [
+                "first_words"
+            ], 
+            "word": "beautiful"
+        }, 
+        {
+            "collections": [
+                "first_words"
+            ], 
+            "homophones": [
+                {
+                    "uk": "bean"
+                }, 
+                {
+                    "us": "bin"
+                }
+            ], 
+            "word": "been"
+        }, 
+        {
+            "collections": [
+                "first_words"
+            ], 
+            "word": "bicycle"
+        }, 
+        {
+            "collections": [
+                "first_words"
+            ], 
+            "homophones": [
+                {
+                    "uk": "bean"
+                }, 
+                {
+                    "us": "bin"
+                }
+            ], 
+            "word": "been"
+        }, 
+        {
+            "collections": [
+                "first_words"
+            ], 
+            "homophones": [
+                {
+                    "uk": "been"
+                }
+            ], 
+            "word": "bean"
+        }, 
+        {
+            "collections": [
+                "first_words"
+            ], 
+            "homophones": [
+                {
+                    "uk": ""
+                }, 
+                {
+                    "us": "been"
+                }
+            ], 
+            "word": "bin"
+        }, 
+        {
+            "collections": [
+                "first_words"
+            ], 
+            "word": "bland"
+        }, 
+        {
+            "collections": [
+                "first_words"
+            ], 
+            "word": "block"
+        }, 
+        {
+            "collections": [
+                "first_words"
+            ], 
+            "word": "built"
+        }, 
+        {
+            "collections": [
+                "second"
+            ], 
+            "word": "business"
+        }, 
+        {
+            "collections": [
+                "first_words", 
+                "second"
+            ], 
+            "word": "captain"
+        }, 
+        {
+            "collections": [
+                "first_words", 
+                "second"
+            ], 
+            "word": "cartoon"
+        }, 
+        {
+            "collections": [
+                "first_words"
+            ], 
+            "word": "check"
+        }, 
+        {
+            "collections": [
+                "first_words"
+            ], 
+            "homophones": [
+                {
+                    "close2": "clothes"
+                }
+            ], 
+            "pronunciations": [
+                "close1", 
+                "close2"
+            ], 
+            "word": "close"
+        }, 
+        {
+            "collections": [
+                "first_words"
+            ], 
+            "homophones": [
+                "close2"
+            ], 
+            "word": "clothes"
+        }, 
+        {
+            "collections": [
+                "first_words"
+            ], 
+            "confusers": "dose", 
+            "word": "does"
+        }, 
+        {
+            "confusers": "does", 
+            "word": "dose"
+        }, 
+        {
+            "collections": [
+                "first_words"
+            ], 
+            "word": "flood"
+        }, 
+        {
+            "collections": [
+                "first_words"
+            ], 
+            "word": "grill"
+        }, 
+        {
+            "collections": [
+                "first_words"
+            ], 
+            "pronunciations": [
+                "illx"
+            ], 
+            "word": "i'll"
+        }, 
+        {
+            "collections": [
+                "first_words"
+            ], 
+            "word": "ill"
+        }, 
+        {
+            "collections": [
+                "first_words"
+            ], 
+            "tags": [
+                "'ate'"
+            ], 
+            "word": "late"
+        }, 
+        {
+            "collections": [
+                "first_words"
+            ], 
+            "tags": [
+                "'ight'"
+            ], 
+            "word": "light"
+        }, 
+        {
+            "collections": [
+                "first_words"
+            ], 
+            "tags": [
+                "'ate'"
+            ], 
+            "word": "mate"
+        }, 
+        {
+            "collections": [
+                "first_words"
+            ], 
+            "tags": [
+                "'ight'"
+            ], 
+            "word": "might"
+        }, 
+        {
+            "collections": [
+                "first_words"
+            ], 
+            "pronunciations": [
+                "Mr"
+            ], 
+            "word": "Mr."
+        }, 
+        {
+            "collections": [
+                "first_words"
+            ], 
+            "tags": [
+                "'ight'"
+            ], 
+            "word": "night"
+        }, 
+        {
+            "collections": [
+                "first_words"
+            ], 
+            "homophones": [
+                {
+                    "uk": "pour"
+                }, 
+                "poor'"
+            ], 
+            "tags": [
+                "'aw'"
+            ], 
+            "word": "paw"
+        }, 
+        {
+            "collections": [
+                "first_words", 
+                "second"
+            ], 
+            "word": "plough"
+        }, 
+        {
+            "collections": [
+                "first_words"
+            ], 
+            "word": "poor"
+        }, 
+        {
+            "collections": [
+                "first_words"
+            ], 
+            "homophones": [
+                {
+                    "uk": "'paw"
+                }, 
+                "pour'", 
+                {
+                    "us": "pour"
+                }
+            ], 
+            "tags": [
+                "'ore'"
+            ], 
+            "word": "pore"
+        }, 
+        {
+            "collections": [
+                "first_words"
+            ], 
+            "word": "pound"
+        }, 
+        {
+            "collections": [
+                "first_words"
+            ], 
+            "homophones": [
+                {
+                    "uk": "'paw"
+                }, 
+                "pore'", 
+                {
+                    "us": "pore"
+                }
+            ], 
+            "word": "pour"
+        }, 
+        {
+            "collections": [
+                "first_words"
+            ], 
+            "homophones": [
+                {
+                    "read1": "reed"
+                }, 
+                {
+                    "read2": "red"
+                }
+            ], 
+            "pronunciations": [
+                "read1", 
+                "read2"
+            ], 
+            "word": "read"
+        }, 
+        {
+            "collections": [
+                "first_words"
+            ], 
+            "homophones": [
+                "read2"
+            ], 
+            "word": "red"
+        }, 
+        {
+            "collections": [
+                "first_words"
+            ], 
+            "homophones": [
+                "read1"
+            ], 
+            "word": "reed"
+        }, 
+        {
+            "collections": [
+                "first_words"
+            ], 
+            "word": {
+                    "uk": "colour",
+                    "us": "color"
+                }
+        }, 
+        {
+            "collections": [
+                "first_words"
+            ], 
+            "word": "wander"
+        }, 
+        {
+            "confusers": "saw", 
+            "word": "was"
+        }, 
+        {
+            "collections": [
+                "first_words"
+            ], 
+            "word": "wild"
+        }, 
+        {
+            "collections": [
+                "first_words"
+            ], 
+            "word": "wonder"
+        }, 
+        {
+            "collections": [
+                "first_words"
+            ], 
+            "homophones": [
+                "sow1", 
+                "so"
+            ], 
+            "word": "sew"
+        }, 
+        {
+            "collections": [
+                "first_words"
+            ], 
+            "homophones": [
+                "sew", 
+                "sow1"
+            ], 
+            "word": "so"
+        }, 
+        {
+            "collections": [
+                "first_words"
+            ], 
+            "homophones": [
+                {
+                    "sow1": "so"
+                }, 
+                "sew"
+            ], 
+            "pronunciations": [
+                "sow1", 
+                "sow2"
+            ], 
+            "word": "sow"
+        }, 
+        {
+            "collections": [
+                "first_words"
+            ], 
+            "homophones": [
+                "weigh"
+            ], 
+            "word": "way"
+        }, 
+        {
+            "collections": [
+                "first_words"
+            ], 
+            "word": "we"
+        }, 
+        {
+            "collections": [
+                "first_words"
+            ], 
+            "homophones": [
+                "week"
+            ], 
+            "word": "weak"
+        }, 
+        {
+            "collections": [
+                "first_words"
+            ], 
+            "homophones": [
+                "where"
+            ], 
+            "word": "wear"
+        }, 
+        {
+            "collections": [
+                "first_words"
+            ], 
+            "homophones": [
+                "whether"
+            ], 
+            "tags": [
+                "'ther'"
+            ], 
+            "word": "weather"
+        }, 
+        {
+            "collections": [
+                "first_words"
+            ], 
+            "homophones": [
+                "weather"
+            ], 
+            "tags": [
+                "'ther'"
+            ], 
+            "word": "whether"
+        }, 
+        {
+            "collections": [
+                "first_words"
+            ], 
+            "word": "Wednesday"
+        }, 
+        {
+            "collections": [
+                "first_words"
+            ], 
+            "homophones": [
+                "weak"
+            ], 
+            "word": "week"
+        }, 
+        {
+            "collections": [
+                "first_words"
+            ], 
+            "homophones": [
+                "way"
+            ], 
+            "word": "weigh"
+        }, 
+        {
+            "collections": [
+                "first_words"
+            ], 
+            "homophones": [
+                "wait"
+            ], 
+            "tags": [
+                "'ight'", 
+                "'ate'"
+            ], 
+            "word": "weight"
+        }, 
+        {
+            "collections": [
+                "first_words"
+            ], 
+            "word":
+                "United States"
+        }, 
+        {
+            "collections": [
+                "first_words"
+            ], 
+            "word":
+                "of course"
+        }
+    ]
+}

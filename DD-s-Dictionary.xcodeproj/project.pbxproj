@@ -7,6 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B191C3F217E3CBA100A2ABFA /* DD2TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = B191C3F117E3CBA100A2ABFA /* DD2TabBarController.m */; };
+		B191C3F517E3EC0400A2ABFA /* FunWithWordsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B191C3F417E3EC0400A2ABFA /* FunWithWordsTableViewController.m */; };
+		B192C59D17E527FB00F8AD9C /* DD2SetTrackTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B192C59C17E527FB00F8AD9C /* DD2SetTrackTableViewController.m */; };
+		B192C5A017E528FA00F8AD9C /* DD2WordListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B192C59F17E528FA00F8AD9C /* DD2WordListTableViewController.m */; };
+		B192C5A617E565E100F8AD9C /* DD2AllWordSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B192C5A517E565E000F8AD9C /* DD2AllWordSearchViewController.m */; };
+		B192C5AA17E56F7400F8AD9C /* Dyslexie_a_Bold_LEDU_1044_IN.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B192C5A717E56F7300F8AD9C /* Dyslexie_a_Bold_LEDU_1044_IN.ttf */; };
+		B192C5AB17E56F7400F8AD9C /* Dyslexie_a_Italic_LEDU_1044_IN.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B192C5A817E56F7300F8AD9C /* Dyslexie_a_Italic_LEDU_1044_IN.ttf */; };
+		B192C5AC17E56F7400F8AD9C /* Dyslexie_a_Regular_LEDU_1044_IN.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B192C5A917E56F7400F8AD9C /* Dyslexie_a_Regular_LEDU_1044_IN.ttf */; };
+		B192DB4C17E26EFE0075C072 /* DisplayWordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B192DB4B17E26EFE0075C072 /* DisplayWordViewController.m */; };
+		B192DB4E17E291380075C072 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B192DB4D17E291380075C072 /* AVFoundation.framework */; };
+		B192DB5017E2913E0075C072 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B192DB4F17E2913E0075C072 /* AudioToolbox.framework */; };
+		B192DB5217E291510075C072 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B192DB5117E291510075C072 /* QuartzCore.framework */; };
 		B195672A17DA64D400CB7F4B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B195672917DA64D400CB7F4B /* UIKit.framework */; };
 		B195672C17DA64D400CB7F4B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B195672B17DA64D400CB7F4B /* Foundation.framework */; };
 		B195672E17DA64D400CB7F4B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B195672D17DA64D400CB7F4B /* CoreGraphics.framework */; };
@@ -18,10 +30,33 @@
 		B195674017DA64D400CB7F4B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B195673F17DA64D400CB7F4B /* Default-568h@2x.png */; };
 		B195674317DA64D400CB7F4B /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B195674117DA64D400CB7F4B /* MainStoryboard_iPhone.storyboard */; };
 		B195674617DA64D400CB7F4B /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B195674417DA64D400CB7F4B /* MainStoryboard_iPad.storyboard */; };
-		B195674917DA64D400CB7F4B /* DD2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B195674817DA64D400CB7F4B /* DD2ViewController.m */; };
+		B195675017DA65AC00CB7F4B /* resources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B195674F17DA65AC00CB7F4B /* resources.bundle */; };
+		B195675C17DA6B1400CB7F4B /* DD2Words.m in Sources */ = {isa = PBXBuildFile; fileRef = B195675B17DA6B1400CB7F4B /* DD2Words.m */; };
+		B195675F17DA6FB200CB7F4B /* DD2GlobalHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B195675E17DA6FB200CB7F4B /* DD2GlobalHelper.m */; };
+		B1CCB5C817DFC3C8009D7BF0 /* SettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B1CCB5C717DFC3C8009D7BF0 /* SettingsTableViewController.m */; };
+		B1CCB5CC17DFC444009D7BF0 /* htmlPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B1CCB5CB17DFC443009D7BF0 /* htmlPageViewController.m */; };
+		B1CCB5CE17DFC797009D7BF0 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1CCB5CD17DFC797009D7BF0 /* MessageUI.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B191C3F017E3CBA100A2ABFA /* DD2TabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DD2TabBarController.h; sourceTree = "<group>"; };
+		B191C3F117E3CBA100A2ABFA /* DD2TabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DD2TabBarController.m; sourceTree = "<group>"; };
+		B191C3F317E3EC0400A2ABFA /* FunWithWordsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FunWithWordsTableViewController.h; sourceTree = "<group>"; };
+		B191C3F417E3EC0400A2ABFA /* FunWithWordsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FunWithWordsTableViewController.m; sourceTree = "<group>"; };
+		B192C59B17E527FB00F8AD9C /* DD2SetTrackTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DD2SetTrackTableViewController.h; sourceTree = "<group>"; };
+		B192C59C17E527FB00F8AD9C /* DD2SetTrackTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DD2SetTrackTableViewController.m; sourceTree = "<group>"; };
+		B192C59E17E528FA00F8AD9C /* DD2WordListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DD2WordListTableViewController.h; sourceTree = "<group>"; };
+		B192C59F17E528FA00F8AD9C /* DD2WordListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DD2WordListTableViewController.m; sourceTree = "<group>"; };
+		B192C5A417E565E000F8AD9C /* DD2AllWordSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DD2AllWordSearchViewController.h; sourceTree = "<group>"; };
+		B192C5A517E565E000F8AD9C /* DD2AllWordSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DD2AllWordSearchViewController.m; sourceTree = "<group>"; };
+		B192C5A717E56F7300F8AD9C /* Dyslexie_a_Bold_LEDU_1044_IN.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Dyslexie_a_Bold_LEDU_1044_IN.ttf; sourceTree = "<group>"; };
+		B192C5A817E56F7300F8AD9C /* Dyslexie_a_Italic_LEDU_1044_IN.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Dyslexie_a_Italic_LEDU_1044_IN.ttf; sourceTree = "<group>"; };
+		B192C5A917E56F7400F8AD9C /* Dyslexie_a_Regular_LEDU_1044_IN.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Dyslexie_a_Regular_LEDU_1044_IN.ttf; sourceTree = "<group>"; };
+		B192DB4A17E26EFE0075C072 /* DisplayWordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisplayWordViewController.h; sourceTree = "<group>"; };
+		B192DB4B17E26EFE0075C072 /* DisplayWordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DisplayWordViewController.m; sourceTree = "<group>"; };
+		B192DB4D17E291380075C072 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		B192DB4F17E2913E0075C072 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		B192DB5117E291510075C072 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		B195672617DA64D400CB7F4B /* DD-s-Dictionary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DD-s-Dictionary.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B195672917DA64D400CB7F4B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		B195672B17DA64D400CB7F4B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -37,8 +72,17 @@
 		B195673F17DA64D400CB7F4B /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		B195674217DA64D400CB7F4B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		B195674517DA64D400CB7F4B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
-		B195674717DA64D400CB7F4B /* DD2ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DD2ViewController.h; sourceTree = "<group>"; };
-		B195674817DA64D400CB7F4B /* DD2ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DD2ViewController.m; sourceTree = "<group>"; };
+		B195674F17DA65AC00CB7F4B /* resources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = resources.bundle; sourceTree = "<group>"; };
+		B195675A17DA6B1400CB7F4B /* DD2Words.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DD2Words.h; sourceTree = "<group>"; };
+		B195675B17DA6B1400CB7F4B /* DD2Words.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DD2Words.m; sourceTree = "<group>"; };
+		B195675D17DA6FB200CB7F4B /* DD2GlobalHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DD2GlobalHelper.h; sourceTree = "<group>"; };
+		B195675E17DA6FB200CB7F4B /* DD2GlobalHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DD2GlobalHelper.m; sourceTree = "<group>"; };
+		B1CCB5C617DFC3C8009D7BF0 /* SettingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsTableViewController.h; sourceTree = "<group>"; };
+		B1CCB5C717DFC3C8009D7BF0 /* SettingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsTableViewController.m; sourceTree = "<group>"; };
+		B1CCB5C917DFC3E6009D7BF0 /* NSUserDefaultKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSUserDefaultKeys.h; sourceTree = "<group>"; };
+		B1CCB5CA17DFC443009D7BF0 /* htmlPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = htmlPageViewController.h; sourceTree = "<group>"; };
+		B1CCB5CB17DFC443009D7BF0 /* htmlPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = htmlPageViewController.m; sourceTree = "<group>"; };
+		B1CCB5CD17DFC797009D7BF0 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,6 +90,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B192DB5217E291510075C072 /* QuartzCore.framework in Frameworks */,
+				B192DB5017E2913E0075C072 /* AudioToolbox.framework in Frameworks */,
+				B192DB4E17E291380075C072 /* AVFoundation.framework in Frameworks */,
+				B1CCB5CE17DFC797009D7BF0 /* MessageUI.framework in Frameworks */,
 				B195672A17DA64D400CB7F4B /* UIKit.framework in Frameworks */,
 				B195672C17DA64D400CB7F4B /* Foundation.framework in Frameworks */,
 				B195672E17DA64D400CB7F4B /* CoreGraphics.framework in Frameworks */,
@@ -55,9 +103,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B192C5AD17E56F7900F8AD9C /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				B192C5A917E56F7400F8AD9C /* Dyslexie_a_Regular_LEDU_1044_IN.ttf */,
+				B192C5A817E56F7300F8AD9C /* Dyslexie_a_Italic_LEDU_1044_IN.ttf */,
+				B192C5A717E56F7300F8AD9C /* Dyslexie_a_Bold_LEDU_1044_IN.ttf */,
+			);
+			name = Fonts;
+			sourceTree = "<group>";
+		};
 		B195671D17DA64D400CB7F4B = {
 			isa = PBXGroup;
 			children = (
+				B192DB5117E291510075C072 /* QuartzCore.framework */,
+				B192DB4F17E2913E0075C072 /* AudioToolbox.framework */,
+				B192DB4D17E291380075C072 /* AVFoundation.framework */,
+				B1CCB5CD17DFC797009D7BF0 /* MessageUI.framework */,
 				B195672F17DA64D400CB7F4B /* DD-s-Dictionary */,
 				B195672817DA64D400CB7F4B /* Frameworks */,
 				B195672717DA64D400CB7F4B /* Products */,
@@ -87,11 +149,32 @@
 			children = (
 				B195673817DA64D400CB7F4B /* DD2AppDelegate.h */,
 				B195673917DA64D400CB7F4B /* DD2AppDelegate.m */,
+				B191C3F017E3CBA100A2ABFA /* DD2TabBarController.h */,
+				B191C3F117E3CBA100A2ABFA /* DD2TabBarController.m */,
+				B195675A17DA6B1400CB7F4B /* DD2Words.h */,
+				B195675B17DA6B1400CB7F4B /* DD2Words.m */,
 				B195674117DA64D400CB7F4B /* MainStoryboard_iPhone.storyboard */,
 				B195674417DA64D400CB7F4B /* MainStoryboard_iPad.storyboard */,
-				B195674717DA64D400CB7F4B /* DD2ViewController.h */,
-				B195674817DA64D400CB7F4B /* DD2ViewController.m */,
+				B192C59B17E527FB00F8AD9C /* DD2SetTrackTableViewController.h */,
+				B192C59C17E527FB00F8AD9C /* DD2SetTrackTableViewController.m */,
+				B192C59E17E528FA00F8AD9C /* DD2WordListTableViewController.h */,
+				B192C59F17E528FA00F8AD9C /* DD2WordListTableViewController.m */,
+				B192C5A417E565E000F8AD9C /* DD2AllWordSearchViewController.h */,
+				B192C5A517E565E000F8AD9C /* DD2AllWordSearchViewController.m */,
+				B191C3F317E3EC0400A2ABFA /* FunWithWordsTableViewController.h */,
+				B191C3F417E3EC0400A2ABFA /* FunWithWordsTableViewController.m */,
+				B192DB4A17E26EFE0075C072 /* DisplayWordViewController.h */,
+				B192DB4B17E26EFE0075C072 /* DisplayWordViewController.m */,
+				B1CCB5C617DFC3C8009D7BF0 /* SettingsTableViewController.h */,
+				B1CCB5C717DFC3C8009D7BF0 /* SettingsTableViewController.m */,
+				B1CCB5CA17DFC443009D7BF0 /* htmlPageViewController.h */,
+				B1CCB5CB17DFC443009D7BF0 /* htmlPageViewController.m */,
+				B195675D17DA6FB200CB7F4B /* DD2GlobalHelper.h */,
+				B195675E17DA6FB200CB7F4B /* DD2GlobalHelper.m */,
+				B1CCB5C917DFC3E6009D7BF0 /* NSUserDefaultKeys.h */,
+				B195674F17DA65AC00CB7F4B /* resources.bundle */,
 				B195673017DA64D400CB7F4B /* Supporting Files */,
+				B192C5AD17E56F7900F8AD9C /* Fonts */,
 			);
 			path = "DD-s-Dictionary";
 			sourceTree = "<group>";
@@ -168,6 +251,10 @@
 				B195674017DA64D400CB7F4B /* Default-568h@2x.png in Resources */,
 				B195674317DA64D400CB7F4B /* MainStoryboard_iPhone.storyboard in Resources */,
 				B195674617DA64D400CB7F4B /* MainStoryboard_iPad.storyboard in Resources */,
+				B195675017DA65AC00CB7F4B /* resources.bundle in Resources */,
+				B192C5AA17E56F7400F8AD9C /* Dyslexie_a_Bold_LEDU_1044_IN.ttf in Resources */,
+				B192C5AB17E56F7400F8AD9C /* Dyslexie_a_Italic_LEDU_1044_IN.ttf in Resources */,
+				B192C5AC17E56F7400F8AD9C /* Dyslexie_a_Regular_LEDU_1044_IN.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -180,7 +267,16 @@
 			files = (
 				B195673617DA64D400CB7F4B /* main.m in Sources */,
 				B195673A17DA64D400CB7F4B /* DD2AppDelegate.m in Sources */,
-				B195674917DA64D400CB7F4B /* DD2ViewController.m in Sources */,
+				B195675C17DA6B1400CB7F4B /* DD2Words.m in Sources */,
+				B195675F17DA6FB200CB7F4B /* DD2GlobalHelper.m in Sources */,
+				B1CCB5C817DFC3C8009D7BF0 /* SettingsTableViewController.m in Sources */,
+				B1CCB5CC17DFC444009D7BF0 /* htmlPageViewController.m in Sources */,
+				B192DB4C17E26EFE0075C072 /* DisplayWordViewController.m in Sources */,
+				B191C3F217E3CBA100A2ABFA /* DD2TabBarController.m in Sources */,
+				B191C3F517E3EC0400A2ABFA /* FunWithWordsTableViewController.m in Sources */,
+				B192C59D17E527FB00F8AD9C /* DD2SetTrackTableViewController.m in Sources */,
+				B192C5A017E528FA00F8AD9C /* DD2WordListTableViewController.m in Sources */,
+				B192C5A617E565E100F8AD9C /* DD2AllWordSearchViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,6 +374,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DD-s-Dictionary/DD-s-Dictionary-Prefix.pch";
 				INFOPLIST_FILE = "DD-s-Dictionary/DD-s-Dictionary-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -289,6 +386,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DD-s-Dictionary/DD-s-Dictionary-Prefix.pch";
 				INFOPLIST_FILE = "DD-s-Dictionary/DD-s-Dictionary-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -313,6 +411,7 @@
 				B195674E17DA64D400CB7F4B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

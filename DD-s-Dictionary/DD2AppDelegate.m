@@ -7,12 +7,26 @@
 //
 
 #import "DD2AppDelegate.h"
+#import <AudioToolbox/AudioToolbox.h>  //for system sounds
+#import <AVFoundation/AVFoundation.h> //for audioPlayer
 
 @implementation DD2AppDelegate
+@synthesize words = _words;
+
+-(DD2Words *)words
+{
+    if (!_words) _words = [DD2Words sharedWords];
+    return _words;
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    
+    // Setting up audioSession
+    [self setupAudioSession];
+    [self setAudioSessionCategoryToPlayback];
+    
     return YES;
 }
 							
@@ -42,5 +56,28 @@
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
+-(void)setupAudioSession
+{
+    //setting up the AVAudioSession and activating it.
+    NSError *activationError = nil;
+    BOOL success = [[AVAudioSession sharedInstance] setActive: YES error: &activationError];
+    if (!success) {
+        NSLog(@"AVAudioSession not setup %@", activationError);
+    }
+}
+
+-(void)setAudioSessionCategoryToPlayback
+{
+    NSError *setCategoryError = nil;
+    BOOL success = [[AVAudioSession sharedInstance]
+                    setCategory: AVAudioSessionCategoryPlayback
+                    error: &setCategoryError];
+    
+    if (!success) {
+        NSLog(@"AVAudioSessionCategory not set %@", setCategoryError);
+    }
+}
+
 
 @end

@@ -1,13 +1,13 @@
 //
-//  DD2ViewController.h
+//  DD2TabBarController.h
 //  DD-s-Dictionary
 //
-//  Created by Alison KLINE on 9/6/13.
+//  Created by Alison KLINE on 9/13/13.
 //  Copyright (c) 2013 Alison KLINE. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
-@interface DD2ViewController : UIViewController
+@interface DD2TabBarController : UITabBarController
 
 @end

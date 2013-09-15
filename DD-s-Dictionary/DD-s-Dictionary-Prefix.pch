@@ -11,4 +11,7 @@
 #ifdef __OBJC__
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
+    #import "DD2GlobalHelper.h"
+    #import "NSUserDefaultKeys.h"
+    #import "DD2Words.h"
 #endif
