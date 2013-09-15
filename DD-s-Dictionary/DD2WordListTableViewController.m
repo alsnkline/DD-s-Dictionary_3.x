@@ -155,7 +155,7 @@
         DisplayWordViewController *dwvc = [self getSplitViewWithDisplayWordViewController];
         dwvc.word = self.selectedWord;
         if (self.playWordsOnSelection) {
-            [dwvc playAllWords:[DD2GlobalHelper pronunciationsForWord:self.selectedWord]];
+            [dwvc playAllWords:[DD2Words pronunciationsForWord:self.selectedWord]];
         }
     } else { //iPhone (passing playWordsOnSelection handled in prepare for Segue)
         [self performSegueWithIdentifier:@"Word Selected" sender:self.selectedWord];

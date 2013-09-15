@@ -15,7 +15,7 @@
 @property (nonatomic, strong) NSString *spellingVariant;
 @property (nonatomic, strong) UIColor *customBackgroundColor;
 @property (nonatomic) BOOL useDyslexieFont;
-@property (nonatomic, strong) NSDictionary *taggedGroupsOfWords;
+@property (nonatomic, strong) NSArray *tagNames;
 @property (nonatomic, strong) NSArray *allWords;
 
 @end
@@ -25,7 +25,7 @@
 @synthesize spellingVariant = _spellingVariant;
 @synthesize customBackgroundColor = _customBackgroundColor;
 @synthesize useDyslexieFont = _useDyslexieFont;
-@synthesize taggedGroupsOfWords = _taggedGroupsOfWords;
+@synthesize tagNames = _tagNames;
 @synthesize allWords = _allWords;
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -37,9 +37,9 @@
     return self;
 }
 
--(NSDictionary *)taggedGroupsOfWords{
-    if(!_taggedGroupsOfWords) _taggedGroupsOfWords = [DD2Words taggedGroupsOfWords];
-    return _taggedGroupsOfWords;
+-(NSArray *)tagNames{
+    if(!_tagNames) _tagNames = [DD2Words tagNames];
+    return _tagNames;
 }
 
 - (NSArray *)allWords
@@ -162,6 +162,8 @@
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(onNotification:)
                                                  name:@"spellingVariantChanged" object:nil];
+    
+    //To DO clean up useDylexie font and use notification - possibly subclass DD2SetTrackTableViewController
 }
 
 - (void)didReceiveMemoryWarning
@@ -176,14 +178,14 @@
 {
     // Return the number of sections.
     NSInteger sectionNumber = 1;
-    if ([self.taggedGroupsOfWords count] > 0) sectionNumber = 2;
+    if ([self.tagNames count] > 0) sectionNumber = 2;
     return sectionNumber;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     NSInteger rowCount = 2;
-    if (section == 1) rowCount = [self.taggedGroupsOfWords count];
+    if (section == 1) rowCount = [self.tagNames count];
     return rowCount;
 }
 
@@ -217,8 +219,7 @@
         if (row == 1) cell.textLabel.text = [NSString stringWithFormat:@"heteronyms"];
     }
     if (section == 1) {
-        NSArray *groupNamesForCell = [self.taggedGroupsOfWords allKeys];
-        cell.textLabel.text = [groupNamesForCell objectAtIndex:indexPath.row];
+        cell.textLabel.text = [self.tagNames objectAtIndex:indexPath.row];
     }
     
     // Configure the cell...
@@ -302,7 +303,6 @@
                 // from http://www.raywenderlich.com/14742/core-data-on-ios-5-tutorial-how-to-work-with-relations-and-predicates
             } else {
                 switchValue = 5;
-                //[segue.destinationViewController setWordListData:[self.taggedGroupsOfWords objectForKey:cell.textLabel.text]];
                 selectionPredicate = [NSPredicate predicateWithFormat:@"SELF.tags contains[c] %@",cell.textLabel.text];
             }
             

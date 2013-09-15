@@ -12,18 +12,22 @@
 
 @property (nonatomic, strong) NSDictionary *rawWords;
 @property (nonatomic, strong) NSDictionary *processedWords;
-@property (nonatomic, strong) NSDictionary *collectionsOfWords;
-@property (nonatomic, strong) NSDictionary *taggedGroupsOfWords;
-@property (nonatomic, strong) NSDictionary *allWords;
 @property (nonatomic, strong) NSArray *collectionNames;
-@property (nonatomic, strong) NSDictionary *homophones;
+@property (nonatomic, strong) NSDictionary *collectionsOfWords;
+@property (nonatomic, strong) NSArray *tagNames;
+@property (nonatomic, strong) NSDictionary *allWords;
+
 
 + (DD2Words *)sharedWords;
 + (void)logDD2WordProperty:(NSString *)property;
 
 + (NSDictionary *)singleCollectionNamed:(NSString *)collectionName spellingVariant:(NSString *)variant;
 + (NSArray *)allWordsWithSpellingVariant:(NSString *)variant;
-+ (NSDictionary *)taggedGroupsOfWords;
++ (NSArray *)tagNames;
+
++ (NSString *) pronunciationFromSpelling:(NSString *)spelling;
++ (NSSet *) pronunciationsForWord:(NSDictionary *)word;
++ (NSArray *) homophonesForPronunciation:(NSString *)pronunciation FromWord:(NSDictionary *)word;
 
 - (NSInteger)numberOfWordsInCollection:(NSString *)collection spellingVariant:(NSString *)variant;
 

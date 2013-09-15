@@ -36,36 +36,6 @@
     return hexColor;
 }
 
-
-+ (NSString *) pronunciationFromSpelling:(NSString *)spelling
-{
-    //turn spaces into _
-    NSString *cleanString = [spelling stringByReplacingOccurrencesOfString:@" " withString:@"_"];
-    
-    // remove apostrophe and periods sign characters
-    NSCharacterSet *charSet = [NSCharacterSet characterSetWithCharactersInString:@"'."];
-    NSString *cleanerString = [[cleanString componentsSeparatedByCharactersInSet:charSet] componentsJoinedByString:@""];
-    
-    NSLog(@"clean string = %@",cleanerString);
-    return [NSString stringWithString:cleanerString];
-}
-
-+ (NSSet *) pronunciationsForWord:(NSDictionary *)word;
-{
-    NSSet *pronunciations = [word objectForKey:@"pronunciations"];
-    if (!pronunciations) {
-        pronunciations = [NSSet setWithObject:[DD2GlobalHelper pronunciationFromSpelling:[word objectForKey:@"spelling"]]];
-    }
-    return pronunciations;
-}
-
-+ (NSSet *) homophonesForPronunciationFromWord:(NSDictionary *)word;
-{
-    NSSet *homophones = [word objectForKey:@"homophones"];
-    
-    return homophones;
-}
-
 + (NSUInteger) testWordPredicate:(NSPredicate *)predicate onWords:(id)words
 {
     NSArray *sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"spelling" ascending:YES selector:@selector(caseInsensitiveCompare:)]];
@@ -86,7 +56,6 @@
     return 1;
     
 }
-
 
 + (NSURL *)wordlistJSONFileDirectory
 {

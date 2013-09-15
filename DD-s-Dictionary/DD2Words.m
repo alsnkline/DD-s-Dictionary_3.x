@@ -10,11 +10,9 @@
 #import "DD2AppDelegate.h"
 
 #define COLLECTIONS @"collectionsOfWords"
-#define TAGS @"taggedGroupsOfWords"
-#define ALL @"allWords"
 #define COLLECTION_NAMES @"collectionNames"
-#define HETERONYMS @"heteronyms"
-#define HOMOPHONES @"homophones"
+#define TAG_NAMES @"tagNames"
+#define ALL @"allWords"
 
 @interface DD2Words ()
 
@@ -26,11 +24,10 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
 
 @synthesize rawWords = _rawWords;
 @synthesize processedWords = _processedWords;
-@synthesize collectionsOfWords = _collectionsOfWords;
-@synthesize taggedGroupsOfWords = _taggedGroupsOfWords;
-@synthesize allWords = _allWords;
 @synthesize collectionNames = _collectionNames;
-@synthesize homophones = _homophones;
+@synthesize collectionsOfWords = _collectionsOfWords;
+@synthesize tagNames = _tagNames;
+@synthesize allWords = _allWords;
 
 
 + (DD2Words *)sharedWords
@@ -71,21 +68,6 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
     return _rawWords;
 }
 
-//+ (NSURL *)wordlistJSONFileDirectory
-//{
-//    NSFileManager *localFileManager = [[NSFileManager alloc] init];
-//    NSURL *bundleUrl = [[NSBundle mainBundle] bundleURL];
-//    NSURL *dirUrl = [NSURL URLWithString:@"resources.bundle/json/" relativeToURL:bundleUrl];
-//    NSLog(@"Wordlist Json file directory: %@", dirUrl);
-//    
-//    BOOL isDir = YES;
-//    [localFileManager fileExistsAtPath:[dirUrl path] isDirectory:&isDir];
-//    if (!isDir ) {
-//        NSLog(@"no JSON directory in resource files");
-//    }
-//    return dirUrl;
-//}
-
 -(NSDictionary *)allWords
 {
     if (_allWords == nil) {
@@ -93,15 +75,6 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
         if (PROCESS_VERBOSELY) NSLog(@"%@ has = %@", ALL ,[_allWords allKeys]);
     }
     return _allWords;
-}
-
--(NSDictionary *)collectionsOfWords
-{
-    if (_collectionsOfWords == nil) {
-        _collectionsOfWords = [self.processedWords objectForKey:COLLECTIONS];
-        if (PROCESS_VERBOSELY) NSLog(@"%@ has = %@",COLLECTIONS ,[_collectionsOfWords allKeys]);
-    }
-    return _collectionsOfWords;
 }
 
 -(NSArray *)collectionNames
@@ -113,22 +86,22 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
     return _collectionNames;
 }
 
--(NSDictionary *)taggedGroupsOfWords
+-(NSDictionary *)collectionsOfWords
 {
-    if (_taggedGroupsOfWords == nil) {
-        _taggedGroupsOfWords = [self.processedWords objectForKey:TAGS];
-        if (PROCESS_VERBOSELY) NSLog(@"%@ has = %@",TAGS ,[_taggedGroupsOfWords allKeys]);
+    if (_collectionsOfWords == nil) {
+        _collectionsOfWords = [self.processedWords objectForKey:COLLECTIONS];
+        if (PROCESS_VERBOSELY) NSLog(@"%@ has = %@",COLLECTIONS ,[_collectionsOfWords allKeys]);
     }
-    return _taggedGroupsOfWords;
+    return _collectionsOfWords;
 }
 
--(NSDictionary *)homophones
+-(NSArray *)tagNames
 {
-    if (_homophones == nil) {
-        _homophones = [self.processedWords objectForKey:HOMOPHONES];
-        if (PROCESS_VERBOSELY) NSLog(@"%@ has = %@",HOMOPHONES, [_homophones allKeys]);
+    if(_tagNames == nil) {
+        _tagNames = [self.processedWords objectForKey:TAG_NAMES];
+        if (PROCESS_VERBOSELY) NSLog(@"%@ has = %@", TAG_NAMES, _tagNames);
     }
-    return _homophones;
+    return _tagNames;
 }
 
 -(NSDictionary *)processedWords
@@ -136,11 +109,10 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
     if (_processedWords ==nil) {
         NSMutableDictionary *workingProcessedWords = [[NSMutableDictionary alloc] init];
         
-        NSMutableDictionary *workingCollectionsOfWords = [[NSMutableDictionary alloc] init];
-        NSMutableDictionary *workingTaggedGroupsOfWords = [[NSMutableDictionary alloc] init];
-        NSMutableDictionary *workingAllWords = [[NSMutableDictionary alloc] init];
         NSMutableArray *workingCollectionNames = [[NSMutableArray alloc] init];
-        NSMutableDictionary *workingHeteronyms = [[NSMutableDictionary alloc] init];
+        NSMutableDictionary *workingCollectionsOfWords = [[NSMutableDictionary alloc] init];
+        NSMutableArray *workingTagNames = [[NSMutableArray alloc] init];
+        NSMutableDictionary *workingAllWords = [[NSMutableDictionary alloc] init];
         
         NSSet *locales = [NSSet setWithObjects:[NSString stringWithFormat:@"uk"], [NSString stringWithFormat:@"us"], nil];
     
@@ -158,9 +130,39 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
                 } else if ([wordElement isKindOfClass:[NSDictionary class]]){
                     spelling = [wordElement objectForKey:locale];
                     NSLog(@"spelling for %@ = %@", locale, spelling);
+                } else {
+                    NSLog(@"Badly formed wordElement");
                 }
                 [processedWord setObject:spelling forKey:@"spelling"];  //need for easy sorting
                 
+                //processing for homophones
+                id homophonesElement = [rawWord objectForKey:@"homophones"];
+                id locHomophones;
+                if (homophonesElement) {        //only process if word has homophones
+                    if ([homophonesElement isKindOfClass:[NSArray class]]) {
+                        locHomophones = homophonesElement;
+                        
+                    } else if ([homophonesElement isKindOfClass:[NSDictionary class]]) {
+                        NSDictionary *homophonesElementDictionary = (NSDictionary *)homophonesElement;
+                        
+                        if ([[rawWord objectForKey:@"pronunciations"] count] >1) {
+                            NSLog(@"word is a heteronym with homophones");
+                            //TO DO The really tricky ones!!
+                        } else {
+                            NSLog(@"word has localised homophones");
+                            NSLog(@"my homophonesElement = %@", homophonesElement);
+                            locHomophones = [homophonesElementDictionary objectForKey:locale];
+                        }
+                    } else {
+                        NSLog(@"Badly formed homophoneElement or no homophones");
+                    }
+                    if (locHomophones) {
+                        [processedWord setObject:locHomophones forKey:@"locHomophones"];
+                        NSLog(@"locHomophones for %@ %@ = %@", spelling, locale, locHomophones);
+                    } else {
+                        NSLog(@"no locHomophones for %@ %@", spelling, locale);
+                    }
+                }
                 
                 //processing for all words
                 NSMutableArray *allWordLocale = [workingAllWords objectForKey:locale];
@@ -196,35 +198,21 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
                     [wordsInThisSection addObject:[processedWord copy]];
                 }
                 
-                //processing for homophones
-                NSArray *homophones = [rawWord objectForKey:@"homophones"];
-                
                 //processing Tags on each word (ignoring locale as no tagged words have a spelling variations will endup with all UK words)
                 NSArray *tags = [rawWord objectForKey:@"tags"];
                 for (NSString *tag in tags) {
-                    if (PROCESS_VERBOSELY) NSLog(@"tag %@ found on word %@",tag ,[rawWord objectForKey:@"word"]);
-                    NSMutableArray *wordsWithThisTag = [workingTaggedGroupsOfWords objectForKey:tag];
-                    if (!wordsWithThisTag) {
-                        wordsWithThisTag = [[NSMutableArray alloc] init];
-                        [workingTaggedGroupsOfWords setObject:wordsWithThisTag forKey:tag];
-                    }
-                    [wordsWithThisTag addObject:processedWord];
-                }
-                
-                //processing Heteronyms might not be needed if this works: selectionPredicate = [NSPredicate predicateWithFormat:@"pronunciations.@count > 1"];
-                NSArray *pronunciations = [rawWord objectForKey:@"pronunciations"];
-                if (PROCESS_VERBOSELY) NSLog(@"pronunciations %@ found on word %@",pronunciations ,[rawWord objectForKey:@"word"]);
-                if ([pronunciations count] > 1){
-                    [processedWord setObject:@"YES" forKey:@"isHeteronym"];  //need for easy sorting of Heteronyms
+                    
+                    if (![workingTagNames containsObject:tag]) [workingTagNames addObject:tag];
+            
                 }
             }
         }
         
         [workingProcessedWords setObject:workingAllWords forKey:ALL];
-        [workingProcessedWords setObject:workingCollectionsOfWords forKey:COLLECTIONS];
-        [workingProcessedWords setObject:workingTaggedGroupsOfWords forKey:TAGS];
         [workingProcessedWords setObject:workingCollectionNames forKey:COLLECTION_NAMES];
-        [workingProcessedWords setObject:workingHeteronyms forKey:HETERONYMS];
+        [workingProcessedWords setObject:workingCollectionsOfWords forKey:COLLECTIONS];
+        [workingProcessedWords setObject:workingTagNames forKey:TAG_NAMES];
+
         
         _processedWords = [workingProcessedWords copy];
     }
@@ -244,26 +232,63 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
     return [appDelegate.words.allWords objectForKey:[variant lowercaseString]];
 }
 
-+ (NSDictionary *)taggedGroupsOfWords
++ (NSArray *)tagNames
 {
     DD2AppDelegate *appDelegate = (DD2AppDelegate *)[[UIApplication sharedApplication] delegate];
-    return appDelegate.words.taggedGroupsOfWords;
+    return appDelegate.words.tagNames;
 }
 
-+(void)logDD2WordProperty:(NSString *)property
+
++ (NSString *) pronunciationFromSpelling:(NSString *)spelling
 {
-    if ([property isEqualToString:COLLECTIONS]) NSLog(@"DD2Word.%@ = %@", COLLECTIONS, [DD2Words sharedWords].collectionsOfWords);
+    //turn spaces into _
+    NSString *cleanString = [spelling stringByReplacingOccurrencesOfString:@" " withString:@"_"];
+    
+    // remove apostrophe and periods sign characters
+    NSCharacterSet *charSet = [NSCharacterSet characterSetWithCharactersInString:@"'."];
+    NSString *cleanerString = [[cleanString componentsSeparatedByCharactersInSet:charSet] componentsJoinedByString:@""];
+    
+    NSLog(@"clean string = %@",cleanerString);
+    return [NSString stringWithString:cleanerString];
+}
+
++ (NSSet *) pronunciationsForWord:(NSDictionary *)word     //no words pronunciations depend upon spelling variant yet
+{
+    NSSet *pronunciations = [word objectForKey:@"pronunciations"];
+    if (!pronunciations) {
+        pronunciations = [NSSet setWithObject:[DD2Words pronunciationFromSpelling:[word objectForKey:@"spelling"]]];
+    }
+    
+    //TO DO need to check for file precense and if missing cicle through the words homophones until a file for the pronunciation is found
+    
+    return pronunciations;
+}
+
++ (NSArray *) homophonesForPronunciation:(NSString *)pronunciation FromWord:(NSDictionary *)word
+{
+    NSArray *homophones;
+    if ([[word objectForKey:@"pronunciations"] count] > 1) {
+        homophones = [[word objectForKey:@"locHomophones"] objectForKey:pronunciation];
+    } else {
+        homophones = [word objectForKey:@"locHomophones"];
+    }
+    NSLog(@"homophones =%@", homophones);
+    return homophones;
+}
+
+
++ (void)logDD2WordProperty:(NSString *)property
+{
     if ([property isEqualToString:COLLECTION_NAMES]) NSLog(@"DD2Word.%@ = %@", COLLECTION_NAMES, [DD2Words sharedWords].collectionNames);
-    if ([property isEqualToString:TAGS]) NSLog(@"DD2Word.%@ = %@", TAGS, [DD2Words sharedWords].taggedGroupsOfWords);
+    if ([property isEqualToString:COLLECTIONS]) NSLog(@"DD2Word.%@ = %@", COLLECTIONS, [DD2Words sharedWords].collectionsOfWords);
+    if ([property isEqualToString:TAG_NAMES]) NSLog(@"DD2Word.%@ = %@", TAG_NAMES, [DD2Words sharedWords].tagNames);
     if ([property isEqualToString:ALL]) NSLog(@"DD2Word.%@ = %@", ALL, [DD2Words sharedWords].allWords);
-    if ([property isEqualToString:HOMOPHONES]) NSLog(@"DD2Word.%@ = %@", HOMOPHONES, [DD2Words sharedWords].homophones);
     NSLog(@"-------- above or property missing ---------");
 }
 
 
 - (NSInteger)numberOfWordsInCollection:(NSString *)collection spellingVariant:(NSString *)variant
 {
-    NSLog(@"testing # of Tags = %lu", (unsigned long)[self.taggedGroupsOfWords count]);
     NSLog(@"testing # of Collections = %lu", (unsigned long)[self.collectionsOfWords count]);
     NSLog(@"testing collection names = %@", [self.collectionsOfWords allKeys]);
     

@@ -84,8 +84,10 @@
     for (UIViewController *vc in listOfTabVC) {
         if ([vc isKindOfClass:[UINavigationController class]]) {        //removing any old DD2WordlistTableControllers
             UINavigationController *nvc = (UINavigationController *)vc;
-            if ([nvc.visibleViewController isKindOfClass:[DD2WordListTableViewController class]]) {
-                [vc removeFromParentViewController];
+            for (UIViewController *vc in nvc.viewControllers) {
+                if ([vc isKindOfClass:[DD2WordListTableViewController class]]) {
+                    [nvc removeFromParentViewController];
+                }
             }
             if ([nvc.visibleViewController isKindOfClass:[DD2AllWordSearchViewController class]]) {     //setting data for search tab for spelling variant
                 DD2AllWordSearchViewController *searchTable = (DD2AllWordSearchViewController *)nvc.visibleViewController;

@@ -17,12 +17,9 @@
 
 + (NSString*) version;
 + (NSString *) deviceType;
-+ (NSString *)getHexStringForColor:(UIColor *)color;
-+ (NSString *) pronunciationFromSpelling:(NSString *)spelling;
-+ (NSSet *) pronunciationsForWord:(NSDictionary *)word;
-+ (NSSet *) homophonesForPronunciationFromWord:(NSDictionary *)word;
++ (NSString *) getHexStringForColor:(UIColor *)color;
 + (NSUInteger) testWordPredicate:(NSPredicate *)predicate onWords:(id)words;
-+ (NSURL *)wordlistJSONFileDirectory;
-+ (NSURL *)fileURLForPronunciation:(NSString *)pronunciation;
++ (NSURL *) wordlistJSONFileDirectory;
++ (NSURL *) fileURLForPronunciation:(NSString *)pronunciation;
 
 @end

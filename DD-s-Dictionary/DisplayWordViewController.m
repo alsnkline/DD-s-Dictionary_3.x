@@ -57,7 +57,9 @@
 {
     if (_word != word) {
         _word = word;
-        [self setUpViewForWord:word];
+        if ([self getSplitViewWithDisplayWordViewController]) {
+            [self setUpViewForWord:word];       //used for iPad in iPhone outlets not set yet
+        }
     }
 }
 
@@ -121,7 +123,7 @@
 
 - (void) manageListenButtons
 {
-    NSSet *pronunciations = [DD2GlobalHelper pronunciationsForWord:self.word];
+    NSSet *pronunciations = [DD2Words pronunciationsForWord:self.word];
     
     if ([pronunciations count] == 1) {
         self.heteronymListenButton.hidden = YES;
@@ -163,51 +165,22 @@
     
 - (void) manageHomophonesOfPronunciation:(NSString *)pronunciation withButtons:(NSArray *)buttons underListenButton:(UIButton *)listenbutton
 {
-    NSSet *homophones = [DD2GlobalHelper homophonesForPronunciationFromWord:self.word];
-        
-    if ([homophones count] == 1) {
-        for (UIButton *button in buttons) {
-            button.hidden = YES;
-        }; 
-
-    } else if ([homophones count] > 1) {
-        int counter = 0;
-        for (UIButton *button in buttons) {
-            button.hidden = YES;
-        };
-        for (NSDictionary *word in homophones) {
-            if (word == self.word) continue;
-            counter += 1;
-            if (counter == 1) {
-                UIButton *button0 = [buttons objectAtIndex:0];
-                button0.hidden = NO;
-                [button0 setTitle:[self.word objectForKey:@"spelling"] forState:UIControlStateNormal];
-                [self sizeHomophoneButton:button0];
-                //[button0 sizeToFit];
-                CGRect frame = CGRectMake(listenbutton.frame.origin.x - (button0.frame.size.width/2 - listenbutton.frame.size.width/2), button0.frame.origin.y, button0.frame.size.width, button0.frame.size.height);
-                button0.frame = frame;
-            }
-            if (counter == 2) {
-                UIButton *button1 = [buttons objectAtIndex:1];
-                button1.hidden = NO;
-                [button1 setTitle:[self.word objectForKey:@"spelling"] forState:UIControlStateNormal];
-                [self sizeHomophoneButton:button1];
-                //[button1 sizeToFit];
-                CGRect frame = CGRectMake(listenbutton.frame.origin.x - (button1.frame.size.width/2 - listenbutton.frame.size.width/2), button1.frame.origin.y, button1.frame.size.width, button1.frame.size.height);
-                button1.frame = frame;
-            }
-            if (counter == 3) {
-                UIButton *button2 = [buttons objectAtIndex:1];
-                button2.hidden = NO;
-                [button2 setTitle:[self.word objectForKey:@"spelling"] forState:UIControlStateNormal];
-                [self sizeHomophoneButton:button2];
-                //[button2 sizeToFit];
-                CGRect frame = CGRectMake(listenbutton.frame.origin.x - (button2.frame.size.width/2 - listenbutton.frame.size.width/2), button2.frame.origin.y, button2.frame.size.width, button2.frame.size.height);
-                button2.frame = frame;
-                //CGRectMake((button2.superview.frame.size.width/2 - button2.frame.size.width/2), button2.frame.origin.y, button2.frame.size.width, button2.frame.size.height);
-            }
-
-        }
+    NSArray *homophones = [DD2Words homophonesForPronunciation:(NSString *)pronunciation FromWord:self.word];
+    NSLog(@"homophones = %@ count = %lu", homophones, (unsigned long)[homophones count]);
+    
+    for (int i = 0; i < [homophones count]; i++) {
+        NSLog(@"i = %d", i);
+        UIButton *buttonForLoop = [buttons objectAtIndex:i];
+        buttonForLoop.hidden = NO;
+        [buttonForLoop setTitle:[homophones objectAtIndex:i] forState:UIControlStateNormal];
+        [self sizeHomophoneButton:buttonForLoop];
+        CGRect frame = CGRectMake(listenbutton.frame.origin.x - (buttonForLoop.frame.size.width/2 - listenbutton.frame.size.width/2), buttonForLoop.frame.origin.y, buttonForLoop.frame.size.width, buttonForLoop.frame.size.height);
+        buttonForLoop.frame = frame;
+    }
+    for (int i = [homophones count]; i < [buttons count]; i++) {
+        NSLog(@"hide button i = %d", i);
+        UIButton *buttonForLoop = [buttons objectAtIndex:i];
+        buttonForLoop.hidden = YES;
     }
 }
 
@@ -318,7 +291,7 @@
 - (IBAction)listenToWord:(UIButton *)sender 
 {   
 
-    NSSet *pronunciations = [DD2GlobalHelper pronunciationsForWord:self.word];
+    NSSet *pronunciations = [DD2Words pronunciationsForWord:self.word];
     
     for (NSString *pronunciation in pronunciations) {
         
@@ -372,7 +345,7 @@
     if (self.word) {
         [self setUpViewForWord:self.word];
         if (self.playWordsOnSelection) { //only used in iPhone - playwords on iPad done from DictionaryTableViewController
-            [self playAllWords:[DD2GlobalHelper pronunciationsForWord:self.word]];
+            [self playAllWords:[DD2Words pronunciationsForWord:self.word]];
         }
     }
     
