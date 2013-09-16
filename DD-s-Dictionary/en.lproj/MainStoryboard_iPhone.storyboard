@@ -599,7 +599,7 @@ All rights reserved.</string>
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="homoymnButtonPressed:" destination="dSV-C7-sB1" eventType="touchUpInside" id="HAb-8w-iVC"/>
+                                                    <action selector="homophoneButtonPressed:" destination="dSV-C7-sB1" eventType="touchUpInside" id="6KJ-Oj-6k9"/>
                                                 </connections>
                                             </button>
                                             <button hidden="YES" opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="LJX-SX-5mb">
@@ -614,7 +614,7 @@ All rights reserved.</string>
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="homoymnButtonPressed:" destination="dSV-C7-sB1" eventType="touchUpInside" id="K5K-My-Z4i"/>
+                                                    <action selector="homophoneButtonPressed:" destination="dSV-C7-sB1" eventType="touchUpInside" id="neq-cI-MnF"/>
                                                 </connections>
                                             </button>
                                             <button hidden="YES" opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="z2B-9P-8zx">
@@ -629,7 +629,7 @@ All rights reserved.</string>
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="homoymnButtonPressed:" destination="dSV-C7-sB1" eventType="touchUpInside" id="wEX-qk-dCx"/>
+                                                    <action selector="homophoneButtonPressed:" destination="dSV-C7-sB1" eventType="touchUpInside" id="9va-OE-BMk"/>
                                                 </connections>
                                             </button>
                                             <button hidden="YES" opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="YGa-LV-7gH">
@@ -644,7 +644,7 @@ All rights reserved.</string>
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="homoymnButtonPressed:" destination="dSV-C7-sB1" eventType="touchUpInside" id="47X-Ha-zl5"/>
+                                                    <action selector="homophoneButtonPressed:" destination="dSV-C7-sB1" eventType="touchUpInside" id="gHy-XL-lPd"/>
                                                 </connections>
                                             </button>
                                             <button hidden="YES" opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="IGD-cV-dBt">
@@ -659,7 +659,7 @@ All rights reserved.</string>
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="homoymnButtonPressed:" destination="dSV-C7-sB1" eventType="touchUpInside" id="0cX-Wi-zUw"/>
+                                                    <action selector="homophoneButtonPressed:" destination="dSV-C7-sB1" eventType="touchUpInside" id="bVD-I4-CoD"/>
                                                 </connections>
                                             </button>
                                             <button hidden="YES" opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="PFT-xl-8W9">
@@ -674,7 +674,7 @@ All rights reserved.</string>
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="homoymnButtonPressed:" destination="dSV-C7-sB1" eventType="touchUpInside" id="cJg-oG-H4J"/>
+                                                    <action selector="homophoneButtonPressed:" destination="dSV-C7-sB1" eventType="touchUpInside" id="FmS-2w-xXz"/>
                                                 </connections>
                                             </button>
                                         </subviews>

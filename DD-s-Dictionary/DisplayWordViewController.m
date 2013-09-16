@@ -15,7 +15,7 @@
 @interface DisplayWordViewController () <AVAudioPlayerDelegate>
 
 @property (nonatomic, strong) UIBarButtonItem *splitViewBarButtonItem;
-@property (weak, nonatomic) IBOutlet UIToolbar *toolbar;
+@property (weak, nonatomic) IBOutlet UIToolbar *toolbar;        //not actually used as split view controller forced to show master all the time.
 @property (nonatomic, strong) AVAudioPlayer *audioPlayer;
 @property (nonatomic, strong) NSArray *soundsToPlay;
 
@@ -303,7 +303,7 @@
 }
 
 
-- (IBAction)homoymnButtonPressed:(UIButton *)sender 
+- (IBAction)homophoneButtonPressed:(UIButton *)sender 
 {
     NSString *spelling = sender.titleLabel.text;
     //send to delegate

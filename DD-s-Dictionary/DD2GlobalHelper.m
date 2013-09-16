@@ -74,17 +74,10 @@
 
 + (NSURL *)fileURLForPronunciation:(NSString *)pronunciation
 {
-    NSURL *bundleUrl = [[NSBundle mainBundle] bundleURL];
-    NSLog(@"bundleUrl %@", bundleUrl);
-    NSURL *dirUrl = [NSURL URLWithString:@"resources.bundle/audio/" relativeToURL:bundleUrl];
-    NSLog(@"dirUrl = %@", dirUrl);
-    NSString *pathForDirectory = dirUrl.path;
-    
-    //NSURL *fileURL = [NSURL URLWithString:[NSString stringWithFormat:@"wordlist.json"] relativeToURL:[DD2GlobalHelper wordlistJSONFileDirectory]];
-    NSString *pathComponentForBundle = [NSString stringWithFormat:@"%@.bundle",@"resources"];
+
+    NSString *pathComponentForBundle = [NSString stringWithFormat:@"resources.bundle"];
     NSString *pathForSoundName = [NSString pathWithComponents:[NSArray arrayWithObjects:pathComponentForBundle,@"audio",pronunciation, nil]];
-    
-    //NSString *pathForSoundName = [NSString pathWithComponents:[NSArray arrayWithObjects:pathForDirectory,pronunciation, nil]];
+
     NSLog(@"current pronunciation = %@", pronunciation);
     NSLog(@"pathForSoundName = %@",pathForSoundName);
     NSString *soundName = [[NSBundle mainBundle] pathForResource:pathForSoundName ofType:@"m4a"];

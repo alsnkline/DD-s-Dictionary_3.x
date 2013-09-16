@@ -137,8 +137,8 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
                 
                 //processing for homophones
                 id homophonesElement = [rawWord objectForKey:@"homophones"];
-                id locHomophones;
                 if (homophonesElement) {        //only process if word has homophones
+                    id locHomophones;
                     if ([homophonesElement isKindOfClass:[NSArray class]]) {
                         locHomophones = homophonesElement;
                         

@@ -63,6 +63,17 @@
         [self setTableViewsColor];
     }
 }
+
+-(void)checkBackgroundColorSetting
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    UIColor *currentNSUserDefaultBackgroundColor = [UIColor colorWithHue:[defaults floatForKey:BACKGROUND_COLOR_HUE] saturation:[defaults floatForKey:BACKGROUND_COLOR_SATURATION] brightness:1 alpha:1];
+    if (![self.customBackgroundColor isEqual:currentNSUserDefaultBackgroundColor]) {
+        NSLog(@"resetting background color");
+        self.customBackgroundColor = currentNSUserDefaultBackgroundColor;
+    }
+}
+
 -(void)setTableViewsColor
 {
     if ([self.tableView indexPathForSelectedRow]) {
@@ -96,6 +107,7 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
+    [self checkBackgroundColorSetting];
     [self setTableViewsColor];
 }
 
