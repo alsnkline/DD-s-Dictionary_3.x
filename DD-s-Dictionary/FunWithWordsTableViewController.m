@@ -12,17 +12,14 @@
 
 @interface FunWithWordsTableViewController ()
 
-@property (nonatomic, strong) NSString *spellingVariant;
 @property (nonatomic, strong) UIColor *customBackgroundColor;
 @property (nonatomic) BOOL useDyslexieFont;
 @property (nonatomic, strong) NSArray *tagNames;
-@property (nonatomic, strong) NSArray *allWords;
 
 @end
 
 @implementation FunWithWordsTableViewController
 
-@synthesize spellingVariant = _spellingVariant;
 @synthesize customBackgroundColor = _customBackgroundColor;
 @synthesize useDyslexieFont = _useDyslexieFont;
 @synthesize tagNames = _tagNames;
@@ -42,27 +39,11 @@
     return _tagNames;
 }
 
-- (NSArray *)allWords
-{
-    if(!_allWords) _allWords = [DD2Words allWordsWithSpellingVariant:self.spellingVariant];
-    return _allWords;
-}
-
-- (NSString *)spellingVariant
-{
-    if (!_spellingVariant) {
-        _spellingVariant = [[NSUserDefaults standardUserDefaults] stringForKey:SPELLING_VARIANT];
-    }
-    return _spellingVariant;
-}
-- (void)setSpellingVariant:(NSString *)spellingVariant
-{
-    if (spellingVariant != _spellingVariant) {
-        _spellingVariant = spellingVariant;
-        _allWords = nil;
-        [self.tableView reloadData];        //not sure this is needed as the table doesn't show any word with a uk/us variants.
-    }
-}
+//- (NSArray *)allWords  //not needed now that DD2UITabViewController is taking care of the data and the spellingVariant.
+//{
+//    if(!_allWords) _allWords = [DD2Words allWordsWithSpellingVariant:self.spellingVariant];
+//    return _allWords;
+//}
 
 -(UIColor *)customBackgroundColor{
     if (!_customBackgroundColor) {
@@ -124,10 +105,6 @@
         NSDictionary *userinfo = [notification userInfo];
         self.customBackgroundColor = [userinfo objectForKey:@"newColor"];
     }
-    if ([[notification name] isEqualToString:@"spellingVariantChanged"]) {
-        NSDictionary *userinfo = [notification userInfo];
-        self.spellingVariant = [userinfo objectForKey:@"newSpellingVariant"];
-    }
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -158,10 +135,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(onNotification:)
                                                  name:@"customBackgroundColorChanged" object:nil];
-    //registering for spellingVariant notifications  remember to dealloc
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(onNotification:)
-                                                 name:@"spellingVariantChanged" object:nil];
+
     
     //To DO clean up useDylexie font and use notification - possibly subclass DD2SetTrackTableViewController
 }
@@ -206,7 +180,7 @@
 //    UITableViewCell *cell = [super tableView:tableView cellForRowAtIndexPath:indexPath]; //used for updating a static cell programatically
     
     static NSString *cellIdentifier = @"Fun With Words Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (cell ==nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
@@ -314,7 +288,7 @@
             if (LOG_PREDICATE_RESULTS) [DD2GlobalHelper testWordPredicate:selectionPredicate onWords:self.allWords];
             
             [segue.destinationViewController setTitle:cell.textLabel.text];
-            [segue.destinationViewController setWordListData:[NSMutableArray arrayWithArray:[self.allWords filteredArrayUsingPredicate:selectionPredicate]]];
+            [segue.destinationViewController setWordList:[NSMutableArray arrayWithArray:[self.allWords filteredArrayUsingPredicate:selectionPredicate]]];
 
         }
     }

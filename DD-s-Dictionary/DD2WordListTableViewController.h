@@ -10,7 +10,8 @@
 
 @interface DD2WordListTableViewController : DD2SetTrackTableViewController
 
-@property (nonatomic, strong) NSDictionary *wordListWithSectionsData; //the model for view if the table is to have sections
-@property (nonatomic, strong) NSArray *wordListData; //the model for view if table is not to have sections
+@property (nonatomic, strong) NSArray *wordList; //the model for the table and full list of words used in the table
+@property (nonatomic, strong) NSDictionary *wordListWithSections; //the words organised by section if the table is to have sections
+@property (nonatomic, strong) NSArray *sections;    //populated from wordListWithSections, if nil table will use wordList and won't have sections
 
 @end

@@ -10,7 +10,7 @@
 
 @interface DD2AllWordSearchViewController : DD2SetTrackTableViewController
 
-@property (nonatomic, strong) NSDictionary *allWordsWithSectionsData; //the model for main table view has sections
-@property (nonatomic, strong) NSArray *allWordsData; //the model for search view does not have sections
+@property (nonatomic, strong) NSDictionary *allWordsWithSections; //the model for main table view has sections
+@property (nonatomic, strong) NSArray *allWords; //the model for search view does not have sections
 
 @end

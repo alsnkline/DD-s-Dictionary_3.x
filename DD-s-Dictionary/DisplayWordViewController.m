@@ -23,6 +23,7 @@
 
 @implementation DisplayWordViewController
 @synthesize word = _word;
+@synthesize homophonesForWord = _homophonesForWord;
 @synthesize playWordsOnSelection = _playWordsOnSelection;
 @synthesize useDyslexieFont = _useDyslexieFont;
 @synthesize customBackgroundColor = _customBackgroundColor;
@@ -33,6 +34,7 @@
 @synthesize listenButton = _listenButton;
 @synthesize heteronymListenButton = _heteronymListenButton;
 @synthesize wordView = _wordView;
+@synthesize homophoneButtons = _homophoneButtons;
 @synthesize homophoneButton1 = _homophoneButton1;
 @synthesize homophoneButton2 = _homophoneButton2;
 @synthesize homophoneButton3 = _homophoneButton3;
@@ -63,17 +65,22 @@
     }
 }
 
+-(NSArray *)homophoneButtons {      //needed as iOS 5 doesn't support IBOutletCollection populating property if is wasn't done automatically.
+    if (!_homophoneButtons) {
+        _homophoneButtons = [NSArray arrayWithObjects:self.homophoneButton1, self.homophoneButton2, self.homophoneButton3, self.homophoneButton4, self.homophoneButton5, self.homophoneButton6, nil];
+    }
+    return _homophoneButtons;
+}
+
 -(void)setCustomBackgroundColor:(UIColor *)customBackgroundColor
 {
     if (_customBackgroundColor != customBackgroundColor) {
         _customBackgroundColor = customBackgroundColor;
-        self.view.backgroundColor = self.customBackgroundColor;
         
+        self.view.backgroundColor = self.customBackgroundColor;
         NSArray *myListenButtons = [NSArray arrayWithObjects:self.listenButton, self.heteronymListenButton, nil];
         [self setColorOfButtons:myListenButtons toColor:self.customBackgroundColor areHomophoneButtons:NO];
-        
-        NSArray *myHomophoneButtons = [NSArray arrayWithObjects:self.homophoneButton1, self.homophoneButton2, self.homophoneButton3, self.homophoneButton4, nil];
-        [self setColorOfButtons:myHomophoneButtons toColor:self.customBackgroundColor areHomophoneButtons:YES];
+        [self setColorOfButtons:self.homophoneButtons toColor:self.customBackgroundColor areHomophoneButtons:YES];
         
     }
 }
@@ -82,43 +89,57 @@
 {
     if(_useDyslexieFont != useDyslexieFont) {
         _useDyslexieFont = useDyslexieFont;
+        
+        int spellingFontsize = 55; //setting for iphone
+        if ([self getSplitViewWithDisplayWordViewController]) spellingFontsize = 140;   //setting for ipad
+        
         if (self.useDyslexieFont) {
-            if ([self getSplitViewWithDisplayWordViewController]) { //in iPad
-                [self.spelling setFont:[UIFont fontWithName:@"Dyslexiea-Regular" size:140]];
-            } else { //in iphone
-                [self.spelling setFont:[UIFont fontWithName:@"Dyslexiea-Regular" size:55]];
+            [self.spelling setFont:[UIFont fontWithName:@"Dyslexiea-Regular" size:spellingFontsize]];
+            UIFont *font = [UIFont fontWithName:@"Dyslexiea-Regular" size:30];
+            for (UIButton * button in self.homophoneButtons) {
+                button.titleLabel.font = font;
             }
-            
-            self.homophoneButton1.titleLabel.font = [UIFont fontWithName:@"Dyslexiea-Regular" size:30];
-            self.homophoneButton2.titleLabel.font = [UIFont fontWithName:@"Dyslexiea-Regular" size:30];
-            self.homophoneButton3.titleLabel.font = [UIFont fontWithName:@"Dyslexiea-Regular" size:30];
-            self.homophoneButton4.titleLabel.font = [UIFont fontWithName:@"Dyslexiea-Regular" size:30];
-            self.homophoneButton5.titleLabel.font = [UIFont fontWithName:@"Dyslexiea-Regular" size:30];
-            self.homophoneButton6.titleLabel.font = [UIFont fontWithName:@"Dyslexiea-Regular" size:30];
         } else {
-            if ([self getSplitViewWithDisplayWordViewController]) {
-                [self.spelling setFont:[UIFont systemFontOfSize:140]];
-            } else {
-                [self.spelling setFont:[UIFont systemFontOfSize:55]];
+            [self.spelling setFont:[UIFont systemFontOfSize:spellingFontsize]];
+            UIFont *font = [UIFont boldSystemFontOfSize:30];
+            for (UIButton * button in self.homophoneButtons) {
+                button.titleLabel.font = font;
             }
-            self.homophoneButton1.titleLabel.font = [UIFont boldSystemFontOfSize:30];
-            self.homophoneButton2.titleLabel.font = [UIFont boldSystemFontOfSize:30];
-            self.homophoneButton3.titleLabel.font = [UIFont boldSystemFontOfSize:30];
-            self.homophoneButton4.titleLabel.font = [UIFont boldSystemFontOfSize:30];
-            self.homophoneButton5.titleLabel.font = [UIFont boldSystemFontOfSize:30];
-            self.homophoneButton6.titleLabel.font = [UIFont boldSystemFontOfSize:30];
         }
+    }
+}
+
+-(void)setHomophonesForWord:(NSDictionary *)homophonesForWord {
+    if (_homophonesForWord != homophonesForWord) {
+        _homophonesForWord = homophonesForWord;
+        
+        NSLog(@"homophonesForWord set to %@", homophonesForWord);
     }
 }
 
 -(void)setUpViewForWord:(NSDictionary *)word
 {
-    [self manageListenButtons];
+    NSString *forDisplay;
+    if (word) {
+        [self manageListenButtons];
+        forDisplay = [word objectForKey:@"spelling"];
+    } else {
+        [self resetView];
+        forDisplay = @"pick a word";
+    }
     [UIView transitionWithView:self.wordView duration:.5 options:UIViewAnimationOptionTransitionCrossDissolve
                     animations:^ {
-                        self.spelling.text = [word objectForKey:@"spelling"];
+                        self.spelling.text = forDisplay;
                     }
                     completion:nil];
+}
+
+- (void) resetView {
+    for (UIButton * button in self.homophoneButtons) {
+        button.hidden = YES;
+    }
+    self.listenButton.hidden = YES;
+    self.heteronymListenButton.hidden = YES;
 }
 
 - (void) manageListenButtons
@@ -126,10 +147,10 @@
     NSSet *pronunciations = [DD2Words pronunciationsForWord:self.word];
     
     if ([pronunciations count] == 1) {
-        self.heteronymListenButton.hidden = YES;
-        self.homophoneButton4.hidden = YES;
-        self.homophoneButton5.hidden = YES;
-        self.homophoneButton6.hidden = YES;
+        NSArray *buttonsToHide = [NSArray arrayWithObjects:self.heteronymListenButton, self.homophoneButton4, self.homophoneButton5, self.homophoneButton5, nil];
+        for (UIButton *button in buttonsToHide) {
+            button.hidden = YES;
+        };
         self.listenButton.hidden = NO;
         
         self.listenButton.frame = CGRectMake((self.listenButton.superview.frame.size.width/2 - self.listenButton.frame.size.width/2), self.listenButton.frame.origin.y, self.listenButton.frame.size.width, self.listenButton.frame.size.height);
@@ -166,13 +187,15 @@
 - (void) manageHomophonesOfPronunciation:(NSString *)pronunciation withButtons:(NSArray *)buttons underListenButton:(UIButton *)listenbutton
 {
     NSArray *homophones = [DD2Words homophonesForPronunciation:(NSString *)pronunciation FromWord:self.word];
-    NSLog(@"homophones = %@ count = %lu", homophones, (unsigned long)[homophones count]);
     
     for (int i = 0; i < [homophones count]; i++) {
         NSLog(@"i = %d", i);
         UIButton *buttonForLoop = [buttons objectAtIndex:i];
         buttonForLoop.hidden = NO;
-        [buttonForLoop setTitle:[homophones objectAtIndex:i] forState:UIControlStateNormal];
+        NSDictionary *homophoneWord = [self.homophonesForWord objectForKey:pronunciation];
+        
+        [buttonForLoop setTitle:[[[self.homophonesForWord objectForKey:pronunciation] objectAtIndex:i] objectForKey:@"spelling" ] forState:UIControlStateNormal];
+        //[buttonForLoop setTitle:[homophones objectAtIndex:i] forState:UIControlStateNormal];
         [self sizeHomophoneButton:buttonForLoop];
         CGRect frame = CGRectMake(listenbutton.frame.origin.x - (buttonForLoop.frame.size.width/2 - listenbutton.frame.size.width/2), buttonForLoop.frame.origin.y, buttonForLoop.frame.size.width, buttonForLoop.frame.size.height);
         buttonForLoop.frame = frame;
@@ -326,10 +349,18 @@
     }
 }
 
-//- (void) setupCustomBackgroundColour
-//{
-//    self.view.backgroundColor = [UIColor colorWithHue:[self.customBackgroundColour floatValue] saturation:.20 brightness:1 alpha:1];
-//}
+-(void)onNotification:(NSNotification *)notification
+{
+    if ([[notification name] isEqualToString:@"customBackgroundColorChanged"]) {
+        NSDictionary *userinfo = [notification userInfo];
+        self.customBackgroundColor = [userinfo objectForKey:@"newValue"];
+    }
+    
+    if ([[notification name] isEqualToString:@"useDyslexiFontChanged"]) {
+        NSDictionary *userinfo = [notification userInfo];
+        self.useDyslexieFont = [[userinfo objectForKey:@"newValue"] boolValue];
+    }
+}
 
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -344,11 +375,10 @@
     
     if (self.word) {
         [self setUpViewForWord:self.word];
-        if (self.playWordsOnSelection) { //only used in iPhone - playwords on iPad done from DictionaryTableViewController
+        if (self.playWordsOnSelection) { //only used in iPhone - playwords on iPad done from DD2WordListTableViewController no need to follow notifications as in iPhone view will be instanciated with the right setting just before the setting is used.
             [self playAllWords:[DD2Words pronunciationsForWord:self.word]];
         }
     }
-    
 }
 
 - (void)viewDidLoad
@@ -356,14 +386,18 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view. 
     
-    //bundle image access test - note device is case sensitive
-//    NSString *imgName = @"resources.bundle/Images/1340506912_sound_high.png";
-//    UIImage *myImage = [UIImage imageNamed:imgName];
-//    UIImageView *newImageView = [[UIImageView alloc] initWithImage:myImage];
-//    [self.view addSubview:newImageView];
+    //registering for color notifications remember to dealloc
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(onNotification:)
+                                                 name:@"customBackgroundColorChanged" object:nil];
+    
+    
+    //registering for spellingVariant notifications remember to dealloc
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(onNotification:)
+                                                 name:@"useDyslexiFontChanged" object:nil];
     
     self.word ? (self.listenButton.enabled = YES) : (self.listenButton.enabled = NO);
-    
 }
 
 - (void)viewDidUnload
@@ -427,10 +461,14 @@
     UIImage *image = [DisplayWordViewController createImageOfColor:highlightColor ofSize:CGSizeMake(40, 25) withCornerRadius:cRadius];
 //    NSLog(@"created image size = %f, %f", image.size.width, image.size.height);
     
-    UIImage* stretchableImage = [image resizableImageWithCapInsets:UIEdgeInsetsMake(12, 12, 12, 12) resizingMode:UIImageResizingModeStretch];
+    UIImage *stretchableImage;
+    if ([[UIImage class] respondsToSelector:@selector(resizableImageWithCapInsets:resizingMode:)]) {    //only supported in iOS 6
+        stretchableImage = [image resizableImageWithCapInsets:UIEdgeInsetsMake(12, 12, 12, 12) resizingMode:UIImageResizingModeStretch];
+    } else {
+        stretchableImage = [image stretchableImageWithLeftCapWidth:12 topCapHeight:12];    //supported in iOS 5
+    }
     
     // set background image of all buttons
-    
     do {
         
         [button setBackgroundImage:stretchableImage forState:UIControlStateNormal];

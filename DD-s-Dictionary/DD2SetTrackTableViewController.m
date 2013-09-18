@@ -84,6 +84,9 @@
         [self.tableView selectRowAtIndexPath:selectedCell animated:NO scrollPosition:UITableViewScrollPositionNone];
     } else {
         self.tableView.backgroundColor = self.customBackgroundColor;
+        if (self.searchDisplayController.searchResultsTableView) {      //if we have a searchtable change that background too.
+            self.searchDisplayController.searchResultsTableView.backgroundColor = self.customBackgroundColor;
+        }
     }
 }
 
@@ -121,12 +124,12 @@
                                              selector:@selector(onNotification:)
                                                  name:@"customBackgroundColorChanged" object:nil];
 
-    //registering for spellingVariant notifications remember to dealloc
+    //registering for playWordsOnSelection notifications remember to dealloc
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(onNotification:)
                                                  name:@"playWordsOnSelectionChanged" object:nil];
     
-    //registering for spellingVariant notifications remember to dealloc
+    //registering for Font change notifications remember to dealloc
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(onNotification:)
                                                  name:@"useDyslexiFontChanged" object:nil];

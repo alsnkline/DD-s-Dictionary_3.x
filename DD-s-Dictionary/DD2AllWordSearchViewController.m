@@ -20,29 +20,19 @@
 @end
 
 @implementation DD2AllWordSearchViewController
-@synthesize allWordsData = _allWordsData;
-@synthesize allWordsWithSectionsData = _allWordsWithSectionsData;
+@synthesize allWords = _allWords;
+@synthesize allWordsWithSections = _allWordsWithSections;
 @synthesize tableView = _tableView;
 @synthesize searchBar = _searchBar;
 @synthesize filteredWords = _filteredWords;
 @synthesize selectedWord = _selectedWord;
 
 
-//-(NSArray *)allWordsData {
-//    if(!_allWordsData) _allWordsData = [[NSArray alloc] init];
-//    return _allWordsData;
-//}
-
-//- (NSDictionary *)allWordsWithSectionsData {
-//    if (!_allWordsWithSectionsData) _allWordsWithSectionsData = [[NSDictionary alloc] init];
-//    return _allWordsWithSectionsData;
-//}
-
--(void)setAllWordsWithSectionsData:(NSDictionary *)allWordsWithSectionsData
+-(void)setAllWordsWithSections:(NSDictionary *)allWordsWithSections
 {
-    if (allWordsWithSectionsData != _allWordsWithSectionsData) {
-        _allWordsWithSectionsData = allWordsWithSectionsData;
-        self.sections = [[allWordsWithSectionsData allKeys] sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
+    if (allWordsWithSections != _allWordsWithSections) {
+        _allWordsWithSections = allWordsWithSections;
+        self.sections = [[allWordsWithSections allKeys] sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
     }
 }
 
@@ -109,7 +99,7 @@
     if (tableView == self.searchDisplayController.searchResultsTableView) {
         return [self.filteredWords count];
     } else {
-        return [[self.allWordsWithSectionsData objectForKey:[self.sections objectAtIndex:section]] count];
+        return [[self.allWordsWithSections objectForKey:[self.sections objectAtIndex:section]] count];
     }
 }
 
@@ -131,7 +121,7 @@
         NSDictionary *word = [sortedWords objectAtIndex:indexPath.row];
         cell.textLabel.text = [word objectForKey:@"spelling"];
     } else {
-        NSArray *wordsForSection = [self.allWordsWithSectionsData objectForKey:[self.sections objectAtIndex:indexPath.section]];
+        NSArray *wordsForSection = [self.allWordsWithSections objectForKey:[self.sections objectAtIndex:indexPath.section]];
         NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"spelling" ascending:YES selector:@selector(caseInsensitiveCompare:)];
         NSArray *sortedWords = [wordsForSection sortedArrayUsingDescriptors:[NSArray arrayWithObjects:descriptor, nil]];
         NSDictionary *word = [sortedWords objectAtIndex:indexPath.row];
@@ -146,7 +136,7 @@
     if (tableView == self.searchDisplayController.searchResultsTableView) {
         return [self.filteredWords objectAtIndex:indexPath.row];
     } else {
-        NSArray *wordsForSection = [self.allWordsWithSectionsData objectForKey:[self.sections objectAtIndex:indexPath.section]];
+        NSArray *wordsForSection = [self.allWordsWithSections objectForKey:[self.sections objectAtIndex:indexPath.section]];
         NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"spelling" ascending:YES selector:@selector(caseInsensitiveCompare:)];
         NSArray *sortedWordsForSection = [wordsForSection sortedArrayUsingDescriptors:[NSArray arrayWithObjects:descriptor, nil]];
         return [sortedWordsForSection objectAtIndex:indexPath.row];
@@ -169,6 +159,7 @@
     if ([self getSplitViewWithDisplayWordViewController]) { //iPad
         DisplayWordViewController *dwvc = [self getSplitViewWithDisplayWordViewController];
         dwvc.word = self.selectedWord;
+        dwvc.homophonesForWord = [DD2Words homophonesForWord:self.selectedWord andWordList:self.allWords];
         if (self.playWordsOnSelection) {
             [dwvc playAllWords:[DD2Words pronunciationsForWord:self.selectedWord]];
         }
@@ -182,6 +173,7 @@
     //used for iphone only
     if ([segue.identifier isEqualToString:@"Search Word Selected"]) {
         [segue.destinationViewController setWord:self.selectedWord];
+        [segue.destinationViewController setHomophonesForWord:[DD2Words homophonesForWord:self.selectedWord andWordList:self.allWords]];
         if (self.playWordsOnSelection) {
             [segue.destinationViewController setPlayWordsOnSelection:self.playWordsOnSelection];
         }
@@ -203,7 +195,7 @@
     // Filter the array using NSPredicate
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.spelling contains[c] %@",searchText];
     
-    self.filteredWords = [NSMutableArray arrayWithArray:[self.allWordsData filteredArrayUsingPredicate:predicate]];
+    self.filteredWords = [NSMutableArray arrayWithArray:[self.allWords filteredArrayUsingPredicate:predicate]];
 }
 
 #pragma mark - UISearchDisplayController Delegate Methods

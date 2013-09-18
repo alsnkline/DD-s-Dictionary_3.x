@@ -220,6 +220,21 @@
                                                     <action selector="homophoneButtonPressed:" destination="L1r-PX-mtS" eventType="touchUpInside" id="pUK-9w-UDr"/>
                                                 </connections>
                                             </button>
+                                            <button hidden="YES" opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ea3-i4-oNa">
+                                                <rect key="frame" x="11" y="233" width="163" height="38"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                                <state key="normal" title="spelling" image="resources.bundle/Images/DyDiWrite32-32.png">
+                                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <state key="highlighted">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="homophoneButtonPressed:" destination="L1r-PX-mtS" eventType="touchUpInside" id="Yoz-e3-tIa"/>
+                                                </connections>
+                                            </button>
                                             <button hidden="YES" opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="1zd-vL-IZF">
                                                 <rect key="frame" x="182" y="132" width="163" height="38"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
@@ -248,21 +263,6 @@
                                                 </state>
                                                 <connections>
                                                     <action selector="homophoneButtonPressed:" destination="L1r-PX-mtS" eventType="touchUpInside" id="WqJ-hz-aBE"/>
-                                                </connections>
-                                            </button>
-                                            <button hidden="YES" opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ea3-i4-oNa">
-                                                <rect key="frame" x="11" y="233" width="163" height="38"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
-                                                <state key="normal" title="spelling" image="resources.bundle/Images/DyDiWrite32-32.png">
-                                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <state key="highlighted">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="homophoneButtonPressed:" destination="L1r-PX-mtS" eventType="touchUpInside" id="Yoz-e3-tIa"/>
                                                 </connections>
                                             </button>
                                             <button hidden="YES" opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Q2p-qN-A5G">
@@ -301,6 +301,12 @@
                         <outlet property="listenButton" destination="4vB-KF-i9t" id="vUL-SP-HrF"/>
                         <outlet property="spelling" destination="Tth-iQ-4Pa" id="Pkr-gr-N5Y"/>
                         <outlet property="wordView" destination="fDM-h4-7IS" id="LrA-ts-82t"/>
+                        <outletCollection property="homophoneButtons" destination="O5M-GB-5WO" id="t27-P6-UtN"/>
+                        <outletCollection property="homophoneButtons" destination="YCL-FH-ihq" id="8XN-IR-Onp"/>
+                        <outletCollection property="homophoneButtons" destination="ea3-i4-oNa" id="47k-fg-TkM"/>
+                        <outletCollection property="homophoneButtons" destination="1zd-vL-IZF" id="Ei9-Zv-Yfo"/>
+                        <outletCollection property="homophoneButtons" destination="wvC-Es-5K2" id="Q3u-0a-Fby"/>
+                        <outletCollection property="homophoneButtons" destination="Q2p-qN-A5G" id="EQs-xc-VDS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SbM-JO-x14" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -21,6 +21,7 @@
 @interface DisplayWordViewController : UIViewController <UISplitViewControllerDelegate>
 
 @property (nonatomic, strong) NSDictionary * word; //word for display the model for this MVC
+@property (nonatomic, strong) NSDictionary * homophonesForWord;  //NSDictionary key is pronunciation value is an Array containing all the homophones for that pronunciation
 @property (nonatomic) BOOL playWordsOnSelection;
 @property (nonatomic) BOOL useDyslexieFont;
 @property (nonatomic, strong) UIColor *customBackgroundColor;
@@ -29,6 +30,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *listenButton;
 @property (weak, nonatomic) IBOutlet UIButton *heteronymListenButton;
 @property (weak, nonatomic) IBOutlet UIView *wordView;
+@property (weak, nonatomic) IBOutletCollection(UIButton) NSArray *homophoneButtons;
 @property (weak, nonatomic) IBOutlet UIButton *homophoneButton1;
 @property (weak, nonatomic) IBOutlet UIButton *homophoneButton2;
 @property (weak, nonatomic) IBOutlet UIButton *homophoneButton3;

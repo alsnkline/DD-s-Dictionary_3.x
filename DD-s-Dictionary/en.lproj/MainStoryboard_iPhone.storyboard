@@ -617,6 +617,21 @@ All rights reserved.</string>
                                                     <action selector="homophoneButtonPressed:" destination="dSV-C7-sB1" eventType="touchUpInside" id="neq-cI-MnF"/>
                                                 </connections>
                                             </button>
+                                            <button hidden="YES" opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="IGD-cV-dBt">
+                                                <rect key="frame" x="23" y="184" width="117" height="38"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                <state key="normal" title="spelling" image="resources.bundle/Images/DyDiWrite32-32.png">
+                                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <state key="highlighted">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="homophoneButtonPressed:" destination="dSV-C7-sB1" eventType="touchUpInside" id="bVD-I4-CoD"/>
+                                                </connections>
+                                            </button>
                                             <button hidden="YES" opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="z2B-9P-8zx">
                                                 <rect key="frame" x="171" y="94" width="117" height="38"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
@@ -645,21 +660,6 @@ All rights reserved.</string>
                                                 </state>
                                                 <connections>
                                                     <action selector="homophoneButtonPressed:" destination="dSV-C7-sB1" eventType="touchUpInside" id="gHy-XL-lPd"/>
-                                                </connections>
-                                            </button>
-                                            <button hidden="YES" opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="IGD-cV-dBt">
-                                                <rect key="frame" x="23" y="184" width="117" height="38"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                                <state key="normal" title="spelling" image="resources.bundle/Images/DyDiWrite32-32.png">
-                                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <state key="highlighted">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="homophoneButtonPressed:" destination="dSV-C7-sB1" eventType="touchUpInside" id="bVD-I4-CoD"/>
                                                 </connections>
                                             </button>
                                             <button hidden="YES" opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="PFT-xl-8W9">
@@ -700,6 +700,12 @@ All rights reserved.</string>
                         <outlet property="listenButton" destination="M6V-GS-lcI" id="nM7-52-yzP"/>
                         <outlet property="spelling" destination="KKd-vQ-a23" id="owO-Iv-jHP"/>
                         <outlet property="wordView" destination="x77-lk-vJH" id="Zlk-Vf-gSF"/>
+                        <outletCollection property="homophoneButtons" destination="TPV-KV-dTB" id="J9u-xm-aIi"/>
+                        <outletCollection property="homophoneButtons" destination="LJX-SX-5mb" id="y2y-KZ-zst"/>
+                        <outletCollection property="homophoneButtons" destination="IGD-cV-dBt" id="a3B-e8-PKC"/>
+                        <outletCollection property="homophoneButtons" destination="z2B-9P-8zx" id="zkN-B7-f8B"/>
+                        <outletCollection property="homophoneButtons" destination="YGa-LV-7gH" id="2hq-K9-dcu"/>
+                        <outletCollection property="homophoneButtons" destination="PFT-xl-8W9" id="Miq-Wi-HaK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fjs-lM-CVR" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -263,7 +263,59 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
     return pronunciations;
 }
 
-+ (NSArray *) homophonesForPronunciation:(NSString *)pronunciation FromWord:(NSDictionary *)word
++ (void) SpellingForPronunciation {
+    
+}
+
++ (NSDictionary *) wordForPronunciation:(NSString *)pronunciation fromWordList:(NSArray *)wordList {   
+    
+    NSPredicate *selectionPredicate = [NSPredicate predicateWithFormat:@"SELF.pronunciations contains[c] %@",pronunciation];
+    NSLog(@"predicate = %@", selectionPredicate);
+    if (LOG_PREDICATE_RESULTS) [DD2GlobalHelper testWordPredicate:selectionPredicate onWords:wordList];
+    NSMutableArray *matches = [NSMutableArray arrayWithArray:[wordList filteredArrayUsingPredicate:selectionPredicate]];
+    
+    if ([matches count] == 1) {
+        return [matches lastObject];
+    } else {
+        selectionPredicate = [NSPredicate predicateWithFormat:@"SELF.spelling LIKE[c] %@",[DD2Words pronunciationFromSpelling:pronunciation]];
+        NSLog(@"predicate = %@", selectionPredicate);
+        if (LOG_PREDICATE_RESULTS) [DD2GlobalHelper testWordPredicate:selectionPredicate onWords:wordList];
+        NSMutableArray *matches = [NSMutableArray arrayWithArray:[wordList filteredArrayUsingPredicate:selectionPredicate]];
+        if ([matches count] != 1) NSLog(@"more of less than one matches ** PROBLEM **");
+        return [matches lastObject];
+    }
+}
+
++ (NSDictionary *) homophonesForWord:(NSDictionary *)word andWordList:(NSArray *)wordList { //returns a dictionary of word dictionaries (for each homophone).
+    
+    NSMutableDictionary *workingResults = [[NSMutableDictionary alloc] init];
+    if ([[word objectForKey:@"pronunciations"] count] > 1) {
+        for (NSString * pronunciation in [word objectForKey:@"pronunciations"]) {
+            NSArray *homophoneListForPronunciation = [[word objectForKey:@"locHomophones"] objectForKey:pronunciation];
+            [workingResults setObject:[DD2Words wordsForPronunciationList:homophoneListForPronunciation andWordList:wordList] forKey:pronunciation];
+        }
+    } else {
+        NSArray *homophones = [word objectForKey:@"locHomophones"];
+        if (homophones) {
+            NSString *pronunciation = [DD2Words pronunciationFromSpelling:[word objectForKey:@"spelling"]];
+            [workingResults setObject:[DD2Words wordsForPronunciationList:homophones andWordList:wordList] forKey:pronunciation];
+        } else {
+            NSLog(@"No homophones on %@", [word objectForKey:@"spelling"]);
+        }
+    }
+    return [workingResults copy];
+}
+
++ (NSMutableArray *) wordsForPronunciationList:(NSArray *)list andWordList:(NSArray *)wordList {
+    NSMutableArray *workingHomophoneList = [NSMutableArray array];
+    for (NSString *pronunciation in list) {
+        [workingHomophoneList addObject:[DD2Words wordForPronunciation:pronunciation fromWordList:wordList]];
+    }
+    return [workingHomophoneList copy];
+}
+
+
++ (NSArray *) homophonesForPronunciation:(NSString *)pronunciation FromWord:(NSDictionary *)word        //I think will become obsolete - which might mean locHomophones goes as well!
 {
     NSArray *homophones;
     if ([[word objectForKey:@"pronunciations"] count] > 1) {
@@ -273,6 +325,15 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
     }
     NSLog(@"homophones for pronunciation (%@) = %@",pronunciation, homophones);
     return homophones;
+}
+
++ (NSString *)spellingForPronunciation:(NSString *)pronunciation {
+    NSPredicate *selectionPredicate = [NSPredicate predicateWithFormat:@"SELF.pronunciations contains[c] %@",pronunciation];
+    NSLog(@"predicate = %@", selectionPredicate);
+//    if (LOG_PREDICATE_RESULTS) [DD2GlobalHelper testWordPredicate:selectionPredicate onWords:self.allWords];
+    
+//    NSArray *results = [self.allWords filteredArrayUsingPredicate:selectionPredicate];
+    return @"boo";
 }
 
 

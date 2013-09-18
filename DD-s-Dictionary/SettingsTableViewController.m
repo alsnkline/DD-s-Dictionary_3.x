@@ -361,7 +361,16 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if ([indexPath isEqual:[NSIndexPath indexPathForItem:2 inSection:0]] && !self.voiceHintsAvailable) {
+    BOOL voiceHintsRow = FALSE;
+    if ([[NSIndexPath class] respondsToSelector:@selector(indexPathForItem:inSection:)]) {
+        // we are in an iOS 6.0 device and can use cell position to test for which row is being asked about.
+        if ([indexPath isEqual:[NSIndexPath indexPathForItem:2 inSection:0]]) voiceHintsRow = TRUE;
+    } else {
+        // we are in an iOS 5.0, 5.1 or 5.1.1 device
+        if (indexPath.section == 0 && indexPath.row == 2) voiceHintsRow = TRUE;
+    }
+
+    if (voiceHintsRow && !self.voiceHintsAvailable) {
         return 0;
     } else {
         return 45;

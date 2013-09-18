@@ -10,41 +10,30 @@
 #import "DisplayWordViewController.h"
 
 @interface DD2WordListTableViewController () <UITableViewDataSource, UITableViewDelegate>
-@property (nonatomic, strong) NSArray *sections;    //only used if data is a dictionary with sections
 @property (nonatomic, strong) NSDictionary *selectedWord;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 
 @implementation DD2WordListTableViewController
-@synthesize wordListData = _wordListData;
-@synthesize wordListWithSectionsData = _wordListWithSectionsData;
+@synthesize wordList = _wordList;
+@synthesize wordListWithSections = _wordListWithSections;
 @synthesize sections = _sections;
 @synthesize selectedWord = _selectedWord;
 
-//-(NSArray *)wordListData {
-//    if (!_wordListData) _wordListData = [[NSArray alloc] init];
-//    return _wordListData;
-//}
 
--(void)setWordListData:(NSArray *)wordListData {
-    if (wordListData != _wordListData) {
-        _wordListData = wordListData;
-        self.wordListWithSectionsData = nil;
-        self.sections = nil;
+-(void)setWordList:(NSArray *)wordList {
+    if (wordList != _wordList) {
+        _wordList = wordList;
     }
 }
 
-//-wordListWithSectionsData {
-//    if (!_wordListWithSectionsData) _wordListWithSectionsData = [[NSDictionary alloc] init];
-//    return _wordListWithSectionsData;
-//}
 
--(void)setWordListWithSectionsData:(NSDictionary *)wordListWithSectionsData {
-    if (wordListWithSectionsData != _wordListWithSectionsData) {
-        _wordListWithSectionsData = wordListWithSectionsData;
-        self.sections = [[wordListWithSectionsData allKeys] sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
-        self.wordListData = nil;
+-(void)setWordListWithSections:(NSDictionary *)wordListWithSections {
+    if (wordListWithSections != _wordListWithSections) {
+        _wordListWithSections = wordListWithSections;
+        self.sections = [[wordListWithSections allKeys] sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
+        //TO DO:: [NSPredicate predicateWithFormat:@"SELF.spelling beginswith[c] 'a'"];
     }
 }
 
@@ -92,9 +81,9 @@
 {
     // Return the number of rows in the section.
     if (!self.sections) {
-        return [self.wordListData count];
+        return [self.wordList count];
     } else {
-        return [[self.wordListWithSectionsData objectForKey:[self.sections objectAtIndex:section]] count];
+        return [[self.wordListWithSections objectForKey:[self.sections objectAtIndex:section]] count];
     }
 }
 
@@ -112,11 +101,11 @@
     
     if (!self.sections) {
         NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"spelling" ascending:YES selector:@selector(caseInsensitiveCompare:)];
-        NSArray *sortedWords = [self.wordListData sortedArrayUsingDescriptors:[NSArray arrayWithObjects:descriptor, nil]];
+        NSArray *sortedWords = [self.wordList sortedArrayUsingDescriptors:[NSArray arrayWithObjects:descriptor, nil]];
         NSDictionary *word = [sortedWords objectAtIndex:indexPath.row];
         cell.textLabel.text = [word objectForKey:@"spelling"];
     } else {
-        NSArray *wordsForSection = [self.wordListWithSectionsData objectForKey:[self.sections objectAtIndex:indexPath.section]];
+        NSArray *wordsForSection = [self.wordListWithSections objectForKey:[self.sections objectAtIndex:indexPath.section]];
         NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"spelling" ascending:YES selector:@selector(caseInsensitiveCompare:)];
         NSArray *sortedWords = [wordsForSection sortedArrayUsingDescriptors:[NSArray arrayWithObjects:descriptor, nil]];
         NSDictionary *word = [sortedWords objectAtIndex:indexPath.row];
@@ -129,9 +118,9 @@
 - (NSDictionary *)wordForIndexPath:(NSIndexPath *)indexPath
 {
     if (!self.sections) {
-        return [self.wordListData objectAtIndex:indexPath.row];
+        return [self.wordList objectAtIndex:indexPath.row];
     } else {
-        NSArray *wordsForSection = [self.wordListWithSectionsData objectForKey:[self.sections objectAtIndex:indexPath.section]];
+        NSArray *wordsForSection = [self.wordListWithSections objectForKey:[self.sections objectAtIndex:indexPath.section]];
         NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"spelling" ascending:YES selector:@selector(caseInsensitiveCompare:)];
         NSArray *sortedWordsForSection = [wordsForSection sortedArrayUsingDescriptors:[NSArray arrayWithObjects:descriptor, nil]];
         return [sortedWordsForSection objectAtIndex:indexPath.row];
@@ -154,6 +143,7 @@
     if ([self getSplitViewWithDisplayWordViewController]) { //iPad
         DisplayWordViewController *dwvc = [self getSplitViewWithDisplayWordViewController];
         dwvc.word = self.selectedWord;
+        dwvc.homophonesForWord = [DD2Words homophonesForWord:self.selectedWord andWordList:self.wordList];
         if (self.playWordsOnSelection) {
             [dwvc playAllWords:[DD2Words pronunciationsForWord:self.selectedWord]];
         }
@@ -167,6 +157,7 @@
     //used for iphone only
     if ([segue.identifier isEqualToString:@"Word Selected"]) {
         [segue.destinationViewController setWord:self.selectedWord];
+        [segue.destinationViewController setHomophonesForWord:[DD2Words homophonesForWord:self.selectedWord andWordList:self.wordList]];
         if (self.playWordsOnSelection) {
             [segue.destinationViewController setPlayWordsOnSelection:self.playWordsOnSelection];
         }
