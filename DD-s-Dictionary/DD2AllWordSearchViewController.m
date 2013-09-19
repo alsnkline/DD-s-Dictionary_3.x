@@ -29,6 +29,23 @@
 @synthesize selectedWord = _selectedWord;
 
 
+-(void)setAllWordsForSpellingVariant:(NSArray *)allWordsForSpellingVariant {
+    NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"spelling" ascending:YES selector:@selector(caseInsensitiveCompare:)];
+    NSArray *sortedWords = [allWordsForSpellingVariant sortedArrayUsingDescriptors:[NSArray arrayWithObjects:descriptor, nil]];
+    if (sortedWords != _allWordsForSpellingVariant) {
+        _allWordsForSpellingVariant = sortedWords;
+        [self.tableView reloadData];
+    }
+}
+
+-(void)setFilteredWords:(NSMutableArray *)filteredWords {
+    NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"spelling" ascending:YES selector:@selector(caseInsensitiveCompare:)];
+    NSArray *sortedWords = [filteredWords sortedArrayUsingDescriptors:[NSArray arrayWithObjects:descriptor, nil]];
+    if (sortedWords != _filteredWords) {
+        _filteredWords = [NSMutableArray arrayWithArray:sortedWords];
+    }
+}
+
 -(void)setAllWordsWithSections:(NSDictionary *)allWordsWithSections
 {
     if (allWordsWithSections != _allWordsWithSections) {
@@ -117,9 +134,9 @@
     cell.textLabel.font = self.useDyslexieFont ? [UIFont fontWithName:@"Dyslexiea-Regular" size:20] : [UIFont boldSystemFontOfSize:20];
     
     if (tableView == self.searchDisplayController.searchResultsTableView) {
-        NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"spelling" ascending:YES selector:@selector(caseInsensitiveCompare:)];
-        NSArray *sortedWords = [self.filteredWords sortedArrayUsingDescriptors:[NSArray arrayWithObjects:descriptor, nil]];
-        NSDictionary *word = [sortedWords objectAtIndex:indexPath.row];
+        //NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"spelling" ascending:YES selector:@selector(caseInsensitiveCompare:)];
+        //NSArray *sortedWords = [self.filteredWords sortedArrayUsingDescriptors:[NSArray arrayWithObjects:descriptor, nil]];
+        NSDictionary *word = [self.filteredWords objectAtIndex:indexPath.row];
         cell.textLabel.text = [word objectForKey:@"spelling"];
     } else {
         NSArray *wordsForSection = [self.allWordsWithSections objectForKey:[self.sections objectAtIndex:indexPath.section]];
@@ -244,7 +261,10 @@
         
     } else {
         NSString *sectionOfHomophone = [word objectForKey:@"section"];
-        NSIndexPath *indexPathOfHomophone = [NSIndexPath indexPathForRow:[[self.allWordsWithSections objectForKey:sectionOfHomophone] indexOfObject:word] inSection:[self.sections indexOfObject:sectionOfHomophone]];
+        NSArray *wordsForSection = [self.allWordsWithSections objectForKey:sectionOfHomophone];
+        NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"spelling" ascending:YES selector:@selector(caseInsensitiveCompare:)];
+        NSArray *sortedWords = [wordsForSection sortedArrayUsingDescriptors:[NSArray arrayWithObjects:descriptor, nil]];
+        NSIndexPath *indexPathOfHomophone = [NSIndexPath indexPathForRow:[sortedWords indexOfObject:word] inSection:[self.sections indexOfObject:sectionOfHomophone]];
         // search is across all words so homophones will always be present.
         [self.tableView selectRowAtIndexPath:indexPathOfHomophone animated:YES scrollPosition:UITableViewScrollPositionMiddle];
         [self tableView:self.tableView didSelectRowAtIndexPath:indexPathOfHomophone];

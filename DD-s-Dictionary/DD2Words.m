@@ -117,11 +117,13 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
         NSSet *locales = [NSSet setWithObjects:[NSString stringWithFormat:@"uk"], [NSString stringWithFormat:@"us"], nil];
     
         for (NSDictionary *rawWord in [self.rawWords objectForKey:@"words"]) {
+            if (PROCESS_VERBOSELY) NSLog(@"** start processing word **");
             
             //processing for each locale
             for (NSString *locale in locales) {
-                NSLog(@"locale is %@", locale);
+
                 NSMutableDictionary *processedWord = [[NSMutableDictionary alloc] initWithDictionary:rawWord];
+                [processedWord setObject:locale forKey:@"spellingVariant"];
                 
                 id wordElement = [rawWord objectForKey:@"word"];
                 NSString *spelling;
@@ -129,10 +131,10 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
                     spelling = wordElement;
                 } else if ([wordElement isKindOfClass:[NSDictionary class]]){
                     spelling = [wordElement objectForKey:locale];
-                    NSLog(@"spelling for %@ = %@", locale, spelling);
                 } else {
                     NSLog(@"Badly formed wordElement");
                 }
+                if (PROCESS_VERBOSELY) NSLog(@"%@ (%@)", spelling, locale);
                 [processedWord setObject:spelling forKey:@"spelling"];  //need for easy sorting
                 
                 //processing for homophones
@@ -146,10 +148,9 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
                         NSDictionary *homophonesElementDictionary = (NSDictionary *)homophonesElement;
                         
                         if ([[rawWord objectForKey:@"pronunciations"] count] >1) {
-                            NSLog(@"word is a heteronym with homophones");
+                            if (PROCESS_VERBOSELY) NSLog(@"%@ is a heteronym with homophones", spelling);
                             locHomophones = homophonesElementDictionary;
                         } else {
-                            NSLog(@"word has localised homophones element = %@", homophonesElement);
                             locHomophones = [homophonesElementDictionary objectForKey:locale];
                         }
                     } else {
@@ -157,9 +158,9 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
                     }
                     if (locHomophones) {
                         [processedWord setObject:locHomophones forKey:@"locHomophones"];
-                        NSLog(@"locHomophones for %@ %@ = %@", spelling, locale, locHomophones);
+                        if (PROCESS_VERBOSELY) NSLog(@"locHomophones (%@) = %@", locale, locHomophones);
                     } else {
-                        NSLog(@"no locHomophones for %@ %@", spelling, locale);
+                        if (PROCESS_VERBOSELY) NSLog(@"no locHomophones for %@ %@", spelling, locale);
                     }
                 }
                 
@@ -188,7 +189,6 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
                     
                     NSString *section = [[spelling substringToIndex:1] uppercaseString];
                     [processedWord setObject:section forKey:@"section"];    //need for easy section calculation from word
-                    if (PROCESS_VERBOSELY) NSLog(@"spelling: %@ in section: %@", spelling, section);
                     NSMutableArray *wordsInThisSection = [workingCollection objectForKey:section];
                     if (!wordsInThisSection) {
                         wordsInThisSection = [[NSMutableArray alloc] init];
@@ -200,10 +200,10 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
                 //processing Tags on each word (ignoring locale as no tagged words have a spelling variations will endup with all UK words)
                 NSArray *tags = [rawWord objectForKey:@"tags"];
                 for (NSString *tag in tags) {
-                    
                     if (![workingTagNames containsObject:tag]) [workingTagNames addObject:tag];
-            
                 }
+                //NSSet *wordsToLog = [NSSet setWithObjects:@"bin",@"bean",@"been", nil];
+                //if ([wordsToLog containsObject:[processedWord objectForKey:@"spelling"]]) NSLog(@"processedWord = %@", processedWord);
             }
         }
         
@@ -233,28 +233,43 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
     NSCharacterSet *charSet = [NSCharacterSet characterSetWithCharactersInString:@"'."];
     NSString *cleanerString = [[cleanString componentsSeparatedByCharactersInSet:charSet] componentsJoinedByString:@""];
     
-    NSLog(@"clean string = %@",cleanerString);
     return [NSString stringWithString:cleanerString];
 }
 
-+ (NSSet *) pronunciationsForWord:(NSDictionary *)word     //no words pronunciations depend upon spelling variant yet
++ (NSSet *) pronunciationsForWord:(NSDictionary *)word
 {
     NSMutableSet *pronunciations = [NSMutableSet setWithArray:[word objectForKey:@"pronunciations"]];
-    if ([pronunciations count] < 1) {
-        pronunciations = [NSMutableSet setWithObject:[DD2Words pronunciationFromSpelling:[word objectForKey:@"spelling"]]];
-        for (NSString *pronunciation in pronunciations) {
-            if (![DD2GlobalHelper fileURLForPronunciation:pronunciation]) {
-                NSArray *locHomophones = [word objectForKey:@"locHomophones"];
-                for (NSString *homophone in locHomophones) {
-                    NSURL *fileURL = [DD2GlobalHelper fileURLForPronunciation:homophone];
-                    if (fileURL) {
-                        [pronunciations removeObject:pronunciation];
-                        [pronunciations addObject:homophone];
-                    }
-                }
+    NSString *pronunciationFromSpelling = [DD2Words pronunciationFromSpelling:[word objectForKey:@"spelling"]];
+    
+    if ([pronunciations count] < 1) {   //does pronunciation from Spelling has a file
+        NSString *possiblePronunciation = pronunciationFromSpelling;
+        if ([DD2GlobalHelper fileURLForPronunciation:possiblePronunciation]) {
+            [pronunciations addObject:possiblePronunciation];
+        }
+    }
+    
+    if ([pronunciations count] < 1) {   //does any of its homophones have pronunciation files
+        NSArray *locHomophones = [word objectForKey:@"locHomophones"];
+        for (NSString *homophone in locHomophones) {
+            if ([DD2GlobalHelper fileURLForPronunciation:homophone]) {
+                [pronunciations addObject:homophone];
             }
         }
     }
+    
+    if ([pronunciations count] < 1) {   //does its local varient pronunciation files exsist
+        NSString *basePronunciation = [DD2Words pronunciationFromSpelling:[word objectForKey:@"spelling"]];
+        NSString *possiblePronunciation = [NSString stringWithFormat:@"%@-%@", [word objectForKey:@"spellingVariant"], basePronunciation];
+       if ([DD2GlobalHelper fileURLForPronunciation:possiblePronunciation]) {
+           [pronunciations addObject:possiblePronunciation];
+       }
+    }
+    
+    if ([pronunciations count] < 1) {   //all has failed set pronunciation to the root spelling and warn that its missing
+        [pronunciations addObject:pronunciationFromSpelling];
+        NSLog(@"***** file needed: %@ *****", [word objectForKey:@"spelling"]);
+    }
+    
     NSString *pronunciationsStringForLog;
     for (NSString *pronunciation in pronunciations) {
         if (pronunciationsStringForLog) {

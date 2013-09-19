@@ -78,8 +78,8 @@
     NSString *pathComponentForBundle = [NSString stringWithFormat:@"resources.bundle"];
     NSString *pathForSoundName = [NSString pathWithComponents:[NSArray arrayWithObjects:pathComponentForBundle,@"audio",pronunciation, nil]];
 
-    NSLog(@"current pronunciation = %@", pronunciation);
-    NSLog(@"pathForSoundName = %@",pathForSoundName);
+    //NSLog(@"current pronunciation = %@", pronunciation);
+    //NSLog(@"pathForSoundName = %@",pathForSoundName);
     NSString *soundName = [[NSBundle mainBundle] pathForResource:pathForSoundName ofType:@"m4a"];
     //NSLog(@"soundName = %@", soundName);
     
@@ -93,7 +93,7 @@
     // Get the paths and URL's right!
     NSFileManager *localFileManager = [[NSFileManager alloc] init];
     BOOL fileFound = [localFileManager fileExistsAtPath:[fileURL path]];
-    NSLog(@"fileFound for URL: %@", fileFound ? @"YES" : @"NO");
+    NSLog(@"Pronunciation fileFound for %@: %@", pronunciation, fileFound ? @"YES" : @"NO");
     
     if (fileFound) {
         return fileURL;

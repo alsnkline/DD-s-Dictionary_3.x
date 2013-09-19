@@ -23,6 +23,22 @@
 @synthesize selectedWord = _selectedWord;
 
 
+-(void)setAllWordsForSpellingVariant:(NSArray *)allWordsForSpellingVariant {
+    NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"spelling" ascending:YES selector:@selector(caseInsensitiveCompare:)];
+    NSArray *sortedWords = [allWordsForSpellingVariant sortedArrayUsingDescriptors:[NSArray arrayWithObjects:descriptor, nil]];
+    if (sortedWords != _allWordsForSpellingVariant) {
+        _allWordsForSpellingVariant = sortedWords;
+    }
+}
+
+-(void)setWordList:(NSArray *)wordList {
+    NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"spelling" ascending:YES selector:@selector(caseInsensitiveCompare:)];
+    NSArray *sortedWords = [wordList sortedArrayUsingDescriptors:[NSArray arrayWithObjects:descriptor, nil]];
+    if (sortedWords != _wordList) {
+        _wordList = sortedWords;
+    }
+}
+
 -(void)setWordListWithSections:(NSDictionary *)wordListWithSections {
     if (wordListWithSections != _wordListWithSections) {
         _wordListWithSections = wordListWithSections;
@@ -94,9 +110,9 @@
     cell.textLabel.font = self.useDyslexieFont ? [UIFont fontWithName:@"Dyslexiea-Regular" size:20] : [UIFont boldSystemFontOfSize:20];
     
     if (!self.sections) {
-        NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"spelling" ascending:YES selector:@selector(caseInsensitiveCompare:)];
-        NSArray *sortedWords = [self.wordList sortedArrayUsingDescriptors:[NSArray arrayWithObjects:descriptor, nil]];
-        NSDictionary *word = [sortedWords objectAtIndex:indexPath.row];
+//        NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"spelling" ascending:YES selector:@selector(caseInsensitiveCompare:)];
+//        NSArray *sortedWords = [self.wordList sortedArrayUsingDescriptors:[NSArray arrayWithObjects:descriptor, nil]];
+        NSDictionary *word = [self.wordList objectAtIndex:indexPath.row];
         cell.textLabel.text = [word objectForKey:@"spelling"];
     } else {
         NSArray *wordsForSection = [self.wordListWithSections objectForKey:[self.sections objectAtIndex:indexPath.section]];
@@ -179,7 +195,9 @@
     NSIndexPath *indexPathOfHomophone;
     if (self.sections) {
         NSString *sectionOfHomophone = [word objectForKey:@"section"];
-        indexPathOfHomophone = [NSIndexPath indexPathForRow:[[self.wordListWithSections objectForKey:sectionOfHomophone] indexOfObject:word] inSection:[self.sections indexOfObject:sectionOfHomophone]];
+        NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"spelling" ascending:YES selector:@selector(caseInsensitiveCompare:)];
+        NSArray *sortedWords = [[self.wordListWithSections objectForKey:sectionOfHomophone] sortedArrayUsingDescriptors:[NSArray arrayWithObjects:descriptor, nil]];
+        indexPathOfHomophone = [NSIndexPath indexPathForRow:[sortedWords indexOfObject:word] inSection:[self.sections indexOfObject:sectionOfHomophone]];
     } else {
         if ([self.wordList indexOfObject:word] != NSNotFound) {
            indexPathOfHomophone = [NSIndexPath indexPathForRow:[self.wordList indexOfObject:word] inSection:0];

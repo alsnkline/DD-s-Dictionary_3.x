@@ -33,11 +33,14 @@
     return self;
 }
 
-//- (NSArray *)allWords  //not needed now that DD2UITabViewController is taking care of the data and the spellingVariant.
-//{
-//    if(!_allWords) _allWords = [DD2Words allWordsWithSpellingVariant:self.spellingVariant];
-//    return _allWords;
-//}
+-(void)setAllWordsForSpellingVariant:(NSArray *)allWordsForSpellingVariant {
+    NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"spelling" ascending:YES selector:@selector(caseInsensitiveCompare:)];
+    NSArray *sortedWords = [allWordsForSpellingVariant sortedArrayUsingDescriptors:[NSArray arrayWithObjects:descriptor, nil]];
+    if (sortedWords != _allWordsForSpellingVariant) {
+        _allWordsForSpellingVariant = sortedWords;
+        [self.tableView reloadData];
+    }
+}
 
 -(UIColor *)customBackgroundColor{
     if (!_customBackgroundColor) {

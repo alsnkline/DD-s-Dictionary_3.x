@@ -70,9 +70,9 @@
             "collections": [
                 "first_words"
             ], 
-            "homophones": [
-                "been"
-            ], 
+            "homophones": {
+                "uk":["been"]
+            }, 
             "word": "bean"
         },
         {

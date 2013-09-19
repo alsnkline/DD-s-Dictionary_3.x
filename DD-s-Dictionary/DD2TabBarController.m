@@ -115,21 +115,25 @@
             
             } else if ([vc1OnStack isKindOfClass:[FunWithWordsTableViewController class]]) {    //setting up the fun vc (spelling variant and tagNames)
                 FunWithWordsTableViewController *funTable = (FunWithWordsTableViewController *)vc1OnStack;
-                funTable.allWordsForSpellingVariant = allWordsForSpellingVariant;
                 funTable.tagNames = self.wordBrain.tagNames;
+                funTable.allWordsForSpellingVariant = allWordsForSpellingVariant;
+                while ([nvc.viewControllers count]>1) {
+                    [nvc popViewControllerAnimated:NO];
+                }
             }
             if ([[nvc.viewControllers lastObject]isKindOfClass:[DisplayWordViewController class]]) { //iphone only
-                DisplayWordViewController *dwvc = (DisplayWordViewController *)[nvc.viewControllers lastObject];
-                dwvc.word = nil;
+                //DisplayWordViewController *dwvc = (DisplayWordViewController *)[nvc.viewControllers lastObject];
+                //dwvc.word = nil;  //extra
                 [nvc popViewControllerAnimated:NO];
                 if ([[nvc.viewControllers lastObject] isKindOfClass:[DD2WordListTableViewController class]]) {
                     DD2WordListTableViewController *newLastObject = (DD2WordListTableViewController *)[nvc.viewControllers lastObject];
                     [newLastObject.tableView deselectRowAtIndexPath:[newLastObject.tableView indexPathForSelectedRow] animated:NO];
-                    newLastObject.allWordsForSpellingVariant = allWordsForSpellingVariant;
+                    newLastObject.allWordsForSpellingVariant = allWordsForSpellingVariant;      //need for search
                 }
             }
             if ([self getSplitViewWithDisplayWordViewController]) {
                 [self getSplitViewWithDisplayWordViewController].word = nil;
+                // have to deselect for visible table
             }
         }
     }
