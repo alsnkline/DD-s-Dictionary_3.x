@@ -14,7 +14,7 @@
 @optional
 
 - (void) DisplayWordViewController:(DisplayWordViewController *) sender 
-                                homophoneSelectedWith:(NSString *)spelling;
+                                homophoneSelected:(NSDictionary *)word;
 @end
 
 

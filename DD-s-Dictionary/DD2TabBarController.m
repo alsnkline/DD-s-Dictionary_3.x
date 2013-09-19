@@ -15,12 +15,21 @@
 // Tab controller managed which tabs are visible and what data is displayed ie manages the impact of spelling Variant
 
 @interface DD2TabBarController ()
+@property (nonatomic, strong) DD2Words *wordBrain; //the model for this MVC
 @property (nonatomic, strong) NSString *spellingVariant;
+
 
 @end
 
 @implementation DD2TabBarController
+@synthesize wordBrain = _wordBrain;
 @synthesize spellingVariant = _spellingVariant;
+
+-(DD2Words *)wordBrain
+{
+    if (!_wordBrain) _wordBrain = [DD2Words sharedWords];
+    return _wordBrain;
+}
 
 - (NSString *)spellingVariant
 {
@@ -79,7 +88,8 @@
 - (void)manageTabs
 {
     NSArray *collections = [self collectionsInWordlist];
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil]; //TODO figure out how iphone and ipad works with this
+    NSArray *allWordsForSpellingVariant = [self.wordBrain.allWords objectForKey:[self.spellingVariant lowercaseString]];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil]; //seems to pick right one for iPhone and iPad!
     NSMutableArray *listOfTabVC = [NSMutableArray arrayWithArray:self.viewControllers];
     //NSLog(@"listOfTabVC %@", listOfTabVC);
     
@@ -94,8 +104,8 @@
             
             } else if ([vc1OnStack isKindOfClass:[DD2AllWordSearchViewController class]]){  //setting data for search tab for spelling variant
                 DD2AllWordSearchViewController *searchTable = (DD2AllWordSearchViewController *)vc1OnStack;
-                searchTable.allWordsWithSections = [DD2Words singleCollectionNamed:@"allWords" spellingVariant:self.spellingVariant];
-                searchTable.allWords = [DD2Words allWordsWithSpellingVariant:self.spellingVariant];
+                searchTable.allWordsWithSections = [DD2Words fromWordBrain:self.wordBrain getSingleCollectionNamed:@"allWords" withSpellingVariant:self.spellingVariant];
+                searchTable.allWordsForSpellingVariant = allWordsForSpellingVariant;
                 if (searchTable.searchDisplayController.searchResultsTableView) {
                     [searchTable.searchDisplayController setActive:NO];
                 }
@@ -103,9 +113,10 @@
                     [searchTable.tableView deselectRowAtIndexPath:[searchTable.tableView indexPathForSelectedRow] animated:NO];
                 }
             
-            } else if ([vc1OnStack isKindOfClass:[FunWithWordsTableViewController class]]) {    //setting the fun vc spelling variant
-                    FunWithWordsTableViewController *funTable = (FunWithWordsTableViewController *)vc1OnStack;
-                    funTable.allWords = [DD2Words allWordsWithSpellingVariant:self.spellingVariant];
+            } else if ([vc1OnStack isKindOfClass:[FunWithWordsTableViewController class]]) {    //setting up the fun vc (spelling variant and tagNames)
+                FunWithWordsTableViewController *funTable = (FunWithWordsTableViewController *)vc1OnStack;
+                funTable.allWordsForSpellingVariant = allWordsForSpellingVariant;
+                funTable.tagNames = self.wordBrain.tagNames;
             }
             if ([[nvc.viewControllers lastObject]isKindOfClass:[DisplayWordViewController class]]) { //iphone only
                 DisplayWordViewController *dwvc = (DisplayWordViewController *)[nvc.viewControllers lastObject];
@@ -114,6 +125,7 @@
                 if ([[nvc.viewControllers lastObject] isKindOfClass:[DD2WordListTableViewController class]]) {
                     DD2WordListTableViewController *newLastObject = (DD2WordListTableViewController *)[nvc.viewControllers lastObject];
                     [newLastObject.tableView deselectRowAtIndexPath:[newLastObject.tableView indexPathForSelectedRow] animated:NO];
+                    newLastObject.allWordsForSpellingVariant = allWordsForSpellingVariant;
                 }
             }
             if ([self getSplitViewWithDisplayWordViewController]) {
@@ -127,10 +139,10 @@
         id vc = [storyboard instantiateViewControllerWithIdentifier:@"List Controller"];
         if ([vc isKindOfClass:[UINavigationController class]]) {
             UINavigationController *nvc = (UINavigationController *)vc;
-            if ([nvc.visibleViewController isKindOfClass:[DD2WordListTableViewController class]]) {
-                DD2WordListTableViewController *collectionTable = (DD2WordListTableViewController *) nvc.visibleViewController;
-                collectionTable.wordListWithSections = [DD2Words singleCollectionNamed:collection spellingVariant:self.spellingVariant];
-                collectionTable.wordList = [DD2Words allWordsWithSpellingVariant:self.spellingVariant];
+            if ([[nvc.viewControllers objectAtIndex:0] isKindOfClass:[DD2WordListTableViewController class]]) {
+                DD2WordListTableViewController *collectionTable = (DD2WordListTableViewController *) [nvc.viewControllers objectAtIndex:0];
+                collectionTable.wordListWithSections = [DD2Words fromWordBrain:self.wordBrain getSingleCollectionNamed:collection withSpellingVariant:self.spellingVariant];
+                collectionTable.allWordsForSpellingVariant = allWordsForSpellingVariant;
                 UIImage *img = [UIImage imageNamed:@"resources.bundle/Images/DinoTabIconv2.png"];
                 nvc.tabBarItem = [[UITabBarItem alloc] initWithTitle:collection image:img tag:1];
             }

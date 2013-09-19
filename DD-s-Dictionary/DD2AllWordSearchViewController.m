@@ -20,11 +20,12 @@
 @end
 
 @implementation DD2AllWordSearchViewController
-@synthesize allWords = _allWords;
+@synthesize allWordsForSpellingVariant = _allWordsForSpellingVariant;
 @synthesize allWordsWithSections = _allWordsWithSections;
 @synthesize tableView = _tableView;
 @synthesize searchBar = _searchBar;
 @synthesize filteredWords = _filteredWords;
+@synthesize sections = _sections;
 @synthesize selectedWord = _selectedWord;
 
 
@@ -148,18 +149,17 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self wordSelectedAtIndexPath:(NSIndexPath *)indexPath fromTableView:tableView];
+    self.selectedWord = [self wordForIndexPath:indexPath fromTableView:tableView];
+    [self displaySelectedWord];
 }
 
-- (void) wordSelectedAtIndexPath:(NSIndexPath *)indexPath fromTableView:(UITableView *)tableView
+- (void) displaySelectedWord
 {
-    
-    self.selectedWord = [self wordForIndexPath:indexPath fromTableView:tableView];
-    
     if ([self getSplitViewWithDisplayWordViewController]) { //iPad
         DisplayWordViewController *dwvc = [self getSplitViewWithDisplayWordViewController];
+        dwvc.homophonesForWord = [DD2Words homophonesForWord:self.selectedWord andWordList:self.allWordsForSpellingVariant];
         dwvc.word = self.selectedWord;
-        dwvc.homophonesForWord = [DD2Words homophonesForWord:self.selectedWord andWordList:self.allWords];
+        dwvc.delegate = self;
         if (self.playWordsOnSelection) {
             [dwvc playAllWords:[DD2Words pronunciationsForWord:self.selectedWord]];
         }
@@ -173,7 +173,7 @@
     //used for iphone only
     if ([segue.identifier isEqualToString:@"Search Word Selected"]) {
         [segue.destinationViewController setWord:self.selectedWord];
-        [segue.destinationViewController setHomophonesForWord:[DD2Words homophonesForWord:self.selectedWord andWordList:self.allWords]];
+        [segue.destinationViewController setHomophonesForWord:[DD2Words homophonesForWord:self.selectedWord andWordList:self.allWordsForSpellingVariant]];
         if (self.playWordsOnSelection) {
             [segue.destinationViewController setPlayWordsOnSelection:self.playWordsOnSelection];
         }
@@ -195,7 +195,7 @@
     // Filter the array using NSPredicate
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.spelling contains[c] %@",searchText];
     
-    self.filteredWords = [NSMutableArray arrayWithArray:[self.allWords filteredArrayUsingPredicate:predicate]];
+    self.filteredWords = [NSMutableArray arrayWithArray:[self.allWordsForSpellingVariant filteredArrayUsingPredicate:predicate]];
 }
 
 #pragma mark - UISearchDisplayController Delegate Methods
@@ -217,31 +217,38 @@
 
 
 //DisplayWordViewControllerDelegate method
-- (void)DisplayWordViewController:(DisplayWordViewController *)sender homophoneSelectedWith:(NSString *)spelling
+- (void)DisplayWordViewController:(DisplayWordViewController *)sender homophoneSelected:(NSDictionary *)word
 {
-    NSLog(@"homonymSelected with spelling = %@",spelling);
+    NSLog(@"homonymSelected with word = %@",word);
     //find the selected word
     //find the indexPathOfHomophone (the new one so you can scroll to it)
     // if in iphone
-//    if (![self getSplitViewWithDisplayWordViewController]) { //iPhone
-//        //pop old word off navigation controller
-//        [self.navigationController popViewControllerAnimated:NO]; //Not animated as this is just preparing the Navigation Controller stack for the new word to be pushed on.
-//    }
-    //
-//    if (self.searchDisplayController.isActive) {
-//        
-//        if ([self.filteredWords contains homophone]) {
-//            Find where it is and scroll to it
-//            [self.searchDisplayController.searchResultsTableView selectRowAtIndexPath:indexPathOfSelectedWord animated:YES scrollPosition:UITableViewScrollPositionMiddle];
-//        } else {
-//            NSIndexPath *selectedCell = [self.searchDisplayController.searchResultsTableView indexPathForSelectedRow];
-//            [self.searchDisplayController.searchResultsTableView deselectRowAtIndexPath:selectedCell animated:NO];
-//        }
-//        
-//    } else {
-//        [self.tableView selectRowAtIndexPath:indexPathOfHomonymn animated:YES scrollPosition:UITableViewScrollPositionMiddle];
-//    }
-//    [self wordSelectedAtIndexPath:indexPathOfHomonymn fromTableView:self.tableView];
+    if (![self getSplitViewWithDisplayWordViewController]) { //iPhone
+        //pop old word off navigation controller
+        [self.navigationController popViewControllerAnimated:NO]; //Not animated as this is just preparing the Navigation Controller stack for the new word to be pushed on.
+        }
+
+    if (self.searchDisplayController.isActive) {
+        
+        if ([self.filteredWords containsObject:word]) {
+            //Find where it is and scroll to it
+            NSIndexPath * indexPathOfHomophone = [NSIndexPath indexPathForRow:[self.filteredWords indexOfObject:word] inSection:0];
+            [self.searchDisplayController.searchResultsTableView selectRowAtIndexPath:indexPathOfHomophone animated:YES scrollPosition:UITableViewScrollPositionMiddle];
+            [self tableView:self.searchDisplayController.searchResultsTableView didSelectRowAtIndexPath:indexPathOfHomophone];
+        } else {
+            NSIndexPath *selectedCell = [self.searchDisplayController.searchResultsTableView indexPathForSelectedRow];
+            [self.searchDisplayController.searchResultsTableView deselectRowAtIndexPath:selectedCell animated:NO];
+            self.selectedWord = word;
+            [self displaySelectedWord];
+        }
+        
+    } else {
+        NSString *sectionOfHomophone = [word objectForKey:@"section"];
+        NSIndexPath *indexPathOfHomophone = [NSIndexPath indexPathForRow:[[self.allWordsWithSections objectForKey:sectionOfHomophone] indexOfObject:word] inSection:[self.sections indexOfObject:sectionOfHomophone]];
+        // search is across all words so homophones will always be present.
+        [self.tableView selectRowAtIndexPath:indexPathOfHomophone animated:YES scrollPosition:UITableViewScrollPositionMiddle];
+        [self tableView:self.tableView didSelectRowAtIndexPath:indexPathOfHomophone];
+    }
 }
 
 - (void)viewDidLoad

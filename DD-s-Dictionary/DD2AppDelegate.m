@@ -11,13 +11,6 @@
 #import <AVFoundation/AVFoundation.h> //for audioPlayer
 
 @implementation DD2AppDelegate
-@synthesize words = _words;
-
--(DD2Words *)words
-{
-    if (!_words) _words = [DD2Words sharedWords];
-    return _words;
-}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {

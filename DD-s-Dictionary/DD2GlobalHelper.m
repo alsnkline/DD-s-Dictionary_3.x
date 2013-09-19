@@ -81,14 +81,14 @@
     NSLog(@"current pronunciation = %@", pronunciation);
     NSLog(@"pathForSoundName = %@",pathForSoundName);
     NSString *soundName = [[NSBundle mainBundle] pathForResource:pathForSoundName ofType:@"m4a"];
-    NSLog(@"soundName = %@", soundName);
+    //NSLog(@"soundName = %@", soundName);
     
     
     NSURL *fileURL;
     if (soundName) {
         fileURL = [[NSURL alloc] initFileURLWithPath:soundName];
     }
-    NSLog(@"fileURL = %@", fileURL);
+    //NSLog(@"fileURL = %@", fileURL);
     
     // Get the paths and URL's right!
     NSFileManager *localFileManager = [[NSFileManager alloc] init];

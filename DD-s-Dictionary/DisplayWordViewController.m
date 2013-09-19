@@ -112,7 +112,6 @@
 -(void)setHomophonesForWord:(NSDictionary *)homophonesForWord {
     if (_homophonesForWord != homophonesForWord) {
         _homophonesForWord = homophonesForWord;
-        
         NSLog(@"homophonesForWord set to %@", homophonesForWord);
     }
 }
@@ -186,22 +185,18 @@
     
 - (void) manageHomophonesOfPronunciation:(NSString *)pronunciation withButtons:(NSArray *)buttons underListenButton:(UIButton *)listenbutton
 {
-    NSArray *homophones = [DD2Words homophonesForPronunciation:(NSString *)pronunciation FromWord:self.word];
-    
-    for (int i = 0; i < [homophones count]; i++) {
-        NSLog(@"i = %d", i);
+    for (int i = 0; i < [[self.homophonesForWord objectForKey:pronunciation] count]; i++) {
         UIButton *buttonForLoop = [buttons objectAtIndex:i];
         buttonForLoop.hidden = NO;
-        NSDictionary *homophoneWord = [self.homophonesForWord objectForKey:pronunciation];
         
-        [buttonForLoop setTitle:[[[self.homophonesForWord objectForKey:pronunciation] objectAtIndex:i] objectForKey:@"spelling" ] forState:UIControlStateNormal];
-        //[buttonForLoop setTitle:[homophones objectAtIndex:i] forState:UIControlStateNormal];
+        NSArray *homophoneWords = [self.homophonesForWord objectForKey:pronunciation];
+        [buttonForLoop setTitle:[[homophoneWords objectAtIndex:i] objectForKey:@"spelling" ] forState:UIControlStateNormal];
+
         [self sizeHomophoneButton:buttonForLoop];
         CGRect frame = CGRectMake(listenbutton.frame.origin.x - (buttonForLoop.frame.size.width/2 - listenbutton.frame.size.width/2), buttonForLoop.frame.origin.y, buttonForLoop.frame.size.width, buttonForLoop.frame.size.height);
         buttonForLoop.frame = frame;
     }
-    for (int i = [homophones count]; i < [buttons count]; i++) {
-        NSLog(@"hide button i = %d", i);
+    for (int i = [[self.homophonesForWord objectForKey:pronunciation] count]; i < [buttons count]; i++) {
         UIButton *buttonForLoop = [buttons objectAtIndex:i];
         buttonForLoop.hidden = YES;
     }
@@ -329,8 +324,18 @@
 - (IBAction)homophoneButtonPressed:(UIButton *)sender 
 {
     NSString *spelling = sender.titleLabel.text;
+    NSSet *pronunciations = [DD2Words pronunciationsForWord:self.word];
+    NSMutableArray *allHomophones = [[NSMutableArray alloc] init];
+    for (NSString *pronunciation in pronunciations) {
+        [allHomophones addObjectsFromArray:[self.homophonesForWord objectForKey:pronunciation]];
+    }
+    NSPredicate *selectionPredicate = [NSPredicate predicateWithFormat:@"SELF.spelling LIKE[c] %@",spelling];
+    NSLog(@"predicate = %@", selectionPredicate);
+    if (LOG_PREDICATE_RESULTS) [DD2GlobalHelper testWordPredicate:selectionPredicate onWords:allHomophones];
+    NSArray *matches = [NSArray arrayWithArray:[allHomophones filteredArrayUsingPredicate:selectionPredicate]];
+    if ([matches count] != 1) NSLog(@"more of less than one matches ** PROBLEM **");
     //send to delegate
-    [self.delegate DisplayWordViewController:self homophoneSelectedWith:spelling];
+    [self.delegate DisplayWordViewController:self homophoneSelected:[matches lastObject]];
 }
 
 -(void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)playedSuccessfully
@@ -379,6 +384,7 @@
             [self playAllWords:[DD2Words pronunciationsForWord:self.word]];
         }
     }
+    NSLog(@"Displaying %@", [self.word objectForKey:@"spelling"]);
 }
 
 - (void)viewDidLoad
@@ -562,9 +568,12 @@
     UIGraphicsEndImageContext();
     
 //    NSLog(@"image I'm passing back %@", coloredImage);
-    return coloredImage;
-    
-    
+    return coloredImage;    
+}
+
+-(void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 @end

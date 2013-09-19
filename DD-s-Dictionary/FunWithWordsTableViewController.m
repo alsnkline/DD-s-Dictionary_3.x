@@ -14,7 +14,6 @@
 
 @property (nonatomic, strong) UIColor *customBackgroundColor;
 @property (nonatomic) BOOL useDyslexieFont;
-@property (nonatomic, strong) NSArray *tagNames;
 
 @end
 
@@ -23,7 +22,7 @@
 @synthesize customBackgroundColor = _customBackgroundColor;
 @synthesize useDyslexieFont = _useDyslexieFont;
 @synthesize tagNames = _tagNames;
-@synthesize allWords = _allWords;
+@synthesize allWordsForSpellingVariant = _allWordsForSpellingVariant;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -32,11 +31,6 @@
         // Custom initialization
     }
     return self;
-}
-
--(NSArray *)tagNames{
-    if(!_tagNames) _tagNames = [DD2Words tagNames];
-    return _tagNames;
 }
 
 //- (NSArray *)allWords  //not needed now that DD2UITabViewController is taking care of the data and the spellingVariant.
@@ -285,10 +279,11 @@
             //selectionPredicate = [NSPredicate predicateWithFormat:@"%@ IN SELF.inGroups.displayName", cell.textLabel.text];
 
             NSLog(@"predicate = %@", selectionPredicate);
-            if (LOG_PREDICATE_RESULTS) [DD2GlobalHelper testWordPredicate:selectionPredicate onWords:self.allWords];
+            if (LOG_PREDICATE_RESULTS) [DD2GlobalHelper testWordPredicate:selectionPredicate onWords:self.allWordsForSpellingVariant];
             
+            [segue.destinationViewController setAllWordsForSpellingVariant:self.allWordsForSpellingVariant];
             [segue.destinationViewController setTitle:cell.textLabel.text];
-            [segue.destinationViewController setWordList:[NSMutableArray arrayWithArray:[self.allWords filteredArrayUsingPredicate:selectionPredicate]]];
+            [segue.destinationViewController setWordList:[NSMutableArray arrayWithArray:[self.allWordsForSpellingVariant filteredArrayUsingPredicate:selectionPredicate]]];
 
         }
     }

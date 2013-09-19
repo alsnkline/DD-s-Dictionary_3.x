@@ -10,7 +10,7 @@
 
 @interface DD2AllWordSearchViewController : DD2SetTrackTableViewController
 
+@property (nonatomic, strong) NSArray *allWordsForSpellingVariant; //the model for search view does not have sections and allows homophone look up
 @property (nonatomic, strong) NSDictionary *allWordsWithSections; //the model for main table view has sections
-@property (nonatomic, strong) NSArray *allWords; //the model for search view does not have sections
 
 @end

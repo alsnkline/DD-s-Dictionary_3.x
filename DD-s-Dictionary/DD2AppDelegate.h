@@ -12,6 +12,5 @@
 @interface DD2AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-@property (nonatomic, strong) DD2Words *words; //the master processor
 
 @end

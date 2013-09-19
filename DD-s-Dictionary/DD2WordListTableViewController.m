@@ -9,7 +9,7 @@
 #import "DD2WordListTableViewController.h"
 #import "DisplayWordViewController.h"
 
-@interface DD2WordListTableViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface DD2WordListTableViewController () <UITableViewDataSource, UITableViewDelegate, DisplayWordViewControllerDelegate>
 @property (nonatomic, strong) NSDictionary *selectedWord;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
@@ -19,14 +19,8 @@
 @synthesize wordList = _wordList;
 @synthesize wordListWithSections = _wordListWithSections;
 @synthesize sections = _sections;
+@synthesize allWordsForSpellingVariant = _allWordsForSpellingVariant;
 @synthesize selectedWord = _selectedWord;
-
-
--(void)setWordList:(NSArray *)wordList {
-    if (wordList != _wordList) {
-        _wordList = wordList;
-    }
-}
 
 
 -(void)setWordListWithSections:(NSDictionary *)wordListWithSections {
@@ -132,23 +126,22 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self wordSelectedAtIndexPath:(NSIndexPath *)indexPath fromTableView:tableView];
+    self.selectedWord = [self wordForIndexPath:indexPath];
+    [self displaySelectedWord];
 }
 
-- (void) wordSelectedAtIndexPath:(NSIndexPath *)indexPath fromTableView:(UITableView *)tableView
+- (void)displaySelectedWord
 {
-    
-    self.selectedWord = [self wordForIndexPath:indexPath];
-    
     if ([self getSplitViewWithDisplayWordViewController]) { //iPad
         DisplayWordViewController *dwvc = [self getSplitViewWithDisplayWordViewController];
+        dwvc.homophonesForWord = [DD2Words homophonesForWord:self.selectedWord andWordList:self.allWordsForSpellingVariant];
         dwvc.word = self.selectedWord;
-        dwvc.homophonesForWord = [DD2Words homophonesForWord:self.selectedWord andWordList:self.wordList];
+        dwvc.delegate = self;
         if (self.playWordsOnSelection) {
             [dwvc playAllWords:[DD2Words pronunciationsForWord:self.selectedWord]];
         }
     } else { //iPhone (passing playWordsOnSelection handled in prepare for Segue)
-        [self performSegueWithIdentifier:@"Word Selected" sender:self.selectedWord];
+        [self performSegueWithIdentifier:@"Word Selected" sender:self];
     }
 }
 
@@ -157,7 +150,7 @@
     //used for iphone only
     if ([segue.identifier isEqualToString:@"Word Selected"]) {
         [segue.destinationViewController setWord:self.selectedWord];
-        [segue.destinationViewController setHomophonesForWord:[DD2Words homophonesForWord:self.selectedWord andWordList:self.wordList]];
+        [segue.destinationViewController setHomophonesForWord:[DD2Words homophonesForWord:self.selectedWord andWordList:self.allWordsForSpellingVariant]];
         if (self.playWordsOnSelection) {
             [segue.destinationViewController setPlayWordsOnSelection:self.playWordsOnSelection];
         }
@@ -168,6 +161,41 @@
             [segue.destinationViewController setUseDyslexieFont:self.useDyslexieFont];
         }
         [segue.destinationViewController setDelegate:self];
+    }
+}
+
+//DisplayWordViewControllerDelegate method
+- (void)DisplayWordViewController:(DisplayWordViewController *)sender homophoneSelected:(NSDictionary *)word
+{
+    NSLog(@"homonymSelected with word = %@",[word objectForKey:@"spelling"]);
+    //find the selected word
+    //find the indexPathOfHomophone (the new one so you can scroll to it)
+    // if in iphone
+    if (![self getSplitViewWithDisplayWordViewController]) { //iPhone
+        //pop old word off navigation controller
+        [self.navigationController popViewControllerAnimated:NO]; //Not animated as this is just preparing the Navigation Controller stack for the new word to be pushed on.
+    }
+    
+    NSIndexPath *indexPathOfHomophone;
+    if (self.sections) {
+        NSString *sectionOfHomophone = [word objectForKey:@"section"];
+        indexPathOfHomophone = [NSIndexPath indexPathForRow:[[self.wordListWithSections objectForKey:sectionOfHomophone] indexOfObject:word] inSection:[self.sections indexOfObject:sectionOfHomophone]];
+    } else {
+        if ([self.wordList indexOfObject:word] != NSNotFound) {
+           indexPathOfHomophone = [NSIndexPath indexPathForRow:[self.wordList indexOfObject:word] inSection:0];
+        }
+    }
+    
+    if (!indexPathOfHomophone) {
+        NSLog(@"Selected Homophone not in currently displayed list");
+        //deselect table and display homophone
+        [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:NO];
+        self.selectedWord = word;
+        [self displaySelectedWord];
+        
+    } else {
+        [self.tableView selectRowAtIndexPath:indexPathOfHomophone animated:YES scrollPosition:UITableViewScrollPositionMiddle];
+        [self tableView:self.tableView didSelectRowAtIndexPath:indexPathOfHomophone];
     }
 }
 

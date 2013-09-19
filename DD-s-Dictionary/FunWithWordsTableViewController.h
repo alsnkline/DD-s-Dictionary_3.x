@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface FunWithWordsTableViewController : UITableViewController
-@property (nonatomic, strong) NSArray *allWords;        //model for this MVC
+@property (nonatomic, strong) NSArray *allWordsForSpellingVariant;        //model for this MVC
+@property (nonatomic, strong) NSArray *tagNames;
 
 @end

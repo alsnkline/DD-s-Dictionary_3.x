@@ -21,9 +21,7 @@
 + (DD2Words *)sharedWords;
 + (void)logDD2WordProperty:(NSString *)property;
 
-+ (NSDictionary *)singleCollectionNamed:(NSString *)collectionName spellingVariant:(NSString *)variant;
-+ (NSArray *)allWordsWithSpellingVariant:(NSString *)variant;
-+ (NSArray *)tagNames;
++ (NSDictionary *)fromWordBrain:(DD2Words *)brain getSingleCollectionNamed:(NSString *)collectionName withSpellingVariant:(NSString *)variant;
 
 + (NSString *) pronunciationFromSpelling:(NSString *)spelling;
 + (NSSet *) pronunciationsForWord:(NSDictionary *)word;
@@ -31,8 +29,6 @@
 + (NSDictionary *) wordForPronunciation:(NSString *)pronunciation fromWordList:(NSArray *)wordList;
 + (NSDictionary *) homophonesForWord:(NSDictionary *)word andWordList:(NSArray *)wordList;
 
-
-+ (NSArray *) homophonesForPronunciation:(NSString *)pronunciation FromWord:(NSDictionary *)word;
 
 - (NSInteger)numberOfWordsInCollection:(NSString *)collection spellingVariant:(NSString *)variant;
 
