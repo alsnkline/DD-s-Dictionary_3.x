@@ -17,6 +17,7 @@
 
 + (NSString*) version;
 + (NSString *) deviceType;
++ (NSArray *) alphabet;
 + (NSString *) getHexStringForColor:(UIColor *)color;
 + (NSUInteger) testWordPredicate:(NSPredicate *)predicate onWords:(id)words;
 + (NSURL *) wordlistJSONFileDirectory;

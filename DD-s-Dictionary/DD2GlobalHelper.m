@@ -20,6 +20,15 @@
     return [UIDevice currentDevice].model;
 }
 
++ (NSArray *)alphabet
+{
+    NSMutableArray *alphabet = [NSMutableArray array];
+    for (char a = 'a'; a <= 'z'; a++) {
+        [alphabet addObject:[NSString stringWithFormat:@"%c", a]];
+    }
+    return [alphabet copy];
+}
+
 + (NSString *)getHexStringForColor:(UIColor *)color {
     CGFloat red = 0;
     CGFloat green = 0;

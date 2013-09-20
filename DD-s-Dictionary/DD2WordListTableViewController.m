@@ -43,7 +43,6 @@
     if (wordListWithSections != _wordListWithSections) {
         _wordListWithSections = wordListWithSections;
         self.sections = [[wordListWithSections allKeys] sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
-        //TO DO:: [NSPredicate predicateWithFormat:@"SELF.spelling beginswith[c] 'a'"];
     }
 }
 

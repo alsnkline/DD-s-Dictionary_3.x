@@ -267,7 +267,7 @@
             
             if ([cell.textLabel.text isEqualToString:@"homophones"]) {
                 switchValue = 0;
-                selectionPredicate = [NSPredicate predicateWithFormat:@"homophones.@count > 0"];
+                selectionPredicate = [NSPredicate predicateWithFormat:@"locHomophones.@count > 0"];
             } else if ([cell.textLabel.text isEqualToString:@"heteronyms"]) {
                 switchValue = 1;
                 selectionPredicate = [NSPredicate predicateWithFormat:@"pronunciations.@count > 1"];

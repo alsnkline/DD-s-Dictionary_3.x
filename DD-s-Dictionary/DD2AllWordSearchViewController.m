@@ -11,6 +11,7 @@
 
 @interface DD2AllWordSearchViewController () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, UISearchDisplayDelegate, DisplayWordViewControllerDelegate>
 
+@property (nonatomic, strong) NSDictionary *allWordsWithSections;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (nonatomic, strong) NSMutableArray *filteredWords;
@@ -34,6 +35,7 @@
     NSArray *sortedWords = [allWordsForSpellingVariant sortedArrayUsingDescriptors:[NSArray arrayWithObjects:descriptor, nil]];
     if (sortedWords != _allWordsForSpellingVariant) {
         _allWordsForSpellingVariant = sortedWords;
+        self.allWordsWithSections = [DD2Words wordsBySectionFromWordList:allWordsForSpellingVariant];
         [self.tableView reloadData];
     }
 }

@@ -80,7 +80,7 @@
         // we have to deselect change color and reselect or we get the old color showing up when the selection is changed.
         NSIndexPath *selectedCell = [self.tableView indexPathForSelectedRow];
         [self.tableView deselectRowAtIndexPath:selectedCell animated:NO];
-        self.view.backgroundColor = self.customBackgroundColor;
+        self.tableView.backgroundColor = self.customBackgroundColor;
         [self.tableView selectRowAtIndexPath:selectedCell animated:NO scrollPosition:UITableViewScrollPositionNone];
     } else {
         self.tableView.backgroundColor = self.customBackgroundColor;

@@ -12,24 +12,25 @@
 
 @property (nonatomic, strong) NSDictionary *rawWords;
 @property (nonatomic, strong) NSDictionary *processedWords;
+@property (nonatomic, strong) NSArray *allProcessedWords;
 @property (nonatomic, strong) NSArray *collectionNames;
-@property (nonatomic, strong) NSDictionary *collectionsOfWords;
 @property (nonatomic, strong) NSArray *tagNames;
-@property (nonatomic, strong) NSDictionary *allWords;
+@property (nonatomic, strong) NSString *spellingVariant;
 
 
 + (DD2Words *)sharedWords;
+- (NSArray *)allWordsForCurrentSpellingVariant;
+- (NSArray *)wordsForCurrentSpellingVariantInCollectionNamed:(NSString *)collectionName;
+
 + (void)logDD2WordProperty:(NSString *)property;
 
-+ (NSDictionary *)fromWordBrain:(DD2Words *)brain getSingleCollectionNamed:(NSString *)collectionName withSpellingVariant:(NSString *)variant;
++ (NSDictionary *)wordsBySectionFromWordList:(NSArray *)wordList;
++ (void) compareSectionsDictionaryFirstAnswer:(NSDictionary *)firstAnswer withSecondAnswer:(NSDictionary *)secondAnswer;
 
 + (NSString *) pronunciationFromSpelling:(NSString *)spelling;
 + (NSSet *) pronunciationsForWord:(NSDictionary *)word;
 
 + (NSDictionary *) wordForPronunciation:(NSString *)pronunciation fromWordList:(NSArray *)wordList;
 + (NSDictionary *) homophonesForWord:(NSDictionary *)word andWordList:(NSArray *)wordList;
-
-
-- (NSInteger)numberOfWordsInCollection:(NSString *)collection spellingVariant:(NSString *)variant;
 
 @end
