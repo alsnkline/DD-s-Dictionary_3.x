@@ -225,6 +225,18 @@
     return self;
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    if ([self getSplitViewWithDisplayWordViewController] && self.selectedWord) {
+        [self displaySelectedWord];
+    }
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [DD2GlobalHelper sendViewToGAWithViewName:[NSString stringWithFormat:@"%@ WordList Tab Shown", self.title]];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];

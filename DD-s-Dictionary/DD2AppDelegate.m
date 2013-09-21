@@ -10,11 +10,30 @@
 #import <AudioToolbox/AudioToolbox.h>  //for system sounds
 #import <AVFoundation/AVFoundation.h> //for audioPlayer
 
+//core data framework, systemConfiguration framework, libz.dylib added for Google Analytics
+
 @implementation DD2AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    
+    // Optional: automatically send uncaught exceptions to Google Analytics.
+    [GAI sharedInstance].trackUncaughtExceptions = YES;
+    
+    // Optional: set Google Analytics dispatch interval to e.g. 20 seconds.
+    [GAI sharedInstance].dispatchInterval = 20;
+    
+    // Optional: set Logger to VERBOSE for debug information.
+    [[[GAI sharedInstance] logger] setLogLevel:kGAILogLevelVerbose];
+    
+    // Initialize tracker.
+    [[GAI sharedInstance] trackerWithTrackingId:@"UA-37793922-2"];  //use -1 for any production releases
+//    [[GAI sharedInstance] setOptOut:YES];       //uncomment to disable GA across entire app.
+    [[GAI sharedInstance] setDryRun:YES];       //stop data from being sent to cloud, set to NO for production ship
+    
+    [DD2GlobalHelper sendViewToGAWithViewName:@"DD's Dictionary launched"];
+    
     
     // Setting up audioSession
     [self setupAudioSession];

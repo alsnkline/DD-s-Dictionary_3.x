@@ -131,6 +131,10 @@
                         self.spelling.text = forDisplay;
                     }
                     completion:nil];
+    if (self.isViewLoaded && self.view.window) {
+        //viewController is visible track with GA allowing iPad stats to show which word got loaded. Appington
+        [DD2GlobalHelper sendViewToGAWithViewName:[NSString stringWithFormat:@"Viewed Word :%@", self.spelling.text]];
+    }
 }
 
 - (void) resetView {
@@ -330,7 +334,7 @@
         [allHomophones addObjectsFromArray:[self.homophonesForWord objectForKey:pronunciation]];
     }
     NSPredicate *selectionPredicate = [NSPredicate predicateWithFormat:@"SELF.spelling LIKE[c] %@",spelling];
-    NSLog(@"predicate = %@", selectionPredicate);
+    if (LOG_PREDICATE_RESULTS) NSLog(@"predicate = %@", selectionPredicate);
     if (LOG_PREDICATE_RESULTS) [DD2GlobalHelper testWordPredicate:selectionPredicate onWords:allHomophones];
     NSArray *matches = [NSArray arrayWithArray:[allHomophones filteredArrayUsingPredicate:selectionPredicate]];
     if ([matches count] != 1) NSLog(@"more of less than one matches ** PROBLEM **");
@@ -385,6 +389,11 @@
         }
     }
     NSLog(@"Displaying %@", [self.word objectForKey:@"spelling"]);
+}
+
+-(void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [DD2GlobalHelper sendViewToGAWithViewName:[NSString stringWithFormat:@"Viewed Word :%@", self.spelling.text]];
 }
 
 - (void)viewDidLoad

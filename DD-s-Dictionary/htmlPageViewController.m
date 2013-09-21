@@ -53,6 +53,11 @@
     
 }
 
+-(void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [DD2GlobalHelper sendViewToGAWithViewName:[NSString stringWithFormat:@"Web view Shown : %@", self.stringForTitle]];
+}
+
 -(void)viewDidUnload
 {
     [self setWebView:nil];

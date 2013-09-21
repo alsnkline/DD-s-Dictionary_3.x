@@ -7,6 +7,7 @@
 //
 
 #import "DD2GlobalHelper.h"
+#import "GAITracker.h"
 
 @implementation DD2GlobalHelper
 
@@ -109,6 +110,18 @@
     } else {
         return nil;
     }
+}
+
+#pragma mark - Analytics Methods
+
++ (void)sendViewToGAWithViewName:(NSString *)screenName {
+
+    //track with GA manually avoid subclassing UIViewController
+    id <GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    [tracker set:kGAIScreenName value:screenName];
+    [tracker send:[[GAIDictionaryBuilder createAppView] build]];
+    if (LOG_ANALYTICS) NSLog(@"send ScreenNamed : %@", screenName);
+    
 }
 
 @end

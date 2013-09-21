@@ -79,6 +79,8 @@
     [self setCellBackgroundColor];
     [self manageBackgroundColorLable];
     
+    [DD2GlobalHelper sendViewToGAWithViewName:@"Settings Tab Shown"];
+    
     [super viewDidAppear:animated];
 
 }
@@ -495,6 +497,8 @@
 {
 	BOOL	bCanSendMail = [MFMailComposeViewController canSendMail];
 //    BOOL	bCanSendMail = NO; //for testing the no email alert
+    
+    [DD2GlobalHelper sendViewToGAWithViewName:[NSString stringWithFormat:@"SendEmail triggered"]];
 
 	if (!bCanSendMail)
 	{

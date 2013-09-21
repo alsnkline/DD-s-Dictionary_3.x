@@ -14,4 +14,8 @@
     #import "DD2GlobalHelper.h"
     #import "NSUserDefaultKeys.h"
     #import "DD2Words.h"
+//GA classes!
+    #import "GAI.h"
+    #import "GAIDictionaryBuilder.h"
+    #import "GAIFields.h"
 #endif

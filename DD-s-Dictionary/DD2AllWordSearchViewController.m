@@ -73,6 +73,11 @@
     tableView.rowHeight = 55.0f; // setting row height on the search results table to match the main table.
 }
 
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
+    
+    [DD2GlobalHelper sendViewToGAWithViewName:@"Dict Search Started"];
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -273,10 +278,22 @@
     }
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    if ([self getSplitViewWithDisplayWordViewController] && self.selectedWord) {
+        [self displaySelectedWord];
+    }
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+}
+
+-(void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [DD2GlobalHelper sendViewToGAWithViewName:@"Search Tab Shown"];
 }
 
 - (DisplayWordViewController *)getSplitViewWithDisplayWordViewController

@@ -184,7 +184,7 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
 
 - (NSArray *)allWordsForCurrentSpellingVariant {
     NSPredicate *selectionPredicate = [NSPredicate predicateWithFormat:@"SELF.wordVariant LIKE[c] %@",[self.spellingVariant lowercaseString]];
-    NSLog(@"predicate = %@", selectionPredicate);
+    if (LOG_PREDICATE_RESULTS) NSLog(@"predicate = %@", selectionPredicate);
     if (LOG_PREDICATE_RESULTS) [DD2GlobalHelper testWordPredicate:selectionPredicate onWords:self.allProcessedWords];
     NSArray *matches = [NSArray arrayWithArray:[self.allProcessedWords filteredArrayUsingPredicate:selectionPredicate]];
     return matches;
@@ -194,7 +194,7 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
     NSArray *wordListForCurrentSV = [self allWordsForCurrentSpellingVariant];
     
     NSPredicate *selectionPredicate = [NSPredicate predicateWithFormat:@"SELF.collections contains[c] %@", collectionName];
-    NSLog(@"predicate = %@", selectionPredicate);
+    if (LOG_PREDICATE_RESULTS) NSLog(@"predicate = %@", selectionPredicate);
     if (LOG_PREDICATE_RESULTS) [DD2GlobalHelper testWordPredicate:selectionPredicate onWords:wordListForCurrentSV];
     NSArray *matches = [NSArray arrayWithArray:[wordListForCurrentSV filteredArrayUsingPredicate:selectionPredicate]];
     return matches;
@@ -208,7 +208,7 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
     
     for (NSString *sectionName in possibleSectionNames) {
         NSPredicate *selectionPredicate = [NSPredicate predicateWithFormat:@"SELF.section LIKE[c] %@",[sectionName uppercaseString]];
-        NSLog(@"predicate = %@", selectionPredicate);
+        if (LOG_PREDICATE_RESULTS) NSLog(@"predicate = %@", selectionPredicate);
         if (LOG_PREDICATE_RESULTS) [DD2GlobalHelper testWordPredicate:selectionPredicate onWords:wordList];
         NSArray *matches = [NSArray arrayWithArray:[wordList filteredArrayUsingPredicate:selectionPredicate]];
         
@@ -322,7 +322,7 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
 + (NSDictionary *) wordForPronunciation:(NSString *)pronunciation fromWordList:(NSArray *)wordList {
     
     NSPredicate *selectionPredicate = [NSPredicate predicateWithFormat:@"SELF.pronunciations contains[c] %@",pronunciation];
-    NSLog(@"predicate = %@", selectionPredicate);
+    if (LOG_PREDICATE_RESULTS) NSLog(@"predicate = %@", selectionPredicate);
     if (LOG_PREDICATE_RESULTS) [DD2GlobalHelper testWordPredicate:selectionPredicate onWords:wordList];
     NSMutableArray *matches = [NSMutableArray arrayWithArray:[wordList filteredArrayUsingPredicate:selectionPredicate]];
     
@@ -330,7 +330,7 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
         return [matches lastObject];
     } else {
         selectionPredicate = [NSPredicate predicateWithFormat:@"SELF.spelling LIKE[c] %@",[DD2Words pronunciationFromSpelling:pronunciation]];
-        NSLog(@"predicate = %@", selectionPredicate);
+        if (LOG_PREDICATE_RESULTS) NSLog(@"predicate = %@", selectionPredicate);
         if (LOG_PREDICATE_RESULTS) [DD2GlobalHelper testWordPredicate:selectionPredicate onWords:wordList];
         NSMutableArray *matches = [NSMutableArray arrayWithArray:[wordList filteredArrayUsingPredicate:selectionPredicate]];
         if ([matches count] != 1) NSLog(@"more of less than one matches ** PROBLEM **");

@@ -117,6 +117,11 @@
     }
 }
 
+-(void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [DD2GlobalHelper sendViewToGAWithViewName:@"Fun With Words Tab Shown"];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -281,7 +286,7 @@
             //selectionPredicate = [NSPredicate predicateWithFormat:@"inGroups.@count > 0"]; //worked
             //selectionPredicate = [NSPredicate predicateWithFormat:@"%@ IN SELF.inGroups.displayName", cell.textLabel.text];
 
-            NSLog(@"predicate = %@", selectionPredicate);
+            if (LOG_PREDICATE_RESULTS) NSLog(@"predicate = %@", selectionPredicate);
             if (LOG_PREDICATE_RESULTS) [DD2GlobalHelper testWordPredicate:selectionPredicate onWords:self.allWordsForSpellingVariant];
             
             [segue.destinationViewController setAllWordsForSpellingVariant:self.allWordsForSpellingVariant];

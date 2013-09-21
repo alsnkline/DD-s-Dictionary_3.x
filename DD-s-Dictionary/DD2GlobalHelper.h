@@ -8,10 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
-#define PROCESS_VERBOSELY YES
-#define LOG_PREDICATE_RESULTS YES       // must be NO for ship
-
+#define PROCESS_VERBOSELY NO
+#define LOG_PREDICATE_RESULTS NO       // must be NO for ship
 #define TEST_APPINGTON_ON YES            // must be NO for ship
+#define LOG_ANALYTICS YES            // must be NO for ship
 
 @interface DD2GlobalHelper : NSObject
 
@@ -22,5 +22,8 @@
 + (NSUInteger) testWordPredicate:(NSPredicate *)predicate onWords:(id)words;
 + (NSURL *) wordlistJSONFileDirectory;
 + (NSURL *) fileURLForPronunciation:(NSString *)pronunciation;
+
+//Analytics Methods
++ (void)sendViewToGAWithViewName:(NSString *)screenName;
 
 @end
