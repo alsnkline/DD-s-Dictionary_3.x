@@ -220,6 +220,9 @@
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.spelling contains[c] %@",searchText];
     
     self.filteredWords = [NSMutableArray arrayWithArray:[self.allWordsForSpellingVariant filteredArrayUsingPredicate:predicate]];
+    
+    //track search event with GA
+    [DD2GlobalHelper sendEventToGAWithCategory:@"uiAction_Search" action:@"All_words" label:searchText value:nil];
 }
 
 #pragma mark - UISearchDisplayController Delegate Methods

@@ -281,6 +281,8 @@
         for (NSString *pronunciation in pronunciations) {
             [self playWord:pronunciation];
             
+            //track word event with GA auto sent with Value 2
+            [DD2GlobalHelper sendEventToGAWithCategory:@"uiAction_Word" action:@"listenToWord" label:pronunciation value:[NSNumber numberWithInt:2]];
         };
     } else {
         NSMutableArray *pronunciationsArray = [[pronunciations allObjects] mutableCopy];
@@ -288,7 +290,11 @@
         NSLog(@"started to play first word");
         NSString *pronunciationToPlay = [self.soundsToPlay lastObject];
         [self playWord:pronunciationToPlay];
+        
+        //track word event with GA auto sent with Value 2
+        [DD2GlobalHelper sendEventToGAWithCategory:@"uiAction_Word" action:@"listenToWord" label:[pronunciationsArray lastObject] value:[NSNumber numberWithInt:2]];
     }
+    
 }
 
 
@@ -320,6 +326,8 @@
         if (([pronunciations count] > 1 && [pronunciation hasSuffix:[NSString stringWithFormat:@"%i",sender.tag]]) || ([pronunciations count] == 1)) {
             [self playWord:pronunciation];
             
+            //track word event with GA manual sent with Value 1
+            [DD2GlobalHelper sendEventToGAWithCategory:@"uiAction_Word" action:@"listenToWord" label:pronunciation value:[NSNumber numberWithInt:1]];
         }
     }
 }
@@ -354,6 +362,9 @@
         
         if ([self.soundsToPlay count] > 0) {
             [self playWord:[self.soundsToPlay lastObject]];
+            
+            //track word event with GA auto sent with Value 2
+            [DD2GlobalHelper sendEventToGAWithCategory:@"uiAction_Word" action:@"listenToWord" label:[pronunciationsArray lastObject] value:[NSNumber numberWithInt:2]];
         }
     }
 }

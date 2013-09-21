@@ -99,7 +99,23 @@
     } else if ([viewControllers indexOfObject:self] == 0) {
         // View is disappearing because it was popped from the stack
         NSLog(@"View controller was popped");
-       //track final settings
+        
+        //track event with GA to confirm final background color for this dictionary table view
+        NSString *actionForGA = [NSString stringWithFormat:@"BackgoundColor_%@", self.customBackgroundColorSaturation];
+        NSString *currentColorInHEX = [DD2GlobalHelper getHexStringForColor:self.customBackgroundColor];
+        [DD2GlobalHelper sendEventToGAWithCategory:@"uiTracking_Customisations" action:actionForGA label:currentColorInHEX value:nil];
+        
+        //track event with GA to confirm final font choice
+        NSString *currentFont = self.useDyslexieFont.on ? @"Dyslexie_Font" : @"System_Font";
+        [DD2GlobalHelper sendEventToGAWithCategory:@"uiTracking_Customisations" action:@"Font" label:currentFont value:nil];
+        
+        //track event with GA to confirm final play choice
+        NSString *currentPlayWordOnSelection = self.playOnSelectionSwitch.on ? @"Auto_Play" : @"Manual_Play";
+        [DD2GlobalHelper sendEventToGAWithCategory:@"uiTracking_Customisations" action:@"PlayOnSelection" label:currentPlayWordOnSelection value:nil];
+        
+        //track event with GA to confirm final spelling Variant choice
+        NSString *currentVariant = [self.spellingVariant isEqualToString:@"US"] ? @"US" : @"UK";
+        [DD2GlobalHelper sendEventToGAWithCategory:@"uiTracking_Customisations" action:@"Variant" label:currentVariant value:nil];
     }
 }
 

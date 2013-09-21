@@ -120,7 +120,19 @@
     id <GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
     [tracker set:kGAIScreenName value:screenName];
     [tracker send:[[GAIDictionaryBuilder createAppView] build]];
-    if (LOG_ANALYTICS) NSLog(@"send ScreenNamed : %@", screenName);
+    if (LOG_ANALYTICS) NSLog(@"GAsend ScreenNamed : %@", screenName);
+    
+}
+
++ (void)sendEventToGAWithCategory:(NSString *)category action:(NSString *)action label:(NSString *)label value:(NSNumber *)value {
+    //track event with GA
+    id <GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    [tracker send:[[GAIDictionaryBuilder createEventWithCategory:category action:action label:label value:value] build]];
+    if (value) {
+        if (LOG_ANALYTICS) NSLog(@"GAsend Event c:%@, a:%@, l:%@, v:%@", category, action, label, value);
+    } else {
+        if (LOG_ANALYTICS) NSLog(@"GAsend Event c:%@, a:%@, l:%@", category, action, label);
+    }
     
 }
 
