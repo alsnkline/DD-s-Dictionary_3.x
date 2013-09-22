@@ -8,6 +8,7 @@
 
 #import "DD2AllWordSearchViewController.h"
 #import "DisplayWordViewController.h"
+#import <QuartzCore/QuartzCore.h>   //for layer work on Add Word button
 
 @interface DD2AllWordSearchViewController () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, UISearchDisplayDelegate, DisplayWordViewControllerDelegate>
 
@@ -125,11 +126,17 @@
 {
     // Return the number of rows in the section.
     if (tableView == self.searchDisplayController.searchResultsTableView) {
-        return [self.filteredWords count];
+        if ([self.filteredWords count] > 0) {
+            return [self.filteredWords count];
+        } else {
+            return 1;   //for add word button
+        }
     } else {
         return [[self.allWordsWithSections objectForKey:[self.sections objectAtIndex:section]] count];
     }
 }
+
+#define ADD_WORD_BUTTON_TAG 1111
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -144,16 +151,34 @@
     cell.textLabel.font = self.useDyslexieFont ? [UIFont fontWithName:@"Dyslexiea-Regular" size:20] : [UIFont boldSystemFontOfSize:20];
     
     if (tableView == self.searchDisplayController.searchResultsTableView) {
-        //NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"spelling" ascending:YES selector:@selector(caseInsensitiveCompare:)];
-        //NSArray *sortedWords = [self.filteredWords sortedArrayUsingDescriptors:[NSArray arrayWithObjects:descriptor, nil]];
-        NSDictionary *word = [self.filteredWords objectAtIndex:indexPath.row];
-        cell.textLabel.text = [word objectForKey:@"spelling"];
+        if ([self.filteredWords count]>0) {
+            // clean out add button if there is one
+            if ([cell.contentView viewWithTag:ADD_WORD_BUTTON_TAG]) [[cell.contentView viewWithTag:ADD_WORD_BUTTON_TAG] removeFromSuperview];
+            NSDictionary *word = [self.filteredWords objectAtIndex:indexPath.row];
+            cell.textLabel.text = [word objectForKey:@"spelling"];
+            
+        } else {    //Search has no results
+            if (![cell.contentView viewWithTag:ADD_WORD_BUTTON_TAG]) { //button isn't already present
+                cell.textLabel.text = @"";
+                UIButton *button = [self getAddWordButton];
+                button.tag = ADD_WORD_BUTTON_TAG;
+                [cell.contentView addSubview:button];
+            }
+        }
     } else {
+        // clean out add button if there is one
+        if ([cell.contentView viewWithTag:ADD_WORD_BUTTON_TAG]) [[cell.contentView viewWithTag:ADD_WORD_BUTTON_TAG] removeFromSuperview];
+        // reset accessoryType
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        // set text for cell
         NSArray *wordsForSection = [self.allWordsWithSections objectForKey:[self.sections objectAtIndex:indexPath.section]];
         NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"spelling" ascending:YES selector:@selector(caseInsensitiveCompare:)];
         NSArray *sortedWords = [wordsForSection sortedArrayUsingDescriptors:[NSArray arrayWithObjects:descriptor, nil]];
         NSDictionary *word = [sortedWords objectAtIndex:indexPath.row];
         cell.textLabel.text = [word objectForKey:@"spelling"];
+        
+        //NSLog(@"After reconfigure Cell content view %@", cell.contentView.subviews);
+        //NSLog(@"cell: %@", cell.textLabel.text);
     }
     
     return cell;
@@ -228,7 +253,7 @@
     [DD2GlobalHelper sendEventToGAWithCategory:@"uiAction_Search" action:@"All_words" label:searchText value:nil];
     
     //track search event with Flurry
-    NSDictionary *flurryParameters = @{@"searchTerm": searchText};
+    NSDictionary *flurryParameters = @{searchText :@"searchTerm"};
     [Flurry logEvent:@"uiAction_Search" withParameters:flurryParameters];
 }
 
@@ -249,14 +274,35 @@
     return YES;
 }
 
+- (void) addwordButtonPressed {
+    [DD2AllWordSearchViewController showAddWordRequested:self.title and:self.searchDisplayController.searchBar.text];
+    self.searchDisplayController.searchBar.text = @"";
+    [self.searchDisplayController setActive:NO];
+}
 
-//DisplayWordViewControllerDelegate method
++ (void) showAddWordRequested:(NSString *)dictionaryTitle and:(NSString *)requestedText     //used if no results and user requests words to be added to dictionary
+{
+    UIAlertView *alertUser = [[UIAlertView alloc] initWithTitle:@"Word Requested"
+                                                        message:[NSString stringWithFormat:@"Thank you for asking for '%@' to be added to the list.\nDD with work to included it in an update soon.",requestedText]
+                                                       delegate:self cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+    [alertUser sizeToFit];
+    [alertUser show];
+    
+    
+    //track Add Word request event with GA
+    [DD2GlobalHelper sendEventToGAWithCategory:@"uiAction_WordAddRequest" action:@"word_add_request" label:requestedText value:nil];
+    //track Add Word request event with Flurry
+    NSDictionary *flurryParameters = @{requestedText: @"word_add_request"};
+    [Flurry logEvent:@"uiAction_WordAddRequest" withParameters:flurryParameters];
+    
+}
+
+#pragma mark - DisplayWordViewControllerDelegate method
 - (void)DisplayWordViewController:(DisplayWordViewController *)sender homophoneSelected:(NSDictionary *)word
 {
     NSLog(@"homonymSelected with word = %@",word);
-    //find the selected word
-    //find the indexPathOfHomophone (the new one so you can scroll to it)
-    // if in iphone
+    
     if (![self getSplitViewWithDisplayWordViewController]) { //iPhone
         //pop old word off navigation controller
         [self.navigationController popViewControllerAnimated:NO]; //Not animated as this is just preparing the Navigation Controller stack for the new word to be pushed on.
@@ -286,6 +332,36 @@
         [self.tableView selectRowAtIndexPath:indexPathOfHomophone animated:YES scrollPosition:UITableViewScrollPositionMiddle];
         [self tableView:self.tableView didSelectRowAtIndexPath:indexPathOfHomophone];
     }
+}
+
+- (UIButton *)getAddWordButton
+{
+    UIButton *myButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [myButton addTarget:self action:@selector(addwordButtonPressed) forControlEvents:UIControlEventTouchUpInside];
+    
+    CGFloat buttonWidth = 225;  //hard coded for now
+    CGFloat leftSpacing = (self.tableView.frame.size.width/2)-(buttonWidth/2);  //centralizing the button in the tableView
+    CGFloat cRadius = 8; //corner radius for button
+    CGFloat spacing = 4; // the amount of spacing to appear between image and title
+    //NSLog(@"spacing = %f, buttonWidth = %f", leftSpacing, buttonWidth);
+    myButton.frame = CGRectMake(leftSpacing, 4, buttonWidth, 45);
+    
+    [myButton setImage:[UIImage imageNamed:@"resources.bundle/Images/dinoOnlyIcon32x32.png"] forState:UIControlStateNormal];
+    [myButton setTitle:@"Ask DD to add this word" forState:UIControlStateNormal];
+    myButton.tintColor = [UIColor grayColor];
+    
+    UIImage *backImage = [DisplayWordViewController createImageOfColor:self.customBackgroundColor ofSize:CGSizeMake(40, 25) withCornerRadius:cRadius];
+    UIImage *stretchableImage = [backImage resizableImageWithCapInsets:UIEdgeInsetsMake(12, 12, 12, 12)];
+    [myButton setBackgroundImage:stretchableImage forState:UIControlStateNormal];
+    
+    myButton.layer.masksToBounds = YES;
+    myButton.layer.cornerRadius = cRadius;
+    myButton.layer.needsDisplayOnBoundsChange = YES;
+    
+    myButton.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, spacing);
+    myButton.titleEdgeInsets = UIEdgeInsetsMake(0, spacing, 0, 0);
+    
+    return myButton;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
