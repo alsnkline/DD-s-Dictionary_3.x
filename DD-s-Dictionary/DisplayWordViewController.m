@@ -95,7 +95,7 @@
         
         if (self.useDyslexieFont) {
             [self.spelling setFont:[UIFont fontWithName:@"Dyslexiea-Regular" size:spellingFontsize]];
-            UIFont *font = [UIFont fontWithName:@"Dyslexiea-Regular" size:30];
+            UIFont *font = [UIFont fontWithName:@"Dyslexiea-Regular" size:25];
             for (UIButton * button in self.homophoneButtons) {
                 button.titleLabel.font = font;
             }
