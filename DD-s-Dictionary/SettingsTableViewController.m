@@ -79,6 +79,7 @@
     [self setCellBackgroundColor];
     [self manageBackgroundColorLable];
     
+    //track screen with GA
     [DD2GlobalHelper sendViewToGAWithViewName:@"Settings Tab Shown"];
     
     [super viewDidAppear:animated];
@@ -116,6 +117,14 @@
         //track event with GA to confirm final spelling Variant choice
         NSString *currentVariant = [self.spellingVariant isEqualToString:@"US"] ? @"US" : @"UK";
         [DD2GlobalHelper sendEventToGAWithCategory:@"uiTracking_Customisations" action:@"Variant" label:currentVariant value:nil];
+        
+        //track final settings with Flurry
+        NSDictionary *flurryParameters = @{self.customBackgroundColorSaturation : @"backgroundColorSaturation",
+                                           [DD2GlobalHelper getHexStringForColor:self.customBackgroundColor] : @"backgroundColorInHEX",
+                                           self.useDyslexieFont.on ? @"Dyslexie_Font" : @"System_Font" : @"Font",
+                                           self.playOnSelectionSwitch.on ? @"Auto_Play" : @"Manual_Play" : @"PlayOnSelection",
+                                           [self.spellingVariant isEqualToString:@"US"] ? @"US" : @"UK" : @"Variant"};
+        [Flurry logEvent:@"uiTracking_Customisations" withParameters:flurryParameters];
     }
 }
 
@@ -514,6 +523,7 @@
 	BOOL	bCanSendMail = [MFMailComposeViewController canSendMail];
 //    BOOL	bCanSendMail = NO; //for testing the no email alert
     
+    //track screen with GA
     [DD2GlobalHelper sendViewToGAWithViewName:[NSString stringWithFormat:@"SendEmail triggered"]];
 
 	if (!bCanSendMail)

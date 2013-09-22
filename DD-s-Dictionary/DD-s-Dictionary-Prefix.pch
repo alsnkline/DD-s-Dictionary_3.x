@@ -18,4 +18,6 @@
     #import "GAI.h"
     #import "GAIDictionaryBuilder.h"
     #import "GAIFields.h"
+//for Flurry
+    #import "Flurry.h" 
 #endif

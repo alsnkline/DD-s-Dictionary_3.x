@@ -74,8 +74,11 @@
 }
 
 - (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
-    
+    //track screen with GA
     [DD2GlobalHelper sendViewToGAWithViewName:@"Dict Search Started"];
+    
+    //track search start with Flurry
+    [Flurry logEvent:@"Dict Search Started"];
 }
 
 #pragma mark - Table view data source
@@ -223,6 +226,10 @@
     
     //track search event with GA
     [DD2GlobalHelper sendEventToGAWithCategory:@"uiAction_Search" action:@"All_words" label:searchText value:nil];
+    
+    //track search event with Flurry
+    NSDictionary *flurryParameters = @{@"searchTerm": searchText};
+    [Flurry logEvent:@"uiAction_Search" withParameters:flurryParameters];
 }
 
 #pragma mark - UISearchDisplayController Delegate Methods
@@ -296,6 +303,7 @@
 
 -(void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    //track screen with GA
     [DD2GlobalHelper sendViewToGAWithViewName:@"Search Tab Shown"];
 }
 

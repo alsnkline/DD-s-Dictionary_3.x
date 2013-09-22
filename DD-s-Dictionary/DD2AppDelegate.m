@@ -11,6 +11,7 @@
 #import <AVFoundation/AVFoundation.h> //for audioPlayer
 
 //core data framework, systemConfiguration framework, libz.dylib added for Google Analytics
+//systemConfiguration framework and security framework (as we have v4.2.3), for Flurry
 
 @implementation DD2AppDelegate
 
@@ -18,6 +19,7 @@
 {
     // Override point for customization after application launch.
     
+    //Google Analytics
     // Optional: automatically send uncaught exceptions to Google Analytics.
     [GAI sharedInstance].trackUncaughtExceptions = YES;
     
@@ -34,13 +36,25 @@
         //        kGAILogLevelVerbose = 4
 
     
-    // Initialize tracker.
+    // Initialize GA tracker.
     [[GAI sharedInstance] trackerWithTrackingId:@"UA-37793922-2"];  //use -1 for any production releases
-//    [[GAI sharedInstance] setOptOut:YES];       //uncomment to disable GA across entire app.
+    //[[GAI sharedInstance] setOptOut:YES];       //uncomment to disable GA across entire app.
     [[GAI sharedInstance] setDryRun:YES];       //stop data from being sent to cloud, set to NO for production ship
+    //end GA setup
     
+    //track screen with GA for App launch.
     [DD2GlobalHelper sendViewToGAWithViewName:@"DD's Dictionary launched"];
     
+    
+    //Flurry Analytics
+    [Flurry setCrashReportingEnabled:NO];  //using GA for now
+    //note: iOS only allows one crash reporting tool per app; if using another, set to: NO
+    [Flurry startSession:@"2SF8TKQGW6Q6D2BYXR4T"];
+    //end Flurry
+    
+    //track app duration and active session with Flurry
+    [Flurry logEvent:@"App_duration" timed:YES];
+    [Flurry logEvent:@"App_initial_active" timed:YES];
     
     // Setting up audioSession
     [self setupAudioSession];
@@ -59,6 +73,9 @@
 {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    //track app duration with Flurry
+    [Flurry endTimedEvent:@"App_initial_active" withParameters:nil];
+    [Flurry endTimedEvent:@"App_active" withParameters:nil];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
@@ -69,11 +86,15 @@
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    //track app active session with Flurry
+    [Flurry logEvent:@"App_active" timed:YES];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    //track app duration with Flurry
+    [Flurry endTimedEvent:@"App_duration" withParameters:nil];
 }
 
 -(void)setupAudioSession

@@ -83,6 +83,11 @@
     
 }
 
+-(void)viewDidAppear:(BOOL)animated {
+    //track all page views with Flurry
+    [Flurry logAllPageViews:self];
+}
+
 -(void)onNotification:(NSNotification *)notification
 {
     if ([[notification name] isEqualToString:@"spellingVariantChanged"]) {

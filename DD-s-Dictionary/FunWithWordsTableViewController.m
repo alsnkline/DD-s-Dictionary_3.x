@@ -119,6 +119,7 @@
 
 -(void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    //track screen with GA
     [DD2GlobalHelper sendViewToGAWithViewName:@"Fun With Words Tab Shown"];
 }
 

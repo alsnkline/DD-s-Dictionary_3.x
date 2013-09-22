@@ -134,6 +134,10 @@
     if (self.isViewLoaded && self.view.window) {
         //viewController is visible track with GA allowing iPad stats to show which word got loaded. Appington
         [DD2GlobalHelper sendViewToGAWithViewName:[NSString stringWithFormat:@"Viewed Word :%@", self.spelling.text]];
+        
+        //track word view with Flurry
+        NSDictionary *flurryParameters = @{self.spelling.text :@"Viewed Word"};
+        [Flurry logEvent:@"uiAction_Word" withParameters:flurryParameters];
     }
 }
 
@@ -283,6 +287,11 @@
             
             //track word event with GA auto sent with Value 2
             [DD2GlobalHelper sendEventToGAWithCategory:@"uiAction_Word" action:@"listenToWord" label:pronunciation value:[NSNumber numberWithInt:2]];
+            
+            //track word view with Flurry
+            NSDictionary *flurryParameters = @{pronunciation : @"listenToWord",
+                                               @"Auto_Play" : @"wordPlayMode"};
+            [Flurry logEvent:@"uiAction_Word" withParameters:flurryParameters];
         };
     } else {
         NSMutableArray *pronunciationsArray = [[pronunciations allObjects] mutableCopy];
@@ -293,6 +302,11 @@
         
         //track word event with GA auto sent with Value 2
         [DD2GlobalHelper sendEventToGAWithCategory:@"uiAction_Word" action:@"listenToWord" label:[pronunciationsArray lastObject] value:[NSNumber numberWithInt:2]];
+        
+        //track word view with Flurry
+        NSDictionary *flurryParameters = @{[pronunciationsArray lastObject] : @"listenToWord",
+                                           @"Auto_Play" : @"wordPlayMode"};
+        [Flurry logEvent:@"uiAction_Word" withParameters:flurryParameters];
     }
     
 }
@@ -328,6 +342,11 @@
             
             //track word event with GA manual sent with Value 1
             [DD2GlobalHelper sendEventToGAWithCategory:@"uiAction_Word" action:@"listenToWord" label:pronunciation value:[NSNumber numberWithInt:1]];
+            
+            //track word view with Flurry
+            NSDictionary *flurryParameters = @{pronunciation : @"listenToWord",
+                                               @"Manual_Play" : @"wordPlayMode"};
+            [Flurry logEvent:@"uiAction_Word" withParameters:flurryParameters];
         }
     }
 }
@@ -365,6 +384,11 @@
             
             //track word event with GA auto sent with Value 2
             [DD2GlobalHelper sendEventToGAWithCategory:@"uiAction_Word" action:@"listenToWord" label:[pronunciationsArray lastObject] value:[NSNumber numberWithInt:2]];
+            
+            //track word view with Flurry
+            NSDictionary *flurryParameters = @{[pronunciationsArray lastObject] : @"listenToWord",
+                                               @"Auto_Play" : @"wordPlayMode"};
+            [Flurry logEvent:@"uiAction_Word" withParameters:flurryParameters];
         }
     }
 }
@@ -404,6 +428,7 @@
 
 -(void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    //track screen with GA
     [DD2GlobalHelper sendViewToGAWithViewName:[NSString stringWithFormat:@"Viewed Word :%@", self.spelling.text]];
 }
 
