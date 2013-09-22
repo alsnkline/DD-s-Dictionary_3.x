@@ -461,6 +461,7 @@
             }
             
             NSFileManager *localFileManager = [[NSFileManager alloc] init];
+            [segue.destinationViewController setCustomBackgroundColor:self.customBackgroundColor];  //set up background color for all.
             switch (switchValue) {
                 case 0: {
                     //set up about page

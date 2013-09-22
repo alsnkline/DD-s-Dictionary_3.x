@@ -251,6 +251,11 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    return YES;
+}
+
 - (DisplayWordViewController *)getSplitViewWithDisplayWordViewController
 {
     id dwvc = [self.splitViewController.viewControllers lastObject];

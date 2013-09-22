@@ -16,6 +16,7 @@
 @synthesize urlToDisplay = _urlToDisplay;
 @synthesize stringForTitle =_stringForTitle;
 @synthesize webView = _webView;
+@synthesize customBackgroundColor = _customBackgroundColor;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -44,6 +45,9 @@
     NSLog(@"urlToDisplay = %@", self.urlToDisplay);
     
     [self.webView loadRequest:[NSURLRequest requestWithURL:self.urlToDisplay]];
+    
+    [self.webView setOpaque:NO];
+    self.webView.backgroundColor = self.customBackgroundColor;
     
 //    self.webView.scrollView.minimumZoomScale = 0.2;
 //    self.webView.scrollView.maximumZoomScale = 5;

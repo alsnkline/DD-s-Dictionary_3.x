@@ -42,6 +42,18 @@
     }
 }
 
+-(BOOL)useDyslexieFont{
+    if (!_useDyslexieFont) _useDyslexieFont = [[NSUserDefaults standardUserDefaults] boolForKey:USE_DYSLEXIE_FONT];
+    return _useDyslexieFont;
+}
+
+-(void)setUseDyslexieFont:(BOOL)useDyslexieFont {
+    if (useDyslexieFont != _useDyslexieFont) {
+        _useDyslexieFont = useDyslexieFont;
+        [self.tableView reloadData];
+    }
+}
+
 -(UIColor *)customBackgroundColor{
     if (!_customBackgroundColor) {
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -100,21 +112,19 @@
 {
     if ([[notification name] isEqualToString:@"customBackgroundColorChanged"]) {
         NSDictionary *userinfo = [notification userInfo];
-        self.customBackgroundColor = [userinfo objectForKey:@"newColor"];
+        self.customBackgroundColor = [userinfo objectForKey:@"newValue"];
+    }
+    
+    if ([[notification name] isEqualToString:@"useDyslexiFontChanged"]) {
+        NSDictionary *userinfo = [notification userInfo];
+        self.useDyslexieFont = [[userinfo objectForKey:@"newValue"] boolValue];
     }
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [self setupColor];
-    
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    
-    //set useDyslexieFont if necessary
-    if (self.useDyslexieFont != [defaults boolForKey:USE_DYSLEXIE_FONT]) {
-        self.useDyslexieFont = [defaults boolForKey:USE_DYSLEXIE_FONT];
-        [self setVisibleCellsCellTextLabelFont];
-    }
+    [self setVisibleCellsCellTextLabelFont];
 }
 
 -(void)viewDidAppear:(BOOL)animated {
@@ -139,8 +149,10 @@
                                              selector:@selector(onNotification:)
                                                  name:@"customBackgroundColorChanged" object:nil];
 
-    
-    //To DO clean up useDylexie font and use notification - possibly subclass DD2SetTrackTableViewController
+    //registering for Font change notifications remember to dealloc
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(onNotification:)
+                                                 name:@"useDyslexiFontChanged" object:nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -296,6 +308,11 @@
 
         }
     }
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    return YES;
 }
 
 -(void)dealloc

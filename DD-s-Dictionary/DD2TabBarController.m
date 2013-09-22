@@ -177,6 +177,15 @@
     [self setViewControllers:listOfTabVC animated:NO];
 }
 
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation //iOS 5 not 6
+{
+    if ([self getSplitViewWithDisplayWordViewController]) {
+        return YES;
+    } else {
+        return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    }
+}
+
 - (DisplayWordViewController *)getSplitViewWithDisplayWordViewController
 {
     id dwvc = [self.splitViewController.viewControllers lastObject];

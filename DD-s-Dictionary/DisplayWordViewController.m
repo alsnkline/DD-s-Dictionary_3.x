@@ -471,11 +471,11 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation //iOS 5 not 6
 {
-//    if ([self splitViewWithDisplayWordViewController]) {
+    if ([self getSplitViewWithDisplayWordViewController]) {
         return YES;
-//    } else {
-//        return (interfaceOrientation == UIInterfaceOrientationPortrait);
-//    } iOS 6 makes supporting rotation on iPhone harder (changes in how its done - so just supporting portrait for now - upsidedown is also out without category on UINavController and UITabController to override the default no upsidedown on iPhone. http://stackoverflow.com/questions/12520030/how-to-force-a-uiviewcontroller-to-portait-orientation-in-ios-6
+    } else {
+        return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    } //iOS 6 makes supporting rotation on iPhone harder (changes in how its done - so just supporting portrait for now - upsidedown is also out without category on UINavController and UITabController to override the default no upsidedown on iPhone. http://stackoverflow.com/questions/12520030/how-to-force-a-uiviewcontroller-to-portait-orientation-in-ios-6
     
 }
 

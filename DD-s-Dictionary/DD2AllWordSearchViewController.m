@@ -383,6 +383,11 @@
     [DD2GlobalHelper sendViewToGAWithViewName:@"Search Tab Shown"];
 }
 
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    return YES;
+}
+
 - (DisplayWordViewController *)getSplitViewWithDisplayWordViewController
 {
     id dwvc = [self.splitViewController.viewControllers lastObject];

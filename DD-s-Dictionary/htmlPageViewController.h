@@ -12,5 +12,6 @@
 
 @property (nonatomic, strong) NSURL *urlToDisplay;
 @property (nonatomic, strong) NSString *stringForTitle;
+@property (nonatomic, strong) UIColor *customBackgroundColor;
 
 @end
