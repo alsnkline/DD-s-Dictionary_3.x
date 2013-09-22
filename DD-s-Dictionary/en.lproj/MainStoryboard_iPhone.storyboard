@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12E55" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="sbX-O3-UlK">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12F37" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="sbX-O3-UlK">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
@@ -170,6 +170,7 @@
                         <segue destination="H4M-dp-IQz" kind="relationship" relationship="viewControllers" id="dfj-mj-NyH"/>
                         <segue destination="S1P-W5-gW6" kind="relationship" relationship="viewControllers" id="byY-hl-Qse"/>
                         <segue destination="5Tl-EF-zcZ" kind="relationship" relationship="viewControllers" id="0YQ-hj-zda"/>
+                        <segue destination="kC2-9h-nAM" kind="relationship" relationship="viewControllers" id="zwp-8P-TSo"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3T7-7f-gnd" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -194,6 +195,23 @@
             </objects>
             <point key="canvasLocation" x="-81" y="1441"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="MBW-Tx-dz9">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="kC2-9h-nAM" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" systemItem="downloads" id="MVV-iz-zHG"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="asi-WT-Rkv">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="EyP-35-0cz" kind="relationship" relationship="rootViewController" id="ea0-4W-FdZ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hCS-qw-vsh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-81" y="2102"/>
+        </scene>
         <!--Settings Table View Controller - Settings-->
         <scene sceneID="zhM-OU-GVe">
             <objects>
@@ -212,7 +230,7 @@
                                             <rect key="frame" x="10" y="1" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Spelling Varient: UK" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0Np-cH-LeC">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Spelling Variant: UK" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0Np-cH-LeC">
                                                     <rect key="frame" x="12" y="11" width="191" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -350,7 +368,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Your Dictionaries" id="bot-MV-Chz">
+                            <tableViewSection headerTitle="Word Collections" id="bot-MV-Chz">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="checkmark" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="VMw-of-3If" style="IBUITableViewCellStyleDefault" id="ahg-5d-8Me">
                                         <rect key="frame" x="0.0" y="322" width="320" height="45"/>
@@ -532,7 +550,185 @@ All rights reserved.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pB1-m4-0bo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="877" y="1435"/>
+            <point key="canvasLocation" x="1216" y="1226"/>
+        </scene>
+        <!--Settings Table View Controller-->
+        <scene sceneID="39X-ad-STg">
+            <objects>
+                <viewController id="EyP-35-0cz" customClass="DD2SettingsTableViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Vku-aN-rYt">
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="vED-u4-naa">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Settings Slider Switch" id="J5I-aw-4q7">
+                                        <rect key="frame" x="0.0" y="46" width="320" height="45"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="0.0" width="300" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Spelling Variant : US" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="pO5-qs-FLk">
+                                                    <rect key="frame" x="12" y="11" width="191" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" id="Eo9-ZM-b49">
+                                                    <rect key="frame" x="209" y="11" width="81" height="23"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </slider>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Settings Switch" id="R1U-au-VWh">
+                                        <rect key="frame" x="0.0" y="91" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="0.0" width="300" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="60E-Mw-Wsd">
+                                                    <rect key="frame" x="211" y="8" width="79" height="27"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </switch>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Say word on pick" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Vp0-mW-GdE">
+                                                    <rect key="frame" x="12" y="11" width="191" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Settings Slider" id="R1j-d1-bJr">
+                                        <rect key="frame" x="0.0" y="135" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="0.0" width="300" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" id="6AE-v2-ZpP">
+                                                    <rect key="frame" x="18" y="11" width="264" height="23"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </slider>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="checkmark" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Settings Collection" id="cPK-b9-1QF">
+                                        <rect key="frame" x="0.0" y="179" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="0.0" width="280" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="1st Words" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="SNr-bk-2ga">
+                                                    <rect key="frame" x="15" y="11" width="265" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Settings Extra Disclosure" id="kKr-Z5-WM0">
+                                        <rect key="frame" x="0.0" y="223" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="0.0" width="280" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="About Dy-Di" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mbS-UQ-2n9">
+                                                    <rect key="frame" x="15" y="11" width="265" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Settings Feedback" id="OmG-Yq-jdo">
+                                        <rect key="frame" x="0.0" y="267" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="0.0" width="300" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Give us your feedback" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2mh-Wm-ARB">
+                                                    <rect key="frame" x="15" y="11" width="320" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Settings Small Print" id="ZNM-MT-GkP">
+                                        <rect key="frame" x="0.0" y="311" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="0.0" width="280" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Small Print" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="flC-nL-R3z">
+                                                    <rect key="frame" x="15" y="11" width="265" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Settings Version" id="7t8-cZ-Bob">
+                                        <rect key="frame" x="0.0" y="355" width="320" height="45"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="0.0" width="300" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Version Lable" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="tij-Ff-dXo">
+                                                    <rect key="frame" x="15" y="11" width="265" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="EyP-35-0cz" id="DVS-w2-WOC"/>
+                                    <outlet property="delegate" destination="EyP-35-0cz" id="z8n-n7-t9P"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="tgO-fs-7r2"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="f3S-eD-bmc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="400" y="2102"/>
         </scene>
         <!--Display Word View Controller-->
         <scene sceneID="UQP-3D-Kqk">
@@ -824,6 +1020,103 @@ All rights reserved.</string>
         <image name="resources.bundle/Images/DyDiWrite32-32.png" width="16" height="16"/>
         <image name="resources.bundle/Images/FunWithWordsIconV1.png" width="16" height="16"/>
     </resources>
+    <classes>
+        <class className="DD2AllWordSearchViewController" superclassName="DD2SetTrackTableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DD2AllWordSearchViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="DD2SetTrackTableViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DD2SetTrackTableViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="DD2SettingsTableViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DD2SettingsTableViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="backgroundHueSliderChanged:" candidateClass="UISlider"/>
+                <relationship kind="action" name="backgroundSaturationSliderChanged:" candidateClass="UISlider"/>
+                <relationship kind="action" name="playOnSelectionSwitchChanged:" candidateClass="UISwitch"/>
+                <relationship kind="action" name="sendEmail:"/>
+                <relationship kind="action" name="spellingVariantSliderChanged:" candidateClass="UISlider"/>
+                <relationship kind="action" name="useDyslexieFontSwitchChanged:" candidateClass="UISwitch"/>
+                <relationship kind="action" name="voiceHintsSwitchChanged:" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="backgroundHueSlider" candidateClass="UISlider"/>
+                <relationship kind="outlet" name="backgroundSaturationSlider" candidateClass="UISlider"/>
+                <relationship kind="outlet" name="customBackgroundColorLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="customSpellingVariantLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="playOnSelectionSwitch" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="spellingVariantSlider" candidateClass="UISlider"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="useDyslexieFont" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="useVoiceHints" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="versionLable" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="voiceHintsTableCell" candidateClass="UITableViewCell"/>
+            </relationships>
+        </class>
+        <class className="DD2TabBarController" superclassName="UITabBarController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DD2TabBarController.h"/>
+        </class>
+        <class className="DD2WordListTableViewController" superclassName="DD2SetTrackTableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DD2WordListTableViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="DisplayWordViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DisplayWordViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="homophoneButtonPressed:" candidateClass="UIButton"/>
+                <relationship kind="action" name="listenToWord:"/>
+                <relationship kind="outlet" name="heteronymListenButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="homophoneButton1" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="homophoneButton2" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="homophoneButton3" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="homophoneButton4" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="homophoneButton5" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="homophoneButton6" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="listenButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="spelling" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="toolbar" candidateClass="UIToolbar"/>
+                <relationship kind="outlet" name="wordView" candidateClass="UIView"/>
+                <relationship kind="outletCollection" name="homophoneButtons" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="FunWithWordsTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FunWithWordsTableViewController.h"/>
+        </class>
+        <class className="SettingsTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingsTableViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="backgroundHueSliderChanged:" candidateClass="UISlider"/>
+                <relationship kind="action" name="backgroundSaturationSliderChanged:" candidateClass="UISlider"/>
+                <relationship kind="action" name="playOnSelectionSwitchChanged:" candidateClass="UISwitch"/>
+                <relationship kind="action" name="sendEmail:"/>
+                <relationship kind="action" name="spellingVariantSliderChanged:" candidateClass="UISlider"/>
+                <relationship kind="action" name="useDyslexieFontSwitchChanged:" candidateClass="UISwitch"/>
+                <relationship kind="action" name="voiceHintsSwitchChanged:" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="backgroundHueSlider" candidateClass="UISlider"/>
+                <relationship kind="outlet" name="backgroundSaturationSlider" candidateClass="UISlider"/>
+                <relationship kind="outlet" name="customBackgroundColorLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="customSpellingVariantLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="playOnSelectionSwitch" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="spellingVariantSlider" candidateClass="UISlider"/>
+                <relationship kind="outlet" name="useDyslexieFont" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="useVoiceHints" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="versionLable" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="voiceHintsTableCell" candidateClass="UITableViewCell"/>
+            </relationships>
+        </class>
+        <class className="htmlPageViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/htmlPageViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

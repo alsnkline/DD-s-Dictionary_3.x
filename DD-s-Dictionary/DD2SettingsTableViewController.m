@@ -1,18 +1,19 @@
 //
-//  SettingsTableViewController.m
-//  DDPrototype
+//  DD2SettingsTableViewController.m
+//  DD-s-Dictionary
 //
-//  Created by Alison Kline on 8/18/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Created by Alison KLINE on 9/21/13.
+//  Copyright (c) 2013 Alison KLINE. All rights reserved.
 //
 
-#import "SettingsTableViewController.h"
+#import "DD2SettingsTableViewController.h"
 #import "NSUserDefaultKeys.h"
 #import <MessageUI/MessageUI.h>
 #import "htmlPageViewController.h"
 
-@interface SettingsTableViewController () <MFMailComposeViewControllerDelegate>
+@interface DD2SettingsTableViewController () <UITableViewDataSource, UITableViewDelegate, MFMailComposeViewControllerDelegate>
 
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UISlider *spellingVariantSlider;
 @property (weak, nonatomic) IBOutlet UISwitch *playOnSelectionSwitch;
 @property (weak, nonatomic) IBOutlet UISwitch *useVoiceHints;
@@ -32,7 +33,8 @@
 
 @end
 
-@implementation SettingsTableViewController
+@implementation DD2SettingsTableViewController
+@synthesize tableView = _tableView;
 @synthesize spellingVariantSlider = _spellingVariantSlider;
 @synthesize playOnSelectionSwitch = _playOnSelectionSwitch;
 @synthesize useVoiceHints =_useVoiceHints;
@@ -47,6 +49,7 @@
 @synthesize customBackgroundColorHue = _customBackgroundColorHue;
 @synthesize customBackgroundColorSaturation = _customBackgroundColorSaturation;
 @synthesize customBackgroundColor = _backgroundColor;
+@synthesize collectionNames = _collectionNames;
 
 #define SATURATION_MULTIPLIER 10
 //Saturation slider runs from 0-2 to allow me to use interger rounding - storage and UIColor calulations assume a 0-1 range, so need to / and * where appropriate by a factor to deliver two levels.
@@ -83,16 +86,15 @@
     [DD2GlobalHelper sendViewToGAWithViewName:@"Settings Tab Shown"];
     
     [super viewDidAppear:animated];
-
+    
 }
-
 
 - (void)viewDidDisappear:(BOOL)animated
 {
     //reporting to partners only when exiting settings back to dictionary (as opposed to into small print, about, or other.
     //could be in viewWillDisappear, viewController stack seems the same.
     NSArray *viewControllers = self.navigationController.viewControllers;
-//    NSLog(@"index of self on viewControllers %ld", (unsigned long)[viewControllers indexOfObject:self]); //strange this wasn't logging what I expected, always showed 0 as the settings view was first in list, but code seemed to work. http://stackoverflow.com/questions/1816614/viewwilldisappear-determine-whether-view-controller-is-being-popped-or-is-showi
+    //    NSLog(@"index of self on viewControllers %ld", (unsigned long)[viewControllers indexOfObject:self]); //strange this wasn't logging what I expected, always showed 0 as the settings view was first in list, but code seemed to work. http://stackoverflow.com/questions/1816614/viewwilldisappear-determine-whether-view-controller-is-being-popped-or-is-showi
     
     if (viewControllers.count > 1 && [viewControllers objectAtIndex:viewControllers.count-2] == self) {
         // View is disappearing because a new view controller was pushed onto the stack
@@ -135,7 +137,7 @@
     {
         cell.backgroundColor = self.customBackgroundColor;
     }
-
+    
 }
 
 - (void) setCellTextLabelFont
@@ -145,17 +147,15 @@
     {
         cell.textLabel.font = self.useDyslexieFont ? [UIFont fontWithName:@"Dyslexiea-Regular" size:18] : [UIFont boldSystemFontOfSize:20];
     }
-    
 }
 
-- (IBAction)playOnSelectionSwitchChanged:(UISwitch *)sender 
+- (IBAction)playOnSelectionSwitchChanged:(UISwitch *)sender
 {
     [[NSUserDefaults standardUserDefaults] setBool:sender.on forKey:PLAY_WORDS_ON_SELECTION];
     [[NSUserDefaults standardUserDefaults] synchronize];
     //Notify that play on selected has changed
     NSDictionary *userInfo = [NSDictionary dictionaryWithObject:sender.on ? @"YES" : @"NO" forKey:@"newValue"];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"playWordsOnSelectionChanged" object:self userInfo:userInfo];
-
 }
 
 - (IBAction)voiceHintsSwitchChanged:(UISwitch *)sender
@@ -166,7 +166,6 @@
     [[NSUserDefaults standardUserDefaults] setBool:!useVoiceHints forKey:NOT_USE_VOICE_HINTS];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
-
 
 - (IBAction)useDyslexieFontSwitchChanged:(UISwitch *)sender
 {
@@ -202,7 +201,6 @@
     [self backgroundColorChanged];
 }
 
-
 - (void) backgroundColorChanged
 {
     self.customBackgroundColor = [UIColor colorWithHue:[self.customBackgroundColorHue floatValue]  saturation:[self.customBackgroundColorSaturation floatValue] brightness:1 alpha:1];
@@ -212,7 +210,6 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:@"customBackgroundColorChanged" object:self userInfo:userInfo];
     
     [self setCellBackgroundColor];
-    
 }
 
 - (void) manageBackgroundColorLable
@@ -261,11 +258,9 @@
     }
 }
 
-
-
-- (id)initWithStyle:(UITableViewStyle)style
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    self = [super initWithStyle:style];
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
     }
@@ -283,30 +278,11 @@
     
     if (TEST_APPINGTON_ON) self.voiceHintsAvailable = YES; //for testing APPINGTON, set in DD2GlobalHelper.h
     
-    if (self.voiceHintsAvailable) {
-        self.voiceHintsTableCell.hidden = NO;
-    } else {
-        self.voiceHintsTableCell.hidden = YES;
-    }
-
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-}
-
-- (void)viewDidUnload
-{
-    [self setPlayOnSelectionSwitch:nil];
-    [self setVersionLable:nil];
-    [self setVoiceHintsTableCell:nil];
-    [self setUseVoiceHints:nil];
-    [self setSpellingVariant:nil];
-    [self setCustomSpellingVariantLabel:nil];
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
+//    if (self.voiceHintsAvailable) {       //just don't create cell if you don't need it!
+//        self.voiceHintsTableCell.hidden = NO;
+//    } else {
+//        self.voiceHintsTableCell.hidden = YES;
+//    }
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -316,70 +292,35 @@
 
 #pragma mark - Table view data source
 
-//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-//{
-//#warning Potentially incomplete method implementation.
-//    // Return the number of sections.
-//    return 0;
-//}
-//
-//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-//{
-//#warning Incomplete method implementation.
-//    // Return the number of rows in the section.
-//    return 0;
-//}
-//
-//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    static NSString *CellIdentifier = @"Cell";
-//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-//    
-//    // Configure the cell...
-//    
-//    return cell;
-//}
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 3;
 }
-*/
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    if (section == 0)
+        return 6;
+    if (section == 1)
+        return [self.collectionNames count];
+    return 5;
 }
-*/
 
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    if (section == 2) {
+        return @"Extras";
+    } else if (section == 1) {
+        return @"Word Collections";
+    } else {
+        return nil;
+    }
 }
-*/
 
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
+-(NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
+    if (section == 2) {
+        return @"Thank you - Alison\r\n\r\nCopyright © 2013 Alison Kline.\r\nAll rights reserved.";
+    } else {
+        return nil;
+    }
 }
-*/
-
-#pragma mark - Table view delegate
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -391,7 +332,7 @@
         // we are in an iOS 5.0, 5.1 or 5.1.1 device
         if (indexPath.section == 0 && indexPath.row == 2) voiceHintsRow = TRUE;
     }
-
+    
     if (voiceHintsRow && !self.voiceHintsAvailable) {
         return 0;
     } else {
@@ -404,124 +345,62 @@
     cell.backgroundColor = self.customBackgroundColor;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    NSLog(@"Indexpath of Selected Cell = %@", indexPath);
-    UITableViewCell *selectedCell = [self.tableView cellForRowAtIndexPath:indexPath];
-    self.selectedCellIndexPath = indexPath;
-    NSLog(@"selectedCell Tag = %d", selectedCell.tag);
-    if (selectedCell.tag  == 3) {
-       // http://stackoverflow.com/questions/3124080/app-store-link-for-rate-review-this-app - extend to encourage app store reviews
-        [self sendEmail:selectedCell];
-    } else if (selectedCell.tag == 1) {
-        [self performSegueWithIdentifier:@"display WebView" sender:selectedCell];
-    }
-}
-
--(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    //used to set up webView depending upon which item was selected.
-    if ([segue.identifier isEqualToString:@"display WebView"]) {
-        if ([sender isKindOfClass:[UITableViewCell class]]) {
-            UITableViewCell *cell = (UITableViewCell *)sender;
-            [segue.destinationViewController setStringForTitle:cell.textLabel.text];
-            NSLog(@"IndexPath of selectedcell = %@", self.selectedCellIndexPath);
-            NSLog(@"Cell Lable = %@", cell.textLabel.text);
-            
-            
-            NSInteger switchValue;
-            
-            if ([[NSIndexPath class] respondsToSelector:@selector(indexPathForItem:inSection:)]) {
-                // we are in an iOS 6.0 device and can use cell position to test for what was selected.
-                if ([self.selectedCellIndexPath isEqual:[NSIndexPath indexPathForItem:0 inSection:2]]) {
-                    switchValue = 0; //About
-                } else if ([self.selectedCellIndexPath isEqual:[NSIndexPath indexPathForItem:3 inSection:2]]) {
-                    switchValue = 1; //Small Print
-                } else if ([self.selectedCellIndexPath isEqual:[NSIndexPath indexPathForItem:1 inSection:2]]) {
-                    switchValue = 2; //The Dysle+ie font
-                } else {
-                    switchValue = 3;
-                }
-            } else {
-                // we are in an iOS 5.0, 5.1 or 5.1.1 device
-                if ([cell.textLabel.text isEqualToString:@"About Dy-Di"]) {
-                    switchValue = 0; //About
-                } else if ([cell.textLabel.text isEqualToString:@"Small Print"]) {
-                    switchValue = 1; //Small Print
-                } else if ([cell.textLabel.text isEqualToString:@"The Dysle+ie font"]) {
-                    switchValue = 2; //Small Print
-                } else {
-                    switchValue = 3;
-                }
-            }
-            
-            NSFileManager *localFileManager = [[NSFileManager alloc] init];
-            [segue.destinationViewController setCustomBackgroundColor:self.customBackgroundColor];  //set up background color for all.
-            switch (switchValue) {
-                case 0: {
-                    //set up about page
-                    [segue.destinationViewController setStringForTitle:@"About"]; //overriding cell label for cleaner UI
-                    NSString *path = [[NSBundle mainBundle] pathForResource:@"resources.bundle/html/settings_about" ofType:@"html"];
-                    
-                    if ([localFileManager fileExistsAtPath:path]) { //avoid crash if file changes and forgot to clean build :-)
-                        [segue.destinationViewController setUrlToDisplay:[NSURL fileURLWithPath:path]];
-                    }
-                    break;
-                }
-                case 1: {
-                    //small print selected.
-                    NSString *path = [[NSBundle mainBundle] pathForResource:@"resources.bundle/html/settings_smallPrintv2" ofType:@"html"];
-                    
-                    if ([localFileManager fileExistsAtPath:path]) { //avoid crash if file changes and forgot to clean build :-)
-                        [segue.destinationViewController setUrlToDisplay:[NSURL fileURLWithPath:path]];
-                    }
-                    break;
-                }
-                case 2: {
-                    //The Dysle+ie font selected.
-                    NSString *path = [[NSBundle mainBundle] pathForResource:@"resources.bundle/html/settings_dysle+ie" ofType:@"html"];
-                    
-                    if ([localFileManager fileExistsAtPath:path]) { //avoid crash if file changes and forgot to clean build :-)
-                        [segue.destinationViewController setUrlToDisplay:[NSURL fileURLWithPath:path]];
-                    }
-                    break;
-                }
-
-                default:
-                    NSLog(@"not resolved which cell was pressed on settings page");
-                    break;
-            }
-            
-//        if ([self.selectedCellIndexPath isEqual:[NSIndexPath indexPathForItem:0 inSection:2]]) { //NSIndexPath indexPathForItem: inSection: is triggering selector not found error in iOS 5.0 and 5.1
-            // check out http://stackoverflow.com/questions/3862933/check-ios-version-at-runtime for another way to avoid the crash but run the better code where possible
-//            if ([cell.textLabel.text isEqualToString:@"About Dy-Di"]) {
-//            //about needed
-//            [segue.destinationViewController setStringForTitle:@"About"]; //overriding cell label for cleaner UI
-//            NSString *path = [[NSBundle mainBundle] pathForResource:@"resources.bundle/html/settings_about" ofType:@"html"];
-//            [segue.destinationViewController setUrlToDisplay:[NSURL fileURLWithPath:path]];
-//            
-//            
-////        } else if ([self.selectedCellIndexPath isEqual:[NSIndexPath indexPathForItem:2 inSection:2]]) {
-//            } else if ([cell.textLabel.text isEqualToString:@"Small Print"]) {
-//            //small print selected.
-//            NSString *path = [[NSBundle mainBundle] pathForResource:@"resources.bundle/html/settings_smallPrint" ofType:@"html"];
-//            [segue.destinationViewController setUrlToDisplay:[NSURL fileURLWithPath:path]];
-//            }
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell;
+    if (indexPath.section == 0) {
+        if (indexPath.row == 0 || indexPath.row == 4) {
+            cell = [tableView dequeueReusableCellWithIdentifier:@"Settings Slider Switch" forIndexPath:indexPath];
+        }
+        if (indexPath.row == 1 || indexPath.row == 2 || indexPath.row == 3) {
+            cell = [tableView dequeueReusableCellWithIdentifier:@"Settings Switch" forIndexPath:indexPath];
+        }
+        if (indexPath.row == 5) {
+            cell = [tableView dequeueReusableCellWithIdentifier:@"Settings Slider" forIndexPath:indexPath];
+        }
+        
+    } else if (indexPath.section == 1) {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"Settings Collection" forIndexPath:indexPath];
+    } else if (indexPath.section == 2) {
+        if (indexPath.row == 0 || indexPath.row == 1) {
+            cell = [tableView dequeueReusableCellWithIdentifier:@"Settings Extra Disclosure" forIndexPath:indexPath];
+        }
+        if (indexPath.row == 2) {
+            cell = [tableView dequeueReusableCellWithIdentifier:@"Settings Feedback" forIndexPath:indexPath];
+        }
+        if (indexPath.row == 3) {
+            cell = [tableView dequeueReusableCellWithIdentifier:@"Settings Small Print" forIndexPath:indexPath];
+        }
+        if (indexPath.row == 4) {
+            cell = [tableView dequeueReusableCellWithIdentifier:@"Settings Version" forIndexPath:indexPath];
         }
     }
+    return cell;
 }
 
+
+#pragma mark - Table view data source
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    //manage the actions
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
 
 #pragma mark - Sending an Email
 
 - (IBAction) sendEmail: (id) sender
 {
 	BOOL	bCanSendMail = [MFMailComposeViewController canSendMail];
-//    BOOL	bCanSendMail = NO; //for testing the no email alert
+    //    BOOL	bCanSendMail = NO; //for testing the no email alert
     
     //track screen with GA
     [DD2GlobalHelper sendViewToGAWithViewName:[NSString stringWithFormat:@"SendEmail triggered"]];
-
+    
 	if (!bCanSendMail)
 	{
 		UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"No Email Account"
@@ -552,6 +431,5 @@
 {
 	[self dismissModalViewControllerAnimated: YES];
 }
-
 
 @end

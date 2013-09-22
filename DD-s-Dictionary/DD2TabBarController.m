@@ -11,6 +11,7 @@
 #import "DD2AllWordSearchViewController.h"
 #import "FunWithWordsTableViewController.h"
 #import "DisplayWordViewController.h"
+#import "DD2SettingsTableViewController.h"
 
 // Tab controller managed which tabs are visible and what data is displayed ie manages the impact of spelling Variant
 
@@ -139,6 +140,9 @@
                 while ([nvc.viewControllers count]>1) {
                     [nvc popViewControllerAnimated:NO];
                 }
+            } else if ([vc1OnStack isKindOfClass:[DD2SettingsTableViewController class]]) {    //setting up the fun vc (spelling variant and tagNames)
+                DD2SettingsTableViewController *settingsTable = (DD2SettingsTableViewController *)vc1OnStack;
+                settingsTable.collectionNames = self.wordBrain.collectionNames;
             }
             if ([[nvc.viewControllers lastObject]isKindOfClass:[DisplayWordViewController class]]) { //iphone only
                 //DisplayWordViewController *dwvc = (DisplayWordViewController *)[nvc.viewControllers lastObject];

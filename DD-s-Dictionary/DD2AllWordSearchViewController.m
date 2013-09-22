@@ -197,7 +197,7 @@
 }
 
 
-#pragma mark - Table view delegate
+#pragma mark - Table view data source
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
