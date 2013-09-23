@@ -281,7 +281,7 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     self.voiceHintsAvailable = [defaults boolForKey:VOICE_HINT_AVAILABLE];
     
-    if (TEST_APPINGTON_ON) self.voiceHintsAvailable = YES; //for testing APPINGTON, set in DD2GlobalHelper.h
+    if (TEST_APPINGTON_ON) self.voiceHintsAvailable = NO; //for testing APPINGTON, set in DD2GlobalHelper.h
     
     if (self.voiceHintsAvailable) {
         self.voiceHintsTableCell.hidden = NO;

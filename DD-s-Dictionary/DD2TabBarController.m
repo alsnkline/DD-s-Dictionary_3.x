@@ -117,7 +117,8 @@
     for (UIViewController *vc in listOfTabVC) {
         if ([vc isKindOfClass:[UINavigationController class]]) {        //removing old DD2WordlistTableControllers
             UINavigationController *nvc = (UINavigationController *)vc;
-            UIViewController *vc1OnStack = [nvc.viewControllers objectAtIndex:0];
+            UIViewController *vc1OnStack;
+            if ([nvc.viewControllers count] > 0) vc1OnStack = [nvc.viewControllers objectAtIndex:0];
             NSLog(@"vcs = %@", nvc.viewControllers);
         
             if ([vc1OnStack isKindOfClass:[DD2WordListTableViewController class]]) {

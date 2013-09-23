@@ -10,40 +10,49 @@
 #import "NSUserDefaultKeys.h"
 #import <MessageUI/MessageUI.h>
 #import "htmlPageViewController.h"
+#import "DD2SettingsTableViewCell.h"
 
 @interface DD2SettingsTableViewController () <UITableViewDataSource, UITableViewDelegate, MFMailComposeViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (weak, nonatomic) IBOutlet UISlider *spellingVariantSlider;
-@property (weak, nonatomic) IBOutlet UISwitch *playOnSelectionSwitch;
-@property (weak, nonatomic) IBOutlet UISwitch *useVoiceHints;
-@property (weak, nonatomic) IBOutlet UISwitch *useDyslexieFont;
-@property (weak, nonatomic) IBOutlet UISlider *backgroundHueSlider;
-@property (weak, nonatomic) IBOutlet UISlider *backgroundSaturationSlider;
-@property (weak, nonatomic) IBOutlet UILabel *versionLable;
-@property (weak, nonatomic) IBOutlet UILabel *customBackgroundColorLabel;
-@property (weak, nonatomic) IBOutlet UILabel *customSpellingVariantLabel;
+//@property (weak, nonatomic) IBOutlet UISlider *spellingVariantSlider;
+//@property (weak, nonatomic) IBOutlet UISwitch *playOnSelectionSwitch;
+//@property (weak, nonatomic) IBOutlet UISwitch *useVoiceHints;
+//@property (weak, nonatomic) IBOutlet UISwitch *useDyslexieFont;
+//@property (weak, nonatomic) IBOutlet UISlider *backgroundHueSlider;
+//@property (weak, nonatomic) IBOutlet UISlider *backgroundSaturationSlider;
+//@property (weak, nonatomic) IBOutlet UILabel *versionLable;
+//@property (weak, nonatomic) IBOutlet UILabel *customBackgroundColorLabel;
+//@property (weak, nonatomic) IBOutlet UILabel *customSpellingVariantLabel;
 @property (nonatomic, strong) NSString *spellingVariant;
-@property (weak, nonatomic) IBOutlet UITableViewCell *voiceHintsTableCell;
 @property (nonatomic) BOOL voiceHintsAvailable;
 @property (nonatomic, strong) NSIndexPath *selectedCellIndexPath;
 @property (nonatomic, strong) NSNumber *customBackgroundColorHue;
 @property (nonatomic, strong) NSNumber *customBackgroundColorSaturation;
 @property (nonatomic, strong) UIColor *customBackgroundColor;
 
+@property (nonatomic, strong) DD2SettingsTableViewCell *spellingVariantCell;
+@property (nonatomic, strong) DD2SettingsTableViewCell *playOnSelectionCell;
+@property (nonatomic, strong) DD2SettingsTableViewCell *voiceHintsCell;
+@property (nonatomic, strong) DD2SettingsTableViewCell *useDyslexicFontCell;
+@property (nonatomic, strong) DD2SettingsTableViewCell *backgroundColorSatCell;
+@property (nonatomic, strong) DD2SettingsTableViewCell *backgroundColorHueCell;
+@property (nonatomic, strong) DD2SettingsTableViewCell *versionLabelCell;
+
+
 @end
 
 @implementation DD2SettingsTableViewController
 @synthesize tableView = _tableView;
-@synthesize spellingVariantSlider = _spellingVariantSlider;
-@synthesize playOnSelectionSwitch = _playOnSelectionSwitch;
-@synthesize useVoiceHints =_useVoiceHints;
-@synthesize useDyslexieFont = _useDyslexieFont;
-@synthesize backgroundHueSlider = _backgroundHueSlider;
-@synthesize backgroundSaturationSlider = _backgroundSaturationSlider;
-@synthesize versionLable = _versionLable;
-@synthesize customBackgroundColorLabel = _customBackgroundColorLabel;
-@synthesize customSpellingVariantLabel = _customSpellingVariantLabel;
+//@synthesize spellingVariantSlider = _spellingVariantSlider;
+//@synthesize playOnSelectionSwitch = _playOnSelectionSwitch;
+//@synthesize useVoiceHints =_useVoiceHints;
+//@synthesize useDyslexieFont = _useDyslexieFont;
+//@synthesize backgroundHueSlider = _backgroundHueSlider;
+//@synthesize backgroundSaturationSlider = _backgroundSaturationSlider;
+//@synthesize versionLable = _versionLable;
+//@synthesize customBackgroundColorLabel = _customBackgroundColorLabel;
+//@synthesize customSpellingVariantLabel = _customSpellingVariantLabel;
 @synthesize spellingVariant = _spellingVariant;
 @synthesize selectedCellIndexPath = _selectedCellIndexPath;
 @synthesize customBackgroundColorHue = _customBackgroundColorHue;
@@ -54,29 +63,29 @@
 #define SATURATION_MULTIPLIER 10
 //Saturation slider runs from 0-2 to allow me to use interger rounding - storage and UIColor calulations assume a 0-1 range, so need to / and * where appropriate by a factor to deliver two levels.
 
-- (void)viewDidAppear:(BOOL)animated
+- (void)viewWillAppear:(BOOL)animated
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     self.spellingVariant = [defaults stringForKey:SPELLING_VARIANT];
     
     if ([self.spellingVariant isEqualToString:@"US"]) {
-        self.spellingVariantSlider.value = 0.0;
+        self.spellingVariantCell.smallSlider.value = 0.0;
     } else {
-        self.spellingVariantSlider.value = 1.0;
+        self.spellingVariantCell.smallSlider.value = 1.0;
     }
     [self manageSpellingVariantLable];
     
-    self.playOnSelectionSwitch.on = [defaults boolForKey:PLAY_WORDS_ON_SELECTION];
-    self.useDyslexieFont.on = [defaults boolForKey:USE_DYSLEXIE_FONT];
+    self.playOnSelectionCell.cellSwitch.on = [defaults boolForKey:PLAY_WORDS_ON_SELECTION];
+    self.useDyslexicFontCell.cellSwitch.on = [defaults boolForKey:USE_DYSLEXIE_FONT];
     
     bool useVoiceHints = ![defaults boolForKey:NOT_USE_VOICE_HINTS]; //inverting switch logic to get default behavior to be ON
-    self.useVoiceHints.on = useVoiceHints;
+    self.voiceHintsCell.cellSwitch.on = useVoiceHints;
     
     self.customBackgroundColorHue = [NSNumber numberWithFloat:[defaults floatForKey:BACKGROUND_COLOR_HUE]];
     self.customBackgroundColorSaturation = [NSNumber numberWithFloat:[defaults floatForKey:BACKGROUND_COLOR_SATURATION]];
     
-    self.backgroundHueSlider.value = [self.customBackgroundColorHue floatValue];
-    self.backgroundSaturationSlider.value = [self.customBackgroundColorSaturation floatValue]*SATURATION_MULTIPLIER;
+    self.backgroundColorHueCell.smallSlider.value = [self.customBackgroundColorHue floatValue];
+    self.backgroundColorSatCell.smallSlider.value = [self.customBackgroundColorSaturation floatValue]*SATURATION_MULTIPLIER;
     
     self.customBackgroundColor = [UIColor colorWithHue:[self.customBackgroundColorHue floatValue]  saturation:[self.customBackgroundColorSaturation floatValue] brightness:1 alpha:1];
     [self setCellBackgroundColor];
@@ -88,6 +97,8 @@
     [super viewDidAppear:animated];
     
 }
+
+
 
 - (void)viewDidDisappear:(BOOL)animated
 {
@@ -109,11 +120,11 @@
         [DD2GlobalHelper sendEventToGAWithCategory:@"uiTracking_Customisations" action:actionForGA label:currentColorInHEX value:nil];
         
         //track event with GA to confirm final font choice
-        NSString *currentFont = self.useDyslexieFont.on ? @"Dyslexie_Font" : @"System_Font";
+        NSString *currentFont = self.useDyslexicFontCell.cellSwitch.on ? @"Dyslexie_Font" : @"System_Font";
         [DD2GlobalHelper sendEventToGAWithCategory:@"uiTracking_Customisations" action:@"Font" label:currentFont value:nil];
         
         //track event with GA to confirm final play choice
-        NSString *currentPlayWordOnSelection = self.playOnSelectionSwitch.on ? @"Auto_Play" : @"Manual_Play";
+        NSString *currentPlayWordOnSelection = self.playOnSelectionCell.cellSwitch.on ? @"Auto_Play" : @"Manual_Play";
         [DD2GlobalHelper sendEventToGAWithCategory:@"uiTracking_Customisations" action:@"PlayOnSelection" label:currentPlayWordOnSelection value:nil];
         
         //track event with GA to confirm final spelling Variant choice
@@ -123,8 +134,8 @@
         //track final settings with Flurry
         NSDictionary *flurryParameters = @{self.customBackgroundColorSaturation : @"backgroundColorSaturation",
                                            [DD2GlobalHelper getHexStringForColor:self.customBackgroundColor] : @"backgroundColorInHEX",
-                                           self.useDyslexieFont.on ? @"Dyslexie_Font" : @"System_Font" : @"Font",
-                                           self.playOnSelectionSwitch.on ? @"Auto_Play" : @"Manual_Play" : @"PlayOnSelection",
+                                           self.useDyslexicFontCell.cellSwitch.on ? @"Dyslexie_Font" : @"System_Font" : @"Font",
+                                           self.playOnSelectionCell.cellSwitch.on ? @"Auto_Play" : @"Manual_Play" : @"PlayOnSelection",
                                            [self.spellingVariant isEqualToString:@"US"] ? @"US" : @"UK" : @"Variant"};
         [Flurry logEvent:@"uiTracking_Customisations" withParameters:flurryParameters];
     }
@@ -145,7 +156,7 @@
     NSArray *tableCells = self.tableView.visibleCells;
     for (UITableViewCell *cell in tableCells)
     {
-        cell.textLabel.font = self.useDyslexieFont ? [UIFont fontWithName:@"Dyslexiea-Regular" size:18] : [UIFont boldSystemFontOfSize:20];
+        cell.textLabel.font = self.useDyslexicFontCell.cellSwitch ? [UIFont fontWithName:@"Dyslexiea-Regular" size:18] : [UIFont boldSystemFontOfSize:20];
     }
 }
 
@@ -214,17 +225,17 @@
 
 - (void) manageBackgroundColorLable
 {
-    if (self.backgroundSaturationSlider.value == 0) {
-        self.customBackgroundColorLabel.text = [NSString stringWithFormat:@"Background color: None"];
-        self.backgroundHueSlider.enabled = FALSE;
-    } else if (self.backgroundSaturationSlider.value == 1) {
-        self.customBackgroundColorLabel.text = [NSString stringWithFormat:@"Background color: Some"];
-        self.backgroundHueSlider.enabled = TRUE;
-    } else if (self.backgroundSaturationSlider.value == 2) {
-        self.customBackgroundColorLabel.text  = [NSString stringWithFormat:@"Background color: Lots"];
-        self.backgroundHueSlider.enabled = TRUE;
+    if (self.backgroundColorSatCell.smallSlider.value == 0) {
+        self.backgroundColorSatCell.label.text = [NSString stringWithFormat:@"Background color: None"];
+        self.backgroundColorHueCell.bigSlider.enabled = FALSE;
+    } else if (self.backgroundColorSatCell.smallSlider.value == 1) {
+        self.backgroundColorSatCell.label.text = [NSString stringWithFormat:@"Background color: Some"];
+        self.backgroundColorHueCell.bigSlider.enabled = TRUE;
+    } else if (self.backgroundColorSatCell.smallSlider.value == 2) {
+        self.backgroundColorSatCell.label.text  = [NSString stringWithFormat:@"Background color: Lots"];
+        self.backgroundColorHueCell.bigSlider.enabled = TRUE;
     } else {
-        self.customBackgroundColorLabel.text  = [NSString stringWithFormat:@"Problem"];
+        self.backgroundColorSatCell.label.text  = [NSString stringWithFormat:@"Problem"];
     }
 }
 
@@ -250,11 +261,11 @@
 - (void) manageSpellingVariantLable
 {
     if ([self.spellingVariant isEqualToString:@"US"]) {
-        self.customSpellingVariantLabel.text = [NSString stringWithFormat:@"Spelling Variant: US"];
+        self.spellingVariantCell.label.text = [NSString stringWithFormat:@"Spelling Variant: US"];
     } else if ([self.spellingVariant isEqualToString:@"UK"]) {
-        self.customSpellingVariantLabel.text = [NSString stringWithFormat:@"Spelling Variant: UK"];
+        self.spellingVariantCell.label.text = [NSString stringWithFormat:@"Spelling Variant: UK"];
     } else {
-        self.customSpellingVariantLabel.text  = [NSString stringWithFormat:@"Problem"];
+        self.spellingVariantCell.label.text  = [NSString stringWithFormat:@"Problem"];
     }
 }
 
@@ -271,18 +282,9 @@
 {
     [super viewDidLoad];
     
-    self.versionLable.text = [NSString stringWithFormat:@"Version: %@", [DD2GlobalHelper version]];
-    
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     self.voiceHintsAvailable = [defaults boolForKey:VOICE_HINT_AVAILABLE];
-    
     if (TEST_APPINGTON_ON) self.voiceHintsAvailable = YES; //for testing APPINGTON, set in DD2GlobalHelper.h
-    
-//    if (self.voiceHintsAvailable) {       //just don't create cell if you don't need it!
-//        self.voiceHintsTableCell.hidden = NO;
-//    } else {
-//        self.voiceHintsTableCell.hidden = YES;
-//    }
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -346,34 +348,33 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
     UITableViewCell *cell;
-    if (indexPath.section == 0) {
-        if (indexPath.row == 0 || indexPath.row == 4) {
-            cell = [tableView dequeueReusableCellWithIdentifier:@"Settings Slider Switch" forIndexPath:indexPath];
-        }
-        if (indexPath.row == 1 || indexPath.row == 2 || indexPath.row == 3) {
-            cell = [tableView dequeueReusableCellWithIdentifier:@"Settings Switch" forIndexPath:indexPath];
-        }
-        if (indexPath.row == 5) {
-            cell = [tableView dequeueReusableCellWithIdentifier:@"Settings Slider" forIndexPath:indexPath];
-        }
+    if (indexPath.section == 1) {
+        NSString *CellIdentifier = @"Settings Collection";
+        cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    } else {
+        NSString *CellIdentifier = [NSString stringWithFormat:@"Settings %d %d", indexPath.section, indexPath.row ];
+        cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
         
-    } else if (indexPath.section == 1) {
-        cell = [tableView dequeueReusableCellWithIdentifier:@"Settings Collection" forIndexPath:indexPath];
-    } else if (indexPath.section == 2) {
-        if (indexPath.row == 0 || indexPath.row == 1) {
-            cell = [tableView dequeueReusableCellWithIdentifier:@"Settings Extra Disclosure" forIndexPath:indexPath];
-        }
-        if (indexPath.row == 2) {
-            cell = [tableView dequeueReusableCellWithIdentifier:@"Settings Feedback" forIndexPath:indexPath];
-        }
-        if (indexPath.row == 3) {
-            cell = [tableView dequeueReusableCellWithIdentifier:@"Settings Small Print" forIndexPath:indexPath];
-        }
-        if (indexPath.row == 4) {
-            cell = [tableView dequeueReusableCellWithIdentifier:@"Settings Version" forIndexPath:indexPath];
+        if ([cell isKindOfClass:[DD2SettingsTableViewCell class]]) {
+            DD2SettingsTableViewCell *stvc = (DD2SettingsTableViewCell *)cell;
+            if (indexPath.section == 0 && indexPath.row == 0) self.spellingVariantCell = stvc;
+            if (indexPath.section == 0 && indexPath.row == 1) self.playOnSelectionCell = stvc;
+            if (indexPath.section == 0 && indexPath.row == 2) {
+                self.voiceHintsCell = stvc;
+                stvc.hidden = !self.voiceHintsAvailable;        //hiding cell is appington voice Hints are not available.
+            }
+            if (indexPath.section == 0 && indexPath.row == 3) self.useDyslexicFontCell = stvc;
+            if (indexPath.section == 0 && indexPath.row == 4) self.backgroundColorSatCell = stvc;
+            if (indexPath.section == 0 && indexPath.row == 5) self.backgroundColorHueCell = stvc;
+            if (indexPath.section == 2 && indexPath.row == 4) {
+                self.versionLabelCell = stvc;
+                self.versionLabelCell.label.text = [NSString stringWithFormat:@"Version: %@", [DD2GlobalHelper version]];
+            }
         }
     }
+    cell.backgroundColor = self.customBackgroundColor;
     return cell;
 }
 
@@ -383,6 +384,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     //manage the actions
+    
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -432,4 +435,7 @@
 	[self dismissModalViewControllerAnimated: YES];
 }
 
+- (void)viewDidUnload {
+    [super viewDidUnload];
+}
 @end
