@@ -39,7 +39,7 @@
     // Initialize GA tracker.
     [[GAI sharedInstance] trackerWithTrackingId:@"UA-37793922-2"];  //use -1 for any production releases
     //[[GAI sharedInstance] setOptOut:YES];       //uncomment to disable GA across entire app.
-    [[GAI sharedInstance] setDryRun:YES];       //stop data from being sent to cloud, set to NO for production ship
+    [[GAI sharedInstance] setDryRun:NO];       //stop data from being sent to cloud, set to NO for production ship
     //end GA setup
     
     //track screen with GA for App launch.

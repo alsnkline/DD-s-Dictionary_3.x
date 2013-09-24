@@ -18,18 +18,12 @@
 @interface DD2TabBarController ()
 @property (nonatomic, strong) DD2Words *wordBrain; //the model for this MVC
 @property (nonatomic, strong) NSString *spellingVariant;
-@property (readonly) NSDictionary *displayNamesForCollections;
-
 
 @end
 
 @implementation DD2TabBarController
 @synthesize wordBrain = _wordBrain;
 @synthesize spellingVariant = _spellingVariant;
-
-- (NSDictionary *)displayNamesForCollections {
-    return @{@"first_words" : @"First Words",@"second" : @"Second"};
-}
 
 -(DD2Words *)wordBrain
 {
@@ -170,7 +164,7 @@
             if ([[nvc.viewControllers objectAtIndex:0] isKindOfClass:[DD2WordListTableViewController class]]) {
                 DD2WordListTableViewController *collectionTable = (DD2WordListTableViewController *) [nvc.viewControllers objectAtIndex:0];
                 collectionTable.wordListWithSections = [DD2Words wordsBySectionFromWordList:[self.wordBrain wordsForCurrentSpellingVariantInCollectionNamed:collection]];
-                NSString *collectionTitle = [self.displayNamesForCollections objectForKey:collection];
+                NSString *collectionTitle = [DD2Words displayNameForCollection:collection];
                 collectionTable.title = collectionTitle;
                 collectionTable.allWordsForSpellingVariant = [self.wordBrain allWordsForCurrentSpellingVariant];
                 UIImage *img = [UIImage imageNamed:@"resources.bundle/Images/DinoTabIconv2.png"];

@@ -233,6 +233,14 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
     }
 }
 
++ (NSString *) displayNameForCollection:(NSString *)collectionName {
+    //turn _ into spaces
+    NSString *cleanString = [collectionName stringByReplacingOccurrencesOfString:@"_" withString:@" "];
+    
+    NSString *cleanerString = [NSString stringWithString:[cleanString capitalizedString]];
+    return cleanerString;
+}
+
 + (NSString *) pronunciationFromSpelling:(NSString *)spelling
 {
     //turn spaces into _

@@ -91,6 +91,8 @@
     [self setCellBackgroundColor];
     [self manageBackgroundColorLable];
     
+    [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
+    
     //track screen with GA
     [DD2GlobalHelper sendViewToGAWithViewName:@"Settings Tab Shown"];
     
@@ -349,10 +351,11 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    UITableViewCell *cell;
+    DD2SettingsTableViewCell *cell;
     if (indexPath.section == 1) {
         NSString *CellIdentifier = @"Settings Collection";
         cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        cell.label.text = [DD2Words displayNameForCollection:[self.collectionNames objectAtIndex:indexPath.row]];
     } else {
         NSString *CellIdentifier = [NSString stringWithFormat:@"Settings %d %d", indexPath.section, indexPath.row ];
         cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
@@ -384,8 +387,58 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     //manage the actions
-    
-    
+    UITableViewCell *selectedCell = [self.tableView cellForRowAtIndexPath:indexPath];
+    if (selectedCell.tag == 10) {
+        //toggle checkmark and update currently selected collection list. do I need a delegate for this change back to the TabVC?? could use notifications I guess.
+        if (selectedCell.accessoryType == UITableViewCellAccessoryCheckmark) {
+            selectedCell.accessoryType = UITableViewCellAccessoryNone;
+        } else {
+            selectedCell.accessoryType = UITableViewCellAccessoryCheckmark;
+        }
+        [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
+    } else if (selectedCell.tag  == 22) {
+        // http://stackoverflow.com/questions/3124080/app-store-link-for-rate-review-this-app - extend to encourage app store reviews
+        [self sendEmail:selectedCell];
+    } else if ([[NSArray arrayWithObjects:[NSNumber numberWithInteger:20],[NSNumber numberWithInteger:21],[NSNumber numberWithInteger:23], nil] containsObject:[NSNumber numberWithInteger:selectedCell.tag]]) {
+        [self performSegueWithIdentifier:@"display WebView 2" sender:selectedCell];
+    }
+}
+
+-(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    //used to set up webView depending upon which item was selected.
+    if ([segue.identifier isEqualToString:@"display WebView 2"]) {
+        if ([sender isKindOfClass:[DD2SettingsTableViewCell class]]) {
+            DD2SettingsTableViewCell *cell = (DD2SettingsTableViewCell *)sender;
+            [segue.destinationViewController setStringForTitle:cell.textLabel.text];
+            
+            NSFileManager *localFileManager = [[NSFileManager alloc] init];
+            [segue.destinationViewController setCustomBackgroundColor:self.customBackgroundColor];
+            if (cell.tag == 23) {
+                // small print selected
+                NSString *path = [[NSBundle mainBundle] pathForResource:@"resources.bundle/html/settings_smallPrintv2" ofType:@"html"];
+                
+                if ([localFileManager fileExistsAtPath:path]) { //avoid crash if file changes and forgot to clean build :-)
+                    [segue.destinationViewController setUrlToDisplay:[NSURL fileURLWithPath:path]];
+                }
+            } else if (cell.tag == 21) {
+                //The Dysle+ie font selected.
+                NSString *path = [[NSBundle mainBundle] pathForResource:@"resources.bundle/html/settings_dysle+ie" ofType:@"html"];
+                
+                if ([localFileManager fileExistsAtPath:path]) { //avoid crash if file changes and forgot to clean build :-)
+                    [segue.destinationViewController setUrlToDisplay:[NSURL fileURLWithPath:path]];
+                }
+            } else {
+                // About selected
+                [segue.destinationViewController setStringForTitle:@"About"]; //overriding cell label for cleaner UI
+                NSString *path = [[NSBundle mainBundle] pathForResource:@"resources.bundle/html/settings_about" ofType:@"html"];
+                
+                if ([localFileManager fileExistsAtPath:path]) { //avoid crash if file changes and forgot to clean build :-)
+                    [segue.destinationViewController setUrlToDisplay:[NSURL fileURLWithPath:path]];
+                }
+            }
+        }
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -425,7 +478,7 @@
         
 		[self presentModalViewController: picker animated: YES];
 	}
-    [self.tableView deselectRowAtIndexPath:self.selectedCellIndexPath animated:YES];
+    [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
 }
 
 - (void) mailComposeController: (MFMailComposeViewController *) controller
