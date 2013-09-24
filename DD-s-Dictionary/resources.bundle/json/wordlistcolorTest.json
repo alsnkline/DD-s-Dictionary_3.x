@@ -1,0 +1,36 @@
+{
+    "words": [
+		{
+            "collections": [
+                "first_words"
+            ], 
+            "word": {
+                    "uk": "colour",
+                    "us": "color"
+                }
+        },
+        {
+            "collections": [
+                "first_words"
+            ], 
+            "word": "twenty"
+        }, 
+        {
+            "collections": [
+                "first_words"
+            ], 
+            "word": "twice"
+        }, 
+        {
+            "collections": [
+                "first_words",
+                "hard_words"
+            ], 
+            "homophones": [
+                "to", 
+                "two"
+            ], 
+            "word": "two"
+        }
+    ]
+}
