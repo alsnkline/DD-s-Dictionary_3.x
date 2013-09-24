@@ -399,7 +399,7 @@
     } else if (selectedCell.tag  == 22) {
         // http://stackoverflow.com/questions/3124080/app-store-link-for-rate-review-this-app - extend to encourage app store reviews
         [self sendEmail:selectedCell];
-    } else if ([[NSArray arrayWithObjects:[NSNumber numberWithInteger:20],[NSNumber numberWithInteger:21],[NSNumber numberWithInteger:23], nil] containsObject:[NSNumber numberWithInteger:selectedCell.tag]]) {
+    } else if ([[NSArray arrayWithObjects:@"20",@"21",@"23", nil] containsObject:[@(selectedCell.tag) stringValue]]) {
         [self performSegueWithIdentifier:@"display WebView 2" sender:selectedCell];
     }
 }
