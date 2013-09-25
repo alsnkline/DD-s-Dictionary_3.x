@@ -249,7 +249,7 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
 + (NSString *) pronunciationFromSpelling:(NSString *)spelling
 {
     //turn spaces into _
-    NSString *cleanString = [DD2Words exchangeUnderscoresForSpacesin:spelling];
+    NSString *cleanString = [spelling stringByReplacingOccurrencesOfString:@" " withString:@"_"];
     
     // remove apostrophe and periods sign characters
     NSCharacterSet *charSet = [NSCharacterSet characterSetWithCharactersInString:@"'."];
@@ -263,14 +263,14 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
     NSMutableSet *pronunciations = [NSMutableSet setWithArray:[word objectForKey:@"pronunciations"]];
     NSString *pronunciationFromSpelling = [DD2Words pronunciationFromSpelling:[word objectForKey:@"spelling"]];
     
-    if ([pronunciations count] < 1) {   //does pronunciation from Spelling has a file
+    if ([pronunciations count] < 1) {   //does pronunciation from Spelling have a fileName
         NSString *possiblePronunciation = pronunciationFromSpelling;
         if ([DD2GlobalHelper fileURLForPronunciation:possiblePronunciation]) {
             [pronunciations addObject:possiblePronunciation];
         }
     }
     
-    if ([pronunciations count] < 1) {   //does any of its homophones have pronunciation files
+    if ([pronunciations count] < 1) {   //do any of its homophones have pronunciation files
         NSArray *locHomophones = [word objectForKey:@"locHomophones"];
         for (NSString *homophone in locHomophones) {
             if ([DD2GlobalHelper fileURLForPronunciation:homophone]) {
@@ -279,7 +279,7 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
         }
     }
     
-    if ([pronunciations count] < 1) {   //does its local variant pronunciation files exsist
+    if ([pronunciations count] < 1) {   //do its local variant pronunciation files exsist
         NSString *basePronunciation = [DD2Words pronunciationFromSpelling:[word objectForKey:@"spelling"]];
         NSString *possiblePronunciation = [NSString stringWithFormat:@"%@-%@", [word objectForKey:@"wordVariant"], basePronunciation];
        if ([DD2GlobalHelper fileURLForPronunciation:possiblePronunciation]) {
