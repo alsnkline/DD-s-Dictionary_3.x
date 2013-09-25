@@ -253,7 +253,7 @@
     [DD2GlobalHelper sendEventToGAWithCategory:@"uiAction_Search" action:@"All_words" label:searchText value:nil];
     
     //track search event with Flurry
-    NSDictionary *flurryParameters = @{searchText :@"searchTerm"};
+    NSDictionary *flurryParameters = @{@"searchTerm" : searchText};
     [Flurry logEvent:@"uiAction_Search" withParameters:flurryParameters];
 }
 
@@ -293,7 +293,7 @@
     //track Add Word request event with GA
     [DD2GlobalHelper sendEventToGAWithCategory:@"uiAction_WordAddRequest" action:@"word_add_request" label:requestedText value:nil];
     //track Add Word request event with Flurry
-    NSDictionary *flurryParameters = @{requestedText: @"word_add_request"};
+    NSDictionary *flurryParameters = @{@"word_add_request" : requestedText};
     [Flurry logEvent:@"uiAction_WordAddRequest" withParameters:flurryParameters];
     
 }

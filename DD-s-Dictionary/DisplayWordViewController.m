@@ -289,8 +289,8 @@
             [DD2GlobalHelper sendEventToGAWithCategory:@"uiAction_Word" action:@"listenToWord" label:pronunciation value:[NSNumber numberWithInt:2]];
             
             //track word view with Flurry
-            NSDictionary *flurryParameters = @{pronunciation : @"listenToWord",
-                                               @"Auto_Play" : @"wordPlayMode"};
+            NSDictionary *flurryParameters = @{@"listenToWord" : pronunciation,
+                                               @"wordPlayMode" : @"Auto_Play"};
             [Flurry logEvent:@"uiAction_Word" withParameters:flurryParameters];
         };
     } else {
@@ -304,8 +304,8 @@
         [DD2GlobalHelper sendEventToGAWithCategory:@"uiAction_Word" action:@"listenToWord" label:[pronunciationsArray lastObject] value:[NSNumber numberWithInt:2]];
         
         //track word view with Flurry
-        NSDictionary *flurryParameters = @{[pronunciationsArray lastObject] : @"listenToWord",
-                                           @"Auto_Play" : @"wordPlayMode"};
+        NSDictionary *flurryParameters = @{@"listenToWord" : [pronunciationsArray lastObject],
+                                           @"wordPlayMode" : @"Auto_Play"};
         [Flurry logEvent:@"uiAction_Word" withParameters:flurryParameters];
     }
     
@@ -344,8 +344,8 @@
             [DD2GlobalHelper sendEventToGAWithCategory:@"uiAction_Word" action:@"listenToWord" label:pronunciation value:[NSNumber numberWithInt:1]];
             
             //track word view with Flurry
-            NSDictionary *flurryParameters = @{pronunciation : @"listenToWord",
-                                               @"Manual_Play" : @"wordPlayMode"};
+            NSDictionary *flurryParameters = @{@"listenToWord" : pronunciation,
+                                               @"wordPlayMode" : @"Manual_Play"};
             [Flurry logEvent:@"uiAction_Word" withParameters:flurryParameters];
         }
     }
@@ -386,8 +386,8 @@
             [DD2GlobalHelper sendEventToGAWithCategory:@"uiAction_Word" action:@"listenToWord" label:[pronunciationsArray lastObject] value:[NSNumber numberWithInt:2]];
             
             //track word view with Flurry
-            NSDictionary *flurryParameters = @{[pronunciationsArray lastObject] : @"listenToWord",
-                                               @"Auto_Play" : @"wordPlayMode"};
+            NSDictionary *flurryParameters = @{@"listenToWord" : [pronunciationsArray lastObject],
+                                               @"wordPlayMode" : @"Auto_Play"};
             [Flurry logEvent:@"uiAction_Word" withParameters:flurryParameters];
         }
     }

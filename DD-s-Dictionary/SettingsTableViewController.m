@@ -119,11 +119,11 @@
         [DD2GlobalHelper sendEventToGAWithCategory:@"uiTracking_Customisations" action:@"Variant" label:currentVariant value:nil];
         
         //track final settings with Flurry
-        NSDictionary *flurryParameters = @{self.customBackgroundColorSaturation : @"backgroundColorSaturation",
-                                           [DD2GlobalHelper getHexStringForColor:self.customBackgroundColor] : @"backgroundColorInHEX",
-                                           self.useDyslexieFont.on ? @"Dyslexie_Font" : @"System_Font" : @"Font",
-                                           self.playOnSelectionSwitch.on ? @"Auto_Play" : @"Manual_Play" : @"PlayOnSelection",
-                                           [self.spellingVariant isEqualToString:@"US"] ? @"US" : @"UK" : @"Variant"};
+        NSDictionary *flurryParameters = @{@"backgroundColorSaturation" : self.customBackgroundColorSaturation,
+                                           @"backgroundColorInHEX" : [DD2GlobalHelper getHexStringForColor:self.customBackgroundColor],
+                                           @"Font" : self.useDyslexieFont.on ? @"Dyslexie_Font" : @"System_Font",
+                                           @"PlayOnSelection" : self.playOnSelectionSwitch.on ? @"Auto_Play" : @"Manual_Play",
+                                           @"Variant" : [self.spellingVariant isEqualToString:@"US"] ? @"US" : @"UK"};
         [Flurry logEvent:@"uiTracking_Customisations" withParameters:flurryParameters];
     }
 }
@@ -281,7 +281,7 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     self.voiceHintsAvailable = [defaults boolForKey:VOICE_HINT_AVAILABLE];
     
-    if (TEST_APPINGTON_ON) self.voiceHintsAvailable = NO; //for testing APPINGTON, set in DD2GlobalHelper.h
+    if (TEST_APPINGTON_ON) self.voiceHintsAvailable = YES; //for testing APPINGTON, set in DD2GlobalHelper.h
     
     if (self.voiceHintsAvailable) {
         self.voiceHintsTableCell.hidden = NO;

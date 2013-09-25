@@ -134,11 +134,11 @@
         [DD2GlobalHelper sendEventToGAWithCategory:@"uiTracking_Customisations" action:@"Variant" label:currentVariant value:nil];
         
         //track final settings with Flurry
-        NSDictionary *flurryParameters = @{self.customBackgroundColorSaturation : @"backgroundColorSaturation",
-                                           [DD2GlobalHelper getHexStringForColor:self.customBackgroundColor] : @"backgroundColorInHEX",
-                                           self.useDyslexicFontCell.cellSwitch.on ? @"Dyslexie_Font" : @"System_Font" : @"Font",
-                                           self.playOnSelectionCell.cellSwitch.on ? @"Auto_Play" : @"Manual_Play" : @"PlayOnSelection",
-                                           [self.spellingVariant isEqualToString:@"US"] ? @"US" : @"UK" : @"Variant"};
+        NSDictionary *flurryParameters = @{@"backgroundColorSaturation" : self.customBackgroundColorSaturation,
+                                           @"backgroundColorInHEX" : [DD2GlobalHelper getHexStringForColor:self.customBackgroundColor],
+                                           @"Font" : self.useDyslexicFontCell.cellSwitch.on ? @"Dyslexie_Font" : @"System_Font",
+                                           @"PlayOnSelection" : self.playOnSelectionCell.cellSwitch.on ? @"Auto_Play" : @"Manual_Play",
+                                           @"Variant" : [self.spellingVariant isEqualToString:@"US"] ? @"US" : @"UK"};
         [Flurry logEvent:@"uiTracking_Customisations" withParameters:flurryParameters];
     }
 }

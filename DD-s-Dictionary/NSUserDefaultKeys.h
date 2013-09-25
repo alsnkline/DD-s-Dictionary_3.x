@@ -18,6 +18,7 @@
 #define PROCESSED_DOC_SCHEMA_VERSION_205 @"DDPrototype.MigratedToVersion205"
 
 #define SPELLING_VARIANT @"DDPrototype.spellingVariant"
+#define SELECTED_COLLECTIONS @"DDPrototype.selectedCollections"
 
 @protocol NSUserDefaultKeys <NSObject>
 
