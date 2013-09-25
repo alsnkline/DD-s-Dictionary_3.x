@@ -170,6 +170,10 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
                 for (NSString *tag in tags) {
                     if (![workingTagNames containsObject:tag]) [workingTagNames addObject:tag];
                 }
+                
+                //check that pronunciation file exists if in that mode
+                if (FIND_MISSING_PRONUNCIATIONS) [DD2Words pronunciationsForWord:processedWord];
+
             }
         }
         
@@ -300,7 +304,8 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
             pronunciationsStringForLog = [NSString stringWithFormat:@"%@", pronunciation];
         }
     }
-    NSLog(@"Pronunciations for %@ = %@", [word objectForKey:@"spelling"], pronunciationsStringForLog);
+    // don't log this if looking for missing pronunciations
+    if (!FIND_MISSING_PRONUNCIATIONS) NSLog(@"Pronunciations for %@ = %@", [word objectForKey:@"spelling"], pronunciationsStringForLog);
     return [pronunciations copy];
 }
 

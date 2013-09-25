@@ -103,7 +103,7 @@
     // Get the paths and URL's right!
     NSFileManager *localFileManager = [[NSFileManager alloc] init];
     BOOL fileFound = [localFileManager fileExistsAtPath:[fileURL path]];
-    NSLog(@"Pronunciation fileFound for %@: %@", pronunciation, fileFound ? @"YES" : @"NO");
+    if (PROCESS_VERBOSELY) NSLog(@"Pronunciation fileFound for %@: %@", pronunciation, fileFound ? @"YES" : @"NO");
     
     if (fileFound) {
         return fileURL;
