@@ -118,14 +118,31 @@
         NSString *currentVariant = [self.spellingVariant isEqualToString:@"US"] ? @"US" : @"UK";
         [DD2GlobalHelper sendEventToGAWithCategory:@"uiTracking_Customisations" action:@"Variant" label:currentVariant value:nil];
         
+        //track event with GA to confirm final selcected collections
+        [DD2GlobalHelper sendEventToGAWithCategory:@"uiTracking_Customisations" action:@"Collections" label:[self stringForCurrentlySelectedCollections] value:nil];
+        
         //track final settings with Flurry
         NSDictionary *flurryParameters = @{@"backgroundColorSaturation" : self.customBackgroundColorSaturation,
                                            @"backgroundColorInHEX" : [DD2GlobalHelper getHexStringForColor:self.customBackgroundColor],
                                            @"Font" : self.useDyslexicFontCell.cellSwitch.on ? @"Dyslexie_Font" : @"System_Font",
                                            @"PlayOnSelection" : self.playOnSelectionCell.cellSwitch.on ? @"Auto_Play" : @"Manual_Play",
-                                           @"Variant" : [self.spellingVariant isEqualToString:@"US"] ? @"US" : @"UK"};
+                                           @"Variant" : [self.spellingVariant isEqualToString:@"US"] ? @"US" : @"UK",
+                                           @"Collections" : [self stringForCurrentlySelectedCollections]};
         [Flurry logEvent:@"uiTracking_Customisations" withParameters:flurryParameters];
     }
+}
+
+- (NSString *)stringForCurrentlySelectedCollections {
+    NSString *stringForReportingCollections;
+    for (NSString *collection in self.selectedCollections) {
+        if (!stringForReportingCollections) {
+            stringForReportingCollections = [NSString stringWithString:collection];
+        } else {
+            stringForReportingCollections = [NSString stringWithFormat:@"%@, %@", stringForReportingCollections, collection];
+        }
+    }
+    if (!stringForReportingCollections) stringForReportingCollections = @"None";
+    return stringForReportingCollections;
 }
 
 - (void) setCellBackgroundColor
