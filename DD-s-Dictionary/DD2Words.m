@@ -121,10 +121,11 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
                 } else if ([wordElement isKindOfClass:[NSDictionary class]]){
                     spelling = [wordElement objectForKey:locale];
                 } else {
-                    NSLog(@"Badly formed wordElement");
+                    NSLog(@"Badly formed wordElement: %@", wordElement);
                 }
                 if (PROCESS_VERBOSELY) NSLog(@"%@ (%@)", spelling, locale);
-                [processedWord setObject:spelling forKey:@"spelling"];  //need for easy sorting
+                NSString *cleanSpelling = [DD2Words exchangeUnderscoresForSpacesin:spelling];
+                [processedWord setObject:cleanSpelling forKey:@"spelling"];  //need for easy sorting
                 
                 //processing for homophones
                 id homophonesElement = [rawWord objectForKey:@"homophones"];
@@ -233,10 +234,14 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
     }
 }
 
++ (NSString *)exchangeUnderscoresForSpacesin:(NSString *)string {
+    NSString *cleanString = [string stringByReplacingOccurrencesOfString:@"_" withString:@" "];
+    return cleanString;
+}
+
 + (NSString *) displayNameForCollection:(NSString *)collectionName {
-    //turn _ into spaces
-    NSString *cleanString = [collectionName stringByReplacingOccurrencesOfString:@"_" withString:@" "];
     
+    NSString *cleanString =[DD2Words exchangeUnderscoresForSpacesin:collectionName];
     NSString *cleanerString = [NSString stringWithString:[cleanString capitalizedString]];
     return cleanerString;
 }
@@ -244,7 +249,7 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
 + (NSString *) pronunciationFromSpelling:(NSString *)spelling
 {
     //turn spaces into _
-    NSString *cleanString = [spelling stringByReplacingOccurrencesOfString:@" " withString:@"_"];
+    NSString *cleanString = [DD2Words exchangeUnderscoresForSpacesin:spelling];
     
     // remove apostrophe and periods sign characters
     NSCharacterSet *charSet = [NSCharacterSet characterSetWithCharactersInString:@"'."];
