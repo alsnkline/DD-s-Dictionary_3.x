@@ -15,15 +15,6 @@
 @interface DD2SettingsTableViewController () <UITableViewDataSource, UITableViewDelegate, MFMailComposeViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-//@property (weak, nonatomic) IBOutlet UISlider *spellingVariantSlider;
-//@property (weak, nonatomic) IBOutlet UISwitch *playOnSelectionSwitch;
-//@property (weak, nonatomic) IBOutlet UISwitch *useVoiceHints;
-//@property (weak, nonatomic) IBOutlet UISwitch *useDyslexieFont;
-//@property (weak, nonatomic) IBOutlet UISlider *backgroundHueSlider;
-//@property (weak, nonatomic) IBOutlet UISlider *backgroundSaturationSlider;
-//@property (weak, nonatomic) IBOutlet UILabel *versionLable;
-//@property (weak, nonatomic) IBOutlet UILabel *customBackgroundColorLabel;
-//@property (weak, nonatomic) IBOutlet UILabel *customSpellingVariantLabel;
 @property (nonatomic, strong) NSString *spellingVariant;
 @property (nonatomic) BOOL voiceHintsAvailable;
 @property (nonatomic, strong) NSIndexPath *selectedCellIndexPath;
@@ -44,21 +35,13 @@
 
 @implementation DD2SettingsTableViewController
 @synthesize tableView = _tableView;
-//@synthesize spellingVariantSlider = _spellingVariantSlider;
-//@synthesize playOnSelectionSwitch = _playOnSelectionSwitch;
-//@synthesize useVoiceHints =_useVoiceHints;
-//@synthesize useDyslexieFont = _useDyslexieFont;
-//@synthesize backgroundHueSlider = _backgroundHueSlider;
-//@synthesize backgroundSaturationSlider = _backgroundSaturationSlider;
-//@synthesize versionLable = _versionLable;
-//@synthesize customBackgroundColorLabel = _customBackgroundColorLabel;
-//@synthesize customSpellingVariantLabel = _customSpellingVariantLabel;
 @synthesize spellingVariant = _spellingVariant;
 @synthesize selectedCellIndexPath = _selectedCellIndexPath;
 @synthesize customBackgroundColorHue = _customBackgroundColorHue;
 @synthesize customBackgroundColorSaturation = _customBackgroundColorSaturation;
 @synthesize customBackgroundColor = _backgroundColor;
 @synthesize collectionNames = _collectionNames;
+@synthesize selectedCollections = _selectedCollections;
 
 #define SATURATION_MULTIPLIER 10
 //Saturation slider runs from 0-2 to allow me to use interger rounding - storage and UIColor calulations assume a 0-1 range, so need to / and * where appropriate by a factor to deliver two levels.
@@ -90,6 +73,8 @@
     self.customBackgroundColor = [UIColor colorWithHue:[self.customBackgroundColorHue floatValue]  saturation:[self.customBackgroundColorSaturation floatValue] brightness:1 alpha:1];
     [self setCellBackgroundColor];
     [self manageBackgroundColorLable];
+    
+    self.selectedCollections = [[defaults stringArrayForKey:SELECTED_COLLECTIONS] mutableCopy];
     
     [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
     
@@ -271,6 +256,16 @@
     }
 }
 
+- (void) collectionSelectionChanged
+{
+    [[NSUserDefaults standardUserDefaults] setObject:self.selectedCollections forKey:SELECTED_COLLECTIONS];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    //Notify that the selected Collections have changed
+    NSDictionary *userInfo = [NSDictionary dictionaryWithObject:self.selectedCollections forKey:@"newValue"];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"selectedCollectionsChanged" object:self userInfo:userInfo];
+}
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -355,7 +350,13 @@
     if (indexPath.section == 1) {
         NSString *CellIdentifier = @"Settings Collection";
         cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-        cell.label.text = [DD2Words displayNameForCollection:[self.collectionNames objectAtIndex:indexPath.row]];
+        NSString *collectionForCell = [self.collectionNames objectAtIndex:indexPath.row];
+        cell.label.text = [DD2Words displayNameForCollection:collectionForCell];
+        if ([self.selectedCollections containsObject:collectionForCell]) {
+            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        } else {
+            cell.accessoryType = UITableViewCellAccessoryNone;
+        }
     } else {
         NSString *CellIdentifier = [NSString stringWithFormat:@"Settings %d %d", indexPath.section, indexPath.row ];
         cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
@@ -392,8 +393,12 @@
         //toggle checkmark and update currently selected collection list. do I need a delegate for this change back to the TabVC?? could use notifications I guess.
         if (selectedCell.accessoryType == UITableViewCellAccessoryCheckmark) {
             selectedCell.accessoryType = UITableViewCellAccessoryNone;
+            [self.selectedCollections removeObject:[self.collectionNames objectAtIndex:indexPath.row]];
+            [self collectionSelectionChanged];
         } else {
             selectedCell.accessoryType = UITableViewCellAccessoryCheckmark;
+            [self.selectedCollections addObject:[self.collectionNames objectAtIndex:indexPath.row]];
+            [self collectionSelectionChanged];
         }
         [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
     } else if (selectedCell.tag  == 22) {

@@ -11,5 +11,6 @@
 @interface DD2SettingsTableViewController : UIViewController
 
 @property (nonatomic, strong) NSArray *collectionNames;
+@property (nonatomic, strong) NSMutableArray *selectedCollections;
 
 @end

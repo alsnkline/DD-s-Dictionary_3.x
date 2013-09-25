@@ -18,12 +18,16 @@
 @interface DD2TabBarController ()
 @property (nonatomic, strong) DD2Words *wordBrain; //the model for this MVC
 @property (nonatomic, strong) NSString *spellingVariant;
+@property (nonatomic, strong) NSArray *selectedCollections;
+@property (nonatomic) BOOL animateTabChanges;
 
 @end
 
 @implementation DD2TabBarController
 @synthesize wordBrain = _wordBrain;
 @synthesize spellingVariant = _spellingVariant;
+@synthesize selectedCollections = _selectedCollections;
+@synthesize animateTabChanges = _animateTabChanges;
 
 -(DD2Words *)wordBrain
 {
@@ -53,7 +57,23 @@
     if (spellingVariant != _spellingVariant) {
         _spellingVariant = spellingVariant;
         self.wordBrain.spellingVariant = spellingVariant;
+        self.animateTabChanges = NO;        //avoid tab flicker
     }
+}
+
+- (NSArray *)selectedCollections {
+    if (!_selectedCollections) {
+        _selectedCollections = [[NSUserDefaults standardUserDefaults] stringArrayForKey:SELECTED_COLLECTIONS];
+        if (!_selectedCollections) {
+            //set up the default for the first time
+            NSLog(@"defaulting SELECTED_COLLECTIONS to first_words");
+            NSArray *selCollections = [NSArray arrayWithObject:@"first_words"];
+            [[NSUserDefaults standardUserDefaults] setObject:selCollections forKey:SELECTED_COLLECTIONS];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            self.selectedCollections = selCollections;
+        }
+    }
+    return _selectedCollections;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -76,6 +96,12 @@
                                              selector:@selector(onNotification:)
                                                  name:@"spellingVariantChanged" object:nil];
     
+    //registering for selectedCollections notifications remember to dealloc
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(onNotification:)
+                                                 name:@"selectedCollectionsChanged" object:nil];
+
+    
 }
 
 -(void)viewDidAppear:(BOOL)animated {
@@ -90,20 +116,24 @@
         self.spellingVariant = [userinfo objectForKey:@"newValue"];
         [self manageTabs];
     }
+    if ([[notification name] isEqualToString:@"selectedCollectionsChanged"]) {
+        NSDictionary *userinfo = [notification userInfo];
+        self.selectedCollections = [[userinfo objectForKey:@"newValue"] copy];
+        self.animateTabChanges = YES;        //manage tabs 'pretty'
+        [self manageTabs];
+    }
 }
 
-- (NSArray *)collectionsInWordlist
-{
-    NSMutableArray *collections = [NSMutableArray arrayWithArray:[DD2Words sharedWords].collectionNames];
-    [collections removeObject:@"allWords"];
-    NSLog(@"collections for tabs %@", collections);
-    return collections;
-}
+//- (NSArray *)collectionsInWordlist
+//{
+//    NSMutableArray *collections = [NSMutableArray arrayWithArray:[DD2Words sharedWords].collectionNames];
+//    [collections removeObject:@"allWords"];
+//    NSLog(@"collections for tabs %@", collections);
+//    return collections;
+//}
 
 - (void)manageTabs
 {
-    NSArray *collections = [self collectionsInWordlist];
-
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil]; //seems to pick right one for iPhone and iPad!
     NSMutableArray *listOfTabVC = [NSMutableArray arrayWithArray:self.viewControllers];
     //NSLog(@"listOfTabVC %@", listOfTabVC);
@@ -157,7 +187,7 @@
     }
     listOfTabVC = [NSMutableArray arrayWithArray:self.viewControllers];     //resetting after old VCs have been removed.
     
-    for (NSString *collection in collections) {     //adding VCs needed now.
+    for (NSString *collection in self.selectedCollections) {     //adding VCs needed now.
         id vc = [storyboard instantiateViewControllerWithIdentifier:@"List Controller"];
         if ([vc isKindOfClass:[UINavigationController class]]) {
             UINavigationController *nvc = (UINavigationController *)vc;
@@ -173,7 +203,8 @@
             [listOfTabVC insertObject:vc atIndex:0];
         }
     }
-    [self setViewControllers:listOfTabVC animated:NO];
+    [self setViewControllers:listOfTabVC animated:self.animateTabChanges];
+    self.animateTabChanges = NO;     //defaulting to NO, so only way to get an animation is with a change to selectedCollections
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation //iOS 5 not 6
