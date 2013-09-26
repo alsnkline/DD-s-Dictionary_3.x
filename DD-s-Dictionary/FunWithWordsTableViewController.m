@@ -208,7 +208,7 @@
         if (row == 1) cell.textLabel.text = [NSString stringWithFormat:@"heteronyms"];
     }
     if (section == 1) {
-        cell.textLabel.text = [self.tagNames objectAtIndex:indexPath.row];
+        cell.textLabel.text = [DD2Words exchangeUnderscoresForSpacesin:[self.tagNames objectAtIndex:indexPath.row]];
     }
     
     // Configure the cell...
@@ -292,7 +292,7 @@
                 // from http://www.raywenderlich.com/14742/core-data-on-ios-5-tutorial-how-to-work-with-relations-and-predicates
             } else {
                 switchValue = 5;
-                selectionPredicate = [NSPredicate predicateWithFormat:@"SELF.tags contains[c] %@",cell.textLabel.text];
+                selectionPredicate = [NSPredicate predicateWithFormat:@"SELF.tags contains[c] %@",[DD2Words exchangeSpacesForUnderscoresin:cell.textLabel.text]];
             }
             
             //selectionPredicate = [NSPredicate predicateWithFormat:@"SELF.spelling contains[cd] %@", stringForPredicate];
