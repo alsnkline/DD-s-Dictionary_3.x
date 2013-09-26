@@ -255,8 +255,8 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
     //turn spaces into _
     NSString *cleanString = [spelling stringByReplacingOccurrencesOfString:@" " withString:@"_"];
     
-    // remove apostrophe and periods sign characters
-    NSCharacterSet *charSet = [NSCharacterSet characterSetWithCharactersInString:@"'."];
+    // remove 'apostrophe', 'dash' and 'period' characters
+    NSCharacterSet *charSet = [NSCharacterSet characterSetWithCharactersInString:@"'.-"];
     NSString *cleanerString = [[cleanString componentsSeparatedByCharactersInSet:charSet] componentsJoinedByString:@""];
     
     return [NSString stringWithString:cleanerString];
