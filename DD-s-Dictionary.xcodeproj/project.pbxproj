@@ -51,7 +51,6 @@
 		B1C21C9A17ECF73F00C51C8C /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = B1C21C9917ECF73F00C51C8C /* Default-Portrait~ipad.png */; };
 		B1C21C9C17ECF74500C51C8C /* Default-Landscape@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = B1C21C9B17ECF74500C51C8C /* Default-Landscape@2x~ipad.png */; };
 		B1C21C9E17ECF74B00C51C8C /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = B1C21C9D17ECF74B00C51C8C /* Default-Landscape~ipad.png */; };
-		B1CCB5C817DFC3C8009D7BF0 /* SettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B1CCB5C717DFC3C8009D7BF0 /* SettingsTableViewController.m */; };
 		B1CCB5CC17DFC444009D7BF0 /* htmlPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B1CCB5CB17DFC443009D7BF0 /* htmlPageViewController.m */; };
 		B1CCB5CE17DFC797009D7BF0 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1CCB5CD17DFC797009D7BF0 /* MessageUI.framework */; };
 /* End PBXBuildFile section */
@@ -122,8 +121,6 @@
 		B1C21C9917ECF73F00C51C8C /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait~ipad.png"; sourceTree = "<group>"; };
 		B1C21C9B17ECF74500C51C8C /* Default-Landscape@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape@2x~ipad.png"; sourceTree = "<group>"; };
 		B1C21C9D17ECF74B00C51C8C /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape~ipad.png"; sourceTree = "<group>"; };
-		B1CCB5C617DFC3C8009D7BF0 /* SettingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsTableViewController.h; sourceTree = "<group>"; };
-		B1CCB5C717DFC3C8009D7BF0 /* SettingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsTableViewController.m; sourceTree = "<group>"; };
 		B1CCB5C917DFC3E6009D7BF0 /* NSUserDefaultKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSUserDefaultKeys.h; sourceTree = "<group>"; };
 		B1CCB5CA17DFC443009D7BF0 /* htmlPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = htmlPageViewController.h; sourceTree = "<group>"; };
 		B1CCB5CB17DFC443009D7BF0 /* htmlPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = htmlPageViewController.m; sourceTree = "<group>"; };
@@ -227,8 +224,6 @@
 				B191C3F417E3EC0400A2ABFA /* FunWithWordsTableViewController.m */,
 				B192DB4A17E26EFE0075C072 /* DisplayWordViewController.h */,
 				B192DB4B17E26EFE0075C072 /* DisplayWordViewController.m */,
-				B1CCB5C617DFC3C8009D7BF0 /* SettingsTableViewController.h */,
-				B1CCB5C717DFC3C8009D7BF0 /* SettingsTableViewController.m */,
 				B1385A6717EEAF3F0015BA5A /* DD2SettingsTableViewController.h */,
 				B1385A6817EEAF3F0015BA5A /* DD2SettingsTableViewController.m */,
 				B192C49F17EFF6D80051BB99 /* DD2SettingsTableViewCell.h */,
@@ -382,7 +377,6 @@
 				B195673A17DA64D400CB7F4B /* DD2AppDelegate.m in Sources */,
 				B195675C17DA6B1400CB7F4B /* DD2Words.m in Sources */,
 				B195675F17DA6FB200CB7F4B /* DD2GlobalHelper.m in Sources */,
-				B1CCB5C817DFC3C8009D7BF0 /* SettingsTableViewController.m in Sources */,
 				B1CCB5CC17DFC444009D7BF0 /* htmlPageViewController.m in Sources */,
 				B192DB4C17E26EFE0075C072 /* DisplayWordViewController.m in Sources */,
 				B191C3F217E3CBA100A2ABFA /* DD2TabBarController.m in Sources */,
