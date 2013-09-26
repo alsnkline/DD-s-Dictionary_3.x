@@ -174,6 +174,10 @@
     //Notify that play on selected has changed
     NSDictionary *userInfo = [NSDictionary dictionaryWithObject:sender.on ? @"YES" : @"NO" forKey:@"newValue"];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"playWordsOnSelectionChanged" object:self userInfo:userInfo];
+    
+    //track event with GA
+    NSString *switchSetting = sender.on ? @"ON" : @"OFF";
+    [DD2GlobalHelper sendEventToGAWithCategory:@"uiAction_Setting" action:@"playOnSelectionChanged" label:switchSetting value:nil];
 }
 
 - (IBAction)voiceHintsSwitchChanged:(UISwitch *)sender
@@ -183,6 +187,11 @@
     //NSLog(@"NOT_USE_VOICE_HINTS = %i", !useVoiceHints);
     [[NSUserDefaults standardUserDefaults] setBool:!useVoiceHints forKey:NOT_USE_VOICE_HINTS];
     [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    //track event with GA
+    NSString *switchSetting = sender.on ? @"ON" : @"OFF";
+    [DD2GlobalHelper sendEventToGAWithCategory:@"uiAction_Setting" action:@"voiceHintsSelectionChanged" label:switchSetting value:nil];
+    
 }
 
 - (IBAction)useDyslexieFontSwitchChanged:(UISwitch *)sender
@@ -192,6 +201,10 @@
     //Notify that the font has changed
     NSDictionary *userInfo = [NSDictionary dictionaryWithObject:sender.on ? @"YES" : @"NO" forKey:@"newValue"];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"useDyslexiFontChanged" object:self userInfo:userInfo];
+    
+    //track event with GA
+    NSString *switchSetting = sender.on ? @"ON" : @"OFF";
+    [DD2GlobalHelper sendEventToGAWithCategory:@"uiAction_Setting" action:@"useDyslexieFontChanged" label:switchSetting value:nil];
 }
 
 - (IBAction)backgroundHueSliderChanged:(UISlider *)sender
@@ -200,6 +213,9 @@
     [[NSUserDefaults standardUserDefaults] synchronize];
     self.customBackgroundColorHue = [NSNumber numberWithFloat:sender.value];
     [self backgroundColorChanged];
+    
+    //track event with GA
+    [DD2GlobalHelper sendEventToGAWithCategory:@"uiAction_Setting" action:@"backgroundColorChanged" label:@"Color Hue Changed" value:nil];
 }
 
 - (IBAction)backgroundSaturationSliderChanged:(UISlider *)sender
@@ -217,6 +233,10 @@
     self.customBackgroundColorSaturation = [NSNumber numberWithFloat:saturation];
     [self manageBackgroundColorLable];
     [self backgroundColorChanged];
+    
+    //track event with GA
+    NSString *customBackgroundColorSaturationSetting = [NSString stringWithFormat:@"Color Saturation:%f", saturation];
+    [DD2GlobalHelper sendEventToGAWithCategory:@"uiAction_Setting" action:@"backgroundColorChanged" label:customBackgroundColorSaturationSetting value:nil];
 }
 
 - (void) backgroundColorChanged
@@ -422,7 +442,7 @@
         }
         [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
     } else if (selectedCell.tag  == 22) {
-        // http://stackoverflow.com/questions/3124080/app-store-link-for-rate-review-this-app - extend to encourage app store reviews
+        // http://stackoverflow.com/questions/3124080/app-store-link-for-rate-review-this-app - ::To DO:: extend to encourage app store reviews
         [self sendEmail:selectedCell];
     } else if ([[NSArray arrayWithObjects:@"20",@"21",@"23", nil] containsObject:[@(selectedCell.tag) stringValue]]) {
         [self performSegueWithIdentifier:@"display WebView 2" sender:selectedCell];
