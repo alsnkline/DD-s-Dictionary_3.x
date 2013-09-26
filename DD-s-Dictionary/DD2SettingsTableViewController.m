@@ -60,12 +60,8 @@
     self.customBackgroundColorHue = [NSNumber numberWithFloat:[defaults floatForKey:BACKGROUND_COLOR_HUE]];
     self.customBackgroundColorSaturation = [NSNumber numberWithFloat:[defaults floatForKey:BACKGROUND_COLOR_SATURATION]];
     
-    self.backgroundColorHueCell.smallSlider.value = [self.customBackgroundColorHue floatValue];
-    self.backgroundColorSatCell.smallSlider.value = [self.customBackgroundColorSaturation floatValue]*SATURATION_MULTIPLIER;
-    
     self.customBackgroundColor = [UIColor colorWithHue:[self.customBackgroundColorHue floatValue]  saturation:[self.customBackgroundColorSaturation floatValue] brightness:1 alpha:1];
     [self setCellBackgroundColor];
-    [self manageBackgroundColorLable];
     
     self.selectedCollections = [[defaults stringArrayForKey:SELECTED_COLLECTIONS] mutableCopy];
     
@@ -85,6 +81,11 @@
         self.spellingVariantCell.smallSlider.value = 1.0;
     }
     [self manageSpellingVariantLable];
+    
+    self.backgroundColorHueCell.smallSlider.value = [self.customBackgroundColorHue floatValue];
+    self.backgroundColorSatCell.smallSlider.value = [self.customBackgroundColorSaturation floatValue]*SATURATION_MULTIPLIER;
+    
+    [self manageBackgroundColorLable];
 }
 
 
@@ -378,7 +379,7 @@
         }
     } else {
         NSString *CellIdentifier = [NSString stringWithFormat:@"Settings %d %d", indexPath.section, indexPath.row ];
-        cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+        cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         
         if ([cell isKindOfClass:[DD2SettingsTableViewCell class]]) {
             DD2SettingsTableViewCell *stvc = (DD2SettingsTableViewCell *)cell;
