@@ -291,6 +291,21 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
        }
     }
     
+    if ([pronunciations count] <1) {    //does it have local variant alt spellings with files
+        if ([[word objectForKey:@"word"] isKindOfClass:[NSDictionary class]] ) {
+            NSSet *locales = [NSSet setWithObjects:[NSString stringWithFormat:@"uk"], [NSString stringWithFormat:@"us"], nil];
+            for (NSString *locale in locales) {
+                NSString *wordVariant = [word objectForKey:@"wordVariant"];
+                if (![locale isEqualToString:wordVariant]) {
+                    NSString *alternativeSpelling = [[word objectForKey:@"word"] objectForKey:locale];
+                    if ([DD2GlobalHelper fileURLForPronunciation:alternativeSpelling]) {
+                        [pronunciations addObject:alternativeSpelling];
+                    }
+                }
+            }
+        }
+    }
+    
     if ([pronunciations count] < 1) {   //all has failed set pronunciation to the root spelling and warn that its missing
         [pronunciations addObject:pronunciationFromSpelling];
         NSLog(@"***** file needed: %@ *****", [word objectForKey:@"spelling"]);
