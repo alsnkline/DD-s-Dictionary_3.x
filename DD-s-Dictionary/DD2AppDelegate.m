@@ -12,6 +12,7 @@
 
 //core data framework, systemConfiguration framework, libz.dylib added for Google Analytics
 //systemConfiguration framework and security framework (as we have v4.2.3), for Flurry
+//coreTelephony framework and libsqlite3.dylib added for Appington
 
 @implementation DD2AppDelegate
 
@@ -56,9 +57,19 @@
     [Flurry logEvent:@"App_duration" timed:YES];
     [Flurry logEvent:@"App_initial_active" timed:YES];
     
-    // Setting up audioSession
+    //Setting up audioSession
     [self setupAudioSession];
     [self setAudioSessionCategoryToPlayback];
+
+    //Initializing Appington
+    [Appington start:@"c492b8fa-0e3c-46d9-82c0-3806c0046c70"];
+    
+    //Register for Appington notifications
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(onAppingtonNotification:)
+                                                 name:nil object:[Appington notificationObject]];
+    
+    [Appington control:@"placement" andValues:@{@"id": @"1"}];
     
     return YES;
 }
@@ -119,5 +130,40 @@
     }
 }
 
+- (void) onAppingtonNotification:(NSNotification*)notification {
+    //NSLog(@"Appington NR: %@", [notification name]);
+    NSLog(@"%@",notification);
+    if ([[notification name] isEqualToString:@"audio_end"])
+    {
+        //track event with GA
+        NSString *descriptionForNotificationObject = [[notification object] description];
+        [DD2GlobalHelper sendEventToGAWithCategory:@"uiAction_Appington" action:@"audio_end" label:descriptionForNotificationObject value:nil];
+        
+    }
+    if ([[notification name] isEqualToString:@"audio_start"])
+    {
+        //track event with GA
+        NSString *descriptionForNotificationObject = [[notification object] description];
+        [DD2GlobalHelper sendEventToGAWithCategory:@"uiAction_Appington" action:@"audio_start" label:descriptionForNotificationObject value:nil];
+    }
+    if ([[notification name] isEqualToString:@"prompts"])
+    {
+        NSDictionary *values=notification.userInfo;
+        //NSLog(@"values coming with the notification %@", values);
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        
+        BOOL vForChangeable = [[values objectForKey:@"changeable"] boolValue];
+        NSLog(@"value for 'changeable' in notification object %@", [values objectForKey:@"changeable"]);
+        [defaults setBool:vForChangeable forKey:VOICE_HINT_AVAILABLE];
+        
+        
+        BOOL vForEnabled = [[values objectForKey:@"enabled"] boolValue]; //could be used to control switch setting, currently just testing for similarity.
+        NSLog(@"value for 'enable' in notification object %@", [values objectForKey:@"enabled"]);
+        [defaults setBool:!vForEnabled forKey:NOT_USE_VOICE_HINTS];
+        //inverting switch logic to get default behavior to be ON (although appington is controlling that, so I don't have to tell them about a default setting. Could revert to USE_VOICE_HINTS !
+        
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
+}
 
 @end

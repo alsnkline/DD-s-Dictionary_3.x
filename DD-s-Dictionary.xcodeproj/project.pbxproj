@@ -34,6 +34,10 @@
 		B195675017DA65AC00CB7F4B /* resources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B195674F17DA65AC00CB7F4B /* resources.bundle */; };
 		B195675C17DA6B1400CB7F4B /* DD2Words.m in Sources */ = {isa = PBXBuildFile; fileRef = B195675B17DA6B1400CB7F4B /* DD2Words.m */; };
 		B195675F17DA6FB200CB7F4B /* DD2GlobalHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B195675E17DA6FB200CB7F4B /* DD2GlobalHelper.m */; };
+		B1966A4917F3EFB2007277A8 /* libAppington.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B1966A4817F3EFB2007277A8 /* libAppington.a */; };
+		B1966A4C17F3F07A007277A8 /* appington in Resources */ = {isa = PBXBuildFile; fileRef = B1966A4B17F3F07A007277A8 /* appington */; };
+		B1966A4E17F3F0BF007277A8 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1966A4D17F3F0BF007277A8 /* CoreTelephony.framework */; };
+		B1966A5017F3F0FF007277A8 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B1966A4F17F3F0FF007277A8 /* libsqlite3.dylib */; };
 		B1B7D19617ED0C74004576F8 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1B7D19517ED0C74004576F8 /* SystemConfiguration.framework */; };
 		B1B7D19817ED0CDC004576F8 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B1B7D19717ED0CDC004576F8 /* libz.dylib */; };
 		B1B7D19A17ED25CC004576F8 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B1B7D19917ED25CC004576F8 /* libGoogleAnalyticsServices.a */; };
@@ -98,6 +102,11 @@
 		B195675B17DA6B1400CB7F4B /* DD2Words.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DD2Words.m; sourceTree = "<group>"; };
 		B195675D17DA6FB200CB7F4B /* DD2GlobalHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DD2GlobalHelper.h; sourceTree = "<group>"; };
 		B195675E17DA6FB200CB7F4B /* DD2GlobalHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DD2GlobalHelper.m; sourceTree = "<group>"; };
+		B1966A4717F3EFB2007277A8 /* Appington.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Appington.h; sourceTree = "<group>"; };
+		B1966A4817F3EFB2007277A8 /* libAppington.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libAppington.a; sourceTree = "<group>"; };
+		B1966A4B17F3F07A007277A8 /* appington */ = {isa = PBXFileReference; lastKnownFileType = folder; path = appington; sourceTree = SOURCE_ROOT; };
+		B1966A4D17F3F0BF007277A8 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		B1966A4F17F3F0FF007277A8 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		B1B7D19517ED0C74004576F8 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		B1B7D19717ED0CDC004576F8 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		B1B7D19917ED25CC004576F8 /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
@@ -132,6 +141,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B1966A5017F3F0FF007277A8 /* libsqlite3.dylib in Frameworks */,
+				B1966A4E17F3F0BF007277A8 /* CoreTelephony.framework in Frameworks */,
 				B1954E9217EE68A900371610 /* Security.framework in Frameworks */,
 				B1B7D19817ED0CDC004576F8 /* libz.dylib in Frameworks */,
 				B1B7D19617ED0C74004576F8 /* SystemConfiguration.framework in Frameworks */,
@@ -145,6 +156,7 @@
 				B195672E17DA64D400CB7F4B /* CoreGraphics.framework in Frameworks */,
 				B1B7D19A17ED25CC004576F8 /* libGoogleAnalyticsServices.a in Frameworks */,
 				B1954E8F17EE687000371610 /* libFlurry_4.2.3.a in Frameworks */,
+				B1966A4917F3EFB2007277A8 /* libAppington.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -173,6 +185,8 @@
 		B195671D17DA64D400CB7F4B = {
 			isa = PBXGroup;
 			children = (
+				B1966A4F17F3F0FF007277A8 /* libsqlite3.dylib */,
+				B1966A4D17F3F0BF007277A8 /* CoreTelephony.framework */,
 				B1954E9117EE68A900371610 /* Security.framework */,
 				B1B7D19717ED0CDC004576F8 /* libz.dylib */,
 				B1B7D19517ED0C74004576F8 /* SystemConfiguration.framework */,
@@ -233,6 +247,7 @@
 				B195675D17DA6FB200CB7F4B /* DD2GlobalHelper.h */,
 				B195675E17DA6FB200CB7F4B /* DD2GlobalHelper.m */,
 				B1CCB5C917DFC3E6009D7BF0 /* NSUserDefaultKeys.h */,
+				B1966A4A17F3EFB7007277A8 /* Appington */,
 				B1954E9017EE687400371610 /* Flurry */,
 				B1C0447917ED07E8007395C3 /* Google Analytics */,
 				B195674F17DA65AC00CB7F4B /* resources.bundle */,
@@ -245,6 +260,7 @@
 		B195673017DA64D400CB7F4B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				B1966A4B17F3F07A007277A8 /* appington */,
 				B195673817DA64D400CB7F4B /* DD2AppDelegate.h */,
 				B195673917DA64D400CB7F4B /* DD2AppDelegate.m */,
 				B195673117DA64D400CB7F4B /* DD-s-Dictionary-Info.plist */,
@@ -254,6 +270,15 @@
 				B1B7D19417ED0A08004576F8 /* AppImagesRequired */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B1966A4A17F3EFB7007277A8 /* Appington */ = {
+			isa = PBXGroup;
+			children = (
+				B1966A4717F3EFB2007277A8 /* Appington.h */,
+				B1966A4817F3EFB2007277A8 /* libAppington.a */,
+			);
+			name = Appington;
 			sourceTree = "<group>";
 		};
 		B1B7D19417ED0A08004576F8 /* AppImagesRequired */ = {
@@ -363,6 +388,7 @@
 				B1C21C9E17ECF74B00C51C8C /* Default-Landscape~ipad.png in Resources */,
 				B1C0446E17ECFC44007395C3 /* iTunesArtwork.png in Resources */,
 				B1C0446F17ECFC44007395C3 /* iTunesArtwork@2x.png in Resources */,
+				B1966A4C17F3F07A007277A8 /* appington in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

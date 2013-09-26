@@ -19,5 +19,7 @@
     #import "GAIDictionaryBuilder.h"
     #import "GAIFields.h"
 //for Flurry
-    #import "Flurry.h" 
+    #import "Flurry.h"
+//for Appington
+    #import "Appington.h"
 #endif

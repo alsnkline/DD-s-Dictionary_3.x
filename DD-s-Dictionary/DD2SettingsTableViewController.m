@@ -192,6 +192,21 @@
     NSString *switchSetting = sender.on ? @"ON" : @"OFF";
     [DD2GlobalHelper sendEventToGAWithCategory:@"uiAction_Setting" action:@"voiceHintsSelectionChanged" label:switchSetting value:nil];
     
+    //call Appington
+    [self playButtonMsg:sender.on];
+}
+
+- (void)playButtonMsg:(BOOL)buttonState
+{
+    static NSArray *buttonOnMsgs = nil;
+    if (!buttonOnMsgs) buttonOnMsgs = [NSArray arrayWithObjects:@"18",@"19", nil];
+    static NSArray *buttonOffMsgs = nil;
+    if (!buttonOffMsgs) buttonOffMsgs = [NSArray arrayWithObjects:@"20",@"21", nil];
+    
+    NSArray *messages = buttonState ? buttonOffMsgs : buttonOnMsgs;
+    int msgIndex = arc4random()%[messages count];
+    
+    [Appington control:@"placement" andValues:@{@"id": [messages objectAtIndex:msgIndex]}];
 }
 
 - (IBAction)useDyslexieFontSwitchChanged:(UISwitch *)sender

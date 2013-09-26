@@ -123,14 +123,37 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
+    
+    NSArray *viewControllers = self.navigationController.viewControllers;
+    NSLog(@"view controller stack : %@", viewControllers);
+    
     [self setupColor];
     [self setVisibleCellsCellTextLabelFont];
 }
 
--(void)viewDidAppear:(BOOL)animated {
+-(void)viewDidAppear:(BOOL)animated
+{
     [super viewDidAppear:animated];
+    
     //track screen with GA
     [DD2GlobalHelper sendViewToGAWithViewName:@"Fun With Words Tab Shown"];
+    
+    // Appington - need to only if new not if popped
+    
+    if (self.isMovingToParentViewController == NO) {
+        [self playAppingtonMsg];
+    }
+}
+
+- (void)playAppingtonMsg
+{
+    static NSArray *msgs = nil;
+    if (!msgs) msgs = [NSArray arrayWithObjects:@"22",@"23", nil];
+    
+    int msgIndex = arc4random()%[msgs count];
+    
+    [Appington control:@"placement" andValues:@{@"id": [msgs objectAtIndex:msgIndex]}];
 }
 
 - (void)viewDidLoad
@@ -265,8 +288,6 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    //need to implement push segue called "Fun Tag Selected"
-    
     NSLog(@"Indexpath of Selected Cell = %@", indexPath);
     UITableViewCell *selectedCell = [self.tableView cellForRowAtIndexPath:indexPath];
     
@@ -286,10 +307,14 @@
             if ([cell.textLabel.text isEqualToString:@"homophones"]) {
                 switchValue = 0;
                 selectionPredicate = [NSPredicate predicateWithFormat:@"locHomophones.@count > 0"];
+                // Appington
+                [Appington control:@"conversion" andValues:@{@"id": @"22"}];
             } else if ([cell.textLabel.text isEqualToString:@"heteronyms"]) {
                 switchValue = 1;
                 selectionPredicate = [NSPredicate predicateWithFormat:@"pronunciations.@count > 1"];
                 // from http://www.raywenderlich.com/14742/core-data-on-ios-5-tutorial-how-to-work-with-relations-and-predicates
+                // Appington
+                [Appington control:@"conversion" andValues:@{@"id": @"23"}];
             } else {
                 switchValue = 5;
                 selectionPredicate = [NSPredicate predicateWithFormat:@"SELF.tags contains[c] %@",[DD2Words exchangeSpacesForUnderscoresin:cell.textLabel.text]];
