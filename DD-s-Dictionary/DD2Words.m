@@ -238,6 +238,11 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
     }
 }
 
++ (NSString *)exchangeSpacesForUnderscoresin:(NSString *)string {
+    NSString *cleanString = [string stringByReplacingOccurrencesOfString:@" " withString:@"_"];
+    return cleanString;
+}
+
 + (NSString *)exchangeUnderscoresForSpacesin:(NSString *)string {
     NSString *cleanString = [string stringByReplacingOccurrencesOfString:@"_" withString:@" "];
     return cleanString;

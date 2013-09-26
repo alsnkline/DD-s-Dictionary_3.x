@@ -27,6 +27,7 @@
 + (NSDictionary *)wordsBySectionFromWordList:(NSArray *)wordList;
 + (void) compareSectionsDictionaryFirstAnswer:(NSDictionary *)firstAnswer withSecondAnswer:(NSDictionary *)secondAnswer;
 
++ (NSString *)exchangeSpacesForUnderscoresin:(NSString *)string;
 + (NSString *) exchangeUnderscoresForSpacesin:(NSString *)string;
 + (NSString *) displayNameForCollection:(NSString *)collectionName;
 + (NSString *) pronunciationFromSpelling:(NSString *)spelling;
