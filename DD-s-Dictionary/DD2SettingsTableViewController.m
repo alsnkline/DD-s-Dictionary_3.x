@@ -51,13 +51,6 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     self.spellingVariant = [defaults stringForKey:SPELLING_VARIANT];
     
-    if ([self.spellingVariant isEqualToString:@"US"]) {
-        self.spellingVariantCell.smallSlider.value = 0.0;
-    } else {
-        self.spellingVariantCell.smallSlider.value = 1.0;
-    }
-    [self manageSpellingVariantLable];
-    
     self.playOnSelectionCell.cellSwitch.on = [defaults boolForKey:PLAY_WORDS_ON_SELECTION];
     self.useDyslexicFontCell.cellSwitch.on = [defaults boolForKey:USE_DYSLEXIE_FONT];
     
@@ -83,6 +76,15 @@
     
     [super viewDidAppear:animated];
     
+}
+
+-(void)viewDidAppear:(BOOL)animated {       //things in here so that outlets are set
+    if ([self.spellingVariant isEqualToString:@"US"]) {
+        self.spellingVariantCell.smallSlider.value = 0.0;
+    } else {
+        self.spellingVariantCell.smallSlider.value = 1.0;
+    }
+    [self manageSpellingVariantLable];
 }
 
 
