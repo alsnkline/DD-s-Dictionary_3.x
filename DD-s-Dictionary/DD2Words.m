@@ -352,7 +352,9 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
 + (NSMutableArray *) wordsForPronunciationList:(NSArray *)list andWordList:(NSArray *)wordList {
     NSMutableArray *workingHomophoneList = [NSMutableArray array];
     for (NSString *pronunciation in list) {
-        [workingHomophoneList addObject:[DD2Words wordForPronunciation:pronunciation fromWordList:wordList]];
+        if ([DD2Words wordForPronunciation:pronunciation fromWordList:wordList]) {
+            [workingHomophoneList addObject:[DD2Words wordForPronunciation:pronunciation fromWordList:wordList]];   //protect against homophones that don't have a pronununciation
+        }
     }
     return [workingHomophoneList copy];
 }
