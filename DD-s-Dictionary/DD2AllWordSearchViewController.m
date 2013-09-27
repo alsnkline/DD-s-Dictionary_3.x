@@ -36,7 +36,7 @@
     NSArray *sortedWords = [allWordsForSpellingVariant sortedArrayUsingDescriptors:[NSArray arrayWithObjects:descriptor, nil]];
     if (sortedWords != _allWordsForSpellingVariant) {
         _allWordsForSpellingVariant = sortedWords;
-        self.allWordsWithSections = [DD2Words wordsBySectionFromWordList:allWordsForSpellingVariant];
+        self.allWordsWithSections = [DD2Words wordsBySectionFromWordList:sortedWords];
         [self.tableView reloadData];
     }
 }
