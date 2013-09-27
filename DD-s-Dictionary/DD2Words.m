@@ -127,6 +127,10 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
                 NSString *cleanSpelling = [DD2Words exchangeUnderscoresForSpacesin:spelling];
                 [processedWord setObject:cleanSpelling forKey:@"spelling"];  //need for easy sorting
                 
+                //adding section for easy table creation
+                NSString *section = [[cleanSpelling substringToIndex:1] uppercaseString];
+                [processedWord setObject:section forKey:@"section"];
+                
                 //processing for homophones
                 id homophonesElement = [rawWord objectForKey:@"homophones"];
                 if (homophonesElement) {        //only process if word has homophones
@@ -161,8 +165,6 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
                 NSMutableArray *collections = [NSMutableArray arrayWithArray:[rawWord objectForKey:@"collections"]];
                 for (NSString *collection in collections) {
                     if (![workingCollectionNames containsObject:collection]) [workingCollectionNames addObject:collection];
-                    NSString *section = [[spelling substringToIndex:1] uppercaseString];
-                    [processedWord setObject:section forKey:@"section"];    //need for easy section calculation from word
                 }
                 
                 //processing Tags on each word (ignoring locale as no tagged words have a spelling variations will endup with all UK words)
