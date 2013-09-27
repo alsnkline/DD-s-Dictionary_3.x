@@ -124,13 +124,6 @@
     }
 }
 
-//- (NSArray *)collectionsInWordlist
-//{
-//    NSMutableArray *collections = [NSMutableArray arrayWithArray:[DD2Words sharedWords].collectionNames];
-//    [collections removeObject:@"allWords"];
-//    NSLog(@"collections for tabs %@", collections);
-//    return collections;
-//}
 
 - (void)manageTabs
 {
