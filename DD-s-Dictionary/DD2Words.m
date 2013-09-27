@@ -23,7 +23,7 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
 
 @synthesize rawWords = _rawWords;
 @synthesize processedWords = _processedWords;
-@synthesize allProcessedWords = _allProcessedWords;
+@synthesize allWords = _allWords;
 @synthesize collectionNames = _collectionNames;
 @synthesize tagNames = _tagNames;
 @synthesize spellingVariant = _spellingVariant;
@@ -67,13 +67,13 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
     return _rawWords;
 }
 
--(NSArray *)allProcessedWords
+-(NSArray *)allWords
 {
-    if (_allProcessedWords == nil) {
-        _allProcessedWords = [self.processedWords objectForKey:ALL];
-        if (PROCESS_VERBOSELY) NSLog(@"%@ has = %d words", ALL ,[_allProcessedWords count]);
+    if (_allWords == nil) {
+        _allWords = [self.processedWords objectForKey:ALL];
+        if (PROCESS_VERBOSELY) NSLog(@"%@ has = %d words", ALL ,[_allWords count]);
     }
-    return _allProcessedWords;
+    return _allWords;
 }
 
 -(NSArray *)collectionNames
@@ -192,8 +192,8 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
 - (NSArray *)allWordsForCurrentSpellingVariant {
     NSPredicate *selectionPredicate = [NSPredicate predicateWithFormat:@"SELF.wordVariant LIKE[c] %@",[self.spellingVariant lowercaseString]];
     if (LOG_PREDICATE_RESULTS) NSLog(@"predicate = %@", selectionPredicate);
-    if (LOG_PREDICATE_RESULTS) [DD2GlobalHelper testWordPredicate:selectionPredicate onWords:self.allProcessedWords];
-    NSArray *matches = [NSArray arrayWithArray:[self.allProcessedWords filteredArrayUsingPredicate:selectionPredicate]];
+    if (LOG_PREDICATE_RESULTS) [DD2GlobalHelper testWordPredicate:selectionPredicate onWords:self.allWords];
+    NSArray *matches = [NSArray arrayWithArray:[self.allWords filteredArrayUsingPredicate:selectionPredicate]];
     return matches;
 }
 
@@ -385,8 +385,13 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
 {
     if ([property isEqualToString:COLLECTION_NAMES]) NSLog(@"DD2Word.%@ = %@", COLLECTION_NAMES, [DD2Words sharedWords].collectionNames);
     if ([property isEqualToString:TAG_NAMES]) NSLog(@"DD2Word.%@ = %@", TAG_NAMES, [DD2Words sharedWords].tagNames);
-    if ([property isEqualToString:ALL]) NSLog(@"DD2Word.%@ = %@", ALL, [DD2Words sharedWords].allProcessedWords);
+    if ([property isEqualToString:ALL]) NSLog(@"DD2Word.%@ = %@", ALL, [DD2Words sharedWords].allWords);
     NSLog(@"-------- above or property missing ---------");
+}
+
+- (NSString *)description
+{
+    return [NSString stringWithFormat:@"collection: %@, tags: %@ word count: %lu", self.collectionNames, self.tagNames, (unsigned long)[self.allWords count]];
 }
 
 @end

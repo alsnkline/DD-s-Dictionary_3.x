@@ -12,7 +12,7 @@
 
 @property (nonatomic, strong) NSDictionary *rawWords;
 @property (nonatomic, strong) NSDictionary *processedWords;
-@property (nonatomic, strong) NSArray *allProcessedWords;
+@property (nonatomic, strong) NSArray *allWords;
 @property (nonatomic, strong) NSArray *collectionNames;
 @property (nonatomic, strong) NSArray *tagNames;
 @property (nonatomic, strong) NSString *spellingVariant;
