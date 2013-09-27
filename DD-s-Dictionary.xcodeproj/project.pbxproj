@@ -522,6 +522,8 @@
 		B195674E17DA64D400CB7F4B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Alison Kline";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Alison Kline";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DD-s-Dictionary/DD-s-Dictionary-Prefix.pch";
 				INFOPLIST_FILE = "DD-s-Dictionary/DD-s-Dictionary-Info.plist";
@@ -531,6 +533,8 @@
 					"\"$(SRCROOT)/DD-s-Dictionary\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "D78BE064-4425-4B21-9185-330076B34906";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "D78BE064-4425-4B21-9185-330076B34906";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
