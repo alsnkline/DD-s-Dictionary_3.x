@@ -63,7 +63,7 @@
 
 - (NSArray *)selectedCollections {
     if (!_selectedCollections) {
-        _selectedCollections = [[NSUserDefaults standardUserDefaults] stringArrayForKey:SELECTED_COLLECTIONS];
+        _selectedCollections = [DD2SettingsTableViewController limitSelectedCollections:[[[NSUserDefaults standardUserDefaults] stringArrayForKey:SELECTED_COLLECTIONS] mutableCopy]];
         if (!_selectedCollections) {
             //set up the default for the first time
             NSLog(@"defaulting SELECTED_COLLECTIONS to first_words");

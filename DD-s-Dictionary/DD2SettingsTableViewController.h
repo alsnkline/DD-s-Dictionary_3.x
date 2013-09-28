@@ -13,4 +13,6 @@
 @property (nonatomic, strong) NSArray *collectionNames;
 @property (nonatomic, strong) NSMutableArray *selectedCollections;
 
++ (NSMutableArray *) limitSelectedCollections:(NSMutableArray *)selectedCollections;
+
 @end

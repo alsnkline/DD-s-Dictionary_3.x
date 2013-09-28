@@ -46,16 +46,25 @@
 #define SATURATION_MULTIPLIER 10
 //Saturation slider runs from 0-2 to allow me to use interger rounding - storage and UIColor calulations assume a 0-1 range, so need to / and * where appropriate by a factor to deliver two levels.
 
+-(void)setSelectedCollections:(NSMutableArray *)selectedCollections {
+    if (selectedCollections != _selectedCollections) {
+        NSMutableArray *limitedSelectedCollections = [DD2SettingsTableViewController limitSelectedCollections:selectedCollections];
+        _selectedCollections = limitedSelectedCollections;
+    }
+}
+
++ (NSMutableArray *) limitSelectedCollections:(NSMutableArray *)selectedCollections {
+    while ([selectedCollections count]>2) {
+        [selectedCollections removeObjectAtIndex:0];
+        NSLog(@"removing collection to keep selection at %lu",(unsigned long)[selectedCollections count]);
+    }
+    return selectedCollections;
+}
+
 - (void)viewWillAppear:(BOOL)animated
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     self.spellingVariant = [defaults stringForKey:SPELLING_VARIANT];
-    
-    self.playOnSelectionCell.cellSwitch.on = [defaults boolForKey:PLAY_WORDS_ON_SELECTION];
-    self.useDyslexicFontCell.cellSwitch.on = [defaults boolForKey:USE_DYSLEXIE_FONT];
-    
-    bool useVoiceHints = ![defaults boolForKey:NOT_USE_VOICE_HINTS]; //inverting switch logic to get default behavior to be ON
-    self.voiceHintsCell.cellSwitch.on = useVoiceHints;
     
     self.customBackgroundColorHue = [NSNumber numberWithFloat:[defaults floatForKey:BACKGROUND_COLOR_HUE]];
     self.customBackgroundColorSaturation = [NSNumber numberWithFloat:[defaults floatForKey:BACKGROUND_COLOR_SATURATION]];
@@ -75,6 +84,8 @@
 }
 
 -(void)viewDidAppear:(BOOL)animated {       //things in here so that outlets are set
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
     if ([self.spellingVariant isEqualToString:@"US"]) {
         self.spellingVariantCell.smallSlider.value = 0.0;
     } else {
@@ -82,10 +93,17 @@
     }
     [self manageSpellingVariantLable];
     
+    bool useVoiceHints = ![defaults boolForKey:NOT_USE_VOICE_HINTS]; //inverting switch logic to get default behavior to be ON
+    self.voiceHintsCell.cellSwitch.on = useVoiceHints;
+    
+    self.playOnSelectionCell.cellSwitch.on = [defaults boolForKey:PLAY_WORDS_ON_SELECTION];
+    self.useDyslexicFontCell.cellSwitch.on = [defaults boolForKey:USE_DYSLEXIE_FONT];
+    
     self.backgroundColorHueCell.smallSlider.value = [self.customBackgroundColorHue floatValue];
     self.backgroundColorSatCell.smallSlider.value = [self.customBackgroundColorSaturation floatValue]*SATURATION_MULTIPLIER;
     
     [self manageBackgroundColorLable];
+    [super viewDidAppear:animated];
 }
 
 
@@ -313,6 +331,8 @@
 
 - (void) collectionSelectionChanged
 {
+    [self.tableView reloadData];
+    
     [[NSUserDefaults standardUserDefaults] setObject:self.selectedCollections forKey:SELECTED_COLLECTIONS];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
@@ -445,14 +465,13 @@
     //manage the actions
     UITableViewCell *selectedCell = [self.tableView cellForRowAtIndexPath:indexPath];
     if (selectedCell.tag == 10) {
-        //toggle checkmark and update currently selected collection list. do I need a delegate for this change back to the TabVC?? could use notifications I guess.
+        //toggle checkmark and update currently selected collection list.
         if (selectedCell.accessoryType == UITableViewCellAccessoryCheckmark) {
-            selectedCell.accessoryType = UITableViewCellAccessoryNone;
             [self.selectedCollections removeObject:[self.collectionNames objectAtIndex:indexPath.row]];
             [self collectionSelectionChanged];
         } else {
-            selectedCell.accessoryType = UITableViewCellAccessoryCheckmark;
             [self.selectedCollections addObject:[self.collectionNames objectAtIndex:indexPath.row]];
+            self.selectedCollections = [DD2SettingsTableViewController limitSelectedCollections:self.selectedCollections];
             [self collectionSelectionChanged];
         }
         [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
