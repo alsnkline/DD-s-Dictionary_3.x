@@ -196,7 +196,9 @@
         NSString *sectionOfHomophone = [word objectForKey:@"section"];
         NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"spelling" ascending:YES selector:@selector(caseInsensitiveCompare:)];
         NSArray *sortedWords = [[self.wordListWithSections objectForKey:sectionOfHomophone] sortedArrayUsingDescriptors:[NSArray arrayWithObjects:descriptor, nil]];
-        indexPathOfHomophone = [NSIndexPath indexPathForRow:[sortedWords indexOfObject:word] inSection:[self.sections indexOfObject:sectionOfHomophone]];
+        if ([sortedWords indexOfObject:word] != NSNotFound) {
+            indexPathOfHomophone = [NSIndexPath indexPathForRow:[sortedWords indexOfObject:word] inSection:[self.sections indexOfObject:sectionOfHomophone]];
+        }
     } else {
         if ([self.wordList indexOfObject:word] != NSNotFound) {
            indexPathOfHomophone = [NSIndexPath indexPathForRow:[self.wordList indexOfObject:word] inSection:0];
