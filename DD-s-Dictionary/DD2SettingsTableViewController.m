@@ -388,9 +388,24 @@
     }
 }
 
--(NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     if (section == 2) {
-        return @"Thank you - Alison\r\n\r\nCopyright © 2013 Alison Kline.\r\nAll rights reserved.";
+        return 80;
+    } else {
+        return 0;
+    }
+}
+
+-(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+    if (section == 2) {
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 300, 60)];
+        label.textColor = [UIColor grayColor];
+        label.backgroundColor = [UIColor clearColor];
+        label.textAlignment = NSTextAlignmentCenter;
+        label.numberOfLines = 0;
+        label.font = [UIFont systemFontOfSize:11];
+        label.text = @"Thank you - Alison\r\n\r\nCopyright © 2013 Alison Kline.\r\nAll rights reserved.";
+        return label;
     } else {
         return nil;
     }
