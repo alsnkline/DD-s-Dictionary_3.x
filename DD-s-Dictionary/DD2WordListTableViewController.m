@@ -105,7 +105,7 @@
     }
     
     // Configure the cell...
-    
+    cell.backgroundColor = [UIColor clearColor]; //needed for iOS7
     cell.textLabel.font = self.useDyslexieFont ? [UIFont fontWithName:@"Dyslexiea-Regular" size:20] : [UIFont boldSystemFontOfSize:20];
     
     if (!self.sections) {

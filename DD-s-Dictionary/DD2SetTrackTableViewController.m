@@ -80,14 +80,19 @@
         // we have to deselect change color and reselect or we get the old color showing up when the selection is changed.
         NSIndexPath *selectedCell = [self.tableView indexPathForSelectedRow];
         [self.tableView deselectRowAtIndexPath:selectedCell animated:NO];
-        self.tableView.backgroundColor = self.customBackgroundColor;
+        [self setTheColor];
         [self.tableView selectRowAtIndexPath:selectedCell animated:NO scrollPosition:UITableViewScrollPositionNone];
     } else {
-        self.tableView.backgroundColor = self.customBackgroundColor;
-        if (self.searchDisplayController.searchResultsTableView) {      //if we have a searchtable change that background too.
-            self.searchDisplayController.searchResultsTableView.backgroundColor = self.customBackgroundColor;
-        }
+        [self setTheColor];
     }
+}
+
+-(void)setTheColor {
+    self.tableView.backgroundColor = self.customBackgroundColor;
+    if (self.searchDisplayController.searchResultsTableView) {      //if we have a searchtable change that background too.
+        self.searchDisplayController.searchResultsTableView.backgroundColor = self.customBackgroundColor;
+    }
+    self.tableView.sectionIndexBackgroundColor = [UIColor clearColor];   // needed for iOS7
 }
 
 -(void)onNotification:(NSNotification *)notification

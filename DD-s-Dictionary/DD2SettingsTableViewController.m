@@ -11,6 +11,7 @@
 #import <MessageUI/MessageUI.h>
 #import "htmlPageViewController.h"
 #import "DD2SettingsTableViewCell.h"
+#import "DD2AppDelegate.h"
 
 @interface DD2SettingsTableViewController () <UITableViewDataSource, UITableViewDelegate, MFMailComposeViewControllerDelegate>
 
@@ -276,11 +277,29 @@
 {
     self.customBackgroundColor = [UIColor colorWithHue:[self.customBackgroundColorHue floatValue]  saturation:[self.customBackgroundColorSaturation floatValue] brightness:1 alpha:1];
     
+    if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1) {    // in iOS7
+        [DD2SettingsTableViewController manageWindowTintColorWith];
+    }
+    
     //Notify that the background color has changed
     NSDictionary *userInfo = [NSDictionary dictionaryWithObject:self.customBackgroundColor forKey:@"newValue"];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"customBackgroundColorChanged" object:self userInfo:userInfo];
     
     [self setCellBackgroundColor];
+}
+
++ (void) manageWindowTintColorWith {
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    DD2AppDelegate *appDelegate = (DD2AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    BOOL customColor = [defaults floatForKey:BACKGROUND_COLOR_SATURATION] != 0.0;
+    if (!customColor) {
+        appDelegate.window.tintColor = [UIColor colorWithHue:284/360.0 saturation:0.91 brightness:0.78 alpha:1];
+    } else {
+        float hue = [defaults floatForKey:BACKGROUND_COLOR_HUE];
+        appDelegate.window.tintColor = [UIColor colorWithHue:hue saturation:0.85  brightness:0.60 alpha:1];
+    }
 }
 
 - (void) manageBackgroundColorLable

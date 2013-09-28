@@ -7,6 +7,7 @@
 //
 
 #import "DD2AppDelegate.h"
+#import "DD2SettingsTableViewController.h"
 #import <AudioToolbox/AudioToolbox.h>  //for system sounds
 #import <AVFoundation/AVFoundation.h> //for audioPlayer
 
@@ -17,8 +18,11 @@
 @implementation DD2AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
-    // Override point for customization after application launch.
+{   // Override point for customization after application launch.
+    
+    if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1) {    // in iOS7
+        [DD2SettingsTableViewController manageWindowTintColorWith];
+    }
     
     //Google Analytics
     // Optional: automatically send uncaught exceptions to Google Analytics.

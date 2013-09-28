@@ -79,9 +79,10 @@
         
         self.view.backgroundColor = self.customBackgroundColor;
         NSArray *myListenButtons = [NSArray arrayWithObjects:self.listenButton, self.heteronymListenButton, nil];
-        [self setColorOfButtons:myListenButtons toColor:self.customBackgroundColor areHomophoneButtons:NO];
-        [self setColorOfButtons:self.homophoneButtons toColor:self.customBackgroundColor areHomophoneButtons:YES];
-        
+        if (floor(NSFoundationVersionNumber) <= NSFoundationVersionNumber_iOS_6_1) {    //not in iOS7
+            [self setColorOfButtons:myListenButtons toColor:self.customBackgroundColor areHomophoneButtons:NO];  // part of the iOS 7 problem!
+            [self setColorOfButtons:self.homophoneButtons toColor:self.customBackgroundColor areHomophoneButtons:YES];
+        }
     }
 }
 
@@ -159,6 +160,8 @@
             button.hidden = YES;
         };
         self.listenButton.hidden = NO;
+        //iOS7 only
+        //[self.listenButton.imageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]; doesn't work!
         
         self.listenButton.frame = CGRectMake((self.listenButton.superview.frame.size.width/2 - self.listenButton.frame.size.width/2), self.listenButton.frame.origin.y, self.listenButton.frame.size.width, self.listenButton.frame.size.height);
         
@@ -222,16 +225,18 @@
     }
     
     [button sizeToFit];
-    CGRect buttonFrame = button.frame;
-//    NSLog(@"button size from bounds = h%f w%f", button.bounds.size.height, button.bounds.size.width);
-    buttonFrame.size = CGSizeMake(button.frame.size.width, 43); //forcing button height as backgroud image seems to make it large
-    button.frame = buttonFrame;
-    
-//    NSLog(@"titleLabel = %f, %f", button.titleLabel.bounds.size.width, button.titleLabel.bounds.size.height);
-//    NSLog(@"button bounds = %f, %f", button.bounds.size.width, button.bounds.size.height);
-//    NSLog(@"image bounds = %f, %f", button.imageView.bounds.size.width, button.imageView.bounds.size.height);
-    button.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, spacingBetweenImageAndText);
-    button.titleEdgeInsets = UIEdgeInsetsMake(spacingToTop, spacingBetweenImageAndText, spacingToBottom, 0);
+    if (floor(NSFoundationVersionNumber) <= NSFoundationVersionNumber_iOS_6_1) {    //not in iOS7
+        CGRect buttonFrame = button.frame;
+    //    NSLog(@"button size from bounds = h%f w%f", button.bounds.size.height, button.bounds.size.width);
+        buttonFrame.size = CGSizeMake(button.frame.size.width, 43); //forcing button height as backgroud image seems to make it large
+        button.frame = buttonFrame;
+        
+    //    NSLog(@"titleLabel = %f, %f", button.titleLabel.bounds.size.width, button.titleLabel.bounds.size.height);
+    //    NSLog(@"button bounds = %f, %f", button.bounds.size.width, button.bounds.size.height);
+    //    NSLog(@"image bounds = %f, %f", button.imageView.bounds.size.width, button.imageView.bounds.size.height);
+        button.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, spacingBetweenImageAndText);
+        button.titleEdgeInsets = UIEdgeInsetsMake(spacingToTop, spacingBetweenImageAndText, spacingToBottom, 0);
+    }
 }
 
 - (void) setSplitViewBarButtonItem:(UIBarButtonItem *)splitViewBarButtonItem
