@@ -138,22 +138,6 @@
     
     //track screen with GA
     [DD2GlobalHelper sendViewToGAWithViewName:@"Fun With Words Tab Shown"];
-    
-    // Appington - need to only if new not if popped
-    
-    if (self.isMovingToParentViewController == NO) {
-        [self playAppingtonMsg];
-    }
-}
-
-- (void)playAppingtonMsg
-{
-    static NSArray *msgs = nil;
-    if (!msgs) msgs = [NSArray arrayWithObjects:@"22",@"23", nil];
-    
-    int msgIndex = arc4random()%[msgs count];
-    
-    [Appington control:@"placement" andValues:@{@"id": [msgs objectAtIndex:msgIndex]}];
 }
 
 - (void)viewDidLoad

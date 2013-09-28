@@ -126,7 +126,7 @@
                                     <outlet property="delegate" destination="xXw-NE-xth" id="A5J-gf-Eef"/>
                                 </connections>
                             </tableView>
-                            <searchBar contentMode="redraw" id="u7L-Tf-pad">
+                            <searchBar contentMode="redraw" showsCancelButton="YES" id="u7L-Tf-pad">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -539,7 +539,7 @@
             <objects>
                 <viewController id="dSV-C7-sB1" customClass="DisplayWordViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ohI-Qa-0QX">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <view contentMode="scaleToFill" id="x77-lk-vJH">
@@ -833,6 +833,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="D4T-mn-i2d"/>
+        <segue reference="n3n-aH-KiR"/>
     </inferredMetricsTieBreakers>
 </document>

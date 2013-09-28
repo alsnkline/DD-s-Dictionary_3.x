@@ -15,7 +15,7 @@
 
 // Tab controller managed which tabs are visible and what data is displayed ie manages the impact of spelling Variant
 
-@interface DD2TabBarController ()
+@interface DD2TabBarController () <UITabBarControllerDelegate>
 @property (nonatomic, strong) DD2Words *wordBrain; //the model for this MVC
 @property (nonatomic, strong) NSString *spellingVariant;
 @property (nonatomic, strong) NSArray *selectedCollections;
@@ -88,6 +88,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.delegate = self;
     [self manageTabs];
 	// Do any additional setup after loading the view.
     
@@ -100,8 +101,6 @@
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(onNotification:)
                                                  name:@"selectedCollectionsChanged" object:nil];
-
-    
 }
 
 -(void)viewDidAppear:(BOOL)animated {
@@ -198,6 +197,31 @@
     }
     [self setViewControllers:listOfTabVC animated:self.animateTabChanges];
     self.animateTabChanges = NO;     //defaulting to NO, so only way to get an animation is with a change to selectedCollections
+}
+
+#pragma mark - Tab Bar Controller Delegate Methods
+
+- (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController {
+    NSLog(@"Tab selected %@", viewController);
+    if ([viewController isKindOfClass:[UINavigationController class]]) {
+        UINavigationController *nvc = (UINavigationController *)viewController;
+        if ([[nvc.viewControllers objectAtIndex:0] isKindOfClass:[FunWithWordsTableViewController class]]) {
+            [self playAppingtonMsgForFun];
+        } else if ([[nvc.viewControllers objectAtIndex:0] isKindOfClass:[DD2AllWordSearchViewController class]]) {
+            DD2AllWordSearchViewController *searchTable = (DD2AllWordSearchViewController *)[nvc.viewControllers objectAtIndex:0];
+            [searchTable.tableView deselectRowAtIndexPath:[searchTable.tableView indexPathForSelectedRow] animated:NO];
+            [searchTable.searchDisplayController setActive:YES animated:YES];
+            [searchTable.searchDisplayController.searchBar becomeFirstResponder];
+        }
+    }
+}
+
+- (void)playAppingtonMsgForFun
+{
+    static NSArray *msgs = nil;
+    if (!msgs) msgs = [NSArray arrayWithObjects:@"22",@"23", nil];
+    int msgIndex = arc4random()%[msgs count];
+    [Appington control:@"placement" andValues:@{@"id": [msgs objectAtIndex:msgIndex]}];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation //iOS 5 not 6
