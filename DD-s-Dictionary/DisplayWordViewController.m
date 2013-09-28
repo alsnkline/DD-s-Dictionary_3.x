@@ -154,7 +154,7 @@
     NSSet *pronunciations = [DD2Words pronunciationsForWord:self.word];
     
     if ([pronunciations count] == 1) {
-        NSArray *buttonsToHide = [NSArray arrayWithObjects:self.heteronymListenButton, self.homophoneButton4, self.homophoneButton5, self.homophoneButton5, nil];
+        NSArray *buttonsToHide = [NSArray arrayWithObjects:self.heteronymListenButton, self.homophoneButton4, self.homophoneButton5, self.homophoneButton6, nil];
         for (UIButton *button in buttonsToHide) {
             button.hidden = YES;
         };

@@ -460,14 +460,14 @@
         // http://stackoverflow.com/questions/3124080/app-store-link-for-rate-review-this-app - ::To DO:: extend to encourage app store reviews
         [self sendEmail:selectedCell];
     } else if ([[NSArray arrayWithObjects:@"20",@"21",@"23", nil] containsObject:[@(selectedCell.tag) stringValue]]) {
-        [self performSegueWithIdentifier:@"display WebView 2" sender:selectedCell];
+        [self performSegueWithIdentifier:@"display WebView" sender:selectedCell];
     }
 }
 
 -(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     //used to set up webView depending upon which item was selected.
-    if ([segue.identifier isEqualToString:@"display WebView 2"]) {
+    if ([segue.identifier isEqualToString:@"display WebView"]) {
         if ([sender isKindOfClass:[DD2SettingsTableViewCell class]]) {
             DD2SettingsTableViewCell *cell = (DD2SettingsTableViewCell *)sender;
             [segue.destinationViewController setStringForTitle:cell.textLabel.text];
