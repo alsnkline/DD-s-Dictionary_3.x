@@ -278,7 +278,7 @@
     self.customBackgroundColor = [UIColor colorWithHue:[self.customBackgroundColorHue floatValue]  saturation:[self.customBackgroundColorSaturation floatValue] brightness:1 alpha:1];
     
     if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1) {    // in iOS7
-        [DD2SettingsTableViewController manageWindowTintColorWith];
+        [DD2SettingsTableViewController manageWindowTintColor];
     }
     
     //Notify that the background color has changed
@@ -288,14 +288,14 @@
     [self setCellBackgroundColor];
 }
 
-+ (void) manageWindowTintColorWith {
++ (void) manageWindowTintColor {
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     DD2AppDelegate *appDelegate = (DD2AppDelegate *)[[UIApplication sharedApplication] delegate];
     
     BOOL customColor = [defaults floatForKey:BACKGROUND_COLOR_SATURATION] != 0.0;
     if (!customColor) {
-        appDelegate.window.tintColor = [UIColor colorWithHue:284/360.0 saturation:0.91 brightness:0.78 alpha:1];
+        appDelegate.window.tintColor = [UIColor colorWithHue:284/360.0 saturation:0.91 brightness:0.78 alpha:1];       // DD's purple
     } else {
         float hue = [defaults floatForKey:BACKGROUND_COLOR_HUE];
         appDelegate.window.tintColor = [UIColor colorWithHue:hue saturation:0.85  brightness:0.60 alpha:1];

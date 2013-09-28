@@ -13,7 +13,7 @@
 @property (nonatomic, strong) NSArray *collectionNames;
 @property (nonatomic, strong) NSMutableArray *selectedCollections;
 
-+ (void) manageWindowTintColorWith;
++ (void) manageWindowTintColor;
 + (NSMutableArray *) limitSelectedCollections:(NSMutableArray *)selectedCollections;
 
 @end

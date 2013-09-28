@@ -21,7 +21,7 @@
 {   // Override point for customization after application launch.
     
     if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1) {    // in iOS7
-        [DD2SettingsTableViewController manageWindowTintColorWith];
+        [DD2SettingsTableViewController manageWindowTintColor];
     }
     
     //Google Analytics
