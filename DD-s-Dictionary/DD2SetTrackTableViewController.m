@@ -92,7 +92,9 @@
     if (self.searchDisplayController.searchResultsTableView) {      //if we have a searchtable change that background too.
         self.searchDisplayController.searchResultsTableView.backgroundColor = self.customBackgroundColor;
     }
-    self.tableView.sectionIndexBackgroundColor = [UIColor clearColor];   // needed for iOS7
+    if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1) {
+        self.tableView.sectionIndexBackgroundColor = [UIColor clearColor];   // needed for iOS7
+    }
 }
 
 -(void)onNotification:(NSNotification *)notification
