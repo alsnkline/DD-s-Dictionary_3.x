@@ -124,6 +124,8 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
                     NSLog(@"Badly formed wordElement: %@", wordElement);
                 }
                 if (PROCESS_VERBOSELY) NSLog(@"%@ (%@)", spelling, locale);
+                if (!spelling) continue;       // some words only have a uk variant eg cheque
+                
                 NSString *cleanSpelling = [DD2Words exchangeUnderscoresForSpacesin:spelling];
                 [processedWord setObject:cleanSpelling forKey:@"spelling"];  //need for easy sorting
                 
