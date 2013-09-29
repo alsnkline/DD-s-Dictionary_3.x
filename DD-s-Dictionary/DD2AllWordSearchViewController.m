@@ -17,7 +17,6 @@
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (nonatomic, strong) NSMutableArray *filteredWords;
 @property (nonatomic, strong) NSArray *sections;    //only used in main tableview
-@property (nonatomic, strong) NSDictionary *selectedWord;
 
 @end
 
