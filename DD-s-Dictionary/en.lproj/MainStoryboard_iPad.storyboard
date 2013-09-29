@@ -169,7 +169,7 @@
                                                 <rect key="frame" x="11" y="132" width="163" height="38"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
-                                                <state key="normal" title="spelling" image="resources.bundle/Images/DyDiWrite32-32.png">
+                                                <state key="normal" title="..." image="resources.bundle/Images/DyDiWrite32-32.png">
                                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
@@ -181,7 +181,7 @@
                                                 <rect key="frame" x="11" y="183" width="163" height="38"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
-                                                <state key="normal" title="spelling" image="resources.bundle/Images/DyDiWrite32-32.png">
+                                                <state key="normal" title="..." image="resources.bundle/Images/DyDiWrite32-32.png">
                                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
@@ -193,7 +193,7 @@
                                                 <rect key="frame" x="11" y="233" width="163" height="38"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
-                                                <state key="normal" title="spelling" image="resources.bundle/Images/DyDiWrite32-32.png">
+                                                <state key="normal" title="..." image="resources.bundle/Images/DyDiWrite32-32.png">
                                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
@@ -205,7 +205,7 @@
                                                 <rect key="frame" x="182" y="132" width="163" height="38"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
-                                                <state key="normal" title="spelling" image="resources.bundle/Images/DyDiWrite32-32.png">
+                                                <state key="normal" title="..." image="resources.bundle/Images/DyDiWrite32-32.png">
                                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
@@ -217,7 +217,7 @@
                                                 <rect key="frame" x="182" y="183" width="163" height="38"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
-                                                <state key="normal" title="spelling" image="resources.bundle/Images/DyDiWrite32-32.png">
+                                                <state key="normal" title="..." image="resources.bundle/Images/DyDiWrite32-32.png">
                                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
@@ -229,7 +229,7 @@
                                                 <rect key="frame" x="182" y="233" width="163" height="38"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
-                                                <state key="normal" title="spelling" image="resources.bundle/Images/DyDiWrite32-32.png">
+                                                <state key="normal" title="..." image="resources.bundle/Images/DyDiWrite32-32.png">
                                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
