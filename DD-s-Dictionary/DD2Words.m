@@ -355,7 +355,7 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
     NSMutableArray *workingHomophoneList = [NSMutableArray array];
     for (NSString *pronunciation in list) {
         if ([DD2Words wordForPronunciation:pronunciation fromWordList:wordList]) {
-            [workingHomophoneList addObject:[DD2Words wordForPronunciation:pronunciation fromWordList:wordList]];   //protect against homophones that don't have a pronununciation
+            [workingHomophoneList addObject:[DD2Words wordForPronunciation:pronunciation fromWordList:wordList]];   //protect against homophones that don't have a pronununciation eg in pour
         }
     }
     return [workingHomophoneList copy];
@@ -363,6 +363,7 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
 
 + (NSDictionary *) wordForPronunciation:(NSString *)pronunciation fromWordList:(NSArray *)wordList {
     
+    // get word if pronunciation is listed directly in pronunciation field
     NSPredicate *selectionPredicate = [NSPredicate predicateWithFormat:@"SELF.pronunciations contains[c] %@",pronunciation];
     if (LOG_PREDICATE_RESULTS) NSLog(@"predicate = %@", selectionPredicate);
     if (LOG_PREDICATE_RESULTS) [DD2GlobalHelper testWordPredicate:selectionPredicate onWords:wordList];
@@ -371,10 +372,16 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
     if ([matches count] == 1) {
         return [matches lastObject];
     } else {
-        selectionPredicate = [NSPredicate predicateWithFormat:@"SELF.spelling LIKE[c] %@",[DD2Words pronunciationFromSpelling:pronunciation]];
+        // check if pronunciation is a localized version of a spelling and clean out the local part if so.
+        if (([pronunciation rangeOfString:@"uk-"].location != NSNotFound) || ([pronunciation rangeOfString:@"us-"].location != NSNotFound)) {
+            pronunciation = [pronunciation substringFromIndex:3];
+        }
+        // get the word that matches if the pronunciation is the spelling
+        selectionPredicate = [NSPredicate predicateWithFormat:@"SELF.spelling LIKE[c] %@",pronunciation];
         if (LOG_PREDICATE_RESULTS) NSLog(@"predicate = %@", selectionPredicate);
         if (LOG_PREDICATE_RESULTS) [DD2GlobalHelper testWordPredicate:selectionPredicate onWords:wordList];
-        NSMutableArray *matches = [NSMutableArray arrayWithArray:[wordList filteredArrayUsingPredicate:selectionPredicate]];
+        matches = [NSMutableArray arrayWithArray:[wordList filteredArrayUsingPredicate:selectionPredicate]];
+    
         if ([matches count] != 1) NSLog(@"more of less than one matches ** PROBLEM **");
         return [matches lastObject];
     }
