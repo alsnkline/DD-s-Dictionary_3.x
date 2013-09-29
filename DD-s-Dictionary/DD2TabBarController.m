@@ -143,6 +143,7 @@
             } else if ([vc1OnStack isKindOfClass:[DD2AllWordSearchViewController class]]){  //setting data for search tab for spelling variant
                 DD2AllWordSearchViewController *searchTable = (DD2AllWordSearchViewController *)vc1OnStack;
                 searchTable.allWordsForSpellingVariant = [self.wordBrain allWordsForCurrentSpellingVariant];
+                searchTable.selectedWord = nil;
                 if (searchTable.searchDisplayController.searchResultsTableView) {
                     [searchTable.searchDisplayController setActive:NO];
                 }
