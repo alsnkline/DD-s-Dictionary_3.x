@@ -458,7 +458,7 @@
         }, 
         {
             "collections": [
-                "other"
+                "more_words"
             ], 
             "word": "bicycle"
         }, 
@@ -518,7 +518,7 @@
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "tags": [
                 "'ight'"
@@ -686,7 +686,7 @@
         }, 
         {
             "collections": [
-                "other"
+                "more_words"
             ], 
             "word": "built"
         }, 
@@ -704,7 +704,7 @@
         }, 
         {
             "collections": [
-                "other"
+                "more_words"
             ], 
             "word": "business"
         }, 
@@ -812,7 +812,7 @@
         }, 
         {
             "collections": [
-                "other"
+                "more_words"
             ], 
             "word": "captain"
         }, 
@@ -845,7 +845,7 @@
         }, 
         {
             "collections": [
-                "other"
+                "more_words"
             ], 
             "word": "career"
         }, 
@@ -863,7 +863,7 @@
         }, 
         {
             "collections": [
-                "other"
+                "more_words"
             ], 
             "word": "cartoon"
         }, 
@@ -881,7 +881,7 @@
         }, 
         {
             "collections": [
-                "other"
+                "more_words"
             ], 
             "word": "category"
         }, 
@@ -959,7 +959,7 @@
         },  
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ],
             "homophones": {
                     "uk": ["check"]
@@ -1198,13 +1198,13 @@
         }, 
         {
             "collections": [
-                "other"
+                "more_words"
             ], 
             "word": "curiosity"
         }, 
         {
             "collections": [
-                "other"
+                "more_words"
             ], 
             "tags": [
                 "'ous'"
@@ -1300,7 +1300,7 @@
         }, 
         {
             "collections": [
-                "other"
+                "more_words"
             ], 
             "word": "desert"
         }, 
@@ -1312,13 +1312,13 @@
         }, 
         {
             "collections": [
-                "other"
+                "more_words"
             ], 
             "word": "dessert"
         }, 
         {
             "collections": [
-                "other"
+                "more_words"
             ], 
             "word": "dictionary"
         }, 
@@ -1460,7 +1460,7 @@
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "confusers": "does", 
             "word": "dose"
@@ -2077,7 +2077,7 @@
         }, 
         {
             "collections": [
-                "other"
+                "more_words"
             ], 
             "tags": [
                 "'ight_(ate)'"
@@ -2098,7 +2098,7 @@
         }, 
         {
             "collections": [
-                "other"
+                "more_words"
             ], 
             "tags": [
                 "'ight'"
@@ -2221,7 +2221,7 @@
         }, 
         {
             "collections": [
-                "other"
+                "more_words"
             ], 
             "word": "ghost"
         }, 
@@ -2984,7 +2984,7 @@
         }, 
         {
             "collections": [
-                "other"
+                "more_words"
             ], 
             "tags": [
                 "'ous'"
@@ -3221,7 +3221,7 @@
         }, 
         {
             "collections": [
-                "other"
+                "more_words"
             ], 
             "word": "label"
         }, 
@@ -3263,8 +3263,7 @@
         }, 
         {
             "collections": [
-                "first_words", 
-                "rec_ed"
+                "first_words"
             ], 
             "tags": [
                 "'ate'"
@@ -3604,7 +3603,7 @@
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "tags": [
                 "'ate'"
@@ -3664,7 +3663,7 @@
         }, 
         {
             "collections": [
-                "other"
+                "more_words"
             ], 
             "word": "medal"
         }, 
@@ -3691,7 +3690,7 @@
         }, 
         {
             "collections": [
-                "other"
+                "more_words"
             ], 
             "tags": [
                 "'tion'"
@@ -4476,7 +4475,7 @@
         }, 
         {
             "collections": [
-                "other"
+                "more_words"
             ], 
             "word": "perhaps"
         }, 
@@ -4494,13 +4493,13 @@
         }, 
         {
             "collections": [
-                "other"
+                "more_words"
             ], 
             "word": "pickle"
         }, 
         {
             "collections": [
-                "other"
+                "more_words"
             ], 
             "word": "picnic"
         }, 
@@ -4626,7 +4625,7 @@
         }, 
         {
             "collections": [
-                "other"
+                "more_words"
             ], 
             "word": "pleasure"
         }, 
@@ -4659,8 +4658,7 @@
         }, 
         {
             "collections": [
-                "first_words", 
-                "rec_ed"
+                "first_words"
             ], 
             "word": "poor"
         }, 
@@ -4701,7 +4699,7 @@
         }, 
         {
             "collections": [
-                "other"
+                "more_words"
             ], 
             "tags": [
                 "'ous'"
@@ -4969,25 +4967,25 @@
         }, 
         {
             "collections": [
-                "other"
+                "more_words"
             ], 
             "word": "receipt"
         }, 
         {
             "collections": [
-                "other"
+                "more_words"
             ], 
             "word": "receive"
         }, 
         {
             "collections": [
-                "other"
+                "more_words"
             ], 
             "word": "recipe"
         }, 
         {
             "collections": [
-                "other"
+                "more_words"
             ], 
             "word": "recognise"
         }, 
@@ -5206,7 +5204,7 @@
         }, 
         {
             "collections": [
-                "other"
+                "more_words"
             ], 
             "homophones": [
                 "saw", 
@@ -5650,13 +5648,13 @@
         }, 
         {
             "collections": [
-                "other"
+                "more_words"
             ], 
             "word": "static"
         }, 
         {
             "collections": [
-                "other"
+                "more_words"
             ], 
             "word": "statistic"
         }, 
@@ -5731,7 +5729,7 @@
         }, 
         {
             "collections": [
-                "other"
+                "more_words"
             ], 
             "word": "subtle"
         }, 
@@ -5884,8 +5882,7 @@
         }, 
         {
             "collections": [
-                "first_words", 
-                "rec_ed"
+                "first_words"
             ], 
             "tags": [
                 "'the'"
@@ -6641,13 +6638,13 @@
         }, 
         {
             "collections": [
-                "other"
+                "more_words"
             ], 
             "word": "whisper"
         }, 
         {
             "collections": [
-                "other"
+                "more_words"
             ], 
             "word": "whistle"
         }, 
@@ -6852,7 +6849,7 @@
         }, 
         {
             "collections": [
-                "other"
+                "more_words"
             ], 
             "word": "yacht"
         }, 
@@ -6969,53 +6966,49 @@
         }, 
         {
             "collections": [
-                "first_words", 
-                "rec_ed"
+                "first_words"
             ], 
             "word": "weekend"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "acronym"
         }, 
         {
             "collections": [
-                "first_words", 
-                "rec_ed"
+                "first_words"
             ], 
             "word": "banana"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "blaze"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "frank"
         }, 
         {
             "collections": [
-                "first_words", 
-                "rec_ed"
+                "first_words"
             ], 
             "word": "huge"
         }, 
         {
             "collections": [
-                "first_words", 
-                "rec_ed"
+                "first_words"
             ], 
             "word": "dad"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "tags": [
                 "'the'"
@@ -7024,20 +7017,19 @@
         }, 
         {
             "collections": [
-                "first_words", 
-                "rec_ed"
+                "first_words"
             ], 
             "word": "bad"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "beach"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "tags": [
                 "'ate'"
@@ -7046,61 +7038,61 @@
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "menu"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "photosynthesis"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "predator"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "quadrilateral"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "Shakespeare"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "soccer"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "throat"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "amazing"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "appeared"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "tags": [
                 "'aw'"
@@ -7109,13 +7101,13 @@
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "caravan"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "tags": [
                 "'tion'"
@@ -7124,7 +7116,7 @@
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "tags": [
                 "'ate'"
@@ -7133,111 +7125,109 @@
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "computer"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "daze"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "dire"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "Elizabethan"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "excursion"
         }, 
         {
             "collections": [
-                "first_words", 
-                "rec_ed"
+                "first_words"
             ], 
             "word": "trip"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "finesse"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "flood"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "forest"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "gallery"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "grill"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "human_body"
         }, 
         {
             "collections": [
-                "first_words", 
-                "rec_ed"
+                "first_words"
             ], 
             "word": "in_trouble"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "lying"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "panda"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "petulant"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "plough"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "tags": [
                 "'ite'"
@@ -7246,51 +7236,49 @@
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "possible"
         }, 
         {
             "collections": [
-                "first_words", 
-                "rec_ed"
+                "first_words"
             ], 
             "word": "sad"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "scared"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "schedule"
         }, 
         {
             "collections": [
-                "first_words", 
-                "rec_ed"
+                "first_words"
             ], 
             "word": "ship"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "shout"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "skills"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "tags": [
                 "'dge'"
@@ -7299,20 +7287,19 @@
         }, 
         {
             "collections": [
-                "first_words", 
-                "rec_ed"
+                "first_words"
             ], 
             "word": "snack"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "suddenly"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "homophones": [
                 "Sunday"
@@ -7321,51 +7308,49 @@
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "surround"
         }, 
         {
             "collections": [
-                "first_words", 
-                "rec_ed"
+                "first_words"
             ], 
             "word": "tank"
         }, 
         {
             "collections": [
-                "first_words", 
-                "rec_ed"
+                "first_words"
             ], 
             "word": "test"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "throw"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "titanic"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "toilet"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "toxic"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "tags": [
                 "'ouse'"
@@ -7374,19 +7359,19 @@
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "abacus"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "accountant"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "tags": [
                 "'ate'"
@@ -7395,68 +7380,67 @@
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "acorn"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "acquaintance"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "acrobat"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "acrobatic"
         }, 
         {
             "collections": [
-                "first_words", 
-                "rec_ed"
+                "first_words"
             ], 
             "word": "add"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "admission"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "advance"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "alien"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "airline"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "airport"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "tags": [
                 "'ate'"
@@ -7465,283 +7449,277 @@
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "alcohol"
         }, 
         {
             "collections": [
-                "first_words", 
-                "rec_ed"
+                "first_words"
             ], 
             "word": "almost"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "alphabet"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "altered"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "although"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "aluminium"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "tomato"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "amplifier"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "anniversary"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "anchor"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "annoyed"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "antelope"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "antibiotic"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "appear"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "apocalypse"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "apostrophe"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "appocalyptic"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "approach"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "asthmatic"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "asthma"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "athlete"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "atmosphere"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "attorney"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "Australia"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "author"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "available"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "baffle"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "balcony"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "bald_eagle"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "bandit"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "bang"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "Barbie"
         }, 
         {
             "collections": [
-                "first_words", 
-                "rec_ed"
+                "first_words"
             ], 
             "word": "basic"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "bat"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "become"
         }, 
         {
             "collections": [
-                "first_words", 
-                "rec_ed"
+                "first_words"
             ], 
             "word": "belly"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "tummy"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "best_friend"
         }, 
         {
             "collections": [
-                "first_words", 
-                "rec_ed"
+                "first_words"
             ], 
             "word": "bill"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "blame"
         }, 
         {
             "collections": [
-                "first_words", 
-                "rec_ed"
+                "first_words"
             ], 
             "word": "blank"
         }, 
         {
             "collections": [
-                "first_words", 
-                "rec_ed"
+                "first_words"
             ], 
             "word": "block"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "blurted"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "bog"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "garbage_bin"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "tags": [
                 "'ore'"
@@ -7750,37 +7728,37 @@
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "bottle"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "bottom"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "bounce"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "bug"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "bully"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ],
             "homophones": {
                     "uk": ["boy"] 
@@ -7789,49 +7767,49 @@
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "cabbage"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "cabin"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "calculator"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "camera"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "campfire"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "Canada"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "canter"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "tags": [
                 "'ate'"
@@ -7840,79 +7818,79 @@
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "carnival"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "cairn"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "catwalk"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "catapult"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "catastrophe"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "catastrophic"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "certain"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "certainly"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "child"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "chips"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "Christmas"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "circus"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "tags": [
                 "'ever'"
@@ -7921,25 +7899,25 @@
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "clinic"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "cloakroom"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "common"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "tags": [
                 "'tion'"
@@ -7948,37 +7926,37 @@
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "complete"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "consumed"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "contain"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "contradict"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "convict"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "tags": [
                 "'ate'"
@@ -7987,91 +7965,91 @@
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "coordinator"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "correct"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "cover"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "craft"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "crank"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "creative"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "crown"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "cauliflower"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "cupboard"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "customer"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "cylinder"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "daddy"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "daisy"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "dam"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "tags": [
                 "'ous'"
@@ -8080,7 +8058,7 @@
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "tags": [
                 "'ous'"
@@ -8089,7 +8067,7 @@
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "tags": [
                 "'ate'"
@@ -8098,7 +8076,7 @@
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "tags": [
                 "'ate'"
@@ -8107,31 +8085,31 @@
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "defiant"
         }, 
         {
             "collections": [
-                "other"
+                "more_words"
             ], 
             "word": "defiantly"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "delusional"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "demographic"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "tags": [
                 "'tion'"
@@ -8140,31 +8118,31 @@
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "desire"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "diamond"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "diary"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "difficult"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "tags": [
                 "'tion'"
@@ -8173,31 +8151,31 @@
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "discuss"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "dyslexia"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "dispose"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "doing"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "tags": [
                 "'tion'"
@@ -8206,53 +8184,49 @@
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "double"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "dramatic"
         }, 
         {
             "collections": [
-                "first_words", 
-                "rec_ed"
+                "first_words"
             ], 
             "word": "east"
         }, 
         {
             "collections": [
-                "first_words", 
-                "rec_ed"
+                "first_words"
             ], 
             "word": "west"
         }, 
         {
             "collections": [
-                "first_words", 
-                "rec_ed"
+                "first_words"
             ], 
             "word": "south"
         }, 
         {
             "collections": [
-                "first_words", 
-                "rec_ed"
+                "first_words"
             ], 
             "word": "north"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "edit"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "tags": [
                 "'tion'"
@@ -8261,61 +8235,61 @@
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "elastic"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "elasticity"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "electronic"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "embarrassed"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "emotional"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "enclosure"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "energy"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "engine"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "English"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "tags": [
                 "'ous'"
@@ -8324,13 +8298,13 @@
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "epilepsy"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "tags": [
                 "'ate'"
@@ -8339,7 +8313,7 @@
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "tags": [
                 "'ate'"
@@ -8348,31 +8322,31 @@
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "eucalyptus"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "envy"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "excellent"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "executive"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "tags": [
                 "'tion'"
@@ -8381,13 +8355,13 @@
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "exhaust"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "tags": [
                 "'ite'"
@@ -8396,25 +8370,25 @@
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "exist"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "extinct"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "extremely"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "tags": [
                 "'ous'"
@@ -8423,26 +8397,25 @@
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "factory"
         }, 
         {
             "collections": [
-                "first_words", 
-                "rec_ed"
+                "first_words"
             ], 
             "word": "fair"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "faith"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "tags": [
                 "'ous'"
@@ -8451,46 +8424,43 @@
         }, 
         {
             "collections": [
-                "first_words", 
-                "rec_ed"
+                "first_words"
             ], 
             "word": "fat"
         }, 
         {
             "collections": [
-                "first_words", 
-                "rec_ed"
+                "first_words"
             ], 
             "word": "thin"
         }, 
         {
             "collections": [
-                "first_words", 
-                "rec_ed"
+                "first_words"
             ], 
             "word": "fear"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "fireplace"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "fishing"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "flamingo"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "tags": [
                 "'ight'"
@@ -8499,19 +8469,19 @@
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "football"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "forage"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "tags": [
                 "'ate'"
@@ -8520,7 +8490,7 @@
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "tags": [
                 "'dge'"
@@ -8529,55 +8499,55 @@
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "friend"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "gastric"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "gears"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "gel"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "genie"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "gig"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "getting"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "geography"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "tags": [
                 "'ous'"
@@ -8586,19 +8556,19 @@
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "government"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "grain"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "tags": [
                 "'ate'"
@@ -8607,14 +8577,13 @@
         }, 
         {
             "collections": [
-                "first_words", 
-                "rec_ed"
+                "first_words"
             ], 
             "word": "Great_Britain"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "tags": [
                 "'ate'"
@@ -8623,32 +8592,31 @@
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "guilt"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "habit"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "hamburger"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "happy"
         }, 
         {
             "collections": [
-                "first_words", 
-                "rec_ed"
+                "first_words"
             ], 
             "homophones": [
                 "hair"
@@ -8657,8 +8625,7 @@
         }, 
         {
             "collections": [
-                "first_words", 
-                "rec_ed"
+                "first_words"
             ], 
             "homophones": [
                 "hey"
@@ -8676,38 +8643,37 @@
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "healthy"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "heartache"
         }, 
         {
             "collections": [
-                "first_words", 
-                "rec_ed"
+                "first_words"
             ], 
             "word": "heavy"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "helicopter"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "helmet"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "homophones": [
                 "heard"
@@ -8716,7 +8682,7 @@
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "tags": [
                 "'ate'"
@@ -8725,55 +8691,55 @@
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "homophones"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "heteronym"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "horror"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "wheel"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "hull"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "humid"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "hunter"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "hyper"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "tags": [
                 "'ate'"
@@ -8782,32 +8748,31 @@
         }, 
         {
             "collections": [
-                "first_words", 
-                "rec_ed"
+                "first_words"
             ], 
             "word": "I've"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "ibuprofen"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "identify"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "idiot"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "tags": [
                 "'ate'"
@@ -8816,31 +8781,31 @@
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "imposing"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "impossible"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "independent"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "individual"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "tags": [
                 "'ous'"
@@ -8849,7 +8814,7 @@
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "tags": [
                 "'tion'"
@@ -8858,19 +8823,19 @@
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "irrational"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "island"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "tags": [
                 "'ate'"
@@ -8879,19 +8844,19 @@
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "isle"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "kiss"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "tags": [
                 "'dge'"
@@ -8900,43 +8865,43 @@
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "ladder"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "ladybird"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "Lamborghini"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "Ferrari"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "jaguar"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "lasagna"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "tags": [
                 "'ate'"
@@ -8945,86 +8910,85 @@
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "latter"
         }, 
         {
             "collections": [
-                "first_words", 
-                "rec_ed"
+                "first_words"
             ], 
             "word": "leap"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "learned"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "lettuce"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "lick"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "literacy"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "logger"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "logistics"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "main"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "manage"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "mannequin"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "mantel"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "mare"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "tags": [
                 "'ight'"
@@ -9033,19 +8997,19 @@
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "millionaires"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "millions"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "homophones": [
                 "minor"
@@ -9054,7 +9018,7 @@
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "homophones": [
                 "miner"
@@ -9063,91 +9027,91 @@
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "Mississippi"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "mystery"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "moment"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "museum"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "necessary"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "necessarily"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "New_Zealand"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "nonchalance"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "occasion"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "occasionally"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "offspring"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "paragraph"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "pariah"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "piranha"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "homophones": [
                 "pair"
@@ -9156,7 +9120,7 @@
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "homophones": [
                 "pear"
@@ -9165,37 +9129,37 @@
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "pedal"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "performance"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "Pennsylvania"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "perspective"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "persuasive"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "tags": [
                 "'ate'"
@@ -9204,25 +9168,25 @@
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "pleasant"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "peasant"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "plus"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "homophones": [
                 "poll"
@@ -9231,7 +9195,7 @@
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "homophones": [
                 "pole"
@@ -9240,7 +9204,7 @@
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "homophones": [
                 "roll"
@@ -9249,7 +9213,7 @@
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "homophones": [
                 "role"
@@ -9258,25 +9222,25 @@
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "policy"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "popular"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "porcelain"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "tags": [
                 "'tion'"
@@ -9285,26 +9249,25 @@
         }, 
         {
             "collections": [
-                "first_words", 
-                "rec_ed"
+                "first_words"
             ], 
             "word": "post"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "potato"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "power"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "homophones": [
                 "prey"
@@ -9313,7 +9276,7 @@
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "homophones": [
                 "pray"
@@ -9322,19 +9285,19 @@
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "prepare"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "probably"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "tags": [
                 "'ate'"
@@ -9343,7 +9306,7 @@
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "pronunciations": [
                 "produce1", 
@@ -9353,49 +9316,49 @@
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "prosper"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "pudding"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "puppet"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "pure"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "reasonable"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "recieve"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "recycle"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "pronunciations": [
                 "refuse1", 
@@ -9405,13 +9368,13 @@
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "relative"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "tags": [
                 "'ous'"
@@ -9420,31 +9383,31 @@
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "remote"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "require"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "rescue"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "restaurant"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "pronunciations": [
                 "resume1", 
@@ -9454,26 +9417,25 @@
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "rhythm"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "robin"
         }, 
         {
             "collections": [
-                "first_words", 
-                "rec_ed"
+                "first_words"
             ], 
             "word": "rose"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "homophones": [
                 "root"
@@ -9482,7 +9444,7 @@
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "homophones": [
                 "route"
@@ -9491,97 +9453,97 @@
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "South_Africa"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "sausage"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "scare"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "scene"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "scooter"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "Scotland"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "England"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "Scottish"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "Wales"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "Welsh"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "Irish"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "Ireland"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "Northern_Ireland"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "selfish"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "sensitive"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "tags": [
                 "'ate'"
@@ -9590,13 +9552,13 @@
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "serendipity"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "tags": [
                 "'ice_(i's)'"
@@ -9605,80 +9567,79 @@
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "settle"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "shake"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "shallow"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "sharp"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "sheet"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "shoot"
         }, 
         {
             "collections": [
-                "first_words", 
-                "rec_ed"
+                "first_words"
             ], 
             "word": "shop"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "shot"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "shoulder"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "elbow"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "shut"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "silent"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "homophones": [
                 "sight"
@@ -9690,7 +9651,7 @@
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "homophones": [
                 "site"
@@ -9702,25 +9663,25 @@
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "situation"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "smell"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "skydive"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "homophones": [
                 "saw", 
@@ -9730,37 +9691,37 @@
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "soggy"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "soldier"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "spelling"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "spur"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "squid"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "homophones": [
                 "stare"
@@ -9769,7 +9730,7 @@
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "homophones": [
                 "stair"
@@ -9778,67 +9739,67 @@
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "storage"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "story"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "strange"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "stretch"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "string"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "sufficient"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "suggest"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "sunset"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "super"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "supper"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "homophones": [
                 "shore"
@@ -9847,7 +9808,7 @@
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "homophones": [
                 "sure"
@@ -9859,62 +9820,61 @@
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "surgeon"
         }, 
         {
             "collections": [
-                "first_words", 
-                "rec_ed"
+                "first_words"
             ], 
             "word": "sweet"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "system"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "taste"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "tailor"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "technology"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "teddy_bear"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "temperature"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "tension"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "tags": [
                 "'ught'"
@@ -9923,70 +9883,67 @@
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "throughout"
         }, 
         {
             "collections": [
-                "first_words", 
-                "rec_ed"
+                "first_words"
             ], 
             "word": "tools"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "torch"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "tornado"
         }, 
         {
             "collections": [
-                "first_words", 
-                "rec_ed"
+                "first_words"
             ], 
             "word": "train"
         }, 
         {
             "collections": [
-                "first_words", 
-                "rec_ed"
+                "first_words"
             ], 
             "word": "tree"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "tropical"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "truly"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "typhoon"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "unexpected"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "tags": [
                 "'ite'"
@@ -9995,37 +9952,37 @@
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "unknown"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "used_to"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "useful"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "utility"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "vacuum"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "tags": [
                 "'ate'"
@@ -10034,7 +9991,7 @@
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "confusers": "vicious", 
             "tags": [
@@ -10044,7 +10001,7 @@
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "confusers": "viscous", 
             "tags": [
@@ -10054,31 +10011,31 @@
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "wimpy"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "wired"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "witty"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "woe"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "pronunciations": [
                 "wound1", 
@@ -10088,25 +10045,25 @@
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "zoology"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "attend"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": "human"
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "tags": [
                 "'ever'"
@@ -10115,7 +10072,7 @@
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "tags": [
                 "'ever'"
@@ -10124,7 +10081,7 @@
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "tags": [
                 "'ever'"
@@ -10133,8 +10090,7 @@
         },
         {
             "collections": [
-                "first_words", 
-                "rec_ed"
+                "first_words"
             ], 
             "word": {
                     "uk": "aeroplane", 
@@ -10218,8 +10174,7 @@
         }, 
         {
             "collections": [
-                "first_words", 
-                "rec_ed"
+                "first_words"
             ], 
             "homophones": {
                     "uk": ["pour", "pore"]
@@ -10290,8 +10245,7 @@
         }, 
         {
             "collections": [
-                "first_words", 
-                "rec_ed"
+                "first_words"
             ], 
             "word": {
                     "uk": "mum",
@@ -10300,7 +10254,7 @@
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": {
                     "uk": "analyze", 
@@ -10309,7 +10263,7 @@
         },
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": {
                     "us": "cosy",
@@ -10318,7 +10272,7 @@
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": {
                     "uk": "mummy",
@@ -10327,7 +10281,7 @@
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": {
                     "uk": "demeanour",
@@ -10336,7 +10290,7 @@
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": {
                     "uk": "diarrhoea",
@@ -10345,7 +10299,7 @@
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": {
                     "uk": "flavour",
@@ -10354,7 +10308,7 @@
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": {
                     "uk": "fulfil",
@@ -10363,7 +10317,7 @@
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": { 
                     "uk": "theatre",
@@ -10372,7 +10326,7 @@
         }, 
         {
             "collections": [
-                "rec_ed"
+                "more_words"
             ], 
             "word": {
                     "uk": "tonne",
