@@ -42,7 +42,7 @@
 
     
     // Initialize GA tracker.
-    [[GAI sharedInstance] trackerWithTrackingId:@"UA-37793922-2"];  //use -1 for any production releases
+    [[GAI sharedInstance] trackerWithTrackingId:@"UA-37793922-1"];  //use -1 for any production releases
     //[[GAI sharedInstance] setOptOut:YES];       //uncomment to disable GA across entire app.
     [[GAI sharedInstance] setDryRun:NO];       //stop data from being sent to cloud, set to NO for production ship
     //end GA setup
@@ -73,7 +73,12 @@
                                              selector:@selector(onAppingtonNotification:)
                                                  name:nil object:[Appington notificationObject]];
     
-    [Appington control:@"placement" andValues:@{@"id": @"1"}];
+    
+    //default behavior is on
+    if(![[NSUserDefaults standardUserDefaults] boolForKey:NOT_USE_VOICE_HINTS]) {
+        // call Appington
+        [Appington control:@"placement" andValues:@{@"id": @"1"}];
+    }
     
     return YES;
 }
