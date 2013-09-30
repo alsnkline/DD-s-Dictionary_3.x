@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B1385A6917EEAF3F0015BA5A /* DD2SettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B1385A6817EEAF3F0015BA5A /* DD2SettingsTableViewController.m */; };
+		B191926317F8F6BF00B628E5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B191926217F8F6BF00B628E5 /* Images.xcassets */; };
 		B191C3F217E3CBA100A2ABFA /* DD2TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = B191C3F117E3CBA100A2ABFA /* DD2TabBarController.m */; };
 		B191C3F517E3EC0400A2ABFA /* FunWithWordsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B191C3F417E3EC0400A2ABFA /* FunWithWordsTableViewController.m */; };
 		B192C4A117EFF6D80051BB99 /* DD2SettingsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B192C4A017EFF6D80051BB99 /* DD2SettingsTableViewCell.m */; };
@@ -62,6 +63,7 @@
 /* Begin PBXFileReference section */
 		B1385A6717EEAF3F0015BA5A /* DD2SettingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DD2SettingsTableViewController.h; sourceTree = "<group>"; };
 		B1385A6817EEAF3F0015BA5A /* DD2SettingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DD2SettingsTableViewController.m; sourceTree = "<group>"; };
+		B191926217F8F6BF00B628E5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = "DD's Dictionary/Images.xcassets"; sourceTree = "<group>"; };
 		B191C3F017E3CBA100A2ABFA /* DD2TabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DD2TabBarController.h; sourceTree = "<group>"; };
 		B191C3F117E3CBA100A2ABFA /* DD2TabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DD2TabBarController.m; sourceTree = "<group>"; };
 		B191C3F317E3EC0400A2ABFA /* FunWithWordsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FunWithWordsTableViewController.h; sourceTree = "<group>"; };
@@ -85,7 +87,7 @@
 		B1954E8D17EE687000371610 /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
 		B1954E8E17EE687000371610 /* libFlurry_4.2.3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_4.2.3.a; sourceTree = "<group>"; };
 		B1954E9117EE68A900371610 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		B195672617DA64D400CB7F4B /* DD-s-Dictionary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DD-s-Dictionary.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B195672617DA64D400CB7F4B /* DD's Dictionary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DD's Dictionary.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B195672917DA64D400CB7F4B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		B195672B17DA64D400CB7F4B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B195672D17DA64D400CB7F4B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -185,6 +187,7 @@
 		B195671D17DA64D400CB7F4B = {
 			isa = PBXGroup;
 			children = (
+				B191926217F8F6BF00B628E5 /* Images.xcassets */,
 				B1966A4F17F3F0FF007277A8 /* libsqlite3.dylib */,
 				B1966A4D17F3F0BF007277A8 /* CoreTelephony.framework */,
 				B1954E9117EE68A900371610 /* Security.framework */,
@@ -204,7 +207,7 @@
 		B195672717DA64D400CB7F4B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B195672617DA64D400CB7F4B /* DD-s-Dictionary.app */,
+				B195672617DA64D400CB7F4B /* DD's Dictionary.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -319,9 +322,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		B195672517DA64D400CB7F4B /* DD-s-Dictionary */ = {
+		B195672517DA64D400CB7F4B /* DD's Dictionary */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B195674C17DA64D400CB7F4B /* Build configuration list for PBXNativeTarget "DD-s-Dictionary" */;
+			buildConfigurationList = B195674C17DA64D400CB7F4B /* Build configuration list for PBXNativeTarget "DD's Dictionary" */;
 			buildPhases = (
 				B195672217DA64D400CB7F4B /* Sources */,
 				B195672317DA64D400CB7F4B /* Frameworks */,
@@ -331,9 +334,9 @@
 			);
 			dependencies = (
 			);
-			name = "DD-s-Dictionary";
+			name = "DD's Dictionary";
 			productName = "DD-s-Dictionary";
-			productReference = B195672617DA64D400CB7F4B /* DD-s-Dictionary.app */;
+			productReference = B195672617DA64D400CB7F4B /* DD's Dictionary.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -363,7 +366,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				B195672517DA64D400CB7F4B /* DD-s-Dictionary */,
+				B195672517DA64D400CB7F4B /* DD's Dictionary */,
 			);
 		};
 /* End PBXProject section */
@@ -388,6 +391,7 @@
 				B1C21C9417ECF1D600C51C8C /* Default-568h@2x.png in Resources */,
 				B1C21C9617ECF66100C51C8C /* Default.png in Resources */,
 				B1C21C9817ECF73A00C51C8C /* Default-Portrait@2x~ipad.png in Resources */,
+				B191926317F8F6BF00B628E5 /* Images.xcassets in Resources */,
 				B1C21C9A17ECF73F00C51C8C /* Default-Portrait~ipad.png in Resources */,
 				B1C21C9C17ECF74500C51C8C /* Default-Landscape@2x~ipad.png in Resources */,
 				B1C21C9E17ECF74B00C51C8C /* Default-Landscape~ipad.png in Resources */,
@@ -511,6 +515,8 @@
 		B195674D17DA64D400CB7F4B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -530,6 +536,8 @@
 		B195674E17DA64D400CB7F4B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -559,7 +567,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B195674C17DA64D400CB7F4B /* Build configuration list for PBXNativeTarget "DD-s-Dictionary" */ = {
+		B195674C17DA64D400CB7F4B /* Build configuration list for PBXNativeTarget "DD's Dictionary" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B195674D17DA64D400CB7F4B /* Debug */,
