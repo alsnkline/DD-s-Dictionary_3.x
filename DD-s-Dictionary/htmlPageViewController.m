@@ -59,6 +59,14 @@
 
 -(void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    
+    if ([self.stringForTitle isEqualToString:@"Small Print"]) {
+        if(![[NSUserDefaults standardUserDefaults] boolForKey:NOT_USE_VOICE_HINTS]) {
+            // call Appington
+            [Appington control:@"placement" andValues:@{@"id": @"25"}];
+        }
+    }
+    
     //track screen with GA
     [DD2GlobalHelper sendViewToGAWithViewName:[NSString stringWithFormat:@"Web view Shown : %@", self.stringForTitle]];
 }

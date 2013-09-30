@@ -99,7 +99,7 @@
 		B195673917DA64D400CB7F4B /* DD2AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DD2AppDelegate.m; sourceTree = "<group>"; };
 		B195674217DA64D400CB7F4B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		B195674517DA64D400CB7F4B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
-		B195674F17DA65AC00CB7F4B /* resources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = resources.bundle; sourceTree = "<group>"; };
+		B195674F17DA65AC00CB7F4B /* resources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = resources.bundle; path = "DD-s-Dictionary/resources.bundle"; sourceTree = "<group>"; };
 		B195675A17DA6B1400CB7F4B /* DD2Words.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DD2Words.h; sourceTree = "<group>"; };
 		B195675B17DA6B1400CB7F4B /* DD2Words.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DD2Words.m; sourceTree = "<group>"; };
 		B195675D17DA6FB200CB7F4B /* DD2GlobalHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DD2GlobalHelper.h; sourceTree = "<group>"; };
@@ -188,16 +188,7 @@
 			isa = PBXGroup;
 			children = (
 				B191926217F8F6BF00B628E5 /* Images.xcassets */,
-				B1966A4F17F3F0FF007277A8 /* libsqlite3.dylib */,
-				B1966A4D17F3F0BF007277A8 /* CoreTelephony.framework */,
-				B1954E9117EE68A900371610 /* Security.framework */,
-				B1B7D19717ED0CDC004576F8 /* libz.dylib */,
-				B1B7D19517ED0C74004576F8 /* SystemConfiguration.framework */,
-				B1C0447A17ED0875007395C3 /* CoreData.framework */,
-				B192DB5117E291510075C072 /* QuartzCore.framework */,
-				B192DB4F17E2913E0075C072 /* AudioToolbox.framework */,
-				B192DB4D17E291380075C072 /* AVFoundation.framework */,
-				B1CCB5CD17DFC797009D7BF0 /* MessageUI.framework */,
+				B195674F17DA65AC00CB7F4B /* resources.bundle */,
 				B195672F17DA64D400CB7F4B /* DD-s-Dictionary */,
 				B195672817DA64D400CB7F4B /* Frameworks */,
 				B195672717DA64D400CB7F4B /* Products */,
@@ -215,6 +206,16 @@
 		B195672817DA64D400CB7F4B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B1966A4F17F3F0FF007277A8 /* libsqlite3.dylib */,
+				B1966A4D17F3F0BF007277A8 /* CoreTelephony.framework */,
+				B1954E9117EE68A900371610 /* Security.framework */,
+				B1B7D19717ED0CDC004576F8 /* libz.dylib */,
+				B1B7D19517ED0C74004576F8 /* SystemConfiguration.framework */,
+				B1C0447A17ED0875007395C3 /* CoreData.framework */,
+				B192DB5117E291510075C072 /* QuartzCore.framework */,
+				B192DB4F17E2913E0075C072 /* AudioToolbox.framework */,
+				B192DB4D17E291380075C072 /* AVFoundation.framework */,
+				B1CCB5CD17DFC797009D7BF0 /* MessageUI.framework */,
 				B195672917DA64D400CB7F4B /* UIKit.framework */,
 				B195672B17DA64D400CB7F4B /* Foundation.framework */,
 				B195672D17DA64D400CB7F4B /* CoreGraphics.framework */,
@@ -253,7 +254,6 @@
 				B1966A4A17F3EFB7007277A8 /* Appington */,
 				B1954E9017EE687400371610 /* Flurry */,
 				B1C0447917ED07E8007395C3 /* Google Analytics */,
-				B195674F17DA65AC00CB7F4B /* resources.bundle */,
 				B195673017DA64D400CB7F4B /* Supporting Files */,
 				B192C5AD17E56F7900F8AD9C /* Fonts */,
 			);

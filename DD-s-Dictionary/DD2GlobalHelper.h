@@ -11,7 +11,7 @@
 #define PROCESS_VERBOSELY NO
 #define LOG_PREDICATE_RESULTS NO       // must be NO for ship
 #define TEST_APPINGTON_ON YES            // must be NO for ship
-#define LOG_ANALYTICS YES            // must be NO for ship
+#define LOG_ANALYTICS NO            // must be NO for ship
 #define FIND_MISSING_PRONUNCIATIONS NO     // must be NO for ship
 
 @interface DD2GlobalHelper : NSObject

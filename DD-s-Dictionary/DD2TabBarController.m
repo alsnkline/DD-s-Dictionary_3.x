@@ -219,10 +219,13 @@
 
 - (void)playAppingtonMsgForFun
 {
-    static NSArray *msgs = nil;
-    if (!msgs) msgs = [NSArray arrayWithObjects:@"22",@"23", nil];
-    int msgIndex = arc4random()%[msgs count];
-    [Appington control:@"placement" andValues:@{@"id": [msgs objectAtIndex:msgIndex]}];
+    if(![[NSUserDefaults standardUserDefaults] boolForKey:NOT_USE_VOICE_HINTS]) {
+        static NSArray *msgs = nil;
+        if (!msgs) msgs = [NSArray arrayWithObjects:@"22",@"23", nil];
+        int msgIndex = arc4random()%[msgs count];
+        // call Appington
+        [Appington control:@"placement" andValues:@{@"id": [msgs objectAtIndex:msgIndex]}];
+    }
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation //iOS 5 not 6

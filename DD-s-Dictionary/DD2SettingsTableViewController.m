@@ -225,7 +225,9 @@
     NSArray *messages = buttonState ? buttonOffMsgs : buttonOnMsgs;
     int msgIndex = arc4random()%[messages count];
     
+    // call Appington
     [Appington control:@"placement" andValues:@{@"id": [messages objectAtIndex:msgIndex]}];
+
 }
 
 - (IBAction)useDyslexieFontSwitchChanged:(UISwitch *)sender
