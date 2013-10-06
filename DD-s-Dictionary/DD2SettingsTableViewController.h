@@ -17,3 +17,13 @@
 + (NSMutableArray *) limitSelectedCollections:(NSMutableArray *)selectedCollections;
 
 @end
+
+
+@interface DD2SettingsTableViewCell : UITableViewCell
+
+@property (weak, nonatomic) IBOutlet UILabel *label;
+@property (weak, nonatomic) IBOutlet UISlider *smallSlider;
+@property (weak, nonatomic) IBOutlet UISwitch *cellSwitch;
+@property (weak, nonatomic) IBOutlet UISlider *bigSlider;
+
+@end

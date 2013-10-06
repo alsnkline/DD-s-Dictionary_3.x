@@ -10,7 +10,6 @@
 #import "NSUserDefaultKeys.h"
 #import <MessageUI/MessageUI.h>
 #import "htmlPageViewController.h"
-#import "DD2SettingsTableViewCell.h"
 #import "DD2AppDelegate.h"
 
 @interface DD2SettingsTableViewController () <UITableViewDataSource, UITableViewDelegate, MFMailComposeViewControllerDelegate>
@@ -513,6 +512,7 @@
         [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
     } else if (selectedCell.tag  == 22) {
         // http://stackoverflow.com/questions/3124080/app-store-link-for-rate-review-this-app - ::To DO:: extend to encourage app store reviews
+        // http://stackoverflow.com/questions/433907/how-to-link-to-apps-on-the-app-store?rq=1
         [self sendEmail:selectedCell];
     } else if ([[NSArray arrayWithObjects:@"20",@"21",@"23", nil] containsObject:[@(selectedCell.tag) stringValue]]) {
         [self performSegueWithIdentifier:@"display WebView" sender:selectedCell];
@@ -607,3 +607,27 @@
     [super viewDidUnload];
 }
 @end
+
+#pragma mark - DD2SettingsTableViewCell Class
+
+@implementation DD2SettingsTableViewCell
+
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+{
+    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    if (self) {
+        // Initialization code
+    }
+    return self;
+}
+
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated
+{
+    [super setSelected:selected animated:animated];
+    
+    // Configure the view for the selected state
+}
+
+@end
+
+
