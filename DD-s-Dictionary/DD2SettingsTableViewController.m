@@ -195,6 +195,10 @@
     //track event with GA
     NSString *switchSetting = sender.on ? @"ON" : @"OFF";
     [DD2GlobalHelper sendEventToGAWithCategory:@"uiAction_Setting" action:@"playOnSelectionChanged" label:switchSetting value:nil];
+    
+    //track switch change with Flurry
+    NSString *logEventString = [NSString stringWithFormat:@"uiAction_playOnSelectionSwitch_%@", sender.on ? @"ON" : @"OFF"];
+    [Flurry logEvent:logEventString withParameters:@{@"playOnSelectedSwitchSetting" : sender.on ? @"ON" : @"OFF"}];
 }
 
 - (IBAction)voiceHintsSwitchChanged:(UISwitch *)sender
@@ -211,6 +215,10 @@
     
     //call Appington
     [self playButtonMsg:sender.on];
+    
+    //track switch change with Flurry
+    NSString *logEventString = [NSString stringWithFormat:@"uiAction_voiceHintsSwitch_%@", sender.on ? @"ON" : @"OFF"];
+    [Flurry logEvent:logEventString withParameters:@{@"voiceHintsSwitchSetting" : sender.on ? @"ON" : @"OFF"}];
 }
 
 - (void)playButtonMsg:(BOOL)buttonState
@@ -239,6 +247,10 @@
     //track event with GA
     NSString *switchSetting = sender.on ? @"ON" : @"OFF";
     [DD2GlobalHelper sendEventToGAWithCategory:@"uiAction_Setting" action:@"useDyslexieFontChanged" label:switchSetting value:nil];
+    
+    //track switch change with Flurry
+    NSString *logEventString = [NSString stringWithFormat:@"uiAction_useDyslexieFontSwitch_%@", sender.on ? @"ON" : @"OFF"];
+    [Flurry logEvent:logEventString withParameters:@{@"useDyslexieFontSwitchSetting" : sender.on ? @"ON" : @"OFF"}];
 }
 
 - (IBAction)backgroundHueSliderChanged:(UISlider *)sender
@@ -250,6 +262,10 @@
     
     //track event with GA
     [DD2GlobalHelper sendEventToGAWithCategory:@"uiAction_Setting" action:@"backgroundColorChanged" label:@"Color Hue Changed" value:nil];
+    
+    //track switch change with Flurry
+    NSString *logEventString = [NSString stringWithFormat:@"uiAction_BackgroundColorHueChanged"];
+    [Flurry logEvent:logEventString withParameters:@{@"BackgroundColorHue" : [DD2GlobalHelper getHexStringForColor:self.customBackgroundColor]}];
 }
 
 - (IBAction)backgroundSaturationSliderChanged:(UISlider *)sender
@@ -271,6 +287,10 @@
     //track event with GA
     NSString *customBackgroundColorSaturationSetting = [NSString stringWithFormat:@"Color Saturation:%f", saturation];
     [DD2GlobalHelper sendEventToGAWithCategory:@"uiAction_Setting" action:@"backgroundColorChanged" label:customBackgroundColorSaturationSetting value:nil];
+    
+    //track switch change with Flurry
+    NSString *logEventString = [NSString stringWithFormat:@"uiAction_BackgroundColorSatChanged_%f", saturation];
+    [Flurry logEvent:logEventString withParameters:@{@"BackgroundColorSat" : [NSString stringWithFormat:@"%f", saturation]}];
 }
 
 - (void) backgroundColorChanged
@@ -333,8 +353,16 @@
     NSDictionary *userInfo = [NSDictionary dictionaryWithObject:self.spellingVariant forKey:@"newValue"];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"spellingVariantChanged" object:self userInfo:userInfo];
     
-    NSLog (@"spelling variant = %@, %d", self.spellingVariant, sliderValue);
+    //NSLog (@"spelling variant = %@, %d", self.spellingVariant, sliderValue);
     [self manageSpellingVariantLable];
+    
+    //track event with GA
+    NSString *variantSetting = [NSString stringWithFormat:@"Spelling Variant:%@", self.spellingVariant];
+    [DD2GlobalHelper sendEventToGAWithCategory:@"uiAction_Setting" action:@"spellingVariantChanged" label:variantSetting value:nil];
+    
+    //track switch change with Flurry
+    NSString *logEventString = [NSString stringWithFormat:@"uiAction_SpellingVariantChanged_%@", self.spellingVariant];
+    [Flurry logEvent:logEventString withParameters:@{@"SpellingVariant" : self.spellingVariant}];
 }
 
 - (void) manageSpellingVariantLable
@@ -358,6 +386,7 @@
     //Notify that the selected Collections have changed
     NSDictionary *userInfo = [NSDictionary dictionaryWithObject:self.selectedCollections forKey:@"newValue"];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"selectedCollectionsChanged" object:self userInfo:userInfo];
+    
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -476,7 +505,7 @@
             if (indexPath.section == 0 && indexPath.row == 1) self.playOnSelectionCell = stvc;
             if (indexPath.section == 0 && indexPath.row == 2) {
                 self.voiceHintsCell = stvc;
-                stvc.hidden = !self.voiceHintsAvailable;        //hiding cell is appington voice Hints are not available.
+                stvc.hidden = !self.voiceHintsAvailable;        //hiding cell if appington voice Hints are not available.
             }
             if (indexPath.section == 0 && indexPath.row == 3) self.useDyslexicFontCell = stvc;
             if (indexPath.section == 0 && indexPath.row == 4) self.backgroundColorSatCell = stvc;
@@ -500,18 +529,27 @@
     UITableViewCell *selectedCell = [self.tableView cellForRowAtIndexPath:indexPath];
     if (selectedCell.tag == 10) {
         //toggle checkmark and update currently selected collection list.
+        NSString *stringForTracking;
         if (selectedCell.accessoryType == UITableViewCellAccessoryCheckmark) {
             [self.selectedCollections removeObject:[self.collectionNames objectAtIndex:indexPath.row]];
-            [self collectionSelectionChanged];
+            stringForTracking = [NSString stringWithFormat:@"%@_HIDE",[self.collectionNames objectAtIndex:indexPath.row]];
         } else {
             [self.selectedCollections addObject:[self.collectionNames objectAtIndex:indexPath.row]];
             self.selectedCollections = [DD2SettingsTableViewController limitSelectedCollections:self.selectedCollections];
-            [self collectionSelectionChanged];
+            stringForTracking = [NSString stringWithFormat:@"%@_SHOW",[self.collectionNames objectAtIndex:indexPath.row]];
         }
+        [self collectionSelectionChanged];
         [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
+        
+        //track event with GA
+        NSString *collectionsChanged = [NSString stringWithFormat:@"collectionSelected:%@", stringForTracking];
+        [DD2GlobalHelper sendEventToGAWithCategory:@"uiAction_Setting" action:@"spellingVariantChanged" label:collectionsChanged value:nil];
+        
+        //track switch change with Flurry
+        NSString *logEventString = [NSString stringWithFormat:@"uiAction_collectionSelected_%@", stringForTracking];
+        [Flurry logEvent:logEventString withParameters:@{@"Collection Changed" : stringForTracking}];
+        
     } else if (selectedCell.tag  == 21) {
-        // http://stackoverflow.com/questions/3124080/app-store-link-for-rate-review-this-app - ::To DO:: extend to encourage app store reviews
-        // http://stackoverflow.com/questions/433907/how-to-link-to-apps-on-the-app-store?rq=1
         [self performSegueWithIdentifier:@"Display Talk To Us" sender:selectedCell];
     } else if ([[NSArray arrayWithObjects:@"20",@"22",@"23", nil] containsObject:[@(selectedCell.tag) stringValue]]) {
         [self performSegueWithIdentifier:@"display WebView" sender:selectedCell];
