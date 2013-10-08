@@ -12,6 +12,7 @@
 #import "FunWithWordsTableViewController.h"
 #import "DisplayWordViewController.h"
 #import "DD2SettingsTableViewController.h"
+#import "DD2RecentWords.h"
 
 // Tab controller managed which tabs are visible and what data is displayed ie manages the impact of spelling Variant
 
@@ -160,7 +161,9 @@
                 }
             } else if ([vc1OnStack isKindOfClass:[DD2SettingsTableViewController class]]) {    //setting up the fun vc (spelling variant and tagNames)
                 DD2SettingsTableViewController *settingsTable = (DD2SettingsTableViewController *)vc1OnStack;
-                settingsTable.collectionNames = self.wordBrain.collectionNames;
+                NSMutableArray *collectionNamesForSettings = [self.wordBrain.collectionNames mutableCopy];
+                [collectionNamesForSettings addObject:@"Recent"];
+                settingsTable.collectionNames = collectionNamesForSettings;
             }
             if ([[nvc.viewControllers lastObject]isKindOfClass:[DisplayWordViewController class]]) { //iphone only
                 //DisplayWordViewController *dwvc = (DisplayWordViewController *)[nvc.viewControllers lastObject];
@@ -186,12 +189,21 @@
             UINavigationController *nvc = (UINavigationController *)vc;
             if ([[nvc.viewControllers objectAtIndex:0] isKindOfClass:[DD2WordListTableViewController class]]) {
                 DD2WordListTableViewController *collectionTable = (DD2WordListTableViewController *) [nvc.viewControllers objectAtIndex:0];
-                collectionTable.wordListWithSections = [DD2Words wordsBySectionFromWordList:[self.wordBrain wordsForCurrentSpellingVariantInCollectionNamed:collection]];
+                
                 NSString *collectionTitle = [DD2Words displayNameForCollection:collection];
                 collectionTable.title = collectionTitle;
                 collectionTable.allWordsForSpellingVariant = [self.wordBrain allWordsForCurrentSpellingVariant];
-                UIImage *img = [UIImage imageNamed:@"resources.bundle/Images/DinoTabIconv2.png"];
-                nvc.tabBarItem = [[UITabBarItem alloc] initWithTitle:collectionTitle image:img tag:1];
+                
+                if ([collection isEqualToString:@"Recent"]) {
+                    // Recent then set word list from RecentWords
+                    collectionTable.wordList = [DD2RecentWords currentRecentlyViewedWordList];
+                    nvc.tabBarItem = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemRecents tag:1];
+                } else {
+                    // setting word list from DD2Words
+                    collectionTable.wordListWithSections = [DD2Words wordsBySectionFromWordList:[self.wordBrain wordsForCurrentSpellingVariantInCollectionNamed:collection]];
+                    UIImage *img = [UIImage imageNamed:@"resources.bundle/Images/DinoTabIconv2.png"];
+                    nvc.tabBarItem = [[UITabBarItem alloc] initWithTitle:collectionTitle image:img tag:1];
+                }
             }
             [listOfTabVC insertObject:vc atIndex:0];
         }

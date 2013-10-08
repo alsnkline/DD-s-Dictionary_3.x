@@ -11,6 +11,7 @@
 #import <AVFoundation/AVFoundation.h> //for audioPlayer
 #import "NSUserDefaultKeys.h"
 #import <QuartzCore/QuartzCore.h>
+#import "DD2RecentWords.h"
 
 @interface DisplayWordViewController () <AVAudioPlayerDelegate>
 
@@ -59,6 +60,7 @@
 {
     if (_word != word) {
         _word = word;
+        [DD2RecentWords viewingWordNow:_word];
         if ([self getSplitViewWithDisplayWordViewController]) {
             [self setUpViewForWord:word];       //used for iPad in iPhone outlets not set yet
         }

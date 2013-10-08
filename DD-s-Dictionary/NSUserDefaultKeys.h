@@ -19,6 +19,7 @@
 
 #define SPELLING_VARIANT @"DDPrototype.spellingVariant"
 #define SELECTED_COLLECTIONS @"DDPrototype.selectedCollections"
+#define RECENTLY_VIEWED_WORDS_KEY @"DDPrototype.RecentlyViewedWords"
 
 @protocol NSUserDefaultKeys <NSObject>
 
