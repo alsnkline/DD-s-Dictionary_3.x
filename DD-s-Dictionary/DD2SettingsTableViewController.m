@@ -8,11 +8,10 @@
 
 #import "DD2SettingsTableViewController.h"
 #import "NSUserDefaultKeys.h"
-#import <MessageUI/MessageUI.h>
 #import "htmlPageViewController.h"
 #import "DD2AppDelegate.h"
 
-@interface DD2SettingsTableViewController () <UITableViewDataSource, UITableViewDelegate, MFMailComposeViewControllerDelegate>
+@interface DD2SettingsTableViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSString *spellingVariant;
@@ -510,11 +509,11 @@
             [self collectionSelectionChanged];
         }
         [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
-    } else if (selectedCell.tag  == 22) {
+    } else if (selectedCell.tag  == 21) {
         // http://stackoverflow.com/questions/3124080/app-store-link-for-rate-review-this-app - ::To DO:: extend to encourage app store reviews
         // http://stackoverflow.com/questions/433907/how-to-link-to-apps-on-the-app-store?rq=1
-        [self sendEmail:selectedCell];
-    } else if ([[NSArray arrayWithObjects:@"20",@"21",@"23", nil] containsObject:[@(selectedCell.tag) stringValue]]) {
+        [self performSegueWithIdentifier:@"Display Talk To Us" sender:selectedCell];
+    } else if ([[NSArray arrayWithObjects:@"20",@"22",@"23", nil] containsObject:[@(selectedCell.tag) stringValue]]) {
         [self performSegueWithIdentifier:@"display WebView" sender:selectedCell];
     }
 }
@@ -536,7 +535,7 @@
                 if ([localFileManager fileExistsAtPath:path]) { //avoid crash if file changes and forgot to clean build :-)
                     [segue.destinationViewController setUrlToDisplay:[NSURL fileURLWithPath:path]];
                 }
-            } else if (cell.tag == 21) {
+            } else if (cell.tag == 22) {
                 //The Dysle+ie font selected.
                 NSString *path = [[NSBundle mainBundle] pathForResource:@"resources.bundle/html/settings_dysle+ie" ofType:@"html"];
                 
@@ -562,46 +561,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - Sending an Email
-
-- (IBAction) sendEmail: (id) sender
-{
-	BOOL	bCanSendMail = [MFMailComposeViewController canSendMail];
-    //    BOOL	bCanSendMail = NO; //for testing the no email alert
-    
-    //track screen with GA
-    [DD2GlobalHelper sendViewToGAWithViewName:[NSString stringWithFormat:@"SendEmail triggered"]];
-    
-	if (!bCanSendMail)
-	{
-		UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"No Email Account"
-                                                        message: @"You must set up an email account for your device before you can send mail."
-                                                       delegate: nil
-                                              cancelButtonTitle: nil
-                                              otherButtonTitles: @"OK", nil];
-		[alert show];
-	}
-	else
-	{
-		MFMailComposeViewController *picker = [[MFMailComposeViewController alloc] init];
-        
-		picker.mailComposeDelegate = self;
-        
-		[picker setToRecipients: [NSArray arrayWithObject: @"dydifeedback@gmail.com"]];
-		[picker setSubject: @"Dy-Di Feedback"];
-		[picker setMessageBody: [NSString stringWithFormat:@"What do you like about Dy-Di? \r\n\r\n What would you like to see improved? \r\n\r\n What new features would be key for you? \r\n\r\n Any other thoughts? \r\n\r\n\r\n\r\n Thank you so much for taking the time to give us your feedback.\r\n\r\n Best regards Alison.\r\n (from Version: %@ on an %@)",[DD2GlobalHelper version], [DD2GlobalHelper deviceType]] isHTML: NO];
-        
-		[self presentModalViewController: picker animated: YES];
-	}
-    [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
-}
-
-- (void) mailComposeController: (MFMailComposeViewController *) controller
-           didFinishWithResult: (MFMailComposeResult) result
-                         error: (NSError *) error
-{
-	[self dismissModalViewControllerAnimated: YES];
-}
 
 - (void)viewDidUnload {
     [super viewDidUnload];
