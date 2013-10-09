@@ -162,7 +162,7 @@
             } else if ([vc1OnStack isKindOfClass:[DD2SettingsTableViewController class]]) {    //setting up the fun vc (spelling variant and tagNames)
                 DD2SettingsTableViewController *settingsTable = (DD2SettingsTableViewController *)vc1OnStack;
                 NSMutableArray *collectionNamesForSettings = [self.wordBrain.collectionNames mutableCopy];
-                [collectionNamesForSettings addObject:@"Recent"];
+                [collectionNamesForSettings addObject:@"Recents"];
                 settingsTable.collectionNames = collectionNamesForSettings;
             }
             if ([[nvc.viewControllers lastObject]isKindOfClass:[DisplayWordViewController class]]) { //iphone only
@@ -194,7 +194,7 @@
                 collectionTable.title = collectionTitle;
                 collectionTable.allWordsForSpellingVariant = [self.wordBrain allWordsForCurrentSpellingVariant];
                 
-                if ([collection isEqualToString:@"Recent"]) {
+                if ([collection isEqualToString:@"Recents"]) {
                     // Recent then set word list from RecentWords
                     [self setRecentWordListForCollectionTable:collectionTable];
                     nvc.tabBarItem = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemRecents tag:1];
@@ -227,7 +227,7 @@
             [searchTable.searchDisplayController.searchBar becomeFirstResponder];
         } else if ([[nvc.viewControllers objectAtIndex:0] isKindOfClass:[DD2WordListTableViewController class]]) {
             DD2WordListTableViewController *collectionTable = (DD2WordListTableViewController *) [nvc.viewControllers objectAtIndex:0];
-            if ([collectionTable.title isEqualToString:@"Recent"]) {        //update recent word list before recent tab is displayed
+            if ([collectionTable.title isEqualToString:@"Recents"]) {        //update recent word list before recent tab is displayed
                 [self setRecentWordListForCollectionTable:collectionTable];
             }
             
@@ -237,7 +237,7 @@
 
 - (void) setRecentWordListForCollectionTable:(DD2WordListTableViewController *)collectionTable {
     NSArray *recentWordList = [DD2RecentWords currentRecentlyViewedWordList];
-    if ([recentWordList count] <15) {
+    if ([recentWordList count] <10) {
         collectionTable.wordList = recentWordList;
     } else {
         collectionTable.wordListWithSections = [DD2Words wordsBySectionFromWordList:recentWordList];
