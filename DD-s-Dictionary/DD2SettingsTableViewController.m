@@ -550,7 +550,7 @@
         [Flurry logEvent:logEventString withParameters:@{@"Collection Changed" : stringForTracking}];
         
     } else if (selectedCell.tag  == 21) {
-        [self performSegueWithIdentifier:@"Display Talk To Us" sender:selectedCell];
+        [self performSegueWithIdentifier:@"display Talk To Us" sender:selectedCell];
     } else if ([[NSArray arrayWithObjects:@"20",@"22",@"23", nil] containsObject:[@(selectedCell.tag) stringValue]]) {
         [self performSegueWithIdentifier:@"display WebView" sender:selectedCell];
     }
@@ -564,8 +564,8 @@
             DD2SettingsTableViewCell *cell = (DD2SettingsTableViewCell *)sender;
             [segue.destinationViewController setStringForTitle:cell.textLabel.text];
             
-            NSFileManager *localFileManager = [[NSFileManager alloc] init];
             [segue.destinationViewController setCustomBackgroundColor:self.customBackgroundColor];
+            NSFileManager *localFileManager = [[NSFileManager alloc] init];
             if (cell.tag == 23) {
                 // small print selected
                 NSString *path = [[NSBundle mainBundle] pathForResource:@"resources.bundle/html/settings_smallPrintv2" ofType:@"html"];
@@ -590,6 +590,8 @@
                 }
             }
         }
+    } else if ([segue.identifier isEqualToString:@"display Talk To Us"]){
+        [segue.destinationViewController setCustomBackgroundColor:self.customBackgroundColor];
     }
 }
 

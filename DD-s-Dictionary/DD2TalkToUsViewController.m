@@ -15,6 +15,8 @@
 
 @implementation DD2TalkToUsViewController
 
+@synthesize customBackgroundColor = _customBackgroundColor;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -83,6 +85,9 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
+    [self.view setOpaque:NO];
+    self.view.backgroundColor = self.customBackgroundColor;
 }
 
 - (void)didReceiveMemoryWarning

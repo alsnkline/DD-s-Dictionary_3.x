@@ -10,4 +10,6 @@
 
 @interface DD2TalkToUsViewController : UIViewController
 
+@property (nonatomic, strong) UIColor *customBackgroundColor;
+
 @end
