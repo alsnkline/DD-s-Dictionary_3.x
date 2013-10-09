@@ -22,17 +22,18 @@
     
     NSMutableArray *recentWords = [[defaults objectForKey:RECENTLY_VIEWED_WORDS_KEY] mutableCopy];
     if (!recentWords) recentWords = [NSMutableArray array];
-    NSLog(@"word passed in: %@", word);
+    //NSLog(@"word passed in: %@", word);
     
     if ([recentWords containsObject:word]) {
         NSLog(@"already a recent word");
         [recentWords removeObject:word];
     }
     [recentWords insertObject:word atIndex:0];
-    if ([recentWords count] > 100) [recentWords removeLastObject];
+    if ([recentWords count] > 50) [recentWords removeLastObject];
     
     [defaults setObject:recentWords forKey:RECENTLY_VIEWED_WORDS_KEY];
     [defaults synchronize];
+    NSLog(@"recent word count: %d", [recentWords count]);
     
 }
 

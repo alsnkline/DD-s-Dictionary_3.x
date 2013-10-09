@@ -37,6 +37,7 @@
     if (sortedWords != _wordList) {
         _wordList = sortedWords;
     }
+    [self.tableView reloadData];
 }
 
 -(void)setWordListWithSections:(NSDictionary *)wordListWithSections {
@@ -44,6 +45,7 @@
         _wordListWithSections = wordListWithSections;
         self.sections = [[wordListWithSections allKeys] sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
     }
+    [self.tableView reloadData];
 }
 
 #pragma mark - Table view data source

@@ -196,7 +196,7 @@
                 
                 if ([collection isEqualToString:@"Recent"]) {
                     // Recent then set word list from RecentWords
-                    collectionTable.wordList = [DD2RecentWords currentRecentlyViewedWordList];
+                    [self setRecentWordListForCollectionTable:collectionTable];
                     nvc.tabBarItem = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemRecents tag:1];
                 } else {
                     // setting word list from DD2Words
@@ -225,11 +225,26 @@
             [searchTable.tableView deselectRowAtIndexPath:[searchTable.tableView indexPathForSelectedRow] animated:NO];
             [searchTable.searchDisplayController setActive:YES animated:YES];
             [searchTable.searchDisplayController.searchBar becomeFirstResponder];
+        } else if ([[nvc.viewControllers objectAtIndex:0] isKindOfClass:[DD2WordListTableViewController class]]) {
+            DD2WordListTableViewController *collectionTable = (DD2WordListTableViewController *) [nvc.viewControllers objectAtIndex:0];
+            if ([collectionTable.title isEqualToString:@"Recent"]) {        //update recent word list before recent tab is displayed
+                [self setRecentWordListForCollectionTable:collectionTable];
+            }
+            
         }
     }
 }
 
-- (void)playAppingtonMsgForFun
+- (void) setRecentWordListForCollectionTable:(DD2WordListTableViewController *)collectionTable {
+    NSArray *recentWordList = [DD2RecentWords currentRecentlyViewedWordList];
+    if ([recentWordList count] <15) {
+        collectionTable.wordList = recentWordList;
+    } else {
+        collectionTable.wordListWithSections = [DD2Words wordsBySectionFromWordList:recentWordList];
+    }
+}
+
+- (void) playAppingtonMsgForFun
 {
     if(![[NSUserDefaults standardUserDefaults] boolForKey:NOT_USE_VOICE_HINTS]) {
         static NSArray *msgs = nil;
