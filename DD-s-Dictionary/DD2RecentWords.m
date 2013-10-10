@@ -18,6 +18,7 @@
 }
 
 + (void) viewingWordNow:(NSDictionary *)word{
+    if (!word) return;      // resetting display word view to empty
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
     NSMutableArray *recentWords = [[defaults objectForKey:RECENTLY_VIEWED_WORDS_KEY] mutableCopy];
