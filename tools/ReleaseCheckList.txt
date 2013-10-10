@@ -1,0 +1,14 @@
+Ship App Check List:
+
+1. Create Release Branch and update the build number to be above the privious shipping build
+2. ensure Google Analytics is turned on and pointing to production (Supoprting Files AppDelegate @"UA-37793922-1" is Production)
+3. ensure that Appington checker runs cleanly and that the latest campaigns are frozen.
+4. complete upgrade test on iPhone and iPad
+5. search for "ship" and confirm that anything which needs to be removed has been.
+    5i in GlobalHelper.h set OVERRIDE_PROCESSING to NO
+    5ii in GlobalHelper.h set PROCESS_VERBOSELY NO
+    5iii in GlobalHelper.h set TEST_APPINGTON_ON NO
+
+
+Back on Main
+1. Up rev App version number
