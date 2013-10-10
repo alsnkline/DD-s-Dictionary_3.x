@@ -27,12 +27,18 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
 @synthesize collectionNames = _collectionNames;
 @synthesize tagNames = _tagNames;
 @synthesize spellingVariant = _spellingVariant;
+@synthesize recentlyViewedWords = _recentlyViewedWords;
 
 
 + (DD2Words *)sharedWords
 {
     if (sharedWords == nil) sharedWords = [[DD2Words alloc] init];
     return sharedWords;
+}
+
+- recentlyViewedWords {
+    if (_recentlyViewedWords == nil) _recentlyViewedWords = [[NSArray alloc] init];
+    return _recentlyViewedWords;
 }
 
 
@@ -398,9 +404,41 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
     NSLog(@"-------- above or property missing ---------");
 }
 
+
+#pragma mark - Recently Viewed Words methods
+
++ (void) viewingWordNow:(NSDictionary *)word{
+    if (!word) return;      // resetting display word view to empty
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    NSMutableArray *recentWords = [[defaults objectForKey:RECENTLY_VIEWED_WORDS_KEY] mutableCopy];
+    if (!recentWords) recentWords = [NSMutableArray array];
+    //NSLog(@"word passed in: %@", word);
+    
+    if ([recentWords containsObject:word]) {
+        NSLog(@"already a recent word");
+        [recentWords removeObject:word];
+    }
+    [recentWords insertObject:word atIndex:0];
+    if ([recentWords count] > 50) [recentWords removeLastObject];
+    
+    [defaults setObject:recentWords forKey:RECENTLY_VIEWED_WORDS_KEY];
+    [defaults synchronize];
+    NSLog(@"recent word count: %d", [recentWords count]);
+    
+}
+
+
++ (NSArray *) currentRecentlyViewedWordList {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSArray *recentlyViewedWords = [defaults objectForKey:RECENTLY_VIEWED_WORDS_KEY];
+    return recentlyViewedWords;
+}
+
+
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"collection: %@, tags: %@ word count: %lu", self.collectionNames, self.tagNames, (unsigned long)[self.allWords count]];
+    return [NSString stringWithFormat:@"collection: %@, tags: %@ word count: %lu recents: %@", self.collectionNames, self.tagNames, (unsigned long)[self.allWords count], self.recentlyViewedWords];
 }
 
 @end

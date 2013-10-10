@@ -39,7 +39,6 @@
 		B1966A4E17F3F0BF007277A8 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1966A4D17F3F0BF007277A8 /* CoreTelephony.framework */; };
 		B1966A5017F3F0FF007277A8 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B1966A4F17F3F0FF007277A8 /* libsqlite3.dylib */; };
 		B197BD461801F8FB00E9D287 /* DD2TalkToUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B197BD451801F8FB00E9D287 /* DD2TalkToUsViewController.m */; };
-		B19B70E91804B319006A782A /* DD2RecentWords.m in Sources */ = {isa = PBXBuildFile; fileRef = B19B70E81804B319006A782A /* DD2RecentWords.m */; };
 		B1B7D19617ED0C74004576F8 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1B7D19517ED0C74004576F8 /* SystemConfiguration.framework */; };
 		B1B7D19817ED0CDC004576F8 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B1B7D19717ED0CDC004576F8 /* libz.dylib */; };
 		B1B7D19A17ED25CC004576F8 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B1B7D19917ED25CC004576F8 /* libGoogleAnalyticsServices.a */; };
@@ -110,8 +109,6 @@
 		B1966A4F17F3F0FF007277A8 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		B197BD441801F8FB00E9D287 /* DD2TalkToUsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DD2TalkToUsViewController.h; sourceTree = "<group>"; };
 		B197BD451801F8FB00E9D287 /* DD2TalkToUsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DD2TalkToUsViewController.m; sourceTree = "<group>"; };
-		B19B70E71804B319006A782A /* DD2RecentWords.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DD2RecentWords.h; sourceTree = "<group>"; };
-		B19B70E81804B319006A782A /* DD2RecentWords.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DD2RecentWords.m; sourceTree = "<group>"; };
 		B1B7D19517ED0C74004576F8 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		B1B7D19717ED0CDC004576F8 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		B1B7D19917ED25CC004576F8 /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
@@ -235,8 +232,6 @@
 				B191C3F117E3CBA100A2ABFA /* DD2TabBarController.m */,
 				B195675A17DA6B1400CB7F4B /* DD2Words.h */,
 				B195675B17DA6B1400CB7F4B /* DD2Words.m */,
-				B19B70E71804B319006A782A /* DD2RecentWords.h */,
-				B19B70E81804B319006A782A /* DD2RecentWords.m */,
 				B192C59B17E527FB00F8AD9C /* DD2SetTrackTableViewController.h */,
 				B192C59C17E527FB00F8AD9C /* DD2SetTrackTableViewController.m */,
 				B192C59E17E528FA00F8AD9C /* DD2WordListTableViewController.h */,
@@ -418,7 +413,6 @@
 				B195675C17DA6B1400CB7F4B /* DD2Words.m in Sources */,
 				B195675F17DA6FB200CB7F4B /* DD2GlobalHelper.m in Sources */,
 				B1CCB5CC17DFC444009D7BF0 /* htmlPageViewController.m in Sources */,
-				B19B70E91804B319006A782A /* DD2RecentWords.m in Sources */,
 				B192DB4C17E26EFE0075C072 /* DisplayWordViewController.m in Sources */,
 				B191C3F217E3CBA100A2ABFA /* DD2TabBarController.m in Sources */,
 				B191C3F517E3EC0400A2ABFA /* FunWithWordsTableViewController.m in Sources */,

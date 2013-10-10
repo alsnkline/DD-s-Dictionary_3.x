@@ -12,7 +12,6 @@
 #import "FunWithWordsTableViewController.h"
 #import "DisplayWordViewController.h"
 #import "DD2SettingsTableViewController.h"
-#import "DD2RecentWords.h"
 
 // Tab controller managed which tabs are visible and what data is displayed ie manages the impact of spelling Variant
 
@@ -236,7 +235,7 @@
 }
 
 - (void) setRecentWordListForCollectionTable:(DD2WordListTableViewController *)collectionTable {
-    NSArray *recentWordList = [DD2RecentWords currentRecentlyViewedWordList];
+    NSArray *recentWordList = [DD2Words currentRecentlyViewedWordList];
     if ([recentWordList count] <10) {
         collectionTable.wordList = recentWordList;
     } else {

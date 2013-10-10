@@ -16,6 +16,7 @@
 @property (nonatomic, strong) NSArray *collectionNames;
 @property (nonatomic, strong) NSArray *tagNames;
 @property (nonatomic, strong) NSString *spellingVariant;
+@property (nonatomic, strong) NSArray *recentlyViewedWords; //repository for recents
 
 
 + (DD2Words *)sharedWords;
@@ -35,5 +36,9 @@
 
 + (NSDictionary *) wordForPronunciation:(NSString *)pronunciation fromWordList:(NSArray *)wordList;
 + (NSDictionary *) homophonesForWord:(NSDictionary *)word andWordList:(NSArray *)wordList;
+
+//methods for recents words
++ (void) viewingWordNow:(NSDictionary *)word;
++ (NSArray *) currentRecentlyViewedWordList;
 
 @end
