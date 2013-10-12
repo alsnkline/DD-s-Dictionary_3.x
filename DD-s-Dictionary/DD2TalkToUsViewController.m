@@ -26,6 +26,19 @@
     return self;
 }
 
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    //track screen with GA
+    [DD2GlobalHelper sendViewToGAWithViewName:@"Talk To Us Shown"];
+}
+
+-(void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    // call Appington
+    [Appington control:@"placement" andValues:@{@"id": @"26"}];
+}
 
 - (IBAction) rateInStore:(id)sender
 {
@@ -38,6 +51,16 @@
     // Would contain the right link
     
     [[UIApplication sharedApplication] openURL:urlToOpen];
+    
+    //track screen with GA
+    [DD2GlobalHelper sendViewToGAWithViewName:[NSString stringWithFormat:@"RateApp triggered"]];
+    
+    //track switch change with Flurry
+    NSString *logEventString = [NSString stringWithFormat:@"uiAction_RateAppTriggered"];
+    [Flurry logEvent:logEventString withParameters:@{@"Button Pressed" : @"Review us"}];
+    
+    // call Appington
+    [Appington control:@"conversion" andValues:@{@"id": @"26"}];
 }
 
 #pragma mark - Sending an Email
@@ -49,6 +72,10 @@
     
     //track screen with GA
     [DD2GlobalHelper sendViewToGAWithViewName:[NSString stringWithFormat:@"SendEmail triggered"]];
+    
+    //track switch change with Flurry
+    NSString *logEventString = [NSString stringWithFormat:@"uiAction_SendEmailTriggered"];
+    [Flurry logEvent:logEventString withParameters:@{@"Button Pressed" : @"Email us"}];
     
 	if (!bCanSendMail)
 	{
