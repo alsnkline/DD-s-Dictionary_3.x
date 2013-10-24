@@ -29,4 +29,7 @@
 + (void)sendViewToGAWithViewName:(NSString *)screenName;
 + (void)sendEventToGAWithCategory:(NSString *)category action:(NSString *)action label:(NSString *)label value:(NSNumber *)value;
 
+//Double Metophone Methods
++ (NSArray *)doubleMetaphoneCodesFor:(NSString *)spelling;
++ (NSString *)stringForDoubleMetaphoneCodesArray:(NSArray *)doubleMetaphoneCodes;
 @end

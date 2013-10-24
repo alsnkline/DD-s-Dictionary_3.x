@@ -253,17 +253,40 @@
     
     // Filter the array using NSPredicate
     NSPredicate *containsPredicate = [NSPredicate predicateWithFormat:@"SELF.spelling contains[c] %@",searchText];
-    self.filteredWords = [NSMutableArray arrayWithArray:[self sortArrayAlphabetically:[self.allWordsForSpellingVariant filteredArrayUsingPredicate:containsPredicate]]];
+    NSMutableArray *wordsForFilteredWords = [NSMutableArray arrayWithArray:[self sortArrayAlphabetically:[self.allWordsForSpellingVariant filteredArrayUsingPredicate:containsPredicate]]];
     
     //check for exact match
     NSPredicate *exactMatchPredicate = [NSPredicate predicateWithFormat:@"SELF.spelling like[c] %@",searchText];
-    NSMutableArray *matches = [NSMutableArray arrayWithArray:[self.allWordsForSpellingVariant filteredArrayUsingPredicate:exactMatchPredicate]];
-    if ([matches count]==1) {
-        [self.filteredWords removeObject:[matches objectAtIndex:0]];
-        [self.filteredWords insertObject:[matches objectAtIndex:0] atIndex:0];
+    NSMutableArray *exactMatch = [NSMutableArray arrayWithArray:[self.allWordsForSpellingVariant filteredArrayUsingPredicate:exactMatchPredicate]];
+    if ([exactMatch count]==1) {
+        //[wordsForFilteredWords removeObject:[exactMatch objectAtIndex:0]];
+        [wordsForFilteredWords insertObject:[exactMatch objectAtIndex:0] atIndex:0];
     }
-    //if ([matches count] == 0) NSLog(@"no exact match");
-    if ([matches count] > 1) NSLog(@"we have too many exact matches");
+    //if ([exactMatch count] == 0) NSLog(@"no exact match");
+    if ([exactMatch count] > 1) NSLog(@"we have too many exact matches");
+    
+    //check for and append doubleMetaphone matches
+    NSArray *searchTextDMCodes = [DD2GlobalHelper doubleMetaphoneCodesFor:searchText];
+    
+    //primary to primary
+    NSPredicate *DMMatchPredicate = [NSPredicate predicateWithFormat:@"SELF.doubleMphonePrimary beginswith[c] %@",[searchTextDMCodes objectAtIndex:0]];
+    [self appendDMMatchesUsingPredicate:DMMatchPredicate toWordList:wordsForFilteredWords];
+    //secondary (searchText) to primary only if searchText has a secondary doubleMetaphone code
+    if ([searchTextDMCodes count] > 1) {
+        DMMatchPredicate = [NSPredicate predicateWithFormat:@"SELF.doubleMphonePrimary beginswith[c] %@",[searchTextDMCodes objectAtIndex:1]];
+        [self appendDMMatchesUsingPredicate:DMMatchPredicate toWordList:wordsForFilteredWords];
+    }
+    //primary (searchText) to secondary
+    DMMatchPredicate = [NSPredicate predicateWithFormat:@"SELF.doubleMphoneAlt beginswith[c] %@",[searchTextDMCodes objectAtIndex:0]];
+    [self appendDMMatchesUsingPredicate:DMMatchPredicate toWordList:wordsForFilteredWords];
+    //secondary (searchText) to secondary only if searchText has a secondary doubleMetaphone code
+    if ([searchTextDMCodes count] > 1) {
+        DMMatchPredicate = [NSPredicate predicateWithFormat:@"SELF.doubleMphoneAlt beginswith[c] %@",[searchTextDMCodes objectAtIndex:1]];
+        [self appendDMMatchesUsingPredicate:DMMatchPredicate toWordList:wordsForFilteredWords];
+    }
+    
+    NSLog(@"words pre de-dup %@", wordsForFilteredWords);
+    self.filteredWords = [NSMutableArray arrayWithArray:[[NSOrderedSet orderedSetWithArray:wordsForFilteredWords] array]];
     
     //track search event with GA
     [DD2GlobalHelper sendEventToGAWithCategory:@"uiAction_Search" action:@"All_words" label:searchText value:nil];
@@ -273,7 +296,16 @@
     [Flurry logEvent:@"uiAction_Search" withParameters:flurryParameters];
 }
 
+- (void)appendDMMatchesUsingPredicate:(NSPredicate *)predicate toWordList:(NSMutableArray *)wordList
+{
+    NSMutableArray *dmMatches = [NSMutableArray arrayWithArray:[self.allWordsForSpellingVariant filteredArrayUsingPredicate:predicate]];
+    if ([dmMatches count] > 0 && [wordList count] < 15) {
+        [wordList addObjectsFromArray:dmMatches];
+    }
+}
+
 #pragma mark - UISearchDisplayController Delegate Methods
+
 -(BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString {
     // Tells the table data source to reload when text changes
     [self filterContentForSearchText:searchString scope:

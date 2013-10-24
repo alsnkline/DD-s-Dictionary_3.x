@@ -129,11 +129,16 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
                 } else {
                     NSLog(@"Badly formed wordElement: %@", wordElement);
                 }
-                if (PROCESS_VERBOSELY) NSLog(@"%@ (%@)", spelling, locale);
                 if (!spelling) continue;       // some words only have a uk variant eg cheque
+                if (PROCESS_VERBOSELY) NSLog(@"%@ (%@)", spelling, locale);
                 
                 NSString *cleanSpelling = [DD2Words exchangeUnderscoresForSpacesin:spelling];
                 [processedWord setObject:cleanSpelling forKey:@"spelling"];  //need for easy sorting
+                
+                //add doubleMetaphone codes
+                NSArray *doubleMetaphoneCodes = [DD2GlobalHelper doubleMetaphoneCodesFor:spelling];
+                [processedWord setObject:[doubleMetaphoneCodes objectAtIndex:0] forKey:@"doubleMphonePrimary"];
+                if ([doubleMetaphoneCodes count]>1) [processedWord setObject:[doubleMetaphoneCodes objectAtIndex:1] forKey:@"doubleMphoneAlt"];
                 
                 //adding section for easy table creation
                 NSString *section = [[cleanSpelling substringToIndex:1] uppercaseString];
@@ -166,6 +171,7 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
                     }
                 }
                 
+                //if (PROCESS_VERBOSELY) NSLog(@"processed word %@", processedWord);
                 //processing for all words
                 [workingAllWords addObject:processedWord];
                 

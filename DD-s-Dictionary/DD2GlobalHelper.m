@@ -8,6 +8,7 @@
 
 #import "DD2GlobalHelper.h"
 #import "GAITracker.h"
+#import "double_metaphone.h"
 
 @implementation DD2GlobalHelper
 
@@ -134,6 +135,39 @@
         if (LOG_ANALYTICS) NSLog(@"GAsend Event c:%@, a:%@, l:%@", category, action, label);
     }
     
+}
+
+#pragma mark - Double Metaphone Methods
+
++ (NSArray *)doubleMetaphoneCodesFor:(NSString *)spelling
+{
+    char *primarycode;
+    char *secondarycode;
+    DoubleMetaphone([spelling UTF8String], &primarycode, &secondarycode);
+    if (PROCESS_VERBOSELY) NSLog(@"doubleMetaphone code = %s, %s", primarycode, secondarycode);
+    
+    NSMutableArray *doubleMetaphoneCodes = [NSMutableArray arrayWithCapacity:2];
+    
+    [doubleMetaphoneCodes addObject:[NSString stringWithUTF8String:primarycode]];
+    
+    if(![[NSString stringWithUTF8String:primarycode] isEqualToString:[NSString stringWithUTF8String:secondarycode]])
+    {
+        [doubleMetaphoneCodes addObject:[NSString stringWithUTF8String:secondarycode]];
+        if (PROCESS_VERBOSELY) NSLog(@"doubleMetaphoneCodes ARE different");
+    }
+    
+    return doubleMetaphoneCodes;
+}
+
++ (NSString *)stringForDoubleMetaphoneCodesArray:(NSArray *)doubleMetaphoneCodes
+{
+    NSString *rtnString;
+    if ([doubleMetaphoneCodes count] >1) {
+        rtnString = [NSString stringWithFormat:@"%@, %@", [doubleMetaphoneCodes objectAtIndex:0],[doubleMetaphoneCodes objectAtIndex:1]];
+    } else {
+        rtnString = [NSString stringWithFormat:@"%@", [doubleMetaphoneCodes objectAtIndex:0]];
+    }
+    return rtnString;
 }
 
 @end

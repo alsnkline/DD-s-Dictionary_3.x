@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B1385A6917EEAF3F0015BA5A /* DD2SettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B1385A6817EEAF3F0015BA5A /* DD2SettingsTableViewController.m */; };
+		B160FFAC1819B504007946DB /* double_metaphone.mm in Sources */ = {isa = PBXBuildFile; fileRef = B160FFAB1819B504007946DB /* double_metaphone.mm */; };
 		B191926317F8F6BF00B628E5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B191926217F8F6BF00B628E5 /* Images.xcassets */; };
 		B191C3F217E3CBA100A2ABFA /* DD2TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = B191C3F117E3CBA100A2ABFA /* DD2TabBarController.m */; };
 		B191C3F517E3EC0400A2ABFA /* FunWithWordsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B191C3F417E3EC0400A2ABFA /* FunWithWordsTableViewController.m */; };
@@ -63,6 +64,8 @@
 /* Begin PBXFileReference section */
 		B1385A6717EEAF3F0015BA5A /* DD2SettingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DD2SettingsTableViewController.h; sourceTree = "<group>"; };
 		B1385A6817EEAF3F0015BA5A /* DD2SettingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DD2SettingsTableViewController.m; sourceTree = "<group>"; };
+		B160FFAA1819B504007946DB /* double_metaphone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = double_metaphone.h; sourceTree = "<group>"; };
+		B160FFAB1819B504007946DB /* double_metaphone.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = double_metaphone.mm; sourceTree = "<group>"; };
 		B191926217F8F6BF00B628E5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = "DD's Dictionary/Images.xcassets"; sourceTree = "<group>"; };
 		B191C3F017E3CBA100A2ABFA /* DD2TabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DD2TabBarController.h; sourceTree = "<group>"; };
 		B191C3F117E3CBA100A2ABFA /* DD2TabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DD2TabBarController.m; sourceTree = "<group>"; };
@@ -250,6 +253,8 @@
 				B1CCB5CB17DFC443009D7BF0 /* htmlPageViewController.m */,
 				B195675D17DA6FB200CB7F4B /* DD2GlobalHelper.h */,
 				B195675E17DA6FB200CB7F4B /* DD2GlobalHelper.m */,
+				B160FFAA1819B504007946DB /* double_metaphone.h */,
+				B160FFAB1819B504007946DB /* double_metaphone.mm */,
 				B1CCB5C917DFC3E6009D7BF0 /* NSUserDefaultKeys.h */,
 				B1966A4A17F3EFB7007277A8 /* Appington */,
 				B1954E9017EE687400371610 /* Flurry */,
@@ -420,6 +425,7 @@
 				B192C5A017E528FA00F8AD9C /* DD2WordListTableViewController.m in Sources */,
 				B192C5A617E565E100F8AD9C /* DD2AllWordSearchViewController.m in Sources */,
 				B1385A6917EEAF3F0015BA5A /* DD2SettingsTableViewController.m in Sources */,
+				B160FFAC1819B504007946DB /* double_metaphone.mm in Sources */,
 				B197BD461801F8FB00E9D287 /* DD2TalkToUsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
