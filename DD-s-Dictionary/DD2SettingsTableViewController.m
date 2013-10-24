@@ -78,7 +78,7 @@
     //track screen with GA
     [DD2GlobalHelper sendViewToGAWithViewName:@"Settings Tab Shown"];
     
-    [super viewDidAppear:animated];
+    [super viewWillAppear:animated];
     
 }
 
