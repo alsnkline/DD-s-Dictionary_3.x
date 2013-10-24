@@ -183,18 +183,27 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
                 
                 //check that pronunciation file exists if in that mode
                 if (FIND_MISSING_PRONUNCIATIONS) [DD2Words pronunciationsForWord:processedWord];
-
             }
         }
         
         [workingProcessedWords setObject:workingCollectionNames forKey:COLLECTION_NAMES];
         [workingProcessedWords setObject:workingTagNames forKey:TAG_NAMES];
         [workingProcessedWords setObject:workingAllWords forKey:ALL];
-
+        
+        //check for duplicate words
+        if (FIND_DUPLICATE_WORDS) [self logAnyDuplicateWordsIn:workingAllWords];
         
         _processedWords = [workingProcessedWords copy];
     }
+    
     return _processedWords;
+}
+
+- (void) logAnyDuplicateWordsIn:(NSArray *)wordList{
+    NSCountedSet *countedSet = [NSCountedSet setWithArray:wordList];
+    for (NSDictionary *word in wordList) {
+        if([countedSet countForObject:word] > 1) NSLog(@"duplicate %@", word);
+    }
 }
 
 - (NSArray *)allWordsForCurrentSpellingVariant {
