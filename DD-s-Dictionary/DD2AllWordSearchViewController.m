@@ -30,9 +30,9 @@
 @synthesize selectedWord = _selectedWord;
 
 
--(void)setAllWordsForSpellingVariant:(NSArray *)allWordsForSpellingVariant {
-    NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"spelling" ascending:YES selector:@selector(caseInsensitiveCompare:)];
-    NSArray *sortedWords = [allWordsForSpellingVariant sortedArrayUsingDescriptors:[NSArray arrayWithObjects:descriptor, nil]];
+-(void)setAllWordsForSpellingVariant:(NSArray *)allWordsForSpellingVariant
+{
+    NSArray *sortedWords = [self sortArrayAlphabetically:allWordsForSpellingVariant];
     if (sortedWords != _allWordsForSpellingVariant) {
         _allWordsForSpellingVariant = sortedWords;
         self.allWordsWithSections = [DD2Words wordsBySectionFromWordList:sortedWords];
@@ -40,11 +40,10 @@
     }
 }
 
--(void)setFilteredWords:(NSMutableArray *)filteredWords {
-    NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"spelling" ascending:YES selector:@selector(caseInsensitiveCompare:)];
-    NSArray *sortedWords = [filteredWords sortedArrayUsingDescriptors:[NSArray arrayWithObjects:descriptor, nil]];
-    if (sortedWords != _filteredWords) {
-        _filteredWords = [NSMutableArray arrayWithArray:sortedWords];
+-(void)setFilteredWords:(NSMutableArray *)filteredWords
+{
+    if (filteredWords != _filteredWords) {
+        _filteredWords = [NSMutableArray arrayWithArray:filteredWords];
     }
 }
 
@@ -54,6 +53,12 @@
         _allWordsWithSections = allWordsWithSections;
         self.sections = [[allWordsWithSections allKeys] sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
     }
+}
+
+- (NSArray *)sortArrayAlphabetically:(NSArray *)wordsForSort
+{
+    NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"spelling" ascending:YES selector:@selector(caseInsensitiveCompare:)];
+    return [wordsForSort sortedArrayUsingDescriptors:[NSArray arrayWithObjects:descriptor, nil]];
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -241,13 +246,24 @@
 
 #pragma mark Content Filtering
 -(void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope {
+    
     // Update the filtered array based on the search text and scope.
     // Remove all objects from the filtered search array
     [self.filteredWords removeAllObjects];
-    // Filter the array using NSPredicate
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.spelling contains[c] %@",searchText];
     
-    self.filteredWords = [NSMutableArray arrayWithArray:[self.allWordsForSpellingVariant filteredArrayUsingPredicate:predicate]];
+    // Filter the array using NSPredicate
+    NSPredicate *containsPredicate = [NSPredicate predicateWithFormat:@"SELF.spelling contains[c] %@",searchText];
+    self.filteredWords = [NSMutableArray arrayWithArray:[self sortArrayAlphabetically:[self.allWordsForSpellingVariant filteredArrayUsingPredicate:containsPredicate]]];
+    
+    //check for exact match
+    NSPredicate *exactMatchPredicate = [NSPredicate predicateWithFormat:@"SELF.spelling like[c] %@",searchText];
+    NSMutableArray *matches = [NSMutableArray arrayWithArray:[self.allWordsForSpellingVariant filteredArrayUsingPredicate:exactMatchPredicate]];
+    if ([matches count]==1) {
+        [self.filteredWords removeObject:[matches objectAtIndex:0]];
+        [self.filteredWords insertObject:[matches objectAtIndex:0] atIndex:0];
+    }
+    //if ([matches count] == 0) NSLog(@"no exact match");
+    if ([matches count] > 1) NSLog(@"we have too many exact matches");
     
     //track search event with GA
     [DD2GlobalHelper sendEventToGAWithCategory:@"uiAction_Search" action:@"All_words" label:searchText value:nil];
