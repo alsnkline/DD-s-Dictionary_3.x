@@ -164,7 +164,7 @@
             if ([cell.contentView viewWithTag:ADD_WORD_BUTTON_TAG]) [[cell.contentView viewWithTag:ADD_WORD_BUTTON_TAG] removeFromSuperview];
             
             if ([self.filteredWords count] == indexPath.row) {      //looking for last cell when we need to show the addWord button
-                cell.textLabel.text = @"";
+                cell.textLabel.text = @"";      //make sure clean for button reuse
                 UIButton *button = [self getAddWordButton];
                 button.tag = ADD_WORD_BUTTON_TAG;
                 [cell.contentView addSubview:button];
@@ -174,7 +174,7 @@
             }
         } else {    //Search has no results
             if (![cell.contentView viewWithTag:ADD_WORD_BUTTON_TAG]) { //button isn't already present
-                cell.textLabel.text = @"";
+                cell.textLabel.text = @"";      //make sure clean for button reuse
                 UIButton *button = [self getAddWordButton];
                 button.tag = ADD_WORD_BUTTON_TAG;
                 [cell.contentView addSubview:button];
@@ -276,8 +276,10 @@
     //if ([exactMatch count] == 0) NSLog(@"no exact match");
     if ([exactMatch count] > 1) NSLog(@"we have too many exact matches");
     
-    //set need to show addWord button if no exact or contain matches for searchText
-    if ([wordsForFilteredWords count] < 1) self.showAddWordButton = YES;
+    //set need to show addWord button if no beginswith (includes exact) matches for searchText
+    NSPredicate *bwMatchPredicate = [NSPredicate predicateWithFormat:@"SELF.spelling beginswith[c] %@",searchText];
+    NSArray *bwMatches = [wordsForFilteredWords filteredArrayUsingPredicate:bwMatchPredicate];
+    if ([bwMatches count] < 1) self.showAddWordButton = YES;
     
     //check for and append doubleMetaphone matches
     NSArray *searchTextDMCodes = [DD2GlobalHelper doubleMetaphoneCodesFor:searchText];
