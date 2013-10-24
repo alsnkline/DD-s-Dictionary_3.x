@@ -3967,12 +3967,6 @@
             "collections": [
                 "first_words"
             ], 
-            "word": "much"
-        }, 
-        {
-            "collections": [
-                "first_words"
-            ], 
             "word": "mule"
         }, 
         {
@@ -8630,12 +8624,6 @@
             "collections": [
                 "more_words"
             ], 
-            "word": "friend"
-        }, 
-        {
-            "collections": [
-                "more_words"
-            ], 
             "word": "gastric"
         }, 
         {
@@ -10333,13 +10321,7 @@
                 "first_words"
             ], 
             "word": "tin"
-        }, 
-        {
-            "collections": [
-                "more_words"
-            ], 
-            "word": "throat"
-        }, 
+        },
         {
             "collections": [
                 "more_words"
