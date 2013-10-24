@@ -331,7 +331,7 @@
 + (void) showAddWordRequested:(NSString *)dictionaryTitle and:(NSString *)requestedText     //used if no results and user requests words to be added to dictionary
 {
     UIAlertView *alertUser = [[UIAlertView alloc] initWithTitle:@"Word Requested"
-                                                        message:[NSString stringWithFormat:@"Thank you for asking for '%@' to be added to the list.\nDD with work to included it in an update soon.",requestedText]
+                                                        message:[NSString stringWithFormat:@"Thank you for asking for '%@' to be added to the list.\nDD will work to included it in an update soon.",requestedText]
                                                        delegate:self cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];
     [alertUser sizeToFit];
