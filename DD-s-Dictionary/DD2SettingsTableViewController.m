@@ -102,6 +102,16 @@
     self.backgroundColorSatCell.smallSlider.value = [self.customBackgroundColorSaturation floatValue]*SATURATION_MULTIPLIER;
     
     [self manageBackgroundColorLable];
+    
+    //track starting settings with Flurry
+    NSDictionary *flurryParameters = @{@"backgroundColorSaturation" : self.customBackgroundColorSaturation,
+                                       @"backgroundColorInHEX" : [DD2GlobalHelper getHexStringForColor:self.customBackgroundColor],
+                                       @"Font" : self.useDyslexicFontCell.cellSwitch.on ? @"Dyslexie_Font" : @"System_Font",
+                                       @"PlayOnSelection" : self.playOnSelectionCell.cellSwitch.on ? @"Auto_Play" : @"Manual_Play",
+                                       @"Variant" : [self.spellingVariant isEqualToString:@"US"] ? @"US" : @"UK",
+                                       @"Collections" : [self stringForCurrentlySelectedCollections]};
+    [Flurry logEvent:@"uiTracking_Customisations_Start" withParameters:flurryParameters];
+    
     [super viewDidAppear:animated];
 }
 
