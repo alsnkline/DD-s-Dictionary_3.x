@@ -17,7 +17,7 @@
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (nonatomic, strong) NSMutableArray *filteredWords;
 @property (nonatomic, strong) NSArray *sections;    //only used in main tableview
-
+@property (nonatomic) BOOL showAddWordButton;
 @end
 
 @implementation DD2AllWordSearchViewController
@@ -131,6 +131,9 @@
     // Return the number of rows in the section.
     if (tableView == self.searchDisplayController.searchResultsTableView) {
         if ([self.filteredWords count] > 0) {
+            if (self.showAddWordButton) {
+                return [self.filteredWords count] + 1;    // +1 for add word button
+            }
             return [self.filteredWords count];
         } else {
             return 1;   //for add word button
@@ -159,9 +162,16 @@
         if ([self.filteredWords count]>0) {
             // clean out add button if there is one
             if ([cell.contentView viewWithTag:ADD_WORD_BUTTON_TAG]) [[cell.contentView viewWithTag:ADD_WORD_BUTTON_TAG] removeFromSuperview];
-            NSDictionary *word = [self.filteredWords objectAtIndex:indexPath.row];
-            cell.textLabel.text = [word objectForKey:@"spelling"];
             
+            if ([self.filteredWords count] == indexPath.row) {      //looking for last cell when we need to show the addWord button
+                cell.textLabel.text = @"";
+                UIButton *button = [self getAddWordButton];
+                button.tag = ADD_WORD_BUTTON_TAG;
+                [cell.contentView addSubview:button];
+            } else {
+                NSDictionary *word = [self.filteredWords objectAtIndex:indexPath.row];
+                cell.textLabel.text = [word objectForKey:@"spelling"];
+            }
         } else {    //Search has no results
             if (![cell.contentView viewWithTag:ADD_WORD_BUTTON_TAG]) { //button isn't already present
                 cell.textLabel.text = @"";
@@ -250,6 +260,7 @@
     // Update the filtered array based on the search text and scope.
     // Remove all objects from the filtered search array
     [self.filteredWords removeAllObjects];
+    self.showAddWordButton = NO;
     
     // Filter the array using NSPredicate
     NSPredicate *containsPredicate = [NSPredicate predicateWithFormat:@"SELF.spelling contains[c] %@",searchText];
@@ -264,6 +275,9 @@
     }
     //if ([exactMatch count] == 0) NSLog(@"no exact match");
     if ([exactMatch count] > 1) NSLog(@"we have too many exact matches");
+    
+    //set need to show addWord button if no exact or contain matches for searchText
+    if ([wordsForFilteredWords count] < 1) self.showAddWordButton = YES;
     
     //check for and append doubleMetaphone matches
     NSArray *searchTextDMCodes = [DD2GlobalHelper doubleMetaphoneCodesFor:searchText];
@@ -285,7 +299,6 @@
         [self appendDMMatchesUsingPredicate:DMMatchPredicate toWordList:wordsForFilteredWords];
     }
     
-    NSLog(@"words pre de-dup %@", wordsForFilteredWords);
     self.filteredWords = [NSMutableArray arrayWithArray:[[NSOrderedSet orderedSetWithArray:wordsForFilteredWords] array]];
     
     //track search event with GA
