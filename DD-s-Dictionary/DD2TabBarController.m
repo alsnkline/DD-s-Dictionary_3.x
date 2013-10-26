@@ -66,8 +66,8 @@
         _selectedCollections = [DD2SettingsTableViewController limitSelectedCollections:[[[NSUserDefaults standardUserDefaults] stringArrayForKey:SELECTED_COLLECTIONS] mutableCopy]];
         if (!_selectedCollections) {
             //set up the default for the first time
-            NSLog(@"defaulting SELECTED_COLLECTIONS to first_words");
-            NSArray *selCollections = [NSArray arrayWithObject:@"first_words"];
+            NSLog(@"defaulting SELECTED_COLLECTIONS to first_words, recents");
+            NSArray *selCollections = [NSArray arrayWithObjects: @"Recents", @"first_words", nil];
             [[NSUserDefaults standardUserDefaults] setObject:selCollections forKey:SELECTED_COLLECTIONS];
             [[NSUserDefaults standardUserDefaults] synchronize];
             self.selectedCollections = selCollections;
