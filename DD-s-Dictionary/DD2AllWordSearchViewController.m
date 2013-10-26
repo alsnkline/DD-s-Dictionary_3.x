@@ -267,14 +267,13 @@
     NSMutableArray *wordsForFilteredWords = [NSMutableArray arrayWithArray:[self sortArrayAlphabetically:[self.allWordsForSpellingVariant filteredArrayUsingPredicate:containsPredicate]]];
     
     //check for exact match
-    NSPredicate *exactMatchPredicate = [NSPredicate predicateWithFormat:@"SELF.spelling like[c] %@",searchText];
+    NSPredicate *exactMatchPredicate = [NSPredicate predicateWithFormat:@"SELF.spelling like %@",searchText];
     NSMutableArray *exactMatch = [NSMutableArray arrayWithArray:[self.allWordsForSpellingVariant filteredArrayUsingPredicate:exactMatchPredicate]];
-    if ([exactMatch count]==1) {
-        //[wordsForFilteredWords removeObject:[exactMatch objectAtIndex:0]];
-        [wordsForFilteredWords insertObject:[exactMatch objectAtIndex:0] atIndex:0];
-    }
-    //if ([exactMatch count] == 0) NSLog(@"no exact match");
-    if ([exactMatch count] > 1) NSLog(@"we have too many exact matches");
+    NSPredicate *caseInsensitiveMatchPredicate = [NSPredicate predicateWithFormat:@"SELF.spelling like[c] %@",searchText];
+    NSMutableArray *caseInsensitiveMatch = [NSMutableArray arrayWithArray:[self.allWordsForSpellingVariant filteredArrayUsingPredicate:caseInsensitiveMatchPredicate]];
+    if ([caseInsensitiveMatch count] == 2) [caseInsensitiveMatch removeObject:[exactMatch lastObject]];
+    if ([caseInsensitiveMatch count] == 1) [wordsForFilteredWords insertObject:[caseInsensitiveMatch lastObject] atIndex:0];
+    if ([exactMatch count] == 1) [wordsForFilteredWords insertObject:[exactMatch lastObject] atIndex:0];
     
     //set need to show addWord button if no beginswith (includes exact) matches for searchText
     NSPredicate *bwMatchPredicate = [NSPredicate predicateWithFormat:@"SELF.spelling beginswith[c] %@",searchText];
