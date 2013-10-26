@@ -361,6 +361,14 @@
 - (IBAction)homophoneButtonPressed:(UIButton *)sender 
 {
     NSString *spelling = sender.titleLabel.text;
+    
+    //track word event with GA manual sent with Value 1
+    [DD2GlobalHelper sendEventToGAWithCategory:@"uiAction_Word" action:@"homophoneButtonPressed" label:spelling value:[NSNumber numberWithInt:1]];
+    
+    //track word view with Flurry
+    NSDictionary *flurryParameters = @{@"homophoneButtonPressed" : spelling};
+    [Flurry logEvent:@"uiAction_Word" withParameters:flurryParameters];
+    
     NSSet *pronunciations = [DD2Words pronunciationsForWord:self.word];
     NSMutableArray *allHomophones = [[NSMutableArray alloc] init];
     for (NSString *pronunciation in pronunciations) {
