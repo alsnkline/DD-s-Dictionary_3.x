@@ -266,13 +266,16 @@
     NSPredicate *containsPredicate = [NSPredicate predicateWithFormat:@"SELF.spelling contains[c] %@",searchText];
     NSMutableArray *wordsForFilteredWords = [NSMutableArray arrayWithArray:[self sortArrayAlphabetically:[self.allWordsForSpellingVariant filteredArrayUsingPredicate:containsPredicate]]];
     
-    //check for exact match
+    //check for exact match(es) and put at top of list
     NSPredicate *exactMatchPredicate = [NSPredicate predicateWithFormat:@"SELF.spelling like %@",searchText];
     NSMutableArray *exactMatch = [NSMutableArray arrayWithArray:[self.allWordsForSpellingVariant filteredArrayUsingPredicate:exactMatchPredicate]];
     NSPredicate *caseInsensitiveMatchPredicate = [NSPredicate predicateWithFormat:@"SELF.spelling like[c] %@",searchText];
     NSMutableArray *caseInsensitiveMatch = [NSMutableArray arrayWithArray:[self.allWordsForSpellingVariant filteredArrayUsingPredicate:caseInsensitiveMatchPredicate]];
-    if ([caseInsensitiveMatch count] == 2) [caseInsensitiveMatch removeObject:[exactMatch lastObject]];
-    if ([caseInsensitiveMatch count] == 1) [wordsForFilteredWords insertObject:[caseInsensitiveMatch lastObject] atIndex:0];
+    if ([caseInsensitiveMatch count] > 0) {
+        for (NSDictionary *word in caseInsensitiveMatch) {
+            [wordsForFilteredWords insertObject:word atIndex:0];
+        }
+    }
     if ([exactMatch count] == 1) [wordsForFilteredWords insertObject:[exactMatch lastObject] atIndex:0];
     
     //set need to show addWord button if no beginswith (includes exact) matches for searchText
@@ -300,6 +303,7 @@
         [self appendDMMatchesUsingPredicate:DMMatchPredicate toWordList:wordsForFilteredWords];
     }
     
+    // clean out all duplicates keeping order of first occurance in list
     self.filteredWords = [NSMutableArray arrayWithArray:[[NSOrderedSet orderedSetWithArray:wordsForFilteredWords] array]];
     
     //track search event with GA
