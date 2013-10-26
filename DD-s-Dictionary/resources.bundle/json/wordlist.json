@@ -1609,6 +1609,9 @@
             "collections": [
                 "first_words"
             ], 
+            "homophones": [
+                "Earth"
+            ], 
             "word": "earth"
         }, 
         {
@@ -7009,6 +7012,9 @@
             "collections": [
                 "first_words"
             ], 
+            "homophones": [
+                "you're"
+            ], 
             "word": "your"
         }, 
         {
@@ -8135,12 +8141,6 @@
             "collections": [
                 "more_words"
             ], 
-            "word": "cupboard"
-        }, 
-        {
-            "collections": [
-                "more_words"
-            ], 
             "word": "customer"
         }, 
         {
@@ -8154,7 +8154,7 @@
                 "more_words"
             ], 
             "word": "daddy"
-        },
+        }, 
         {
             "collections": [
                 "more_words"
@@ -8483,10 +8483,7 @@
             "collections": [
                 "more_words"
             ], 
-            "tags": [
-                "'ite'"
-            ], 
-            "word": "excited"
+            "word": "strange"
         }, 
         {
             "collections": [
@@ -8735,7 +8732,7 @@
             "collections": [
                 "more_words"
             ], 
-            "word": "happy"
+            "word": "moment"
         }, 
         {
             "collections": [
@@ -9170,18 +9167,6 @@
             "collections": [
                 "more_words"
             ], 
-            "word": "mystery"
-        }, 
-        {
-            "collections": [
-                "more_words"
-            ], 
-            "word": "moment"
-        }, 
-        {
-            "collections": [
-                "more_words"
-            ], 
             "word": "museum"
         }, 
         {
@@ -9437,12 +9422,6 @@
             "collections": [
                 "more_words"
             ], 
-            "word": "probably"
-        }, 
-        {
-            "collections": [
-                "more_words"
-            ], 
             "tags": [
                 "'ate'"
             ], 
@@ -9619,6 +9598,9 @@
         {
             "collections": [
                 "more_words"
+            ], 
+            "homophones": [
+                "seen"
             ], 
             "word": "scene"
         }, 
@@ -9913,18 +9895,6 @@
                 "more_words"
             ], 
             "word": "storage"
-        }, 
-        {
-            "collections": [
-                "more_words"
-            ], 
-            "word": "story"
-        }, 
-        {
-            "collections": [
-                "more_words"
-            ], 
-            "word": "strange"
         }, 
         {
             "collections": [
@@ -10321,7 +10291,7 @@
                 "first_words"
             ], 
             "word": "tin"
-        },
+        }, 
         {
             "collections": [
                 "more_words"
@@ -10987,12 +10957,6 @@
         }, 
         {
             "collections": [
-                "more_words"
-            ], 
-            "word": "position"
-        }, 
-        {
-            "collections": [
                 "first_words"
             ], 
             "word": "pop"
@@ -11056,6 +11020,783 @@
                 "first_words"
             ], 
             "word": "aloud"
+        }, 
+        {
+            "collections": [
+                "more_words"
+            ], 
+            "word": "scourge"
+        }, 
+        {
+            "collections": [
+                "more_words"
+            ], 
+            "word": "braille"
+        }, 
+        {
+            "collections": [
+                "more_words"
+            ], 
+            "word": "capacity"
+        }, 
+        {
+            "collections": [
+                "first_words"
+            ], 
+            "word": "I'd"
+        }, 
+        {
+            "collections": [
+                "more_words"
+            ], 
+            "word": "settled"
+        }, 
+        {
+            "collections": [
+                "more_words"
+            ], 
+            "word": "accident"
+        }, 
+        {
+            "collections": [
+                "more_words"
+            ], 
+            "word": "apparent"
+        }, 
+        {
+            "collections": [
+                "more_words"
+            ], 
+            "word": "gravitas"
+        }, 
+        {
+            "collections": [
+                "more_words"
+            ], 
+            "word": "series"
+        }, 
+        {
+            "collections": [
+                "first_words"
+            ], 
+            "word": "a_lot"
+        }, 
+        {
+            "collections": [
+                "first_words"
+            ], 
+            "word": "able"
+        }, 
+        {
+            "collections": [
+                "first_words"
+            ], 
+            "word": "avoid"
+        }, 
+        {
+            "collections": [
+                "more_words"
+            ], 
+            "word": "amber"
+        }, 
+        {
+            "collections": [
+                "more_words"
+            ], 
+            "tags": [
+                "'ate'"
+            ], 
+            "word": "appropriate"
+        }, 
+        {
+            "collections": [
+                "more_words"
+            ], 
+            "tags": [
+                "'ate'"
+            ], 
+            "word": "approximate"
+        }, 
+        {
+            "collections": [
+                "more_words"
+            ], 
+            "word": "artificial"
+        }, 
+        {
+            "collections": [
+                "first_words"
+            ], 
+            "word": "asked"
+        }, 
+        {
+            "collections": [
+                "more_words"
+            ], 
+            "tags": [
+                "'aw'"
+            ], 
+            "word": "awkward"
+        }, 
+        {
+            "collections": [
+                "more_words"
+            ], 
+            "tags": [
+                "'oo'"
+            ], 
+            "word": "balloon"
+        }, 
+        {
+            "collections": [
+                "more_words"
+            ], 
+            "tags": [
+                "'be'"
+            ], 
+            "word": "beginning"
+        }, 
+        {
+            "collections": [
+                "more_words"
+            ], 
+            "word": "blubber"
+        }, 
+        {
+            "collections": [
+                "first_words"
+            ], 
+            "tags": [
+                "'ain'"
+            ], 
+            "word": "brain"
+        }, 
+        {
+            "collections": [
+                "more_words"
+            ], 
+            "word": "brief"
+        }, 
+        {
+            "collections": [
+                "more_words"
+            ], 
+            "word": "client"
+        }, 
+        {
+            "collections": [
+                "more_words"
+            ], 
+            "homophones": [
+                "course"
+            ], 
+            "word": "coarse"
+        }, 
+        {
+            "collections": [
+                "more_words"
+            ], 
+            "homophones": [
+                "coarse"
+            ], 
+            "word": "course"
+        }, 
+        {
+            "collections": [
+                "more_words"
+            ], 
+            "word": "configure"
+        }, 
+        {
+            "collections": [
+                "more_words"
+            ], 
+            "word": "contempt"
+        }, 
+        {
+            "collections": [
+                "more_words"
+            ], 
+            "tags": [
+                "'ous'"
+            ], 
+            "word": "contemptuous"
+        }, 
+        {
+            "collections": [
+                "more_words"
+            ], 
+            "tags": [
+                "'ous'"
+            ], 
+            "word": "contemptuously"
+        }, 
+        {
+            "collections": [
+                "first_words"
+            ], 
+            "word": "crazy"
+        }, 
+        {
+            "collections": [
+                "first_words"
+            ], 
+            "word": "crying"
+        }, 
+        {
+            "collections": [
+                "more_words"
+            ], 
+            "word": "cure"
+        }, 
+        {
+            "collections": [
+                "first_words"
+            ], 
+            "word": "deal"
+        }, 
+        {
+            "collections": [
+                "more_words"
+            ], 
+            "tags": [
+                "'tion'"
+            ], 
+            "word": "demostration"
+        }, 
+        {
+            "collections": [
+                "more_words"
+            ], 
+            "word": "distinguish"
+        }, 
+        {
+            "collections": [
+                "first_words"
+            ], 
+            "word": "dogs"
+        }, 
+        {
+            "collections": [
+                "more_words"
+            ], 
+            "word": "drought"
+        }, 
+        {
+            "collections": [
+                "first_words"
+            ], 
+            "word": "Egypt"
+        }, 
+        {
+            "collections": [
+                "more_words"
+            ], 
+            "word": "entered"
+        }, 
+        {
+            "collections": [
+                "more_words"
+            ], 
+            "word": "fantastic"
+        }, 
+        {
+            "collections": [
+                "more_words"
+            ], 
+            "word": "fashion"
+        }, 
+        {
+            "collections": [
+                "more_words"
+            ], 
+            "word": "fever"
+        }, 
+        {
+            "collections": [
+                "first_words"
+            ], 
+            "word": "fist"
+        }, 
+        {
+            "collections": [
+                "first_words"
+            ], 
+            "word": "fled"
+        }, 
+        {
+            "collections": [
+                "first_words"
+            ], 
+            "word": "fry"
+        }, 
+        {
+            "collections": [
+                "first_words"
+            ], 
+            "word": "forgot"
+        }, 
+        {
+            "collections": [
+                "more_words"
+            ], 
+            "word": "growing"
+        }, 
+        {
+            "collections": [
+                "more_words"
+            ], 
+            "word": "gymnastics"
+        }, 
+        {
+            "collections": [
+                "more_words"
+            ], 
+            "tags": [
+                "'ate'"
+            ], 
+            "word": "hesitate"
+        }, 
+        {
+            "collections": [
+                "more_words"
+            ], 
+            "word": "honestly"
+        }, 
+        {
+            "collections": [
+                "more_words"
+            ], 
+            "word": "incident"
+        }, 
+        {
+            "collections": [
+                "more_words"
+            ], 
+            "tags": [
+                "'tion'"
+            ], 
+            "word": "invention"
+        }, 
+        {
+            "collections": [
+                "more_words"
+            ], 
+            "word": "Italian"
+        }, 
+        {
+            "collections": [
+                "more_words"
+            ], 
+            "word": "jewelry"
+        }, 
+        {
+            "collections": [
+                "first_words"
+            ], 
+            "word": "Lego"
+        }, 
+        {
+            "collections": [
+                "more_words"
+            ], 
+            "word": "mansion"
+        }, 
+        {
+            "collections": [
+                "more_words"
+            ], 
+            "tags": [
+                "'tion'"
+            ], 
+            "word": "misconception"
+        }, 
+        {
+            "collections": [
+                "more_words"
+            ], 
+            "word": "misconduct"
+        }, 
+        {
+            "collections": [
+                "more_words"
+            ], 
+            "word": "misconstrued"
+        }, 
+        {
+            "collections": [
+                "more_words"
+            ], 
+            "word": "misconfigured"
+        }, 
+        {
+            "collections": [
+                "more_words"
+            ], 
+            "word": "missing"
+        }, 
+        {
+            "collections": [
+                "more_words"
+            ], 
+            "tags": [
+                "'tion'"
+            ], 
+            "word": "motioned"
+        }, 
+        {
+            "collections": [
+                "more_words"
+            ], 
+            "tags": [
+                "'tion'"
+            ], 
+            "word": "motion"
+        }, 
+        {
+            "collections": [
+                "first_words"
+            ], 
+            "word": "motor"
+        }, 
+        {
+            "collections": [
+                "more_words"
+            ], 
+            "word": "needy"
+        }, 
+        {
+            "collections": [
+                "more_words"
+            ], 
+            "word": "nibble"
+        }, 
+        {
+            "collections": [
+                "more_words"
+            ], 
+            "word": "nipple"
+        }, 
+        {
+            "collections": [
+                "more_words"
+            ], 
+            "tags": [
+                "'ther'"
+            ], 
+            "word": "otherwise"
+        }, 
+        {
+            "collections": [
+                "more_words"
+            ], 
+            "word": "perfunctory"
+        }, 
+        {
+            "collections": [
+                "more_words"
+            ], 
+            "word": "person"
+        }, 
+        {
+            "collections": [
+                "first_words"
+            ], 
+            "word": "playing"
+        }, 
+        {
+            "collections": [
+                "first_words"
+            ], 
+            "word": "poppy"
+        }, 
+        {
+            "collections": [
+                "more_words"
+            ], 
+            "tags": [
+                "'ous'"
+            ], 
+            "word": "prestigious"
+        }, 
+        {
+            "collections": [
+                "more_words"
+            ], 
+            "word": "render"
+        }, 
+        {
+            "collections": [
+                "first_words"
+            ], 
+            "word": "safe"
+        }, 
+        {
+            "collections": [
+                "first_words"
+            ], 
+            "word": "safety"
+        }, 
+        {
+            "collections": [
+                "more_words"
+            ], 
+            "word": "priest"
+        }, 
+        {
+            "collections": [
+                "first_words"
+            ], 
+            "homophones": [
+                "seize"
+            ], 
+            "word": "sees"
+        }, 
+        {
+            "collections": [
+                "more_words"
+            ], 
+            "word": "seige"
+        }, 
+        {
+            "collections": [
+                "first_words"
+            ], 
+            "homophones": [
+                "sees"
+            ], 
+            "word": "seize"
+        }, 
+        {
+            "collections": [
+                "more_words"
+            ], 
+            "word": "shrimp"
+        }, 
+        {
+            "collections": [
+                "more_words"
+            ], 
+            "word": "shrimps"
+        }, 
+        {
+            "collections": [
+                "more_words"
+            ], 
+            "word": "sincere"
+        }, 
+        {
+            "collections": [
+                "more_words"
+            ], 
+            "word": "skar"
+        }, 
+        {
+            "collections": [
+                "first_words"
+            ], 
+            "word": "ski"
+        }, 
+        {
+            "collections": [
+                "more_words"
+            ], 
+            "word": "ski_doo"
+        }, 
+        {
+            "collections": [
+                "more_words"
+            ], 
+            "homophones": [
+                "stares"
+            ], 
+            "word": "stairs"
+        }, 
+        {
+            "collections": [
+                "more_words"
+            ], 
+            "homophones": [
+                "stairs"
+            ], 
+            "word": "stares"
+        }, 
+        {
+            "collections": [
+                "more_words"
+            ], 
+            "word": "talent"
+        }, 
+        {
+            "collections": [
+                "more_words"
+            ], 
+            "word": "tempo"
+        }, 
+        {
+            "collections": [
+                "more_words"
+            ], 
+            "word": "tortoise"
+        }, 
+        {
+            "collections": [
+                "more_words"
+            ], 
+            "word": "trinity"
+        }, 
+        {
+            "collections": [
+                "more_words"
+            ], 
+            "word": "Mercury"
+        }, 
+        {
+            "collections": [
+                "more_words"
+            ], 
+            "homophones": [
+                "earth"
+            ], 
+            "word": "Earth"
+        }, 
+        {
+            "collections": [
+                "more_words"
+            ], 
+            "word": "Mars"
+        }, 
+        {
+            "collections": [
+                "more_words"
+            ], 
+            "word": "Venus"
+        }, 
+        {
+            "collections": [
+                "more_words"
+            ], 
+            "word": "Jupiter"
+        }, 
+        {
+            "collections": [
+                "more_words"
+            ], 
+            "word": "Saturn"
+        }, 
+        {
+            "collections": [
+                "more_words"
+            ], 
+            "word": "Uranus"
+        }, 
+        {
+            "collections": [
+                "more_words"
+            ], 
+            "word": "Neptune"
+        }, 
+        {
+            "collections": [
+                "more_words"
+            ], 
+            "word": "Pluto"
+        }, 
+        {
+            "collections": [
+                "more_words"
+            ], 
+            "word": "vocabulary"
+        }, 
+        {
+            "collections": [
+                "more_words"
+            ], 
+            "word": "welcome"
+        }, 
+        {
+            "collections": [
+                "first_words"
+            ], 
+            "word": "weren't"
+        }, 
+        {
+            "collections": [
+                "first_words"
+            ], 
+            "word": "wasn't"
+        }, 
+        {
+            "collections": [
+                "more_words"
+            ], 
+            "word": "wok"
+        }, 
+        {
+            "collections": [
+                "more_words"
+            ], 
+            "word": "writing"
+        }, 
+        {
+            "collections": [
+                "first_words"
+            ], 
+            "homophones": [
+                "your"
+            ], 
+            "word": "you're"
+        }, 
+        {
+            "collections": [
+                "first_words"
+            ], 
+            "homophones": [
+                "scene"
+            ], 
+            "word": "seen"
+        }, 
+        {
+            "collections": [
+                "more_words"
+            ], 
+            "word": "building"
+        }, 
+        {
+            "collections": [
+                "more_words"
+            ], 
+            "word": "curriculum_vitae"
+        }, 
+        {
+            "collections": [
+                "first_words"
+            ], 
+            "word": "honey"
+        }, 
+        {
+            "collections": [
+                "more_words"
+            ], 
+            "word": "mend"
+        }, 
+        {
+            "collections": [
+                "more_words"
+            ], 
+            "word": "mending"
+        }, 
+        {
+            "collections": [
+                "first_words"
+            ], 
+            "word": "spray"
+        }, 
+        {
+            "collections": [
+                "more_words"
+            ], 
+            "word": "watermelon"
         },
         {
             "collections": [
@@ -11371,6 +12112,44 @@
                     "uk": "centre",
                     "us": "center"
                 }
-        }
+        },
+        {
+            "collections": [
+                "more_words"
+            ], 
+            "word": {
+                    "uk": "apologise",
+                    "us": "apologize"
+                }
+        },
+        {
+            "collections": [
+                "more_words"
+            ], 
+            "homophones": {
+                    "uk": ["license"]
+                },
+            "word": "licence"
+        }, 
+        {
+            "collections": [
+                "more_words"
+            ], 
+            "homophones": {
+                    "uk": ["licence"]
+                },
+            "word": {
+                "uk": "license"
+            }
+        },
+        {
+            "collections": [
+                "more_words"
+            ], 
+            "word": {
+                    "uk": "realise",
+                    "us": "realize"
+                }
+        } 
     ]
 }
