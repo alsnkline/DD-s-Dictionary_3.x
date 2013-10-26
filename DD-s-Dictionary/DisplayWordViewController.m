@@ -378,7 +378,7 @@
     if (LOG_PREDICATE_RESULTS) NSLog(@"predicate = %@", selectionPredicate);
     if (LOG_PREDICATE_RESULTS) [DD2GlobalHelper testWordPredicate:selectionPredicate onWords:allHomophones];
     NSArray *matches = [NSArray arrayWithArray:[allHomophones filteredArrayUsingPredicate:selectionPredicate]];
-    if ([matches count] != 1) NSLog(@"more of less than one matches ** PROBLEM **");
+    if ([matches count] != 1) NSLog(@"DisplayWordVC more or less than one matches ** PROBLEM **");
     //send to delegate
     [self.delegate DisplayWordViewController:self homophoneSelected:[matches lastObject]];
 }

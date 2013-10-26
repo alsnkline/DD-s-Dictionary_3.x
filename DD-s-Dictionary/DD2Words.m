@@ -405,7 +405,7 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
         if (LOG_PREDICATE_RESULTS) [DD2GlobalHelper testWordPredicate:selectionPredicate onWords:wordList];
         matches = [NSMutableArray arrayWithArray:[wordList filteredArrayUsingPredicate:selectionPredicate]];
     
-        if ([matches count] != 1) NSLog(@"more of less than one matches ** PROBLEM **");
+        if ([matches count] != 1) NSLog(@"DD2Words more of less than one matches ** PROBLEM **");
         return [matches lastObject];
     }
 }
