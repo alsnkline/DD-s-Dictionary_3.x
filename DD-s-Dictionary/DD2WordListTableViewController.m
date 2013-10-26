@@ -151,7 +151,7 @@
 {
     if ([self getSplitViewWithDisplayWordViewController]) { //iPad
         DisplayWordViewController *dwvc = [self getSplitViewWithDisplayWordViewController];
-        dwvc.homophonesForWord = [DD2Words homophonesForWord:self.selectedWord andWordList:self.allWordsForSpellingVariant];
+        dwvc.homophonesForWord = [DD2Words homophonesForWord:self.selectedWord andWordList:self.allWordsForSpellingVariant];  //can't be set in WordView as word view doesn't know what allWordsForSpellingVariant is.
         dwvc.word = self.selectedWord;
         dwvc.delegate = self;
         if (self.playWordsOnSelection) {
@@ -167,7 +167,7 @@
     //used for iphone only
     if ([segue.identifier isEqualToString:@"Word Selected"]) {
         [segue.destinationViewController setWord:self.selectedWord];
-        [segue.destinationViewController setHomophonesForWord:[DD2Words homophonesForWord:self.selectedWord andWordList:self.allWordsForSpellingVariant]];
+        [segue.destinationViewController setHomophonesForWord:[DD2Words homophonesForWord:self.selectedWord andWordList:self.allWordsForSpellingVariant]]; //can't be set in WordView as word view doesn't know what allWordsForSpellingVariant is.
         if (self.playWordsOnSelection) {
             [segue.destinationViewController setPlayWordsOnSelection:self.playWordsOnSelection];
         }
