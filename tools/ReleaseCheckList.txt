@@ -1,5 +1,6 @@
 Ship App Check List:
 
+0.0 check for new word group membership - and google dropping first ''
 0.1 create json
 0.2 check json > python -m json.tool filename.json
 0.3 check for duplicate words
