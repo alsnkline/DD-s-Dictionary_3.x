@@ -206,9 +206,9 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
 }
 
 - (void) logAnyDuplicateWordsIn:(NSArray *)wordList{
-    NSCountedSet *countedSet = [NSCountedSet setWithArray:wordList];
+    NSCountedSet *countedSet = [NSCountedSet setWithArray:[wordList valueForKey:@"spelling"]];
     for (NSDictionary *word in wordList) {
-        if([countedSet countForObject:word] > 1) NSLog(@"duplicate %@", word);
+        if([countedSet countForObject:[word valueForKey:@"spelling"]] > 2) NSLog(@"***** duplicate %@ *****", [word valueForKey:@"spelling"]);
     }
 }
 
