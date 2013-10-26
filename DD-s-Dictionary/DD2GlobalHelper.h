@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-#define PROCESS_VERBOSELY YES
+#define PROCESS_VERBOSELY NO
 #define LOG_PREDICATE_RESULTS NO          // must be NO for ship
 #define TEST_APPINGTON_ON NO              // must be NO for ship
 #define LOG_ANALYTICS NO                  // must be NO for ship
