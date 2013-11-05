@@ -163,7 +163,7 @@
         
         BOOL vForChangeable = [[values objectForKey:@"changeable"] boolValue];
         NSLog(@"value for 'changeable' in notification object %@", [values objectForKey:@"changeable"]);
-        [defaults setBool:vForChangeable forKey:VOICE_HINT_AVAILABLE];
+        [defaults setBool:vForChangeable forKey:VOICE_HINT_AVAILABLE];      //since Kiuas this doesn't come, so app never shows button.
         
         
         BOOL vForEnabled = [[values objectForKey:@"enabled"] boolValue]; //could be used to control switch setting, currently just testing for similarity.

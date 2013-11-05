@@ -86,6 +86,14 @@
     [Flurry logEvent:@"Dict Search Started"];
 }
 
+- (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar {
+    //track screen with GA
+    [DD2GlobalHelper sendViewToGAWithViewName:@"Dict Search Ended"];
+    
+    //track search start with Flurry
+    [Flurry logEvent:@"Dict Search Ended"];
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
