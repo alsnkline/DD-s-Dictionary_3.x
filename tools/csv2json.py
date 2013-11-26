@@ -9,6 +9,8 @@ import traceback
 list_cols={"collections", "dm", "homophones", "tags", "pronunciations"}
 #: which columns might be lists if space is present
 list_maybe={"word"}
+#: which columns are for the google spreadsheet only ie not to be put into the output.
+list_ignore={"Special", "Recording Needed", "Recording notes"}
 
 def process_token(v):
     v=v.strip()
@@ -32,7 +34,7 @@ def convert(infile, outfile):
         try:
             row=line.copy()
             for k,v in row.items():
-                if not v:
+                if not v or (k in list_ignore):
                     del row[k]
                     continue
                 if ":" in v:
@@ -53,7 +55,7 @@ def convert(infile, outfile):
                     row[k]=[process_token(v) for v in v.split()]
                 elif k in list_maybe:
                     row[k]=process_token(v)
-            
+
             res.append(row)
             lastgoodline=line
         except:

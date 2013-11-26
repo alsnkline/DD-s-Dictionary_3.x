@@ -88,6 +88,15 @@
             "collections": [
                 "first_words"
             ], 
+            "word": {
+                "uk": "aeroplane", 
+                "us": "airplane"
+            }
+        }, 
+        {
+            "collections": [
+                "first_words"
+            ], 
             "word": "all"
         }, 
         {
@@ -367,6 +376,17 @@
             "collections": [
                 "first_words"
             ], 
+            "homophones": {
+                "uk": [
+                    "been"
+                ]
+            }, 
+            "word": "bean"
+        }, 
+        {
+            "collections": [
+                "first_words"
+            ], 
             "homophones": [
                 "bare"
             ], 
@@ -407,6 +427,20 @@
                 "be"
             ], 
             "word": "bee"
+        }, 
+        {
+            "collections": [
+                "first_words"
+            ], 
+            "homophones": {
+                "uk": [
+                    "bean"
+                ], 
+                "us": [
+                    "bin"
+                ]
+            }, 
+            "word": "been"
         }, 
         {
             "collections": [
@@ -504,6 +538,17 @@
                 "first_words"
             ], 
             "word": "bike"
+        }, 
+        {
+            "collections": [
+                "first_words"
+            ], 
+            "homophones": {
+                "us": [
+                    "been"
+                ]
+            }, 
+            "word": "bin"
         }, 
         {
             "collections": [
@@ -624,6 +669,17 @@
                 "first_words"
             ], 
             "word": "box"
+        }, 
+        {
+            "collections": [
+                "first_words"
+            ], 
+            "homophones": {
+                "uk": [
+                    "uk-buoy"
+                ]
+            }, 
+            "word": "boy"
         }, 
         {
             "collections": [
@@ -983,6 +1039,17 @@
             "collections": [
                 "first_words"
             ], 
+            "homophones": {
+                "uk": [
+                    "cheque"
+                ]
+            }, 
+            "word": "check"
+        }, 
+        {
+            "collections": [
+                "first_words"
+            ], 
             "word": "chicken"
         }, 
         {
@@ -1059,6 +1126,21 @@
                 "first_words"
             ], 
             "word": "clock"
+        }, 
+        {
+            "collections": [
+                "first_words"
+            ], 
+            "homophones": {
+                "close2": [
+                    "clothes"
+                ]
+            }, 
+            "pronunciations": [
+                "close1", 
+                "close2"
+            ], 
+            "word": "close"
         }, 
         {
             "collections": [
@@ -1841,6 +1923,18 @@
                 "'ther'"
             ], 
             "word": "father"
+        }, 
+        {
+            "collections": [
+                "first_words"
+            ], 
+            "tags": [
+                "'ite'"
+            ], 
+            "word": {
+                "uk": "favourite", 
+                "us": "favorite"
+            }
         }, 
         {
             "collections": [
@@ -3344,6 +3438,21 @@
             "collections": [
                 "first_words"
             ], 
+            "homophones": {
+                "lead1": [
+                    "led"
+                ]
+            }, 
+            "pronunciations": [
+                "lead1", 
+                "lead2"
+            ], 
+            "word": "lead"
+        }, 
+        {
+            "collections": [
+                "first_words"
+            ], 
             "word": "learn"
         }, 
         {
@@ -3670,6 +3779,15 @@
                 "'ate'"
             ], 
             "word": "mate"
+        }, 
+        {
+            "collections": [
+                "first_words"
+            ], 
+            "word": {
+                "uk": "maths", 
+                "us": "math"
+            }
         }, 
         {
             "collections": [
@@ -4505,6 +4623,21 @@
             "collections": [
                 "first_words"
             ], 
+            "homophones": {
+                "uk": [
+                    "pour", 
+                    "pore"
+                ]
+            }, 
+            "tags": [
+                "'aw'"
+            ], 
+            "word": "paw"
+        }, 
+        {
+            "collections": [
+                "first_words"
+            ], 
             "homophones": [
                 "pause"
             ], 
@@ -4751,7 +4884,67 @@
             "collections": [
                 "first_words"
             ], 
+            "homophones": {
+                "uk": [
+                    "paw", 
+                    "pour"
+                ], 
+                "us": [
+                    "pour"
+                ]
+            }, 
+            "tags": [
+                "'ore'"
+            ], 
+            "word": "pore"
+        }, 
+        {
+            "collections": [
+                "first_words"
+            ], 
             "word": "pound"
+        }, 
+        {
+            "collections": [
+                "first_words"
+            ], 
+            "homophones": {
+                "uk": [
+                    "paw", 
+                    "pore"
+                ], 
+                "us": [
+                    "pore"
+                ]
+            }, 
+            "word": "pour"
+        }, 
+        {
+            "collections": [
+                "first_words"
+            ], 
+            "homophones": {
+                "uk": [
+                    "practise"
+                ]
+            }, 
+            "tags": [
+                "'ice_(i's)'"
+            ], 
+            "word": "practice"
+        }, 
+        {
+            "collections": [
+                "first_words"
+            ], 
+            "homophones": {
+                "uk": [
+                    "practice"
+                ]
+            }, 
+            "word": {
+                "uk": "practise"
+            }
         }, 
         {
             "collections": [
@@ -5002,6 +5195,24 @@
                 "first_words"
             ], 
             "word": "reach"
+        }, 
+        {
+            "collections": [
+                "first_words"
+            ], 
+            "homophones": {
+                "read1": [
+                    "reed"
+                ], 
+                "read2": [
+                    "red"
+                ]
+            }, 
+            "pronunciations": [
+                "read1", 
+                "read2"
+            ], 
+            "word": "read"
         }, 
         {
             "collections": [
@@ -5631,6 +5842,22 @@
             "collections": [
                 "first_words"
             ], 
+            "homophones": {
+                "sow1": [
+                    "so", 
+                    "sew"
+                ]
+            }, 
+            "pronunciations": [
+                "sow1", 
+                "sow2"
+            ], 
+            "word": "sow"
+        }, 
+        {
+            "collections": [
+                "first_words"
+            ], 
             "word": "space"
         }, 
         {
@@ -6026,6 +6253,7 @@
             "word": "they"
         }, 
         {
+            "": "linking the pronunciation to the word so homophones can find it.", 
             "collections": [
                 "first_words"
             ], 
@@ -6325,6 +6553,15 @@
                 "two"
             ], 
             "word": "two"
+        }, 
+        {
+            "collections": [
+                "first_words"
+            ], 
+            "word": {
+                "uk": "colour", 
+                "us": "color"
+            }
         }, 
         {
             "collections": [
@@ -7111,6 +7348,15 @@
             "collections": [
                 "first_words"
             ], 
+            "word": {
+                "uk": "mum", 
+                "us": "mom"
+            }
+        }, 
+        {
+            "collections": [
+                "first_words"
+            ], 
             "word": "dad"
         }, 
         {
@@ -7553,6 +7799,15 @@
             "collections": [
                 "more_words"
             ], 
+            "word": {
+                "uk": "analyze", 
+                "us": "analyse"
+            }
+        }, 
+        {
+            "collections": [
+                "more_words"
+            ], 
             "word": "airport"
         }, 
         {
@@ -7883,6 +8138,17 @@
             "collections": [
                 "more_words"
             ], 
+            "homophones": {
+                "uk": [
+                    "boy"
+                ]
+            }, 
+            "word": "buoy"
+        }, 
+        {
+            "collections": [
+                "more_words"
+            ], 
             "word": "cabbage"
         }, 
         {
@@ -7983,6 +8249,19 @@
                 "'ain'"
             ], 
             "word": "certainly"
+        }, 
+        {
+            "collections": [
+                "more_words"
+            ], 
+            "homophones": {
+                "uk": [
+                    "check"
+                ]
+            }, 
+            "word": {
+                "uk": "cheque"
+            }
         }, 
         {
             "collections": [
@@ -8105,6 +8384,15 @@
             "collections": [
                 "more_words"
             ], 
+            "word": {
+                "uk": "cozy", 
+                "us": "cosy"
+            }
+        }, 
+        {
+            "collections": [
+                "more_words"
+            ], 
             "word": "cover"
         }, 
         {
@@ -8154,6 +8442,15 @@
                 "more_words"
             ], 
             "word": "daddy"
+        }, 
+        {
+            "collections": [
+                "more_words"
+            ], 
+            "word": {
+                "uk": "mummy", 
+                "us": "mommy"
+            }
         }, 
         {
             "collections": [
@@ -8225,6 +8522,15 @@
             "collections": [
                 "more_words"
             ], 
+            "word": {
+                "uk": "demeanour", 
+                "us": "demeanor"
+            }
+        }, 
+        {
+            "collections": [
+                "more_words"
+            ], 
             "word": "demographic"
         }, 
         {
@@ -8247,6 +8553,15 @@
                 "more_words"
             ], 
             "word": "diamond"
+        }, 
+        {
+            "collections": [
+                "more_words"
+            ], 
+            "word": {
+                "uk": "diarrhoea", 
+                "us": "diarrhea"
+            }
         }, 
         {
             "collections": [
@@ -8577,6 +8892,24 @@
                 "more_words"
             ], 
             "word": "flamingo"
+        }, 
+        {
+            "collections": [
+                "more_words"
+            ], 
+            "word": {
+                "uk": "flavour", 
+                "us": "flavor"
+            }
+        }, 
+        {
+            "collections": [
+                "more_words"
+            ], 
+            "word": {
+                "uk": "fulfil", 
+                "us": "fulfill"
+            }
         }, 
         {
             "collections": [
@@ -10017,6 +10350,15 @@
             "collections": [
                 "more_words"
             ], 
+            "word": {
+                "uk": "theatre", 
+                "us": "theater"
+            }
+        }, 
+        {
+            "collections": [
+                "more_words"
+            ], 
             "tags": [
                 "'ught'"
             ], 
@@ -10036,6 +10378,15 @@
                 "'oo'"
             ], 
             "word": "tools"
+        }, 
+        {
+            "collections": [
+                "more_words"
+            ], 
+            "word": {
+                "uk": "tonne", 
+                "us": "ton"
+            }
         }, 
         {
             "collections": [
@@ -10782,6 +11133,15 @@
             "collections": [
                 "more_words"
             ], 
+            "word": {
+                "uk": "centre", 
+                "us": "center"
+            }
+        }, 
+        {
+            "collections": [
+                "more_words"
+            ], 
             "word": "cinder"
         }, 
         {
@@ -11098,6 +11458,15 @@
                 "more_words"
             ], 
             "word": "amber"
+        }, 
+        {
+            "collections": [
+                "more_words"
+            ], 
+            "word": {
+                "uk": "apologise", 
+                "us": "apologize"
+            }
         }, 
         {
             "collections": [
@@ -11514,6 +11883,30 @@
             "collections": [
                 "more_words"
             ], 
+            "homophones": {
+                "uk": [
+                    "license"
+                ]
+            }, 
+            "word": "licence"
+        }, 
+        {
+            "collections": [
+                "more_words"
+            ], 
+            "homophones": {
+                "uk": [
+                    "licence"
+                ]
+            }, 
+            "word": {
+                "uk": "license"
+            }
+        }, 
+        {
+            "collections": [
+                "more_words"
+            ], 
             "tags": [
                 "'ous'"
             ], 
@@ -11788,6 +12181,15 @@
         }, 
         {
             "collections": [
+                "more_words"
+            ], 
+            "word": {
+                "uk": "realise", 
+                "us": "realize"
+            }
+        }, 
+        {
+            "collections": [
                 "first_words"
             ], 
             "word": "spray"
@@ -11797,359 +12199,6 @@
                 "more_words"
             ], 
             "word": "watermelon"
-        },
-        {
-            "collections": [
-                "first_words"
-            ], 
-            "word": {
-                    "uk": "aeroplane", 
-                    "us": "airplane"
-                }
-        }, 
-        {
-            "collections": [
-                "first_words"
-            ], 
-            "homophones": {
-                    "uk": ["been"]
-                },  
-            "word": "bean"
-        }, 
-        {
-            "collections": [
-                "first_words"
-            ], 
-            "homophones": {
-                    "uk": ["bean"], 
-                    "us": ["bin"]
-                }, 
-            "word": "been"
-        }, 
-        {
-            "collections": [
-                "first_words"
-            ], 
-            "homophones": {
-                    "us": ["been"]
-                }, 
-            "word": "bin"
-        }, 
-        {
-            "collections": [
-                "first_words"
-            ], 
-            "homophones": {
-                "uk": ["buoy"]
-                },
-            "word": "boy"
-        },
-        {
-            "collections": [
-                "first_words"
-            ], 
-            "homophones": {
-                    "close2": ["clothes"]
-                }, 
-            "pronunciations": [
-                "close1", 
-                "close2"
-            ], 
-            "word": "close"
-        }, 
-        {
-            "collections": [
-                "first_words"
-            ], 
-            "tags": [
-                "'ite'"
-            ], 
-            "word": {
-                    "uk": "favourite",
-                    "us": "favorite"
-                }
-        }, 
-        {
-            "collections": [
-                "first_words"
-            ], 
-            "homophones": {
-                    "lead1": ["led"]
-                }, 
-            "pronunciations": [
-                "lead1", 
-                "lead2"
-            ], 
-            "word": "lead"
-        }, 
-        {
-            "collections": [
-                "first_words"
-            ], 
-            "word": {
-                    "uk": "maths", 
-                    "us": "math"
-                }
-        }, 
-        {
-            "collections": [
-                "first_words"
-            ], 
-            "homophones": {
-                    "uk": ["pour", "pore"]
-                }, 
-            "tags": [
-                "'aw'"
-            ], 
-            "word": "paw"
-        }, 
-        {
-            "collections": [
-                "first_words"
-            ], 
-            "homophones": {
-                    "uk": ["paw", "pour"],
-                    "us": ["pour"]
-                },
-            "tags": [
-                "'ore'"
-            ], 
-            "word": "pore"
-        }, 
-        {
-            "collections": [
-                "first_words"
-            ], 
-            "homophones": {
-                    "uk": ["paw","pore"],
-                    "us": ["pore"]
-                }, 
-            "word": "pour"
-        }, 
-        {
-            "collections": [
-                "first_words"
-            ], 
-            "homophones": {
-                    "read1": ["reed"],
-                    "read2": ["red"]
-                },  
-            "pronunciations": [
-                "read1", 
-                "read2"
-            ], 
-            "word": "read"
-        }, 
-        {
-            "collections": [
-                "first_words"
-            ], 
-            "homophones": {
-                    "sow1": ["so", "sew"]
-                },
-            "pronunciations": [
-                "sow1", 
-                "sow2"
-            ], 
-            "word": "sow"
-        }, 
-        {
-            "collections": [
-                "first_words"
-            ], 
-            "word": {
-                    "uk": "colour",
-                    "us": "color"
-                }
-        }, 
-        {
-            "collections": [
-                "first_words"
-            ], 
-            "word": {
-                    "uk": "mum",
-                    "us": "mom"
-                }
-        }, 
-        {
-            "collections": [
-                "more_words"
-            ], 
-            "word": {
-                    "uk": "analyze", 
-                    "us": "analyse"
-                }
-        }, 
-        {
-            "collections": [
-                "more_words"
-            ],
-            "homophones": {
-                    "uk": ["boy"] 
-                }, 
-            "word": "buoy"
-        }, 
-        {
-            "collections": [
-                "first_words"
-            ], 
-            "homophones": {
-                    "uk": ["cheque"]
-                },
-            "word": "check"
-        },  
-        {
-            "collections": [
-                "more_words"
-            ], 
-            "homophones": {
-                    "uk": ["check"]
-                },
-            "word": {
-                    "uk": "cheque"
-                }
-        }, 
-        {
-            "collections": [
-                "first_words"
-            ], 
-            "tags": [
-                "'ice_(i's)'"
-            ], 
-            "homophones": {
-                    "uk": ["practise"]
-                },
-            "word": "practice"
-        }, 
-        {
-            "collections": [
-                "first_words"
-            ], 
-            "homophones": {
-                    "uk": ["practice"]
-                },
-            "word": {
-                "uk": "practise"
-            }
-        },
-        {
-            "collections": [
-                "more_words"
-            ], 
-            "word": {
-                    "us": "cosy",
-                    "uk": "cozy"
-                }
-        }, 
-        {
-            "collections": [
-                "more_words"
-            ],
-            "word": {
-                    "uk": "mummy",
-                    "us": "mommy"
-                }
-        }, 
-        {
-            "collections": [
-                "more_words"
-            ], 
-            "word": {
-                    "uk": "demeanour",
-                    "us": "demeanor"
-                }
-        }, 
-        {
-            "collections": [
-                "more_words"
-            ], 
-            "word": {
-                    "uk": "diarrhoea",
-                    "us": "diarrhea"
-                }
-        }, 
-        {
-            "collections": [
-                "more_words"
-            ], 
-            "word": {
-                    "uk": "flavour",
-                    "us": "flavor"
-                }
-        }, 
-        {
-            "collections": [
-                "more_words"
-            ], 
-            "word": {
-                    "uk": "fulfil",
-                    "us": "fulfill"
-                }
-        }, 
-        {
-            "collections": [
-                "more_words"
-            ], 
-            "word": { 
-                    "uk": "theatre",
-                    "us": "theater"
-                }
-        }, 
-        {
-            "collections": [
-                "more_words"
-            ], 
-            "word": {
-                    "uk": "tonne",
-                    "us": "ton"
-                }
-        }, 
-        {
-            "collections": [
-                "more_words"
-            ], 
-            "word": {
-                    "uk": "centre",
-                    "us": "center"
-                }
-        },
-        {
-            "collections": [
-                "more_words"
-            ], 
-            "word": {
-                    "uk": "apologise",
-                    "us": "apologize"
-                }
-        },
-        {
-            "collections": [
-                "more_words"
-            ], 
-            "homophones": {
-                    "uk": ["license"]
-                },
-            "word": "licence"
-        }, 
-        {
-            "collections": [
-                "more_words"
-            ], 
-            "homophones": {
-                    "uk": ["licence"]
-                },
-            "word": {
-                "uk": "license"
-            }
-        },
-        {
-            "collections": [
-                "more_words"
-            ], 
-            "word": {
-                    "uk": "realise",
-                    "us": "realize"
-                }
-        } 
+        }
     ]
 }
