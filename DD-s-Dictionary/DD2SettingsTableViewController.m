@@ -553,7 +553,7 @@
         
         //track event with GA
         NSString *collectionsChanged = [NSString stringWithFormat:@"collectionSelected:%@", stringForTracking];
-        [DD2GlobalHelper sendEventToGAWithCategory:@"uiAction_Setting" action:@"spellingVariantChanged" label:collectionsChanged value:nil];
+        [DD2GlobalHelper sendEventToGAWithCategory:@"uiAction_Setting" action:@"collectionsChanged" label:collectionsChanged value:nil];
         
         //track switch change with Flurry
         NSString *logEventString = [NSString stringWithFormat:@"uiAction_collectionSelected_%@", stringForTracking];
