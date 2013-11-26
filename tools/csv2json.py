@@ -12,9 +12,17 @@ list_maybe={"word"}
 
 def process_token(v):
     v=v.strip()
-    if ":" not in v:
-        return v
-    return dict([[v.strip() for v in v.split(":", 1)]])
+    return v
+
+def process_dict(v, list=False):
+    d={}
+    for i in v.split():
+        l=i.split(":", 1)
+        if list:
+            d[l.pop().strip()] = [l.pop().strip()]
+        else:
+            d[l.pop().strip()] = l.pop().strip()
+    return d
 
 def convert(infile, outfile):
     incsv=csv.DictReader(infile)
@@ -27,11 +35,25 @@ def convert(infile, outfile):
                 if not v:
                     del row[k]
                     continue
-                if k in list_cols or (k in list_maybe and len(v.split())>1):
+                if ":" in v:
+                    if "[" in v:
+                        #find and process the embedded list separately then reassemble
+                        lvwz=v[v.find("[")+1:v.find("]")]
+                        lvwz=[process_token(lvwz) for lvwz in lvwz.split()]
+
+                        v=v[:v.find("[")]+"lvwz"+v[v.find("]")+1:]
+                        d=process_dict(v, k in list_cols)
+                        for m,n in d.items():
+                            if n[0] == "lvwz":
+                                d[m]=lvwz
+                        row[k]=d
+                    else:
+                        row[k]=process_dict(v, k in list_cols)
+                elif k in list_cols or (k in list_maybe and len(v.split())>1):
                     row[k]=[process_token(v) for v in v.split()]
                 elif k in list_maybe:
                     row[k]=process_token(v)
-
+            
             res.append(row)
             lastgoodline=line
         except:
