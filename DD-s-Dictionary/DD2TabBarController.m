@@ -44,10 +44,10 @@
         _spellingVariant = [[NSUserDefaults standardUserDefaults] stringForKey:SPELLING_VARIANT];
         if (!_spellingVariant) {
             //set up the default for the first time
-            NSLog(@"defaulting SPELLING_VARIANT to US");
-            [[NSUserDefaults standardUserDefaults] setObject:@"US" forKey:SPELLING_VARIANT];
+            NSLog(@"defaulting SPELLING_VARIANT to UK");
+            [[NSUserDefaults standardUserDefaults] setObject:@"UK" forKey:SPELLING_VARIANT];
             [[NSUserDefaults standardUserDefaults] synchronize];
-            self.spellingVariant = @"US";
+            self.spellingVariant = @"UK";
         }
     }
     return _spellingVariant;
