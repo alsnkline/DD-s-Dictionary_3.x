@@ -135,7 +135,7 @@
             UINavigationController *nvc = (UINavigationController *)vc;
             UIViewController *vc1OnStack;
             if ([nvc.viewControllers count] > 0) vc1OnStack = [nvc.viewControllers objectAtIndex:0];
-            NSLog(@"vcs = %@", nvc.viewControllers);
+            //NSLog(@"vcs = %@", nvc.viewControllers);
         
             if ([vc1OnStack isKindOfClass:[DD2WordListTableViewController class]]) {
                 [nvc removeFromParentViewController];
@@ -199,6 +199,7 @@
                     nvc.tabBarItem = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemRecents tag:1];
                 } else {
                     // setting word list from DD2Words
+                    NSLog(@"setup collection %@", collectionTitle);
                     collectionTable.wordListWithSections = [DD2Words wordsBySectionFromWordList:[self.wordBrain wordsForCurrentSpellingVariantInCollectionNamed:collection]];
                     UIImage *img = [UIImage imageNamed:@"resources.bundle/Images/DinoTabIconv2.png"];
                     nvc.tabBarItem = [[UITabBarItem alloc] initWithTitle:collectionTitle image:img tag:1];
