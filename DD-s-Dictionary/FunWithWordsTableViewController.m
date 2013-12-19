@@ -42,6 +42,15 @@
     }
 }
 
+-(void)setTagNames:(NSArray *)tagNames{
+    
+    NSArray *sortedTags = [tagNames sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
+    if (sortedTags != _tagNames) {
+        _tagNames = sortedTags;
+    }
+    //[self.tableView reloadData];
+}
+
 -(BOOL)useDyslexieFont{
     if (!_useDyslexieFont) _useDyslexieFont = [[NSUserDefaults standardUserDefaults] boolForKey:USE_DYSLEXIE_FONT];
     return _useDyslexieFont;
