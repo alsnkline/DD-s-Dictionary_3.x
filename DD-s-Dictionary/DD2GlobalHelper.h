@@ -15,6 +15,8 @@
 #define FIND_MISSING_PRONUNCIATIONS NO    // must be NO for ship
 #define FIND_DUPLICATE_WORDS NO           // must be NO for ship
 
+#define NO_GA NO                     // must be NO for ship
+
 @interface DD2GlobalHelper : NSObject
 
 + (NSString*) version;
