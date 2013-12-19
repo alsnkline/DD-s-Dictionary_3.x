@@ -234,7 +234,7 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
 {
     NSArray *possibleSectionNames = [DD2GlobalHelper alphabet];
     NSMutableDictionary *wordsBySections = [[NSMutableDictionary alloc] init];
-    NSLog(@"# words in = %lu", (unsigned long)[wordList count]);
+    NSLog(@"# words = %lu", (unsigned long)[wordList count]);
     
     for (NSString *sectionName in possibleSectionNames) {
         NSPredicate *selectionPredicate = [NSPredicate predicateWithFormat:@"SELF.section LIKE[c] %@",[sectionName uppercaseString]];
@@ -321,7 +321,7 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
        }
     }
     
-    if ([pronunciations count] <1) {    //does it have local variant alt spellings with files
+    if ([pronunciations count] < 1) {    //does it have local variant alt spellings with files
         if ([[word objectForKey:@"word"] isKindOfClass:[NSDictionary class]] ) {
             NSSet *locales = [NSSet setWithObjects:[NSString stringWithFormat:@"uk"], [NSString stringWithFormat:@"us"], nil];
             for (NSString *locale in locales) {

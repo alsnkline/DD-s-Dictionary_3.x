@@ -35,6 +35,7 @@
     NSArray *sortedWords = [self sortArrayAlphabetically:allWordsForSpellingVariant];
     if (sortedWords != _allWordsForSpellingVariant) {
         _allWordsForSpellingVariant = sortedWords;
+        NSLog(@"Search Tab setup");
         self.allWordsWithSections = [DD2Words wordsBySectionFromWordList:sortedWords];
         [self.tableView reloadData];
     }
