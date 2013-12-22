@@ -15,7 +15,14 @@
 //systemConfiguration framework and security framework (as we have v4.2.3), for Flurry
 //coreTelephony framework and libsqlite3.dylib added for Appington
 
+@interface DD2AppDelegate ()
+@property (strong, nonatomic) NSTimer *tipPlayTimer;
+@end
+
+
 @implementation DD2AppDelegate
+@synthesize tipPlayTimer = _tipPlayTimer;
+
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {   // Override point for customization after application launch.
@@ -83,7 +90,19 @@
         if (LOG_APPINGTON_NOTIFICATIONS) NSLog(@"Appington placment id 1 (welcome) sent");
     }
     
+    //timer for tip controls
+    self.tipPlayTimer = [NSTimer scheduledTimerWithTimeInterval:10.0 target:self selector:@selector(playTip) userInfo:Nil repeats:NO];
+    
     return YES;
+}
+
+- (void)playTip
+{
+    if(![[NSUserDefaults standardUserDefaults] boolForKey:NOT_USE_VOICE_HINTS]) {
+        // call Appington
+        [Appington control:@"placement" andValues:@{@"id": @"27"}];
+        if (LOG_APPINGTON_NOTIFICATIONS) NSLog(@"Appington placment id 27 (tip) sent");
+    }
 }
 							
 - (void)applicationWillResignActive:(UIApplication *)application
