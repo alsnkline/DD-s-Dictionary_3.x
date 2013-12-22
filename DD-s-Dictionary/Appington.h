@@ -13,7 +13,7 @@
 + (void)start;
 
 // Start the library using an api token from the Appington Dashboard
-+ (void)start:(NSString*)api_token;
++ (void)start:(NSString *)api_token;
 
 // Send a control - see the Events and Campaign Control section of
 // the documentation.
