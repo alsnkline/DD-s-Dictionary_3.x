@@ -112,6 +112,9 @@
                                        @"Collections" : [self stringForCurrentlySelectedCollections]};
     [Flurry logEvent:@"uiTracking_Customisations_Start" withParameters:flurryParameters];
     
+    //track Tab Appeared with Flurry
+    [Flurry logEvent:@"Tab Appeared: Settings"];
+    
     [super viewDidAppear:animated];
 }
 

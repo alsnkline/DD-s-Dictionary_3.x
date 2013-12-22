@@ -241,6 +241,8 @@
     
     //track screen with GA
     [DD2GlobalHelper sendViewToGAWithViewName:[NSString stringWithFormat:@"%@ WordList Tab Shown", self.title]];
+    //track Tab Appeared with Flurry
+    [Flurry logEvent:[NSString stringWithFormat:@"Tab Appeared: %@", self.title]];
 }
 
 - (void)viewDidLoad

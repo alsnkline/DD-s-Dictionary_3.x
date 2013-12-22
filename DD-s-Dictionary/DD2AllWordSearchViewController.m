@@ -456,6 +456,8 @@
     [super viewDidAppear:animated];
     //track screen with GA
     [DD2GlobalHelper sendViewToGAWithViewName:@"Search Tab Shown"];
+    //track Tab Appeared with Flurry
+    [Flurry logEvent:@"Tab Appeared: Search"];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
