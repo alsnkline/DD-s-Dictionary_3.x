@@ -164,24 +164,6 @@
 - (void) onAppingtonNotification:(NSNotification*)notification {
     if (LOG_APPINGTON_NOTIFICATIONS) NSLog(@"Appington NR: %@", [notification name]);
     NSLog(@"%@",notification);
-    if ([[notification name] isEqualToString:@"audio_end"])
-    {
-        NSString *audioString = [NSString stringWithFormat:@"id%@_%@_vol%@", [notification.userInfo objectForKey:@"id"], [notification.userInfo objectForKey:@"slot"], [notification.userInfo objectForKey:@"lowered_volume"]];
-        
-        //track event with GA
-        [DD2GlobalHelper sendEventToGAWithCategory:@"uiAction_Appington" action:@"audio_end" label:audioString value:nil];
-        
-        //track audio event with Flurry
-        NSDictionary *flurryParameters = @{@"id" : [notification.userInfo objectForKey:@"id"],
-                                           @"slot" : [notification.userInfo objectForKey:@"slot"],
-                                           @"volume" : [notification.userInfo objectForKey:@"lowered_volume"]};
-        [Flurry logEvent:@"uiAudio_end" withParameters:flurryParameters];
-        [Flurry logEvent:[NSString stringWithFormat:@"uiAudioPlayed_%@_%@", [notification.userInfo objectForKey:@"id"],[notification.userInfo objectForKey:@"slot"]] withParameters:flurryParameters];
-        [Flurry logEvent:[NSString stringWithFormat:@"uiAudioPlayedid_%@", [notification.userInfo objectForKey:@"id"]] withParameters:flurryParameters];
-        
-        if (LOG_APPINGTON_NOTIFICATIONS) NSLog(@"Appington NOTIF audio_end %@", audioString);
-        
-    }
     if ([[notification name] isEqualToString:@"audio_start"])
     {
         NSString *audioString = [NSString stringWithFormat:@"id%@_%@_vol%@", [notification.userInfo objectForKey:@"id"], [notification.userInfo objectForKey:@"slot"], [notification.userInfo objectForKey:@"lowered_volume"]];
@@ -197,6 +179,24 @@
         [Flurry logEvent:[NSString stringWithFormat:@"uiAudioSlot_%@",[notification.userInfo objectForKey:@"slot"]] withParameters:flurryParameters];
         
         if (LOG_APPINGTON_NOTIFICATIONS) NSLog(@"Appington NOTIF audio_start %@", audioString);
+    }
+    if ([[notification name] isEqualToString:@"audio_end"])
+    {
+        NSString *audioString = [NSString stringWithFormat:@"id%@_%@_vol%@", [notification.userInfo objectForKey:@"id"], [notification.userInfo objectForKey:@"slot"], [notification.userInfo objectForKey:@"lowered_volume"]];
+        
+        //track event with GA
+        [DD2GlobalHelper sendEventToGAWithCategory:@"uiAction_Appington" action:@"audio_end" label:audioString value:nil];
+        
+        //track audio event with Flurry
+        NSDictionary *flurryParameters = @{@"id" : [notification.userInfo objectForKey:@"id"],
+                                           @"slot" : [notification.userInfo objectForKey:@"slot"],
+                                           @"volume" : [notification.userInfo objectForKey:@"lowered_volume"]};
+        [Flurry logEvent:@"uiAudio_end" withParameters:flurryParameters];
+        [Flurry logEvent:[NSString stringWithFormat:@"uiAudioPlayed_%@_%@", [notification.userInfo objectForKey:@"id"],[notification.userInfo objectForKey:@"slot"]] withParameters:flurryParameters];
+        [Flurry logEvent:[NSString stringWithFormat:@"uiAudioPlayed_%@", [notification.userInfo objectForKey:@"id"]] withParameters:flurryParameters];
+        
+        if (LOG_APPINGTON_NOTIFICATIONS) NSLog(@"Appington NOTIF audio_end %@", audioString);
+        
     }
     if ([[notification name] isEqualToString:@"user_group_set"])
     {
