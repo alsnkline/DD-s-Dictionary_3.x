@@ -38,6 +38,7 @@
     
     // call Appington
     [Appington control:@"placement" andValues:@{@"id": @"26"}];
+    if (LOG_APPINGTON_NOTIFICATIONS) NSLog(@"Appington placment id 26 (rate me please) sent");
 }
 
 - (IBAction) rateInStore:(id)sender
@@ -61,6 +62,7 @@
     
     // call Appington
     [Appington control:@"conversion" andValues:@{@"id": @"26"}];
+    if (LOG_APPINGTON_NOTIFICATIONS) NSLog(@"Appington conversion id 26 (rated button) sent");
 }
 
 #pragma mark - Sending an Email

@@ -215,7 +215,7 @@
 #pragma mark - Tab Bar Controller Delegate Methods
 
 - (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController {
-    NSLog(@"Tab selected %@", viewController);
+    //NSLog(@"Tab selected %@", viewController);
     if ([viewController isKindOfClass:[UINavigationController class]]) {
         UINavigationController *nvc = (UINavigationController *)viewController;
         if ([[nvc.viewControllers objectAtIndex:0] isKindOfClass:[FunWithWordsTableViewController class]]) {
@@ -252,6 +252,7 @@
         int msgIndex = arc4random()%[msgs count];
         // call Appington
         [Appington control:@"placement" andValues:@{@"id": [msgs objectAtIndex:msgIndex]}];
+        if (LOG_APPINGTON_NOTIFICATIONS) NSLog(@"Appington placment id %@ (fun tab) sent", [msgs objectAtIndex:msgIndex]);
     }
 }
 

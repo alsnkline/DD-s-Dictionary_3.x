@@ -243,6 +243,7 @@
     
     // call Appington
     [Appington control:@"placement" andValues:@{@"id": [messages objectAtIndex:msgIndex]}];
+    if (LOG_APPINGTON_NOTIFICATIONS) NSLog(@"Appington placment id %@ (voice hints button) sent", [messages objectAtIndex:msgIndex]);
 
 }
 

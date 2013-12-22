@@ -64,6 +64,7 @@
         if(![[NSUserDefaults standardUserDefaults] boolForKey:NOT_USE_VOICE_HINTS]) {
             // call Appington
             [Appington control:@"placement" andValues:@{@"id": @"25"}];
+            if (LOG_APPINGTON_NOTIFICATIONS) NSLog(@"Appington placment id 25 (about page) sent");
         }
     }
     

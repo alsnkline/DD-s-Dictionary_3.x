@@ -302,12 +302,14 @@
                 selectionPredicate = [NSPredicate predicateWithFormat:@"locHomophones.@count > 0"];
                 // Appington
                 [Appington control:@"conversion" andValues:@{@"id": @"22"}];
+                if (LOG_APPINGTON_NOTIFICATIONS) NSLog(@"Appington conversion id 22 (homophones) sent");
             } else if ([cell.textLabel.text isEqualToString:@"heteronyms"]) {
                 switchValue = 1;
                 selectionPredicate = [NSPredicate predicateWithFormat:@"pronunciations.@count > 1"];
                 // from http://www.raywenderlich.com/14742/core-data-on-ios-5-tutorial-how-to-work-with-relations-and-predicates
                 // Appington
                 [Appington control:@"conversion" andValues:@{@"id": @"23"}];
+                if (LOG_APPINGTON_NOTIFICATIONS) NSLog(@"Appington conversion id 23 (heteronyms) sent");
             } else {
                 switchValue = 5;
                 selectionPredicate = [NSPredicate predicateWithFormat:@"SELF.tags contains[c] %@",[DD2Words exchangeSpacesForUnderscoresin:cell.textLabel.text]];

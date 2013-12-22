@@ -80,6 +80,7 @@
     if(![[NSUserDefaults standardUserDefaults] boolForKey:NOT_USE_VOICE_HINTS]) {
         // call Appington
         [Appington control:@"placement" andValues:@{@"id": @"1"}];
+        if (LOG_APPINGTON_NOTIFICATIONS) NSLog(@"Appington placment id 1 (welcome) sent");
     }
     
     return YES;
@@ -142,7 +143,7 @@
 }
 
 - (void) onAppingtonNotification:(NSNotification*)notification {
-    //NSLog(@"Appington NR: %@", [notification name]);
+    if (LOG_APPINGTON_NOTIFICATIONS) NSLog(@"Appington NR: %@", [notification name]);
     NSLog(@"%@",notification);
     if ([[notification name] isEqualToString:@"audio_end"])
     {
@@ -156,9 +157,15 @@
         //track event with GA
         NSString *descriptionForNotificationObject = [[notification object] description];
         [DD2GlobalHelper sendEventToGAWithCategory:@"uiAction_Appington" action:@"audio_start" label:descriptionForNotificationObject value:nil];
+        if (LOG_APPINGTON_NOTIFICATIONS) NSLog(@"Appington NOTIF audio_start %@", audioString);
+        if (LOG_APPINGTON_NOTIFICATIONS) NSLog(@"Appington NOTIF user_group_set %@", notification.userInfo);
+        if (LOG_APPINGTON_NOTIFICATIONS) NSLog(@"Appington NOTIF user is in %@", usersGroup);
+        
     }
     if ([[notification name] isEqualToString:@"prompts"])
     {
+        if (LOG_APPINGTON_NOTIFICATIONS) NSLog(@"Appington NOTIF prompts %@", notification.userInfo);
+        
         NSDictionary *values=notification.userInfo;
         //NSLog(@"values coming with the notification %@", values);
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
