@@ -14,9 +14,8 @@ Ship App Check List:
 4. ensure that Appington checker runs cleanly and that the latest campaigns are frozen.
 5. complete upgrade test on iPhone and iPad
 6. search for "ship" and confirm that anything which needs to be removed has been.
-    5i in GlobalHelper.h set OVERRIDE_PROCESSING to NO
-    5ii in GlobalHelper.h set PROCESS_VERBOSELY NO
-    5iii in GlobalHelper.h set TEST_APPINGTON_ON NO (3.1.x override to hide button YES)
+    5i in GlobalHelper.h set PROCESS_VERBOSELY NO
+    5ii in GlobalHelper.h set TEST_APPINGTON_ON NO (3.1.x override to hide button YES)
 
 
 After build or back on Main (Master)
