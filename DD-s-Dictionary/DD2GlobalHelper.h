@@ -35,4 +35,7 @@
 //Double Metophone Methods
 + (NSArray *)doubleMetaphoneCodesFor:(NSString *)spelling;
 + (NSString *)stringForDoubleMetaphoneCodesArray:(NSArray *)doubleMetaphoneCodes;
+
+//LevenshteinDistance Method
++ (int)LevenshteinDistance:(NSString *)s and:(NSString *)t;
 @end

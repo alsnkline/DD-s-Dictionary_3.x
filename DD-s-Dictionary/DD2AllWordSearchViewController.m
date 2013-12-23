@@ -292,24 +292,33 @@
     NSArray *bwMatches = [wordsForFilteredWords filteredArrayUsingPredicate:bwMatchPredicate];
     if ([bwMatches count] < 1) self.showAddWordButton = YES;
     
-    //check for and append doubleMetaphone matches
-    NSArray *searchTextDMCodes = [DD2GlobalHelper doubleMetaphoneCodesFor:searchText];
-    
-    //primary to primary
-    NSPredicate *DMMatchPredicate = [NSPredicate predicateWithFormat:@"SELF.doubleMphonePrimary beginswith[c] %@",[searchTextDMCodes objectAtIndex:0]];
-    [self appendDMMatchesUsingPredicate:DMMatchPredicate toWordList:wordsForFilteredWords];
-    //secondary (searchText) to primary only if searchText has a secondary doubleMetaphone code
-    if ([searchTextDMCodes count] > 1) {
-        DMMatchPredicate = [NSPredicate predicateWithFormat:@"SELF.doubleMphonePrimary beginswith[c] %@",[searchTextDMCodes objectAtIndex:1]];
-        [self appendDMMatchesUsingPredicate:DMMatchPredicate toWordList:wordsForFilteredWords];
+    if ([wordsForFilteredWords count] < 15) {
+        NSLog(@"Adding Levenshtein Distance matches");
+        //check and add words to end of list if their LevenshteinDistance is low
+        [self appendLowestLevenshteinDistanceWordsForSearchText:searchText toWordList:wordsForFilteredWords];
     }
-    //primary (searchText) to secondary
-    DMMatchPredicate = [NSPredicate predicateWithFormat:@"SELF.doubleMphoneAlt beginswith[c] %@",[searchTextDMCodes objectAtIndex:0]];
-    [self appendDMMatchesUsingPredicate:DMMatchPredicate toWordList:wordsForFilteredWords];
-    //secondary (searchText) to secondary only if searchText has a secondary doubleMetaphone code
-    if ([searchTextDMCodes count] > 1) {
-        DMMatchPredicate = [NSPredicate predicateWithFormat:@"SELF.doubleMphoneAlt beginswith[c] %@",[searchTextDMCodes objectAtIndex:1]];
+    
+    if ([wordsForFilteredWords count] < 15) {
+        NSLog(@"Adding doubleMetaphone matches");
+        //check for and append doubleMetaphone matches
+        NSArray *searchTextDMCodes = [DD2GlobalHelper doubleMetaphoneCodesFor:searchText];
+        
+        //primary to primary
+        NSPredicate *DMMatchPredicate = [NSPredicate predicateWithFormat:@"SELF.doubleMphonePrimary beginswith[c] %@",[searchTextDMCodes objectAtIndex:0]];
         [self appendDMMatchesUsingPredicate:DMMatchPredicate toWordList:wordsForFilteredWords];
+        //secondary (searchText) to primary only if searchText has a secondary doubleMetaphone code
+        if ([searchTextDMCodes count] > 1) {
+            DMMatchPredicate = [NSPredicate predicateWithFormat:@"SELF.doubleMphonePrimary beginswith[c] %@",[searchTextDMCodes objectAtIndex:1]];
+            [self appendDMMatchesUsingPredicate:DMMatchPredicate toWordList:wordsForFilteredWords];
+        }
+        //primary (searchText) to secondary
+        DMMatchPredicate = [NSPredicate predicateWithFormat:@"SELF.doubleMphoneAlt beginswith[c] %@",[searchTextDMCodes objectAtIndex:0]];
+        [self appendDMMatchesUsingPredicate:DMMatchPredicate toWordList:wordsForFilteredWords];
+        //secondary (searchText) to secondary only if searchText has a secondary doubleMetaphone code
+        if ([searchTextDMCodes count] > 1) {
+            DMMatchPredicate = [NSPredicate predicateWithFormat:@"SELF.doubleMphoneAlt beginswith[c] %@",[searchTextDMCodes objectAtIndex:1]];
+            [self appendDMMatchesUsingPredicate:DMMatchPredicate toWordList:wordsForFilteredWords];
+        }
     }
     
     // clean out all duplicates keeping order of first occurance in list
@@ -329,6 +338,29 @@
     if ([dmMatches count] > 0 && [wordList count] < 15) {
         [wordList addObjectsFromArray:dmMatches];
     }
+}
+
+- (void)appendLowestLevenshteinDistanceWordsForSearchText:(NSString*)searchText toWordList:(NSMutableArray *)wordList
+{
+    int LDcutOff = 3;
+    NSMutableArray *workingWordList = [NSMutableArray arrayWithCapacity:[self.allWordsForSpellingVariant count]];
+    for (NSDictionary *word in self.allWordsForSpellingVariant) {
+        NSMutableDictionary *wordWithLD = [NSMutableDictionary dictionaryWithDictionary:word];
+        int levenshteinDistance = [DD2GlobalHelper LevenshteinDistance:searchText and:word[@"spelling"]];
+        if (levenshteinDistance < LDcutOff) {
+            [wordWithLD setObject:[NSNumber numberWithInt:levenshteinDistance] forKey:@"LD"];
+            [workingWordList addObject:wordWithLD];
+        }
+    }
+    NSSortDescriptor *sortByLD = [NSSortDescriptor sortDescriptorWithKey:@"LD" ascending:YES];
+    NSArray *sortedWordList = [workingWordList sortedArrayUsingDescriptors:[NSArray arrayWithObject:sortByLD]];
+    [sortedWordList makeObjectsPerformSelector:@selector(removeObjectForKey:) withObject:@"LD"];
+    
+    NSLog(@"sorted Word List LD < %i search = %@", LDcutOff, searchText);
+    for (NSDictionary *word in sortedWordList) {
+        NSLog(@"%@ LD = %@", word[@"spelling"], word[@"LD"]);
+    }
+    [wordList addObjectsFromArray:sortedWordList];
 }
 
 #pragma mark - UISearchDisplayController Delegate Methods
