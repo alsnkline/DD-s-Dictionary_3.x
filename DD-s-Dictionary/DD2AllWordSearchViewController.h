@@ -11,6 +11,7 @@
 @interface DD2AllWordSearchViewController : DD2SetTrackTableViewController
 
 @property (nonatomic, strong) NSArray *allWordsForSpellingVariant; //the model for search view does not have sections and allows homophone look up
+@property (nonatomic, strong) NSArray *allWords; //full list of words used for showing UK/US word differences on word level display
 @property (nonatomic, strong) NSDictionary *selectedWord;       //public so that TabBarViewController can clear it is spellingVariant changes
 
 @end

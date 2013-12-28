@@ -17,6 +17,7 @@
 
 @implementation DD2WordListTableViewController
 @synthesize wordList = _wordList;
+@synthesize allWords = _allWords;
 @synthesize wordListWithSections = _wordListWithSections;
 @synthesize sections = _sections;
 @synthesize allWordsForSpellingVariant = _allWordsForSpellingVariant;
@@ -154,6 +155,7 @@
         dwvc.homophonesForWord = [DD2Words homophonesForWord:self.selectedWord andWordList:self.allWordsForSpellingVariant];  //can't be set in WordView as word view doesn't know what allWordsForSpellingVariant is.
         dwvc.word = self.selectedWord;
         dwvc.delegate = self;
+        NSDictionary *otherWordSpellingVariant = [DD2Words wordWithOtherSpellingVariantFrom:self.selectedWord andListOfAllWords:self.allWords];
         if (self.playWordsOnSelection) {
             [dwvc playAllWords:[DD2Words pronunciationsForWord:self.selectedWord]];
         }
@@ -168,6 +170,7 @@
     if ([segue.identifier isEqualToString:@"Word Selected"]) {
         [segue.destinationViewController setWord:self.selectedWord];
         [segue.destinationViewController setHomophonesForWord:[DD2Words homophonesForWord:self.selectedWord andWordList:self.allWordsForSpellingVariant]]; //can't be set in WordView as word view doesn't know what allWordsForSpellingVariant is.
+        NSDictionary *otherWordSpellingVariant = [DD2Words wordWithOtherSpellingVariantFrom:self.selectedWord andListOfAllWords:self.allWords];
         if (self.playWordsOnSelection) {
             [segue.destinationViewController setPlayWordsOnSelection:self.playWordsOnSelection];
         }

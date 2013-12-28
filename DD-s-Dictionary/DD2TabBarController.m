@@ -144,6 +144,7 @@
                 DD2AllWordSearchViewController *searchTable = (DD2AllWordSearchViewController *)vc1OnStack;
                 searchTable.allWordsForSpellingVariant = [self.wordBrain allWordsForCurrentSpellingVariant];
                 searchTable.selectedWord = nil;
+                searchTable.allWords = self.wordBrain.allWords;
                 if (searchTable.searchDisplayController.searchResultsTableView) {
                     [searchTable.searchDisplayController setActive:NO];
                 }
@@ -192,6 +193,7 @@
                 NSString *collectionTitle = [DD2Words displayNameForCollection:collection];
                 collectionTable.title = collectionTitle;
                 collectionTable.allWordsForSpellingVariant = [self.wordBrain allWordsForCurrentSpellingVariant];
+                collectionTable.allWords = self.wordBrain.allWords;
                 
                 if ([collection isEqualToString:@"Recents"]) {
                     // Recent then set word list from RecentWords
