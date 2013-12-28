@@ -263,6 +263,34 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
     }
 }
 
++ (NSDictionary *) wordWithOtherSpellingVariantFrom:(NSDictionary *)word andListOfAllWords:(NSArray *)allWords {
+    id wordElement = [word objectForKey:@"word"];
+    NSPredicate *selectionPredicate = [NSPredicate predicateWithFormat:@"SELF.word = %@", wordElement];
+    if (LOG_PREDICATE_RESULTS) NSLog(@"predicate = %@", selectionPredicate);
+    if (LOG_PREDICATE_RESULTS) [DD2GlobalHelper testWordPredicate:selectionPredicate onWords:allWords];
+    
+    NSArray *matches = [NSArray arrayWithArray:[allWords filteredArrayUsingPredicate:selectionPredicate]];
+    if ([matches count] > 2) NSLog(@"*** too many matches (looking for other spelling variants) ***");
+    NSDictionary *foundWord = nil;
+    for (NSDictionary *candidateWord in matches) {
+        if ([candidateWord objectForKey:@"spelling"] != [word objectForKey:@"spelling"] ||
+            [candidateWord objectForKey:@"locHomophones"] != [word objectForKey:@"locHomophones"]) {
+            foundWord = candidateWord;
+        }
+        if (candidateWord == word) continue;   //to avoid setting foundWord for tomatoe etc.
+        
+        NSSet *pronunciations = [DD2Words pronunciationsForWord:word];
+        for (NSString *pronunciation in pronunciations) {
+            NSString *prefix = [pronunciation substringWithRange:NSMakeRange(0, 3)];
+            if ([prefix isEqualToString:@"uk-"] || [prefix isEqualToString:@"us-"]) {
+                foundWord = candidateWord;
+            }
+        }
+    }
+    if (PROCESS_VERBOSELY && foundWord) NSLog(@"US/UK spelling variant found %@", foundWord);
+    return foundWord;
+}
+
 + (NSString *)exchangeSpacesForUnderscoresin:(NSString *)string {
     NSString *cleanString = [string stringByReplacingOccurrencesOfString:@" " withString:@"_"];
     return cleanString;
@@ -272,6 +300,7 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
     NSString *cleanString = [string stringByReplacingOccurrencesOfString:@"_" withString:@" "];
     return cleanString;
 }
+
 
 + (NSString *) displayNameForCollection:(NSString *)collectionName {
     
