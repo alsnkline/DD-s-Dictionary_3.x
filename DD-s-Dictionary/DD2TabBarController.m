@@ -155,11 +155,12 @@
             } else if ([vc1OnStack isKindOfClass:[FunWithWordsTableViewController class]]) {    //setting up the fun vc (spelling variant and tagNames)
                 FunWithWordsTableViewController *funTable = (FunWithWordsTableViewController *)vc1OnStack;
                 funTable.tagNames = self.wordBrain.tagNames;
+                funTable.smallCollections = self.wordBrain.smallCollectionNames;
                 funTable.allWordsForSpellingVariant = [self.wordBrain allWordsForCurrentSpellingVariant];
                 while ([nvc.viewControllers count]>1) {
                     [nvc popViewControllerAnimated:NO];
                 }
-            } else if ([vc1OnStack isKindOfClass:[DD2SettingsTableViewController class]]) {    //setting up the fun vc (spelling variant and tagNames)
+            } else if ([vc1OnStack isKindOfClass:[DD2SettingsTableViewController class]]) {    //setting up the settings vc (collection Names)
                 DD2SettingsTableViewController *settingsTable = (DD2SettingsTableViewController *)vc1OnStack;
                 NSMutableArray *collectionNamesForSettings = [self.wordBrain.collectionNames mutableCopy];
                 [collectionNamesForSettings addObject:@"Recents"];
