@@ -28,7 +28,7 @@
 
 + (NSDictionary *) wordsBySectionFromWordList:(NSArray *)wordList;
 + (void) compareSectionsDictionaryFirstAnswer:(NSDictionary *)firstAnswer withSecondAnswer:(NSDictionary *)secondAnswer;
-+ (NSDictionary *) wordWithOtherSpellingVariantFrom:(NSDictionary *)word andListOfAllWords:(NSArray *)allWords;
++ (NSDictionary *) wordWithOtherSpellingVariantFrom:(NSDictionary *)word andListOfAllWords:(NSArray *)allWords variantType:(NSString **)type;
 
 + (NSString *) exchangeSpacesForUnderscoresin:(NSString *)string;
 + (NSString *) exchangeUnderscoresForSpacesin:(NSString *)string;

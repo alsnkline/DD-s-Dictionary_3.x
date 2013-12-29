@@ -183,6 +183,16 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
                     }
                 }
                 
+                //processing to create a uk us Variant type for relavant words (includes a check for pronunciation files)
+                NSString *usukVariantType =@"start";
+                NSMutableDictionary *ukusOtherWord = [[DD2Words wordWithOtherSpellingVariantFrom:processedWord andListOfAllWords:workingAllWords variantType:&usukVariantType] mutableCopy];
+                if (ukusOtherWord) {
+                    [workingAllWords removeObject:ukusOtherWord];
+                    [processedWord setObject:usukVariantType forKey:@"usukVariant"];
+                    [ukusOtherWord setObject:usukVariantType forKey:@"usukVariant"];
+                    [workingAllWords addObject:ukusOtherWord];
+                }
+                
                 //if (PROCESS_VERBOSELY) NSLog(@"processed word %@", processedWord);
                 //processing for all words
                 [workingAllWords addObject:processedWord];
@@ -278,18 +288,22 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
     }
 }
 
-+ (NSDictionary *) wordWithOtherSpellingVariantFrom:(NSDictionary *)word andListOfAllWords:(NSArray *)allWords {
++ (NSDictionary *) wordWithOtherSpellingVariantFrom:(NSDictionary *)word andListOfAllWords:(NSArray *)allWords variantType:(NSString **)type {
     id wordElement = [word objectForKey:@"word"];
     NSPredicate *selectionPredicate = [NSPredicate predicateWithFormat:@"SELF.word = %@", wordElement];
     if (LOG_PREDICATE_RESULTS) NSLog(@"predicate = %@", selectionPredicate);
     if (LOG_PREDICATE_RESULTS) [DD2GlobalHelper testWordPredicate:selectionPredicate onWords:allWords];
     
     NSArray *matches = [NSArray arrayWithArray:[allWords filteredArrayUsingPredicate:selectionPredicate]];
-    if ([matches count] > 2) NSLog(@"*** too many matches (looking for other spelling variants) ***");
+    if ([matches count] > 2) NSLog(@"*** too many matches (when looking for other spelling variants) ***");
     NSDictionary *foundWord = nil;
     for (NSDictionary *candidateWord in matches) {
-        if ([candidateWord objectForKey:@"spelling"] != [word objectForKey:@"spelling"] ||
-            [candidateWord objectForKey:@"locHomophones"] != [word objectForKey:@"locHomophones"]) {
+        if (![[candidateWord objectForKey:@"spelling"] isEqualToString:[word objectForKey:@"spelling"]]) {
+            if (type) *type = @"spelling";
+            foundWord = candidateWord;
+        }
+        if ([candidateWord objectForKey:@"locHomophones"] != [word objectForKey:@"locHomophones"]) {
+            if (type) *type = @"locHomophones";
             foundWord = candidateWord;
         }
         if (candidateWord == word) continue;   //to avoid setting foundWord for tomatoe etc.
@@ -298,6 +312,7 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
         for (NSString *pronunciation in pronunciations) {
             NSString *prefix = [pronunciation substringWithRange:NSMakeRange(0, 3)];
             if ([prefix isEqualToString:@"uk-"] || [prefix isEqualToString:@"us-"]) {
+                if (*type) *type = @"pronunciation";
                 foundWord = candidateWord;
             }
         }

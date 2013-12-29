@@ -237,7 +237,7 @@
         dwvc.homophonesForWord = [DD2Words homophonesForWord:self.selectedWord andWordList:self.allWordsForSpellingVariant];
         dwvc.word = self.selectedWord;
         dwvc.delegate = self;
-        NSDictionary *otherWordSpellingVariant = [DD2Words wordWithOtherSpellingVariantFrom:self.selectedWord andListOfAllWords:self.allWords];
+        NSDictionary *ukusOtherWord = [DD2Words wordWithOtherSpellingVariantFrom:self.selectedWord andListOfAllWords:self.allWords variantType:nil];
         if (self.playWordsOnSelection) {
             [dwvc playAllWords:[DD2Words pronunciationsForWord:self.selectedWord]];
         }
@@ -252,7 +252,7 @@
     if ([segue.identifier isEqualToString:@"Search Word Selected"]) {
         [segue.destinationViewController setWord:self.selectedWord];
         [segue.destinationViewController setHomophonesForWord:[DD2Words homophonesForWord:self.selectedWord andWordList:self.allWordsForSpellingVariant]];
-        NSDictionary *otherWordSpellingVariant = [DD2Words wordWithOtherSpellingVariantFrom:self.selectedWord andListOfAllWords:self.allWords];
+        NSDictionary *ukusOtherWord = [DD2Words wordWithOtherSpellingVariantFrom:self.selectedWord andListOfAllWords:self.allWords variantType:nil];
         if (self.playWordsOnSelection) {
             [segue.destinationViewController setPlayWordsOnSelection:self.playWordsOnSelection];
         }
