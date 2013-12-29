@@ -14,6 +14,7 @@
 @property (nonatomic, strong) NSDictionary *processedWords;
 @property (nonatomic, strong) NSArray *allWords;
 @property (nonatomic, strong) NSArray *collectionNames;
+@property (nonatomic, strong) NSArray *smallCollectionNames;
 @property (nonatomic, strong) NSArray *tagNames;
 @property (nonatomic, strong) NSString *spellingVariant;
 @property (nonatomic, strong) NSArray *recentlyViewedWords; //repository for recents
