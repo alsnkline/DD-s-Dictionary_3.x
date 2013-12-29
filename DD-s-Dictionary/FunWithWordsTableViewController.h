@@ -11,5 +11,6 @@
 @interface FunWithWordsTableViewController : UITableViewController
 @property (nonatomic, strong) NSArray *allWordsForSpellingVariant;        //model for this MVC
 @property (nonatomic, strong) NSArray *tagNames;
+@property (nonatomic, strong) NSArray *smallCollections;
 
 @end

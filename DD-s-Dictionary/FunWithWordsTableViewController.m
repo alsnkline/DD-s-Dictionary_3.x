@@ -14,6 +14,7 @@
 
 @property (nonatomic, strong) UIColor *customBackgroundColor;
 @property (nonatomic) BOOL useDyslexieFont;
+@property (nonatomic, strong) NSPredicate *predicateForSelectedCell;
 
 @end
 
@@ -22,6 +23,7 @@
 @synthesize customBackgroundColor = _customBackgroundColor;
 @synthesize useDyslexieFont = _useDyslexieFont;
 @synthesize tagNames = _tagNames;
+@synthesize smallCollections = _smallCollections;
 @synthesize allWordsForSpellingVariant = _allWordsForSpellingVariant;
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -49,6 +51,13 @@
         _tagNames = sortedTags;
     }
     //[self.tableView reloadData];
+}
+
+-(void)setSmallCollections:(NSArray *)smallCollections{
+    NSArray *sortedCollections = [smallCollections sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
+    if (sortedCollections != _smallCollections) {
+        _smallCollections = sortedCollections;
+    }
 }
 
 -(BOOL)useDyslexieFont{
@@ -184,15 +193,19 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    NSInteger sectionNumber = 1;
-    if ([self.tagNames count] > 0) sectionNumber = 2;
+    NSInteger sectionNumber = 3;
     return sectionNumber;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     NSInteger rowCount = 2;
-    if (section == 1) rowCount = [self.tagNames count];
+    if (section == 1) {
+        rowCount = [self.smallCollections count];
+    }
+    if (section == 2) {
+        rowCount = [self.tagNames count];
+    }
     return rowCount;
 }
 
@@ -202,7 +215,9 @@
     if (section == 0) {
         titleForSection = [NSString stringWithFormat:@"Word types:"];
     } else if (section == 1) {
-        titleForSection = [NSString stringWithFormat:@"Word groups:"];
+        titleForSection = [NSString stringWithFormat:@"Related Meanings:"];
+    } else if (section == 2) {
+        titleForSection = [NSString stringWithFormat:@"Pronunciation groups:"];
     }
     return titleForSection;
 }
@@ -226,6 +241,9 @@
         if (row == 1) cell.textLabel.text = [NSString stringWithFormat:@"heteronyms"];
     }
     if (section == 1) {
+        cell.textLabel.text = [DD2Words exchangeUnderscoresForSpacesin:[self.smallCollections objectAtIndex:indexPath.row]];
+    }
+    if (section == 2) {
         cell.textLabel.text = [DD2Words exchangeUnderscoresForSpacesin:[self.tagNames objectAtIndex:indexPath.row]];
     }
     
@@ -285,8 +303,31 @@
 {
     NSLog(@"Indexpath of Selected Cell = %@", indexPath);
     UITableViewCell *selectedCell = [self.tableView cellForRowAtIndexPath:indexPath];
+    NSLog(@"Cell Label = %@", selectedCell.textLabel.text);
+    
+    if ([indexPath isEqual:[NSIndexPath indexPathForItem:0 inSection:0]]) {
+        // homophones
+        self.predicateForSelectedCell = [NSPredicate predicateWithFormat:@"locHomophones.@count > 0"];
+        // Appington
+        [Appington control:@"conversion" andValues:@{@"id": @"22"}];
+        if (LOG_APPINGTON_NOTIFICATIONS) NSLog(@"Appington conversion id 22 (homophones) sent");
+    } else if ([indexPath isEqual:[NSIndexPath indexPathForItem:1 inSection:0]]) {
+        // heteronyms
+        self.predicateForSelectedCell = [NSPredicate predicateWithFormat:@"pronunciations.@count > 1"];
+        // from http://www.raywenderlich.com/14742/core-data-on-ios-5-tutorial-how-to-work-with-relations-and-predicates
+        // Appington
+        [Appington control:@"conversion" andValues:@{@"id": @"23"}];
+        if (LOG_APPINGTON_NOTIFICATIONS) NSLog(@"Appington conversion id 23 (heteronyms) sent");
+    } else if (indexPath.section == 1) {
+        // small_collections
+        self.predicateForSelectedCell = [NSPredicate predicateWithFormat:@"SELF.small_collection contains[c] %@",[DD2Words exchangeSpacesForUnderscoresin:selectedCell.textLabel.text]];
+    } else if (indexPath.section == 2) {
+        // tags
+        self.predicateForSelectedCell = [NSPredicate predicateWithFormat:@"SELF.tags contains[c] %@",[DD2Words exchangeSpacesForUnderscoresin:selectedCell.textLabel.text]];
+    }
     
     [self performSegueWithIdentifier:@"Fun Tag Selected" sender:selectedCell];
+
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -294,40 +335,17 @@
     if ([segue.identifier isEqualToString:@"Fun Tag Selected"]) {
         if ([sender isKindOfClass:[UITableViewCell class]]) {
             UITableViewCell *cell = (UITableViewCell *)sender;
-            NSLog(@"Cell Label = %@", cell.textLabel.text);
-            
-            NSInteger switchValue;  //not really used yet, set up incase options got out of control
-            NSPredicate *selectionPredicate;
-            
-            if ([cell.textLabel.text isEqualToString:@"homophones"]) {
-                switchValue = 0;
-                selectionPredicate = [NSPredicate predicateWithFormat:@"locHomophones.@count > 0"];
-                // Appington
-                [Appington control:@"conversion" andValues:@{@"id": @"22"}];
-                if (LOG_APPINGTON_NOTIFICATIONS) NSLog(@"Appington conversion id 22 (homophones) sent");
-            } else if ([cell.textLabel.text isEqualToString:@"heteronyms"]) {
-                switchValue = 1;
-                selectionPredicate = [NSPredicate predicateWithFormat:@"pronunciations.@count > 1"];
-                // from http://www.raywenderlich.com/14742/core-data-on-ios-5-tutorial-how-to-work-with-relations-and-predicates
-                // Appington
-                [Appington control:@"conversion" andValues:@{@"id": @"23"}];
-                if (LOG_APPINGTON_NOTIFICATIONS) NSLog(@"Appington conversion id 23 (heteronyms) sent");
-            } else {
-                switchValue = 5;
-                selectionPredicate = [NSPredicate predicateWithFormat:@"SELF.tags contains[c] %@",[DD2Words exchangeSpacesForUnderscoresin:cell.textLabel.text]];
-            }
             
             //selectionPredicate = [NSPredicate predicateWithFormat:@"SELF.spelling contains[cd] %@", stringForPredicate];
             //selectionPredicate = [NSPredicate predicateWithFormat:@"inGroups.@count > 0"]; //worked
             //selectionPredicate = [NSPredicate predicateWithFormat:@"%@ IN SELF.inGroups.displayName", cell.textLabel.text];
 
-            if (LOG_PREDICATE_RESULTS) NSLog(@"predicate = %@", selectionPredicate);
-            if (LOG_PREDICATE_RESULTS) [DD2GlobalHelper testWordPredicate:selectionPredicate onWords:self.allWordsForSpellingVariant];
+            if (LOG_PREDICATE_RESULTS) NSLog(@"predicate = %@", self.predicateForSelectedCell);
+            if (LOG_PREDICATE_RESULTS) [DD2GlobalHelper testWordPredicate:self.predicateForSelectedCell onWords:self.allWordsForSpellingVariant];
             
             [segue.destinationViewController setAllWordsForSpellingVariant:self.allWordsForSpellingVariant];
             [segue.destinationViewController setTitle:cell.textLabel.text];
-            [segue.destinationViewController setWordList:[NSMutableArray arrayWithArray:[self.allWordsForSpellingVariant filteredArrayUsingPredicate:selectionPredicate]]];
-
+            [segue.destinationViewController setWordList:[NSMutableArray arrayWithArray:[self.allWordsForSpellingVariant filteredArrayUsingPredicate:self.predicateForSelectedCell]]];
         }
     }
 }

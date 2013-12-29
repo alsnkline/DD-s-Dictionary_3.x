@@ -10,6 +10,7 @@
 #import "DD2AppDelegate.h"
 
 #define COLLECTION_NAMES @"collectionNames"
+#define SMALL_COLLECTION_NAMES @"smallCollectionNames"
 #define TAG_NAMES @"tagNames"
 #define ALL @"allWords"
 
@@ -25,6 +26,7 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
 @synthesize processedWords = _processedWords;
 @synthesize allWords = _allWords;
 @synthesize collectionNames = _collectionNames;
+@synthesize smallCollectionNames = _smallCollectionNames;
 @synthesize tagNames = _tagNames;
 @synthesize spellingVariant = _spellingVariant;
 @synthesize recentlyViewedWords = _recentlyViewedWords;
@@ -91,6 +93,15 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
     return _collectionNames;
 }
 
+-(NSArray *)smallCollectionNames
+{
+    if(_smallCollectionNames == nil) {
+        _smallCollectionNames = [self.processedWords objectForKey:SMALL_COLLECTION_NAMES];
+        if (PROCESS_VERBOSELY) NSLog(@"%@ has = %@",SMALL_COLLECTION_NAMES, _smallCollectionNames);
+    }
+    return _smallCollectionNames;
+}
+
 -(NSArray *)tagNames
 {
     if(_tagNames == nil) {
@@ -106,6 +117,7 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
         NSMutableDictionary *workingProcessedWords = [[NSMutableDictionary alloc] init];
         
         NSMutableArray *workingCollectionNames = [[NSMutableArray alloc] init];
+        NSMutableArray *workingSmallCollectionNames = [[NSMutableArray alloc] init];
         NSMutableArray *workingTagNames = [[NSMutableArray alloc] init];
         NSMutableArray *workingAllWords = [[NSMutableArray alloc] init];
         
@@ -175,24 +187,27 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
                 //processing for all words
                 [workingAllWords addObject:processedWord];
                 
-                //processing collections on each word
-                NSMutableArray *collections = [NSMutableArray arrayWithArray:[rawWord objectForKey:@"collections"]];
-                for (NSString *collection in collections) {
-                    if (![workingCollectionNames containsObject:collection]) [workingCollectionNames addObject:collection];
-                }
-                
-                //processing Tags on each word (ignoring locale as no tagged words have a spelling variations will endup with all UK words)
-                NSArray *tags = [rawWord objectForKey:@"tags"];
-                for (NSString *tag in tags) {
-                    if (![workingTagNames containsObject:tag]) [workingTagNames addObject:tag];
-                }
-                
-                //check that pronunciation file exists if in that mode
-                if (FIND_MISSING_PRONUNCIATIONS) [DD2Words pronunciationsForWord:processedWord];
+            }
+            
+            //processing collections on each word
+            NSMutableArray *collections = [NSMutableArray arrayWithArray:[rawWord objectForKey:@"collections"]];
+            for (NSString *collection in collections) {
+                if (![workingCollectionNames containsObject:collection]) [workingCollectionNames addObject:collection];
+            }
+            
+            //processing Small Collections on each word
+            NSString *smallCollection = [rawWord objectForKey:@"small_collection"];
+            if (smallCollection && ![workingSmallCollectionNames containsObject:smallCollection]) [workingSmallCollectionNames addObject:smallCollection];
+                                          
+            //processing Tags on each word (ignoring locale as no tagged words have a spelling variations will endup with all UK words)
+            NSArray *tags = [rawWord objectForKey:@"tags"];
+            for (NSString *tag in tags) {
+                if (![workingTagNames containsObject:tag]) [workingTagNames addObject:tag];
             }
         }
         
         [workingProcessedWords setObject:workingCollectionNames forKey:COLLECTION_NAMES];
+        [workingProcessedWords setObject:workingSmallCollectionNames forKey:SMALL_COLLECTION_NAMES];
         [workingProcessedWords setObject:workingTagNames forKey:TAG_NAMES];
         [workingProcessedWords setObject:workingAllWords forKey:ALL];
         
