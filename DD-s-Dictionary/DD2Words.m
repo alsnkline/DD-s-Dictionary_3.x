@@ -167,7 +167,7 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
                         NSDictionary *homophonesElementDictionary = (NSDictionary *)homophonesElement;
                         
                         if ([[rawWord objectForKey:@"pronunciations"] count] >1) {
-                            if (PROCESS_VERBOSELY) NSLog(@"%@ is a heteronym with homophones", spelling);
+                            if (PROCESS_VERBOSELY) NSLog(@"%@ is a heteronym with homophones", spelling);       //eg read
                             locHomophones = homophonesElementDictionary;
                         } else {
                             locHomophones = [homophonesElementDictionary objectForKey:locale];
@@ -179,7 +179,7 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
                         [processedWord setObject:locHomophones forKey:@"locHomophones"];
                         if (PROCESS_VERBOSELY) NSLog(@"locHomophones (%@) = %@", locale, locHomophones);
                     } else {
-                        if (PROCESS_VERBOSELY) NSLog(@"no locHomophones for %@ %@", spelling, locale);
+                        if (PROCESS_VERBOSELY) NSLog(@"no locHomophones for %@ %@", spelling, locale);      // needed where locHomophones only exsit in one locale eg buoy (uk:boy)
                     }
                 }
                 
@@ -427,17 +427,25 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
 
 + (NSDictionary *) homophonesForWord:(NSDictionary *)word andWordList:(NSArray *)wordList { //returns a dictionary of word dictionaries (for each homophone).
     
+    //filtering word list to only contain words of the same wordVariant as the subject word.
+    NSString *subjectWordVariant = [word objectForKey:@"wordVariant"];
+    NSPredicate *selectionPredicate = [NSPredicate predicateWithFormat:@"SELF.wordVariant LIKE[c] %@",subjectWordVariant];
+    if (LOG_PREDICATE_RESULTS) NSLog(@"predicate = %@", selectionPredicate);
+    if (LOG_PREDICATE_RESULTS) [DD2GlobalHelper testWordPredicate:selectionPredicate onWords:wordList];
+    NSArray *filteredWordList = [NSMutableArray arrayWithArray:[wordList filteredArrayUsingPredicate:selectionPredicate]];
+    
+    
     NSMutableDictionary *workingResults = [[NSMutableDictionary alloc] init];
     NSSet *pronunciationsForWord = [DD2Words pronunciationsForWord:word];
     if ([pronunciationsForWord count] > 1) {
         for (NSString * pronunciation in pronunciationsForWord) {
             NSArray *homophoneListForPronunciation = [[word objectForKey:@"locHomophones"] objectForKey:pronunciation];
-            [workingResults setObject:[DD2Words wordsForHomophones:homophoneListForPronunciation andWordList:wordList] forKey:pronunciation];
+            [workingResults setObject:[DD2Words wordsForHomophones:homophoneListForPronunciation andWordList:filteredWordList] forKey:pronunciation];
         }
     } else {
         NSArray *homophones = [word objectForKey:@"locHomophones"];
         if (homophones) {
-            [workingResults setObject:[DD2Words wordsForHomophones:homophones andWordList:wordList] forKey:[pronunciationsForWord anyObject]];
+            [workingResults setObject:[DD2Words wordsForHomophones:homophones andWordList:filteredWordList] forKey:[pronunciationsForWord anyObject]];
         } else {
             NSLog(@"No homophones on %@", [word objectForKey:@"spelling"]);
         }
@@ -476,7 +484,8 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
         if (LOG_PREDICATE_RESULTS) [DD2GlobalHelper testWordPredicate:selectionPredicate onWords:wordList];
         matches = [NSMutableArray arrayWithArray:[wordList filteredArrayUsingPredicate:selectionPredicate]];
     
-        if ([matches count] != 1) NSLog(@"DD2Words more of less than one matches ** PROBLEM **");
+        if ([matches count] > 1) NSLog(@"DD2Words more than one matches ** PROBLEM **");
+        if ([matches count] == 0) NSLog(@"DD2Words pronunciation not in list");
         return [matches lastObject];
     }
 }
