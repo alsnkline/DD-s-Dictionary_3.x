@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-#define PROCESS_VERBOSELY NO
+#define PROCESS_VERBOSELY NO               //must be NO for ship
 #define LOG_PREDICATE_RESULTS NO          // must be NO for ship
 #define TEST_APPINGTON_ON NO              // must be NO for ship (forces the voice hints switch to be shown.)
 #define LOG_ANALYTICS NO                  // must be NO for ship
@@ -16,7 +16,7 @@
 #define FIND_DUPLICATE_WORDS NO           // must be NO for ship
 
 #define NO_GA NO                            // must be NO for ship
-#define LOG_APPINGTON_NOTIFICATIONS YES     // should be NO for ship
+#define LOG_APPINGTON_NOTIFICATIONS NO     // should be NO for ship
 
 @interface DD2GlobalHelper : NSObject
 
