@@ -23,6 +23,7 @@
 
 @implementation DisplayWordViewController
 @synthesize word = _word;
+@synthesize hasOtherVariantWord = _hasOtherVariantWord;
 @synthesize homophonesForWord = _homophonesForWord;
 @synthesize playWordsOnSelection = _playWordsOnSelection;
 @synthesize useDyslexieFont = _useDyslexieFont;
@@ -41,6 +42,7 @@
 @synthesize homophoneButton4 = _homophoneButton4;
 @synthesize homophoneButton5 = _homophoneButton5;
 @synthesize homophoneButton6 = _homophoneButton6;
+@synthesize usukVariantSegmentedControl = _usukVariantSegmentedControl;
 @synthesize audioPlayer = _audioPlayer;
 @synthesize soundsToPlay = _soundsToPlay;
 
@@ -123,12 +125,25 @@
     NSString *forDisplay;
     if (word) {
         [self manageListenButtons];
+        if (self.hasOtherVariantWord) {
+            self.usukVariantSegmentedControl.hidden = NO;
+            NSString *variant = [word objectForKey:@"wordVariant"];
+            if ([variant isEqualToString:@"uk"]) {
+                //select the UK segment
+                self.usukVariantSegmentedControl.selectedSegmentIndex = 0;
+            } else {
+                //select the US segment
+                self.usukVariantSegmentedControl.selectedSegmentIndex = 1;
+            }
+        } else {
+            self.usukVariantSegmentedControl.hidden = YES;
+        }
         forDisplay = [word objectForKey:@"spelling"];
     } else {
         [self resetView];
         forDisplay = @"pick a word";
     }
-    [UIView transitionWithView:self.wordView duration:.5 options:UIViewAnimationOptionTransitionCrossDissolve
+    [UIView transitionWithView:self.wordView duration:.2 options:UIViewAnimationOptionTransitionCrossDissolve
                     animations:^ {
                         self.spelling.text = forDisplay;
                     }
@@ -149,6 +164,7 @@
     }
     self.listenButton.hidden = YES;
     self.heteronymListenButton.hidden = YES;
+    self.usukVariantSegmentedControl.hidden = YES;
 }
 
 - (void) manageListenButtons
@@ -379,8 +395,16 @@
     if (LOG_PREDICATE_RESULTS) [DD2GlobalHelper testWordPredicate:selectionPredicate onWords:allHomophones];
     NSArray *matches = [NSArray arrayWithArray:[allHomophones filteredArrayUsingPredicate:selectionPredicate]];
     if ([matches count] != 1) NSLog(@"DisplayWordVC more or less than one matches ** PROBLEM **");
+    
     //send to delegate
     [self.delegate DisplayWordViewController:self homophoneSelected:[matches lastObject]];
+}
+
+- (IBAction)usukVariantSegmentedControlPressed:(UISegmentedControl *)sender {
+    NSString *selection = sender.selectedSegmentIndex ? @"us" : @"uk";
+    NSLog(@"segmented control '%@' pressed", selection);
+    
+    [self.delegate DisplayWordViewController:self otherVariantSegmentedControlSelected:selection whileDisplayingWord:self.word];
 }
 
 -(void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)playedSuccessfully
