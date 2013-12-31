@@ -174,7 +174,10 @@
                 if ([[nvc.viewControllers lastObject] isKindOfClass:[DD2WordListTableViewController class]]) {
                     DD2WordListTableViewController *newLastObject = (DD2WordListTableViewController *)[nvc.viewControllers lastObject];
                     [newLastObject.tableView deselectRowAtIndexPath:[newLastObject.tableView indexPathForSelectedRow] animated:NO];
-                    newLastObject.allWordsForSpellingVariant = [self.wordBrain allWordsForCurrentSpellingVariant];      //need for search
+                } else if ([[nvc.viewControllers lastObject] isKindOfClass:[DD2AllWordSearchViewController class]]) {
+                    DD2AllWordSearchViewController *newLastObject = (DD2AllWordSearchViewController *)[nvc.viewControllers lastObject];
+                    [newLastObject.tableView deselectRowAtIndexPath:[newLastObject.tableView indexPathForSelectedRow] animated:NO];
+                    newLastObject.allWordsForSpellingVariant = [self.wordBrain allWordsForCurrentSpellingVariant];
                 }
             }
             if ([self getSplitViewWithDisplayWordViewController]) {
@@ -194,7 +197,7 @@
                 
                 NSString *collectionTitle = [DD2Words displayNameForCollection:collection];
                 collectionTable.title = collectionTitle;
-                collectionTable.allWordsForSpellingVariant = [self.wordBrain allWordsForCurrentSpellingVariant];
+//                collectionTable.allWordsForSpellingVariant = [self.wordBrain allWordsForCurrentSpellingVariant];
                 collectionTable.allWords = self.wordBrain.allWords;
                 
                 if ([collection isEqualToString:@"Recents"]) {

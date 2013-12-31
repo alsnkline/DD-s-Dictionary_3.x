@@ -232,6 +232,7 @@
 
 - (void) displaySelectedWord
 {
+    if (DEBUG) NSLog(@"displaying word %@", self.selectedWord);
     if ([self getSplitViewWithDisplayWordViewController]) { //iPad
         DisplayWordViewController *dwvc = [self getSplitViewWithDisplayWordViewController];
         [self setupDwvc:dwvc foriPhone:NO];
@@ -254,13 +255,9 @@
 
 -(void) setupDwvc:(DisplayWordViewController *)dwvc foriPhone:(BOOL)iPhone
 {
-    if ([self.selectedWord objectForKey:@"locHomophones"]) {
-        if ([self isLocHomophonesInCurrentSpellingVariantListForWordForDisplay:self.selectedWord]) {
-            dwvc.homophonesForWord = [DD2Words homophonesForWord:self.selectedWord andWordList:self.allWordsForSpellingVariant];
-        } else {
-            dwvc.homophonesForWord = [DD2Words homophonesForWord:self.selectedWord andWordList:self.allWords];
-        }
-    }
+    
+    dwvc.homophonesForWord = [DD2Words homophonesForWord:self.selectedWord andWordList:self.allWords]; // always do to clear any homophonesForWord from prior words
+
     if ([self.selectedWord objectForKey:@"usukVariant"]) {
         dwvc.hasOtherVariantWord = YES;
     } else {
@@ -283,22 +280,6 @@
         if (self.useDyslexieFont) {
             [dwvc setUseDyslexieFont:self.useDyslexieFont];
         }
-    }
-}
-
-- (BOOL) isLocHomophonesInCurrentSpellingVariantListForWordForDisplay:(NSDictionary *)word {
-    id locHomophoneElement = [word objectForKey:@"locHomophones"];
-    NSPredicate *selectionPredicate = [NSPredicate predicateWithFormat:@"SELF.spelling = %@", locHomophoneElement];
-    if (LOG_PREDICATE_RESULTS) NSLog(@"predicate = %@", selectionPredicate);
-    if (LOG_PREDICATE_RESULTS) [DD2GlobalHelper testWordPredicate:selectionPredicate onWords:self.allWordsForSpellingVariant];
-    
-    NSArray *matches = [NSArray arrayWithArray:[self.allWordsForSpellingVariant filteredArrayUsingPredicate:selectionPredicate]];
-    
-    if ([matches count] == 0) {
-        NSLog(@"*** word not found in allWordsForSpellingVariant ***");
-        return NO;
-    } else {
-        return YES;
     }
 }
 

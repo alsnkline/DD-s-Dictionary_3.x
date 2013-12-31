@@ -11,9 +11,8 @@
 @interface DD2WordListTableViewController : DD2SetTrackTableViewController
 
 @property (nonatomic, strong) NSArray *wordList; //the model for the table and full list of words displayed in the table
-@property (nonatomic, strong) NSArray *allWords; //full list of words used for showing UK/US word differences on word level display
+@property (nonatomic, strong) NSArray *allWords; //full list of words used for showing UK/US word differences on word level display and more general homophone look up
 @property (nonatomic, strong) NSDictionary *wordListWithSections; //the word for display organised by section if the table is to have sections
 @property (nonatomic, strong) NSArray *sections;    //populated from wordListWithSections, if nil table will use wordList and won't have sections
-@property (nonatomic, strong) NSArray *allWordsForSpellingVariant;      //needed for Homophone lookup
 
 @end
