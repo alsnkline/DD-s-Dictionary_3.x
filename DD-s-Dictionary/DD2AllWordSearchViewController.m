@@ -232,7 +232,7 @@
 
 - (void) displaySelectedWord
 {
-    if (DEBUG) NSLog(@"displaying word %@", self.selectedWord);
+    if (LOG_MORE) NSLog(@"displaying word %@", self.selectedWord);
     if ([self getSplitViewWithDisplayWordViewController]) { //iPad
         DisplayWordViewController *dwvc = [self getSplitViewWithDisplayWordViewController];
         [self setupDwvc:dwvc foriPhone:NO];

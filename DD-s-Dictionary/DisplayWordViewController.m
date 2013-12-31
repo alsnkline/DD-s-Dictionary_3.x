@@ -116,7 +116,7 @@
 -(void)setHomophonesForWord:(NSDictionary *)homophonesForWord {
     if (_homophonesForWord != homophonesForWord) {
         _homophonesForWord = homophonesForWord;
-        if(DEBUG) NSLog(@"homophonesForWord set to %@", homophonesForWord);
+        if(LOG_MORE) NSLog(@"homophonesForWord set to %@", homophonesForWord);
     }
 }
 

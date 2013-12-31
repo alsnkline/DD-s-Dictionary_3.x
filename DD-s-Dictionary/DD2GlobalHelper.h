@@ -8,7 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-#define PROCESS_VERBOSELY NO               //must be NO for ship
+#define LOG_MORE NO                       // must be NO for ship
+#define PROCESS_VERBOSELY NO              // must be NO for ship
 #define LOG_PREDICATE_RESULTS NO          // must be NO for ship
 #define TEST_APPINGTON_ON NO              // must be NO for ship (forces the voice hints switch to be shown.)
 #define LOG_ANALYTICS NO                  // must be NO for ship
