@@ -152,13 +152,7 @@
 {
     if ([self getSplitViewWithDisplayWordViewController]) { //iPad
         DisplayWordViewController *dwvc = [self getSplitViewWithDisplayWordViewController];
-        dwvc.homophonesForWord = [DD2Words homophonesForWord:self.selectedWord andWordList:self.allWordsForSpellingVariant];  //can't be set in WordView as word view doesn't know what allWordsForSpellingVariant is.
-        dwvc.word = self.selectedWord;
-        dwvc.delegate = self;
-        NSDictionary *ukusOtherWord = [DD2Words wordWithOtherSpellingVariantFrom:self.selectedWord andListOfAllWords:self.allWords variantType:nil];
-        if (self.playWordsOnSelection) {
-            [dwvc playAllWords:[DD2Words pronunciationsForWord:self.selectedWord]];
-        }
+        [self setupDwvc:dwvc foriPhone:NO];
     } else { //iPhone (passing playWordsOnSelection handled in prepare for Segue)
         [self performSegueWithIdentifier:@"Word Selected" sender:self];
     }
@@ -166,21 +160,64 @@
 
 -(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    
     //used for iphone only
     if ([segue.identifier isEqualToString:@"Word Selected"]) {
-        [segue.destinationViewController setWord:self.selectedWord];
-        [segue.destinationViewController setHomophonesForWord:[DD2Words homophonesForWord:self.selectedWord andWordList:self.allWordsForSpellingVariant]]; //can't be set in WordView as word view doesn't know what allWordsForSpellingVariant is.
-        NSDictionary *ukusOtherWord = [DD2Words wordWithOtherSpellingVariantFrom:self.selectedWord andListOfAllWords:self.allWords variantType:nil];
-        if (self.playWordsOnSelection) {
-            [segue.destinationViewController setPlayWordsOnSelection:self.playWordsOnSelection];
+        
+        if ([segue.destinationViewController isKindOfClass:[DisplayWordViewController class]]) {
+            DisplayWordViewController *dwvc = (DisplayWordViewController *)segue.destinationViewController;
+            [self setupDwvc:dwvc foriPhone:YES];
         }
+    }
+}
+
+-(void) setupDwvc:(DisplayWordViewController *)dwvc foriPhone:(BOOL)iPhone
+{
+    if ([self.selectedWord objectForKey:@"locHomophones"]) {
+        if ([self isLocHomophonesInCurrentSpellingVariantListForWordForDisplay:self.selectedWord]) {
+            dwvc.homophonesForWord = [DD2Words homophonesForWord:self.selectedWord andWordList:self.allWordsForSpellingVariant];
+        } else {
+            dwvc.homophonesForWord = [DD2Words homophonesForWord:self.selectedWord andWordList:self.allWords];
+        }
+    }
+    if ([self.selectedWord objectForKey:@"usukVariant"]) {
+        dwvc.hasOtherVariantWord = YES;
+    } else {
+        dwvc.hasOtherVariantWord = NO;
+    }
+    dwvc.word = self.selectedWord;
+    dwvc.delegate = self;
+    
+    if (self.playWordsOnSelection) {
+        if (iPhone) {
+            [dwvc setPlayWordsOnSelection:self.playWordsOnSelection];
+        } else {
+            [dwvc playAllWords:[DD2Words pronunciationsForWord:self.selectedWord]];
+        }
+    }
+    if (iPhone) {
         if (self.customBackgroundColor) {
-            [segue.destinationViewController setCustomBackgroundColor:self.customBackgroundColor];
+            [dwvc setCustomBackgroundColor:self.customBackgroundColor];
         }
         if (self.useDyslexieFont) {
-            [segue.destinationViewController setUseDyslexieFont:self.useDyslexieFont];
+            [dwvc setUseDyslexieFont:self.useDyslexieFont];
         }
-        [segue.destinationViewController setDelegate:self];
+    }
+}
+
+- (BOOL) isLocHomophonesInCurrentSpellingVariantListForWordForDisplay:(NSDictionary *)word {
+    id locHomophoneElement = [word objectForKey:@"locHomophones"];
+    NSPredicate *selectionPredicate = [NSPredicate predicateWithFormat:@"SELF.spelling = %@", locHomophoneElement];
+    if (LOG_PREDICATE_RESULTS) NSLog(@"predicate = %@", selectionPredicate);
+    if (LOG_PREDICATE_RESULTS) [DD2GlobalHelper testWordPredicate:selectionPredicate onWords:self.allWordsForSpellingVariant];
+    
+    NSArray *matches = [NSArray arrayWithArray:[self.allWordsForSpellingVariant filteredArrayUsingPredicate:selectionPredicate]];
+    
+    if ([matches count] == 0) {
+        NSLog(@"*** word not found in allWordsForSpellingVariant ***");
+        return NO;
+    } else {
+        return YES;
     }
 }
 
