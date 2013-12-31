@@ -444,7 +444,7 @@
     
 }
 
-#pragma mark - DisplayWordViewControllerDelegate method
+#pragma mark - DisplayWordViewControllerDelegate methods
 - (void)DisplayWordViewController:(DisplayWordViewController *)sender homophoneSelected:(NSDictionary *)word
 {
     NSLog(@"homonymSelected with word = %@",word);
@@ -478,6 +478,22 @@
         [self.tableView selectRowAtIndexPath:indexPathOfHomophone animated:YES scrollPosition:UITableViewScrollPositionMiddle];
         [self tableView:self.tableView didSelectRowAtIndexPath:indexPathOfHomophone];
     }
+}
+
+- (void)DisplayWordViewController:(DisplayWordViewController *)sender otherVariantSegmentedControlSelected:(NSString *)selection whileDisplayingWord:(NSDictionary *)word
+{
+    // find otherVariant word,
+    // display word
+    NSLog(@"Other Word selected show %@",selection);
+    
+    if (![self getSplitViewWithDisplayWordViewController]) { //iPhone
+        //pop old word off navigation controller
+        [self.navigationController popViewControllerAnimated:NO]; //Not animated as this is just preparing the Navigation Controller stack for the new word to be pushed on.
+    }
+    NSDictionary *wordToBeDisplayed = [DD2Words wordWithOtherSpellingVariantFrom:word andListOfAllWords:self.allWords variantType:nil];
+    self.selectedWord = wordToBeDisplayed;
+    [self displaySelectedWord];
+    
 }
 
 - (UIButton *)getAddWordButton
