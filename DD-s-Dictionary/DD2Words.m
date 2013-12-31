@@ -184,13 +184,14 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
                 }
                 
                 //processing to create a uk us Variant type for relavant words (includes a check for pronunciation files)
-                NSString *usukVariantType =@"start";
+                NSString *usukVariantType =@"new";
                 NSMutableDictionary *ukusOtherWord = [[DD2Words wordWithOtherSpellingVariantFrom:processedWord andListOfAllWords:workingAllWords variantType:&usukVariantType] mutableCopy];
                 if (ukusOtherWord) {
                     [workingAllWords removeObject:ukusOtherWord];
                     [processedWord setObject:usukVariantType forKey:@"usukVariant"];
                     [ukusOtherWord setObject:usukVariantType forKey:@"usukVariant"];
                     [workingAllWords addObject:ukusOtherWord];
+                    if (PROCESS_VERBOSELY) NSLog(@"Added %@ to %@ (%@) and %@ (%@)", usukVariantType, [processedWord objectForKey:@"spelling"], [processedWord objectForKey:@"wordVariant"], [ukusOtherWord objectForKey:@"spelling"], [ukusOtherWord objectForKey:@"wordVariant"]);
                 }
                 
                 //if (PROCESS_VERBOSELY) NSLog(@"processed word %@", processedWord);
@@ -298,27 +299,38 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
     if ([matches count] > 2) NSLog(@"*** too many matches (when looking for other spelling variants) ***");
     NSDictionary *foundWord = nil;
     for (NSDictionary *candidateWord in matches) {
-        if (![[candidateWord objectForKey:@"spelling"] isEqualToString:[word objectForKey:@"spelling"]]) {
-            if (type) *type = @"spelling";
-            foundWord = candidateWord;
-        }
-        if ([candidateWord objectForKey:@"locHomophones"] != [word objectForKey:@"locHomophones"]) {
-            if (type) *type = @"locHomophones";
-            foundWord = candidateWord;
-        }
-        if (candidateWord == word) continue;   //to avoid setting foundWord for tomatoe etc.
         
-        NSSet *pronunciations = [DD2Words pronunciationsForWord:word];
+        if (candidateWord == word) continue;   //to avoid setting foundWord for tomatoe etc.
+
+        if ([candidateWord objectForKey:@"locHomophones"] != [word objectForKey:@"locHomophones"]) {
+            if (type) [DD2Words appendText:@"locHomophones" toType:&*type];
+            foundWord = candidateWord;
+        }
+        if (![[candidateWord objectForKey:@"spelling"] isEqualToString:[word objectForKey:@"spelling"]]) {
+            if (type) [DD2Words appendText:@"spelling" toType:&*type];
+            foundWord = candidateWord;
+        }
+        
+        NSSet *pronunciations = [DD2Words pronunciationsForWord:candidateWord];
+        [pronunciations setByAddingObjectsFromSet: [DD2Words pronunciationsForWord:word]];
         for (NSString *pronunciation in pronunciations) {
             NSString *prefix = [pronunciation substringWithRange:NSMakeRange(0, 3)];
             if ([prefix isEqualToString:@"uk-"] || [prefix isEqualToString:@"us-"]) {
-                if (*type) *type = @"pronunciation";
+                if (type) [DD2Words appendText:@"pronunciation" toType:&*type];
                 foundWord = candidateWord;
             }
         }
     }
     if (PROCESS_VERBOSELY && foundWord) NSLog(@"US/UK spelling variant found %@", foundWord);
     return foundWord;
+}
+
++ (void) appendText:(NSString *)text toType:(NSString **)type {
+    if ([*type isEqualToString:@"new"]) {
+        *type = text;
+    } else {
+        *type = [NSString stringWithFormat:@"%@ %@", *type, text];
+    }
 }
 
 + (NSString *)exchangeSpacesForUnderscoresin:(NSString *)string {
