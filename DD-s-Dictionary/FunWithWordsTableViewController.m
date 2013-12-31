@@ -25,6 +25,7 @@
 @synthesize tagNames = _tagNames;
 @synthesize smallCollections = _smallCollections;
 @synthesize allWordsForSpellingVariant = _allWordsForSpellingVariant;
+@synthesize allWords = _allWords;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -344,6 +345,7 @@
             if (LOG_PREDICATE_RESULTS) [DD2GlobalHelper testWordPredicate:self.predicateForSelectedCell onWords:self.allWordsForSpellingVariant];
             
             [segue.destinationViewController setAllWordsForSpellingVariant:self.allWordsForSpellingVariant];
+            [segue.destinationViewController setAllWords:self.allWords];
             [segue.destinationViewController setTitle:cell.textLabel.text];
             [segue.destinationViewController setWordList:[NSMutableArray arrayWithArray:[self.allWordsForSpellingVariant filteredArrayUsingPredicate:self.predicateForSelectedCell]]];
         }

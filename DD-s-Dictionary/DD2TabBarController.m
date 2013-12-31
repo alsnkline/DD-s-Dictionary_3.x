@@ -157,6 +157,7 @@
                 funTable.tagNames = self.wordBrain.tagNames;
                 funTable.smallCollections = self.wordBrain.smallCollectionNames;
                 funTable.allWordsForSpellingVariant = [self.wordBrain allWordsForCurrentSpellingVariant];
+                funTable.allWords = self.wordBrain.allWords;
                 while ([nvc.viewControllers count]>1) {
                     [nvc popViewControllerAnimated:NO];
                 }
