@@ -314,10 +314,12 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
         NSSet *pronunciations = [DD2Words pronunciationsForWord:candidateWord];
         [pronunciations setByAddingObjectsFromSet: [DD2Words pronunciationsForWord:word]];
         for (NSString *pronunciation in pronunciations) {
-            NSString *prefix = [pronunciation substringWithRange:NSMakeRange(0, 3)];
-            if ([prefix isEqualToString:@"uk-"] || [prefix isEqualToString:@"us-"]) {
-                if (type) [DD2Words appendText:@"pronunciation" toType:&*type];
-                foundWord = candidateWord;
+            if ([pronunciation length] > 3) {
+                NSString *prefix = [pronunciation substringWithRange:NSMakeRange(0, 3)];
+                if ([prefix isEqualToString:@"uk-"] || [prefix isEqualToString:@"us-"]) {
+                    if (type) [DD2Words appendText:@"pronunciation" toType:&*type];
+                    foundWord = candidateWord;
+                }
             }
         }
     }
@@ -421,7 +423,7 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
         }
     }
     // don't log this if looking for missing pronunciations
-    if (!FIND_MISSING_PRONUNCIATIONS) NSLog(@"Pronunciations for %@ = %@", [word objectForKey:@"spelling"], pronunciationsStringForLog);
+    if (!FIND_MISSING_PRONUNCIATIONS && PROCESS_VERBOSELY) NSLog(@"Pronunciations for %@ = %@", [word objectForKey:@"spelling"], pronunciationsStringForLog);
     return [pronunciations copy];
 }
 
