@@ -505,12 +505,24 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
         NSLog(@"already a recent word");
         [recentWords removeObject:word];
     }
-    [recentWords insertObject:word atIndex:0];
-    if ([recentWords count] > 50) [recentWords removeLastObject];
     
-    [defaults setObject:recentWords forKey:RECENTLY_VIEWED_WORDS_KEY];
-    [defaults synchronize];
-    NSLog(@"recent word count: %d", [recentWords count]);
+    //checking to see if usukOtherWordVariant is in the list.
+    id wordElement = [word objectForKey:@"word"];
+    NSPredicate *selectionPredicate = [NSPredicate predicateWithFormat:@"SELF.word = %@", wordElement];
+    if (LOG_PREDICATE_RESULTS) NSLog(@"predicate = %@", selectionPredicate);
+    if (LOG_PREDICATE_RESULTS) [DD2GlobalHelper testWordPredicate:selectionPredicate onWords:recentWords];
+    NSArray *matches = [NSArray arrayWithArray:[recentWords filteredArrayUsingPredicate:selectionPredicate]];
+    
+    if ([matches count] > 0) {
+        NSLog(@"*** other usuk word variant already in recents not adding again ***");
+    } else {
+        [recentWords insertObject:word atIndex:0];
+        if ([recentWords count] > 50) [recentWords removeLastObject];
+        
+        [defaults setObject:recentWords forKey:RECENTLY_VIEWED_WORDS_KEY];
+        [defaults synchronize];
+        NSLog(@"recent word count: %d", [recentWords count]);
+    }
     
 }
 
