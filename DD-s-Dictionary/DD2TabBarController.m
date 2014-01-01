@@ -201,6 +201,7 @@
                 collectionTable.allWords = self.wordBrain.allWords;
                 
                 if ([collection isEqualToString:@"Recents"]) {
+                    NSLog(@"setup collection %@", collectionTitle);
                     // Recent then set word list from RecentWords
                     [self setRecentWordListForCollectionTable:collectionTable];
                     nvc.tabBarItem = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemRecents tag:1];
