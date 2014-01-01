@@ -471,7 +471,7 @@
         //pop old word off navigation controller
         [self.navigationController popViewControllerAnimated:NO]; //Not animated as this is just preparing the Navigation Controller stack for the new word to be pushed on.
     }
-    NSDictionary *wordToBeDisplayed = [DD2Words wordWithOtherSpellingVariantFrom:word andListOfAllWords:self.allWords variantType:nil];
+    NSDictionary *wordToBeDisplayed = [DD2Words wordWithOtherSpellingVariantFrom:word andListOfAllWords:self.allWords];
     self.selectedWord = wordToBeDisplayed;
     [self displaySelectedWord];
     

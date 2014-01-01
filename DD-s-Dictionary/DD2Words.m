@@ -121,96 +121,54 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
         NSMutableArray *workingTagNames = [[NSMutableArray alloc] init];
         NSMutableArray *workingAllWords = [[NSMutableArray alloc] init];
         
-        NSSet *locales = [NSSet setWithObjects:[NSString stringWithFormat:@"uk"], [NSString stringWithFormat:@"us"], nil];
-    
         for (NSDictionary *rawWord in [self.rawWords objectForKey:@"words"]) {
             if (PROCESS_VERBOSELY) NSLog(@"** start processing word **");
             
             //processing for each locale
-            for (NSString *locale in locales) {
-
-                NSMutableDictionary *processedWord = [[NSMutableDictionary alloc] initWithDictionary:rawWord];
-                [processedWord setObject:locale forKey:@"wordVariant"];
-                
-                id wordElement = [rawWord objectForKey:@"word"];
-                NSString *spelling;
-                if ([wordElement isKindOfClass:[NSString class]]) {
-                    spelling = wordElement;
-                } else if ([wordElement isKindOfClass:[NSDictionary class]]){
-                    spelling = [wordElement objectForKey:locale];
-                } else {
-                    NSLog(@"Badly formed wordElement: %@", wordElement);
+            NSMutableDictionary *ukProcessedWord = [[self processRawWord:rawWord forLocale:@"uk"] mutableCopy];
+            NSMutableDictionary *usProcessedWord = [[self processRawWord:rawWord forLocale:@"us"] mutableCopy];
+            
+            if (usProcessedWord && ukProcessedWord) {   // can only be a us/uk variation is both exsist
+                NSString *usukVariantType;
+                if ([ukProcessedWord objectForKey:@"locHomophones"] != [usProcessedWord objectForKey:@"locHomophones"]) {
+                    usukVariantType = [DD2Words appendText:@"locHomophones" toType:usukVariantType];
                 }
-                if (!spelling) continue;       // some words only have a uk variant eg cheque
-                if (PROCESS_VERBOSELY) NSLog(@"%@ (%@)", spelling, locale);
+                if (![[ukProcessedWord objectForKey:@"spelling"] isEqualToString:[usProcessedWord objectForKey:@"spelling"]]) {
+                    usukVariantType = [DD2Words appendText:@"spelling" toType:usukVariantType];
+                }
                 
-                NSString *cleanSpelling = [DD2Words exchangeUnderscoresForSpacesin:spelling];
-                [processedWord setObject:cleanSpelling forKey:@"spelling"];  //need for easy sorting
-                
-                //add doubleMetaphone codes
-                NSArray *doubleMetaphoneCodes = [DD2GlobalHelper doubleMetaphoneCodesFor:spelling];
-                [processedWord setObject:[doubleMetaphoneCodes objectAtIndex:0] forKey:@"doubleMphonePrimary"];
-                if ([doubleMetaphoneCodes count]>1) [processedWord setObject:[doubleMetaphoneCodes objectAtIndex:1] forKey:@"doubleMphoneAlt"];
-                
-                //adding section for easy table creation
-                NSString *section = [[cleanSpelling substringToIndex:1] uppercaseString];
-                [processedWord setObject:section forKey:@"section"];
-                
-                //processing for homophones
-                id homophonesElement = [rawWord objectForKey:@"homophones"];
-                if (homophonesElement) {        //only process if word has homophones
-                    id locHomophones;
-                    if ([homophonesElement isKindOfClass:[NSArray class]]) {
-                        locHomophones = homophonesElement;
-                        
-                    } else if ([homophonesElement isKindOfClass:[NSDictionary class]]) {
-                        NSDictionary *homophonesElementDictionary = (NSDictionary *)homophonesElement;
-                        
-                        if ([[rawWord objectForKey:@"pronunciations"] count] >1) {
-                            if (PROCESS_VERBOSELY) NSLog(@"%@ is a heteronym with homophones", spelling);       //eg read
-                            locHomophones = homophonesElementDictionary;
-                        } else {
-                            locHomophones = [homophonesElementDictionary objectForKey:locale];
+                NSSet *pronunciations = [DD2Words pronunciationsForWord:usProcessedWord];
+                [pronunciations setByAddingObjectsFromSet: [DD2Words pronunciationsForWord:ukProcessedWord]];
+                for (NSString *pronunciation in pronunciations) {
+                    if ([pronunciation length] > 3) {
+                        NSString *prefix = [pronunciation substringWithRange:NSMakeRange(0, 3)];
+                        if ([prefix isEqualToString:@"uk-"] || [prefix isEqualToString:@"us-"]) {
+                            usukVariantType = [DD2Words appendText:@"pronunciation" toType:usukVariantType];
                         }
-                    } else {
-                        NSLog(@"Badly formed homophoneElement or no homophones");
-                    }
-                    if (locHomophones) {
-                        [processedWord setObject:locHomophones forKey:@"locHomophones"];
-                        if (PROCESS_VERBOSELY) NSLog(@"locHomophones (%@) = %@", locale, locHomophones);
-                    } else {
-                        if (PROCESS_VERBOSELY) NSLog(@"no locHomophones for %@ %@", spelling, locale);      // needed where locHomophones only exsit in one locale eg buoy (uk:boy)
                     }
                 }
+                if (usukVariantType && PROCESS_VERBOSELY) NSLog(@"US UK variant = %@", usukVariantType);
+                if (usukVariantType) [usProcessedWord setObject:usukVariantType forKey:@"usukVariant"];     // only add if there is a variant type
+                if (usukVariantType) [ukProcessedWord setObject:usukVariantType forKey:@"usukVariant"];
                 
-                //processing to create a uk us Variant type for relavant words (includes a check for pronunciation files)
-                NSString *usukVariantType =@"new";
-                NSMutableDictionary *ukusOtherWord = [[DD2Words wordWithOtherSpellingVariantFrom:processedWord andListOfAllWords:workingAllWords variantType:&usukVariantType] mutableCopy];
-                if (ukusOtherWord) {
-                    [workingAllWords removeObject:ukusOtherWord];
-                    [processedWord setObject:usukVariantType forKey:@"usukVariant"];
-                    [ukusOtherWord setObject:usukVariantType forKey:@"usukVariant"];
-                    [workingAllWords addObject:ukusOtherWord];
-                    if (PROCESS_VERBOSELY) NSLog(@"Added %@ to %@ (%@) and %@ (%@)", usukVariantType, [processedWord objectForKey:@"spelling"], [processedWord objectForKey:@"wordVariant"], [ukusOtherWord objectForKey:@"spelling"], [ukusOtherWord objectForKey:@"wordVariant"]);
-                }
-                
-                //if (PROCESS_VERBOSELY) NSLog(@"processed word %@", processedWord);
-                //processing for all words
-                [workingAllWords addObject:processedWord];
-                
+                if (PROCESS_VERBOSELY) NSLog(@"Added %@ to %@ (%@) and %@ (%@)", usukVariantType, [ukProcessedWord objectForKey:@"spelling"], [ukProcessedWord objectForKey:@"wordVariant"], [usProcessedWord objectForKey:@"spelling"], [usProcessedWord objectForKey:@"wordVariant"]);
             }
             
-            //processing collections on each word
+            if (usProcessedWord) [workingAllWords addObject:usProcessedWord];
+            if (ukProcessedWord) [workingAllWords addObject:ukProcessedWord];
+            
+            
+            //processing collections on raw word
             NSMutableArray *collections = [NSMutableArray arrayWithArray:[rawWord objectForKey:@"collections"]];
             for (NSString *collection in collections) {
                 if (![workingCollectionNames containsObject:collection]) [workingCollectionNames addObject:collection];
             }
             
-            //processing Small Collections on each word
+            //processing Small Collections on raw word
             NSString *smallCollection = [rawWord objectForKey:@"small_collection"];
             if (smallCollection && ![workingSmallCollectionNames containsObject:smallCollection]) [workingSmallCollectionNames addObject:smallCollection];
                                           
-            //processing Tags on each word (ignoring locale as no tagged words have a spelling variations will endup with all UK words)
+            //processing Tags on raw word (ignoring locale as no tagged words have a spelling variations will endup with all UK words)
             NSArray *tags = [rawWord objectForKey:@"tags"];
             for (NSString *tag in tags) {
                 if (![workingTagNames containsObject:tag]) [workingTagNames addObject:tag];
@@ -229,6 +187,71 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
     }
     
     return _processedWords;
+}
+
+- (NSDictionary *) processRawWord:(NSDictionary *)rawWord forLocale:(NSString *)locale
+{
+    NSMutableDictionary *processedWord = [[NSMutableDictionary alloc] initWithDictionary:rawWord];
+    [processedWord setObject:locale forKey:@"wordVariant"];
+    
+    id wordElement = [rawWord objectForKey:@"word"];
+    NSString *spelling;
+    if ([wordElement isKindOfClass:[NSString class]]) {
+        spelling = wordElement;
+    } else if ([wordElement isKindOfClass:[NSDictionary class]]){
+        spelling = [wordElement objectForKey:locale];
+    } else {
+        NSLog(@"Badly formed wordElement: %@", wordElement);
+    }
+    if (!spelling) processedWord = nil;       // some words only have a uk variant eg cheque
+    if (PROCESS_VERBOSELY) NSLog(@"%@ (%@)", spelling, locale);
+    
+    if (processedWord) {            // only continue processing if a variant exsists for this locale
+        
+        NSString *cleanSpelling = [DD2Words exchangeUnderscoresForSpacesin:spelling];
+        [processedWord setObject:cleanSpelling forKey:@"spelling"];  //need for easy sorting
+        
+        //add doubleMetaphone codes
+        NSArray *doubleMetaphoneCodes = [DD2GlobalHelper doubleMetaphoneCodesFor:spelling];
+        [processedWord setObject:[doubleMetaphoneCodes objectAtIndex:0] forKey:@"doubleMphonePrimary"];
+        if ([doubleMetaphoneCodes count]>1) [processedWord setObject:[doubleMetaphoneCodes objectAtIndex:1] forKey:@"doubleMphoneAlt"];
+        
+        //adding section for easy table creation
+        NSString *section = [[cleanSpelling substringToIndex:1] uppercaseString];
+        [processedWord setObject:section forKey:@"section"];
+        
+        //processing for homophones
+        id homophonesElement = [rawWord objectForKey:@"homophones"];
+        if (homophonesElement) {        //only process if word has homophones
+            id locHomophones;
+            if ([homophonesElement isKindOfClass:[NSArray class]]) {
+                locHomophones = homophonesElement;
+                
+            } else if ([homophonesElement isKindOfClass:[NSDictionary class]]) {
+                NSDictionary *homophonesElementDictionary = (NSDictionary *)homophonesElement;
+                
+                if ([[rawWord objectForKey:@"pronunciations"] count] >1) {
+                    if (PROCESS_VERBOSELY) NSLog(@"%@ is a heteronym with homophones", spelling);       //eg read
+                    locHomophones = homophonesElementDictionary;
+                } else {
+                    locHomophones = [homophonesElementDictionary objectForKey:locale];
+                }
+            } else {
+                NSLog(@"Badly formed homophoneElement or no homophones");
+            }
+            if (locHomophones) {
+                [processedWord setObject:locHomophones forKey:@"locHomophones"];
+                if (PROCESS_VERBOSELY) NSLog(@"locHomophones (%@) = %@", locale, locHomophones);
+            } else {
+                if (PROCESS_VERBOSELY) NSLog(@"no locHomophones for %@ %@", spelling, locale);      // needed where locHomophones only exsit in one locale eg buoy (uk:boy)
+            }
+        }
+    }
+    
+    //if (PROCESS_VERBOSELY) NSLog(@"processed word %@", processedWord);
+    //processing for all words
+    
+    return processedWord;
 }
 
 - (void) logAnyDuplicateWordsIn:(NSArray *)wordList{
@@ -289,8 +312,9 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
     }
 }
 
-+ (NSDictionary *) wordWithOtherSpellingVariantFrom:(NSDictionary *)word andListOfAllWords:(NSArray *)allWords variantType:(NSString **)type {
++ (NSDictionary *) wordWithOtherSpellingVariantFrom:(NSDictionary *)word andListOfAllWords:(NSArray *)allWords {
     id wordElement = [word objectForKey:@"word"];
+    
     NSPredicate *selectionPredicate = [NSPredicate predicateWithFormat:@"SELF.word = %@", wordElement];
     if (LOG_PREDICATE_RESULTS) NSLog(@"predicate = %@", selectionPredicate);
     if (LOG_PREDICATE_RESULTS) [DD2GlobalHelper testWordPredicate:selectionPredicate onWords:allWords];
@@ -303,11 +327,9 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
         if (candidateWord == word) continue;   //to avoid setting foundWord for tomatoe etc.
 
         if ([candidateWord objectForKey:@"locHomophones"] != [word objectForKey:@"locHomophones"]) {
-            if (type) [DD2Words appendText:@"locHomophones" toType:&*type];
             foundWord = candidateWord;
         }
         if (![[candidateWord objectForKey:@"spelling"] isEqualToString:[word objectForKey:@"spelling"]]) {
-            if (type) [DD2Words appendText:@"spelling" toType:&*type];
             foundWord = candidateWord;
         }
         
@@ -317,7 +339,6 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
             if ([pronunciation length] > 3) {
                 NSString *prefix = [pronunciation substringWithRange:NSMakeRange(0, 3)];
                 if ([prefix isEqualToString:@"uk-"] || [prefix isEqualToString:@"us-"]) {
-                    if (type) [DD2Words appendText:@"pronunciation" toType:&*type];
                     foundWord = candidateWord;
                 }
             }
@@ -327,12 +348,14 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
     return foundWord;
 }
 
-+ (void) appendText:(NSString *)text toType:(NSString **)type {
-    if ([*type isEqualToString:@"new"]) {
-        *type = text;
++ (NSString *) appendText:(NSString *)text toType:(NSString *)type {
+    NSString *result;
+    if (!type) {
+        result = text;
     } else {
-        *type = [NSString stringWithFormat:@"%@ %@", *type, text];
+        result = [NSString stringWithFormat:@"%@ %@", type, text];
     }
+    return result;
 }
 
 + (NSString *)exchangeSpacesForUnderscoresin:(NSString *)string {
@@ -517,7 +540,7 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
         [recentWords removeObject:word];
     }
     
-    //checking to see if usukOtherWordVariant is in the list.
+    //checking to see if usukOtherWordVariant is in the list (if wordVariant was the same it would already have been removed).
     id wordElement = [word objectForKey:@"word"];
     NSPredicate *selectionPredicate = [NSPredicate predicateWithFormat:@"SELF.word = %@", wordElement];
     if (LOG_PREDICATE_RESULTS) NSLog(@"predicate = %@", selectionPredicate);
@@ -525,7 +548,7 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
     NSArray *matches = [NSArray arrayWithArray:[recentWords filteredArrayUsingPredicate:selectionPredicate]];
     
     if ([matches count] > 0) {
-        NSLog(@"*** other usuk word variant already in recents not adding again ***");
+        NSLog(@"other usuk word variant already in recents not adding again");
     } else {
         [recentWords insertObject:word atIndex:0];
         if ([recentWords count] > 50) [recentWords removeLastObject];
