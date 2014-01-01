@@ -376,9 +376,9 @@
     NSArray *sortedWordList = [workingWordList sortedArrayUsingDescriptors:[NSArray arrayWithObject:sortByLD]];
     [sortedWordList makeObjectsPerformSelector:@selector(removeObjectForKey:) withObject:@"LD"];
     
-    NSLog(@"sorted Word List LD < %i search = %@", LDcutOff, searchText);
+    if (LOG_MORE) NSLog(@"sorted Word List LD < %i search = %@", LDcutOff, searchText);
     for (NSDictionary *word in sortedWordList) {
-        NSLog(@"%@ LD = %@", word[@"spelling"], word[@"LD"]);
+       if (LOG_MORE) NSLog(@"%@ LD = %@", word[@"spelling"], word[@"LD"]);
     }
     [wordList addObjectsFromArray:sortedWordList];
 }
