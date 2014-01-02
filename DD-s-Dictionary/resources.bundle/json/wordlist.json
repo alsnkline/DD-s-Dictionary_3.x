@@ -312,7 +312,7 @@
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "animals", 
+            "small_collection": "Animals", 
             "word": "alligator"
         }, 
         {
@@ -438,7 +438,7 @@
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "countries", 
+            "small_collection": "Countries", 
             "word": "America"
         }, 
         {
@@ -719,7 +719,7 @@
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "months", 
+            "small_collection": "Months", 
             "word": "April"
         }, 
         {
@@ -907,7 +907,7 @@
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "months", 
+            "small_collection": "Months", 
             "word": "August"
         }, 
         {
@@ -917,7 +917,7 @@
             "homophones": [
                 "ant"
             ], 
-            "small_collection": "family", 
+            "small_collection": "Family", 
             "word": "aunt"
         }, 
         {
@@ -930,7 +930,7 @@
             "collections": [
                 "more_words"
             ], 
-            "small_collection": "countries", 
+            "small_collection": "Countries", 
             "word": "Australia"
         }, 
         {
@@ -955,7 +955,7 @@
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "Time_of_the_year", 
+            "small_collection": "Times_of_the_year", 
             "word": "autumn"
         }, 
         {
@@ -1023,7 +1023,7 @@
             "collections": [
                 "more_words"
             ], 
-            "small_collection": "directions", 
+            "small_collection": "Directions", 
             "word": "backward"
         }, 
         {
@@ -1031,7 +1031,7 @@
                 "more_words"
             ], 
             "infinitive_root": "backward", 
-            "small_collection": "directions", 
+            "small_collection": "Directions", 
             "word": "backwards"
         }, 
         {
@@ -1065,7 +1065,7 @@
             "collections": [
                 "more_words"
             ], 
-            "small_collection": "animals", 
+            "small_collection": "Animals", 
             "word": "bald_eagle"
         }, 
         {
@@ -1189,7 +1189,7 @@
             "collections": [
                 "more_words"
             ], 
-            "small_collection": "animals", 
+            "small_collection": "Animals", 
             "word": "bat"
         }, 
         {
@@ -1237,7 +1237,7 @@
             "homophones": [
                 "bare"
             ], 
-            "small_collection": "animals", 
+            "small_collection": "Animals", 
             "word": "bear"
         }, 
         {
@@ -1256,7 +1256,7 @@
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "animals", 
+            "small_collection": "Animals", 
             "word": "beaver"
         }, 
         {
@@ -1299,7 +1299,7 @@
             "homophones": [
                 "be"
             ], 
-            "small_collection": "animals", 
+            "small_collection": "Animals", 
             "word": "bee"
         }, 
         {
@@ -1529,7 +1529,7 @@
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "colors", 
+            "small_collection": "Colors", 
             "word": "black"
         }, 
         {
@@ -1626,7 +1626,7 @@
             "homophones": [
                 "blew"
             ], 
-            "small_collection": "colors", 
+            "small_collection": "Colors", 
             "word": "blue"
         }, 
         {
@@ -1873,7 +1873,7 @@
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "family", 
+            "small_collection": "Family", 
             "tags": [
                 "'ther'"
             ], 
@@ -1892,7 +1892,7 @@
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "colors", 
+            "small_collection": "Colors", 
             "word": "brown"
         }, 
         {
@@ -2090,7 +2090,7 @@
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "animals", 
+            "small_collection": "Animals", 
             "word": "butterfly"
         }, 
         {
@@ -2175,7 +2175,7 @@
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "animals", 
+            "small_collection": "Animals", 
             "word": "camel"
         }, 
         {
@@ -2206,7 +2206,7 @@
             "collections": [
                 "more_words"
             ], 
-            "small_collection": "countries", 
+            "small_collection": "Countries", 
             "word": "Canada"
         }, 
         {
@@ -2318,7 +2318,7 @@
             "collections": [
                 "more_words"
             ], 
-            "small_collection": "countries", 
+            "small_collection": "Countries", 
             "word": "Caribbean"
         }, 
         {
@@ -2371,7 +2371,7 @@
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "animals", 
+            "small_collection": "Animals", 
             "word": "cat"
         }, 
         {
@@ -2408,7 +2408,7 @@
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "animals", 
+            "small_collection": "Animals", 
             "word": "caterpillar"
         }, 
         {
@@ -2576,7 +2576,7 @@
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "animals", 
+            "small_collection": "Animals", 
             "word": "chimpanzee"
         }, 
         {
@@ -2619,6 +2619,7 @@
             "homophones": [
                 "Xmas1"
             ], 
+            "small_collection": "Times_of_the_year", 
             "word": "Christmas"
         }, 
         {
@@ -3095,7 +3096,7 @@
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "family", 
+            "small_collection": "Family", 
             "word": "cousin"
         }, 
         {
@@ -3108,7 +3109,7 @@
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "animals", 
+            "small_collection": "Animals", 
             "word": "cow"
         }, 
         {
@@ -3265,28 +3266,28 @@
             "collections": [
                 "hard_words"
             ], 
-            "small_collection": "countries", 
+            "small_collection": "Countries", 
             "word": "Czech_Republic"
         }, 
         {
             "collections": [
                 "hard_words"
             ], 
-            "small_collection": "countries", 
+            "small_collection": "Countries", 
             "word": "Czechoslovakia"
         }, 
         {
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "family", 
+            "small_collection": "Family", 
             "word": "dad"
         }, 
         {
             "collections": [
                 "more_words"
             ], 
-            "small_collection": "family", 
+            "small_collection": "Family", 
             "word": "daddy"
         }, 
         {
@@ -3390,7 +3391,7 @@
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "months", 
+            "small_collection": "Months", 
             "word": "December"
         }, 
         {
@@ -3430,7 +3431,7 @@
             "homophones": [
                 "dear"
             ], 
-            "small_collection": "animals", 
+            "small_collection": "Animals", 
             "word": "deer"
         }, 
         {
@@ -3634,7 +3635,7 @@
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "animals", 
+            "small_collection": "Animals", 
             "word": "dinosaur"
         }, 
         {
@@ -3794,7 +3795,7 @@
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "animals", 
+            "small_collection": "Animals", 
             "word": "dog"
         }, 
         {
@@ -3802,7 +3803,7 @@
                 "first_words"
             ], 
             "infinitive_root": "dog", 
-            "small_collection": "animals", 
+            "small_collection": "Animals", 
             "word": "dogs"
         }, 
         {
@@ -3827,7 +3828,7 @@
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "animals", 
+            "small_collection": "Animals", 
             "word": "dolphin"
         }, 
         {
@@ -3846,7 +3847,7 @@
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "animals", 
+            "small_collection": "Animals", 
             "word": "donkey"
         }, 
         {
@@ -3896,7 +3897,7 @@
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "directions", 
+            "small_collection": "Directions", 
             "word": "down"
         }, 
         {
@@ -3918,7 +3919,7 @@
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "animals", 
+            "small_collection": "Animals", 
             "word": "dragon"
         }, 
         {
@@ -4009,7 +4010,7 @@
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "animals", 
+            "small_collection": "Animals", 
             "word": "duck"
         }, 
         {
@@ -4046,7 +4047,7 @@
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "animals", 
+            "small_collection": "Animals", 
             "word": "eagle"
         }, 
         {
@@ -4071,7 +4072,7 @@
             "homophones": [
                 "earth"
             ], 
-            "small_collection": "planets", 
+            "small_collection": "Planets", 
             "word": "Earth"
         }, 
         {
@@ -4084,13 +4085,14 @@
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "directions", 
+            "small_collection": "Directions", 
             "word": "east"
         }, 
         {
             "collections": [
                 "more_words"
             ], 
+            "small_collection": "Times_of_the_year", 
             "word": "Easter"
         }, 
         {
@@ -4180,7 +4182,7 @@
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "countries", 
+            "small_collection": "Countries", 
             "word": "Egypt"
         }, 
         {
@@ -4190,7 +4192,7 @@
             "homophones": [
                 "ate"
             ], 
-            "small_collection": "numbers", 
+            "small_collection": "Numbers", 
             "tags": [
                 "'ight_(ate)'"
             ], 
@@ -4200,7 +4202,7 @@
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "numbers", 
+            "small_collection": "Numbers", 
             "tags": [
                 "'ight_(ate)'"
             ], 
@@ -4210,7 +4212,7 @@
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "numbers", 
+            "small_collection": "Numbers", 
             "tags": [
                 "'ight_(ate)'"
             ], 
@@ -4244,14 +4246,14 @@
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "animals", 
+            "small_collection": "Animals", 
             "word": "elephant"
         }, 
         {
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "numbers", 
+            "small_collection": "Numbers", 
             "word": "eleven"
         }, 
         {
@@ -4341,7 +4343,7 @@
             "collections": [
                 "more_words"
             ], 
-            "small_collection": "countries", 
+            "small_collection": "Countries", 
             "tags": [
                 "'and'"
             ], 
@@ -4753,6 +4755,7 @@
             "collections": [
                 "first_words"
             ], 
+            "small_collection": "Times_of_the_year", 
             "word": "fall"
         }, 
         {
@@ -4847,6 +4850,7 @@
             "collections": [
                 "first_words"
             ], 
+            "small_collection": "Family", 
             "tags": [
                 "'ther'"
             ], 
@@ -4862,7 +4866,7 @@
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "months", 
+            "small_collection": "Months", 
             "word": "February"
         }, 
         {
@@ -4923,14 +4927,14 @@
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "numbers", 
+            "small_collection": "Numbers", 
             "word": "fifteen"
         }, 
         {
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "numbers", 
+            "small_collection": "Numbers", 
             "word": "fifty"
         }, 
         {
@@ -5006,7 +5010,7 @@
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "animals", 
+            "small_collection": "Animals", 
             "word": "fish"
         }, 
         {
@@ -5025,7 +5029,7 @@
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "numbers", 
+            "small_collection": "Numbers", 
             "word": "five"
         }, 
         {
@@ -5038,7 +5042,7 @@
             "collections": [
                 "more_words"
             ], 
-            "small_collection": "animals", 
+            "small_collection": "Animals", 
             "word": "flamingo"
         }, 
         {
@@ -5129,7 +5133,7 @@
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "animals", 
+            "small_collection": "Animals", 
             "word": "foal"
         }, 
         {
@@ -5242,14 +5246,14 @@
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "numbers", 
+            "small_collection": "Numbers", 
             "word": "forty"
         }, 
         {
             "collections": [
                 "more_words"
             ], 
-            "small_collection": "directions", 
+            "small_collection": "Directions", 
             "word": "forward"
         }, 
         {
@@ -5257,7 +5261,7 @@
                 "more_words"
             ], 
             "infinitive_root": "forward", 
-            "small_collection": "directions", 
+            "small_collection": "Directions", 
             "word": "forwards"
         }, 
         {
@@ -5282,14 +5286,14 @@
             "homophones": [
                 "for"
             ], 
-            "small_collection": "numbers", 
+            "small_collection": "Numbers", 
             "word": "four"
         }, 
         {
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "numbers", 
+            "small_collection": "Numbers", 
             "word": "fourteen"
         }, 
         {
@@ -5326,7 +5330,7 @@
             "collections": [
                 "more_words"
             ], 
-            "small_collection": "countries", 
+            "small_collection": "Countries", 
             "word": "France"
         }, 
         {
@@ -5412,7 +5416,7 @@
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "animals", 
+            "small_collection": "Animals", 
             "word": "frog"
         }, 
         {
@@ -5596,7 +5600,7 @@
             "collections": [
                 "more_words"
             ], 
-            "small_collection": "countries", 
+            "small_collection": "Countries", 
             "word": "Germany"
         }, 
         {
@@ -5652,7 +5656,7 @@
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "animals", 
+            "small_collection": "Animals", 
             "word": "giraffe"
         }, 
         {
@@ -5725,7 +5729,7 @@
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "animals", 
+            "small_collection": "Animals", 
             "word": "goat"
         }, 
         {
@@ -5765,7 +5769,7 @@
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "animals", 
+            "small_collection": "Animals", 
             "tags": [
                 "'oo'"
             ], 
@@ -5784,7 +5788,7 @@
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "animals", 
+            "small_collection": "Animals", 
             "word": "gorilla"
         }, 
         {
@@ -5824,7 +5828,7 @@
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "family", 
+            "small_collection": "Family", 
             "tags": [
                 "'ther'", 
                 "'and'"
@@ -5835,7 +5839,7 @@
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "family", 
+            "small_collection": "Family", 
             "tags": [
                 "'and'"
             ], 
@@ -5845,7 +5849,7 @@
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "family", 
+            "small_collection": "Family", 
             "tags": [
                 "'ther'", 
                 "'and'"
@@ -5856,7 +5860,7 @@
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "family", 
+            "small_collection": "Family", 
             "tags": [
                 "'and'"
             ], 
@@ -5896,7 +5900,7 @@
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "colors", 
+            "small_collection": "Colors", 
             "word": "gray"
         }, 
         {
@@ -5909,7 +5913,7 @@
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "countries", 
+            "small_collection": "Countries", 
             "tags": [
                 "'ain'"
             ], 
@@ -5919,7 +5923,7 @@
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "colors", 
+            "small_collection": "Colors", 
             "word": "green"
         }, 
         {
@@ -6397,7 +6401,7 @@
                 "first_words", 
                 "hard_words"
             ], 
-            "small_collection": "animals", 
+            "small_collection": "Animals", 
             "word": "hippopotamus"
         }, 
         {
@@ -6501,7 +6505,7 @@
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "animals", 
+            "small_collection": "Animals", 
             "word": "horse"
         }, 
         {
@@ -6600,6 +6604,7 @@
             "collections": [
                 "first_words"
             ], 
+            "small_collection": "Numbers", 
             "word": "hundred"
         }, 
         {
@@ -6636,7 +6641,7 @@
             "collections": [
                 "more_words"
             ], 
-            "small_collection": "family", 
+            "small_collection": "Family", 
             "word": "husband"
         }, 
         {
@@ -6865,7 +6870,7 @@
             "collections": [
                 "more_words"
             ], 
-            "small_collection": "colors", 
+            "small_collection": "Colors", 
             "word": "indigo"
         }, 
         {
@@ -6911,7 +6916,7 @@
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "animals", 
+            "small_collection": "Animals", 
             "word": "insect"
         }, 
         {
@@ -6991,7 +6996,7 @@
             "collections": [
                 "more_words"
             ], 
-            "small_collection": "countries", 
+            "small_collection": "Countries", 
             "tags": [
                 "'and'"
             ], 
@@ -7082,7 +7087,7 @@
             "collections": [
                 "more_words"
             ], 
-            "small_collection": "countries", 
+            "small_collection": "Countries", 
             "word": "Italy"
         }, 
         {
@@ -7110,7 +7115,7 @@
             "collections": [
                 "more_words"
             ], 
-            "small_collection": "animals", 
+            "small_collection": "Animals", 
             "word": "jaguar"
         }, 
         {
@@ -7123,7 +7128,7 @@
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "months", 
+            "small_collection": "Months", 
             "word": "January"
         }, 
         {
@@ -7196,7 +7201,7 @@
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "months", 
+            "small_collection": "Months", 
             "word": "July"
         }, 
         {
@@ -7213,7 +7218,7 @@
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "months", 
+            "small_collection": "Months", 
             "word": "June"
         }, 
         {
@@ -7226,7 +7231,7 @@
             "collections": [
                 "more_words"
             ], 
-            "small_collection": "planets", 
+            "small_collection": "Planets", 
             "word": "Jupiter"
         }, 
         {
@@ -7239,7 +7244,7 @@
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "animals", 
+            "small_collection": "Animals", 
             "tags": [
                 "'oo'"
             ], 
@@ -7330,14 +7335,14 @@
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "animals", 
+            "small_collection": "Animals", 
             "word": "kitten"
         }, 
         {
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "animals", 
+            "small_collection": "Animals", 
             "word": "kitty"
         }, 
         {
@@ -7443,14 +7448,14 @@
             "collections": [
                 "more_words"
             ], 
-            "small_collection": "animals", 
+            "small_collection": "Animals", 
             "word": "ladybird"
         }, 
         {
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "animals", 
+            "small_collection": "Animals", 
             "word": "lamb"
         }, 
         {
@@ -7611,7 +7616,7 @@
                 "first_words"
             ], 
             "infinitive_root": "leave", 
-            "small_collection": "directions", 
+            "small_collection": "Directions", 
             "word": "left"
         }, 
         {
@@ -7630,7 +7635,7 @@
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "animals", 
+            "small_collection": "Animals", 
             "word": "leopard"
         }, 
         {
@@ -7739,7 +7744,7 @@
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "animals", 
+            "small_collection": "Animals", 
             "word": "lion"
         }, 
         {
@@ -7786,7 +7791,7 @@
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "animals", 
+            "small_collection": "Animals", 
             "word": "lizard"
         }, 
         {
@@ -8011,10 +8016,22 @@
             "collections": [
                 "more_words"
             ], 
+            "homophones": [
+                "mane"
+            ], 
             "tags": [
                 "'ain'"
             ], 
             "word": "main"
+        }, 
+        {
+            "collections": [
+                "more_words"
+            ], 
+            "homophones": [
+                "main"
+            ], 
+            "word": "mane"
         }, 
         {
             "collections": [
@@ -8104,7 +8121,7 @@
             "homophones": [
                 "march"
             ], 
-            "small_collection": "months", 
+            "small_collection": "Months", 
             "word": "March"
         }, 
         {
@@ -8129,7 +8146,7 @@
             "collections": [
                 "more_words"
             ], 
-            "small_collection": "planets", 
+            "small_collection": "Planets", 
             "word": "Mars"
         }, 
         {
@@ -8169,7 +8186,7 @@
             "homophones": [
                 "may"
             ], 
-            "small_collection": "months", 
+            "small_collection": "Months", 
             "word": "May"
         }, 
         {
@@ -8289,7 +8306,7 @@
             "collections": [
                 "more_words"
             ], 
-            "small_collection": "planets", 
+            "small_collection": "Planets", 
             "word": "Mercury"
         }, 
         {
@@ -8515,7 +8532,7 @@
             "collections": [
                 "more_words"
             ], 
-            "small_collection": "animals", 
+            "small_collection": "Animals", 
             "word": "moose"
         }, 
         {
@@ -8550,7 +8567,7 @@
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "family", 
+            "small_collection": "Family", 
             "tags": [
                 "'ther'"
             ], 
@@ -8650,7 +8667,7 @@
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "animals", 
+            "small_collection": "Animals", 
             "word": "mule"
         }, 
         {
@@ -8797,7 +8814,7 @@
             "collections": [
                 "more_words"
             ], 
-            "small_collection": "planets", 
+            "small_collection": "Planets", 
             "word": "Neptune"
         }, 
         {
@@ -8829,7 +8846,7 @@
             "collections": [
                 "more_words"
             ], 
-            "small_collection": "countries", 
+            "small_collection": "Countries", 
             "tags": [
                 "'and'"
             ], 
@@ -8879,21 +8896,21 @@
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "numbers", 
+            "small_collection": "Numbers", 
             "word": "nine"
         }, 
         {
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "numbers", 
+            "small_collection": "Numbers", 
             "word": "nineteen"
         }, 
         {
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "numbers", 
+            "small_collection": "Numbers", 
             "word": "ninety"
         }, 
         {
@@ -8946,14 +8963,14 @@
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "directions", 
+            "small_collection": "Directions", 
             "word": "north"
         }, 
         {
             "collections": [
                 "more_words"
             ], 
-            "small_collection": "countries", 
+            "small_collection": "Countries", 
             "tags": [
                 "'and'"
             ], 
@@ -9021,7 +9038,7 @@
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "months", 
+            "small_collection": "Months", 
             "word": "November"
         }, 
         {
@@ -9114,14 +9131,14 @@
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "months", 
+            "small_collection": "Months", 
             "word": "October"
         }, 
         {
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "animals", 
+            "small_collection": "Animals", 
             "word": "octopus"
         }, 
         {
@@ -9204,7 +9221,7 @@
             "homophones": [
                 "won"
             ], 
-            "small_collection": "numbers", 
+            "small_collection": "Numbers", 
             "word": "one"
         }, 
         {
@@ -9235,7 +9252,7 @@
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "colors", 
+            "small_collection": "Colors", 
             "word": "orange"
         }, 
         {
@@ -9291,7 +9308,7 @@
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "animals", 
+            "small_collection": "Animals", 
             "word": "otter"
         }, 
         {
@@ -9331,7 +9348,7 @@
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "animals", 
+            "small_collection": "Animals", 
             "word": "owl"
         }, 
         {
@@ -9414,7 +9431,7 @@
             "collections": [
                 "more_words"
             ], 
-            "small_collection": "animals", 
+            "small_collection": "Animals", 
             "tags": [
                 "'and'"
             ], 
@@ -9466,7 +9483,7 @@
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "animals", 
+            "small_collection": "Animals", 
             "word": "parrot"
         }, 
         {
@@ -9479,7 +9496,7 @@
             "collections": [
                 "more_words"
             ], 
-            "small_collection": "family", 
+            "small_collection": "Family", 
             "word": "partner"
         }, 
         {
@@ -9742,7 +9759,7 @@
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "animals", 
+            "small_collection": "Animals", 
             "word": "pig"
         }, 
         {
@@ -9773,7 +9790,7 @@
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "colors", 
+            "small_collection": "Colors", 
             "word": "pink"
         }, 
         {
@@ -9921,7 +9938,7 @@
             "collections": [
                 "more_words"
             ], 
-            "small_collection": "planets", 
+            "small_collection": "Planets", 
             "word": "Pluto"
         }, 
         {
@@ -10043,7 +10060,7 @@
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "animals", 
+            "small_collection": "Animals", 
             "word": "porcupine"
         }, 
         {
@@ -10068,7 +10085,7 @@
             "collections": [
                 "more_words"
             ], 
-            "small_collection": "countries", 
+            "small_collection": "Countries", 
             "word": "Portugal"
         }, 
         {
@@ -10405,7 +10422,7 @@
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "colors", 
+            "small_collection": "Colors", 
             "word": "purple"
         }, 
         {
@@ -10520,14 +10537,14 @@
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "animals", 
+            "small_collection": "Animals", 
             "word": "rabbit"
         }, 
         {
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "animals", 
+            "small_collection": "Animals", 
             "tags": [
                 "'oo'"
             ], 
@@ -10589,7 +10606,7 @@
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "animals", 
+            "small_collection": "Animals", 
             "word": "rat"
         }, 
         {
@@ -10704,7 +10721,7 @@
             "homophones": [
                 "read2"
             ], 
-            "small_collection": "colors", 
+            "small_collection": "Colors", 
             "word": "red"
         }, 
         {
@@ -10778,14 +10795,14 @@
             "collections": [
                 "more_words"
             ], 
-            "small_collection": "animals", 
+            "small_collection": "Animals", 
             "word": "reindeer"
         }, 
         {
             "collections": [
                 "more_words"
             ], 
-            "small_collection": "family", 
+            "small_collection": "Family", 
             "word": "relative"
         }, 
         {
@@ -10904,7 +10921,7 @@
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "animals", 
+            "small_collection": "Animals", 
             "word": "rhinoceros"
         }, 
         {
@@ -10932,7 +10949,7 @@
             "homophones": [
                 "write"
             ], 
-            "small_collection": "directions", 
+            "small_collection": "Directions", 
             "tags": [
                 "'ight'"
             ], 
@@ -10976,7 +10993,7 @@
             "collections": [
                 "more_words"
             ], 
-            "small_collection": "animals", 
+            "small_collection": "Animals", 
             "word": "robin"
         }, 
         {
@@ -11216,7 +11233,7 @@
             "collections": [
                 "more_words"
             ], 
-            "small_collection": "planets", 
+            "small_collection": "Planets", 
             "word": "Saturn"
         }, 
         {
@@ -11315,7 +11332,7 @@
             "collections": [
                 "more_words"
             ], 
-            "small_collection": "countries", 
+            "small_collection": "Countries", 
             "tags": [
                 "'and'"
             ], 
@@ -11444,7 +11461,7 @@
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "months", 
+            "small_collection": "Months", 
             "word": "September"
         }, 
         {
@@ -11484,21 +11501,21 @@
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "numbers", 
+            "small_collection": "Numbers", 
             "word": "seven"
         }, 
         {
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "numbers", 
+            "small_collection": "Numbers", 
             "word": "seventeen"
         }, 
         {
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "numbers", 
+            "small_collection": "Numbers", 
             "word": "seventy"
         }, 
         {
@@ -11548,7 +11565,7 @@
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "animals", 
+            "small_collection": "Animals", 
             "word": "shark"
         }, 
         {
@@ -11567,7 +11584,7 @@
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "animals", 
+            "small_collection": "Animals", 
             "word": "sheep"
         }, 
         {
@@ -11679,7 +11696,7 @@
             "collections": [
                 "more_words"
             ], 
-            "small_collection": "animals", 
+            "small_collection": "Animals", 
             "word": "shrimp"
         }, 
         {
@@ -11687,7 +11704,7 @@
                 "more_words"
             ], 
             "infinitive_root": "shrimp", 
-            "small_collection": "animals", 
+            "small_collection": "Animals", 
             "word": "shrimps"
         }, 
         {
@@ -11772,7 +11789,7 @@
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "family", 
+            "small_collection": "Family", 
             "word": "sister"
         }, 
         {
@@ -11818,21 +11835,21 @@
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "numbers", 
+            "small_collection": "Numbers", 
             "word": "six"
         }, 
         {
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "numbers", 
+            "small_collection": "Numbers", 
             "word": "sixteen"
         }, 
         {
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "numbers", 
+            "small_collection": "Numbers", 
             "word": "sixty"
         }, 
         {
@@ -11875,7 +11892,7 @@
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "animals", 
+            "small_collection": "Animals", 
             "word": "skunk"
         }, 
         {
@@ -11983,7 +12000,7 @@
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "animals", 
+            "small_collection": "Animals", 
             "word": "snail"
         }, 
         {
@@ -12158,14 +12175,14 @@
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "directions", 
+            "small_collection": "Directions", 
             "word": "south"
         }, 
         {
             "collections": [
                 "more_words"
             ], 
-            "small_collection": "countries", 
+            "small_collection": "Countries", 
             "word": "South_Africa"
         }, 
         {
@@ -12224,7 +12241,7 @@
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "animals", 
+            "small_collection": "Animals", 
             "word": "spider"
         }, 
         {
@@ -12264,7 +12281,7 @@
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "Time_of_the_year", 
+            "small_collection": "Times_of_the_year", 
             "word": "spring"
         }, 
         {
@@ -12289,14 +12306,14 @@
             "collections": [
                 "more_words"
             ], 
-            "small_collection": "animals", 
+            "small_collection": "Animals", 
             "word": "squid"
         }, 
         {
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "animals", 
+            "small_collection": "Animals", 
             "word": "squirrel"
         }, 
         {
@@ -12612,7 +12629,7 @@
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "Time_of_the_year", 
+            "small_collection": "Times_of_the_year", 
             "word": "summer"
         }, 
         {
@@ -12818,7 +12835,7 @@
             "collections": [
                 "more_words"
             ], 
-            "small_collection": "animals", 
+            "small_collection": "Animals", 
             "word": "teddy_bear"
         }, 
         {
@@ -12867,7 +12884,7 @@
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "numbers", 
+            "small_collection": "Numbers", 
             "word": "ten"
         }, 
         {
@@ -13086,14 +13103,14 @@
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "numbers", 
+            "small_collection": "Numbers", 
             "word": "thirteen"
         }, 
         {
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "numbers", 
+            "small_collection": "Numbers", 
             "word": "thirty"
         }, 
         {
@@ -13130,7 +13147,7 @@
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "numbers", 
+            "small_collection": "Numbers", 
             "tags": [
                 "'and'"
             ], 
@@ -13140,7 +13157,7 @@
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "numbers", 
+            "small_collection": "Numbers", 
             "word": "three"
         }, 
         {
@@ -13202,7 +13219,7 @@
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "animals", 
+            "small_collection": "Animals", 
             "word": "tiger"
         }, 
         {
@@ -13375,7 +13392,7 @@
             "collections": [
                 "more_words"
             ], 
-            "small_collection": "animals", 
+            "small_collection": "Animals", 
             "word": "tortoise"
         }, 
         {
@@ -13531,7 +13548,7 @@
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "animals", 
+            "small_collection": "Animals", 
             "word": "turkey"
         }, 
         {
@@ -13544,21 +13561,21 @@
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "animals", 
+            "small_collection": "Animals", 
             "word": "turtle"
         }, 
         {
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "numbers", 
+            "small_collection": "Numbers", 
             "word": "twelve"
         }, 
         {
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "numbers", 
+            "small_collection": "Numbers", 
             "word": "twenty"
         }, 
         {
@@ -13584,7 +13601,7 @@
                 "to", 
                 "two"
             ], 
-            "small_collection": "numbers", 
+            "small_collection": "Numbers", 
             "word": "two"
         }, 
         {
@@ -13625,8 +13642,8 @@
                 "hard_words"
             ], 
             "word": {
-                "uk": "analyze", 
-                "us": "analyse"
+                "uk": "analyse", 
+                "us": "analyze"
             }
         }, 
         {
@@ -13692,8 +13709,8 @@
                 "more_words"
             ], 
             "word": {
-                "uk": "cozy", 
-                "us": "cosy"
+                "uk": "cosy", 
+                "us": "cozy"
             }
         }, 
         {
@@ -13892,7 +13909,7 @@
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "family", 
+            "small_collection": "Family", 
             "word": {
                 "uk": "mum", 
                 "us": "mom"
@@ -13902,7 +13919,7 @@
             "collections": [
                 "more_words"
             ], 
-            "small_collection": "family", 
+            "small_collection": "Family", 
             "word": {
                 "uk": "mummy", 
                 "us": "mommy"
@@ -14095,7 +14112,7 @@
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "family", 
+            "small_collection": "Family", 
             "word": "uncle"
         }, 
         {
@@ -14160,7 +14177,7 @@
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "countries", 
+            "small_collection": "Countries", 
             "tags": [
                 "'ite'"
             ], 
@@ -14170,7 +14187,7 @@
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "countries", 
+            "small_collection": "Countries", 
             "tags": [
                 "'ate'", 
                 "'ite'"
@@ -14194,7 +14211,7 @@
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "directions", 
+            "small_collection": "Directions", 
             "word": "up"
         }, 
         {
@@ -14207,7 +14224,7 @@
             "collections": [
                 "more_words"
             ], 
-            "small_collection": "planets", 
+            "small_collection": "Planets", 
             "word": "Uranus"
         }, 
         {
@@ -14326,7 +14343,7 @@
             "collections": [
                 "more_words"
             ], 
-            "small_collection": "planets", 
+            "small_collection": "Planets", 
             "word": "Venus"
         }, 
         {
@@ -14364,7 +14381,7 @@
             "collections": [
                 "more_words"
             ], 
-            "small_collection": "colors", 
+            "small_collection": "Colors", 
             "word": "violet"
         }, 
         {
@@ -14466,7 +14483,7 @@
             "collections": [
                 "more_words"
             ], 
-            "small_collection": "countries", 
+            "small_collection": "Countries", 
             "word": "Wales"
         }, 
         {
@@ -14758,7 +14775,7 @@
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "directions", 
+            "small_collection": "Directions", 
             "word": "west"
         }, 
         {
@@ -14771,7 +14788,7 @@
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "animals", 
+            "small_collection": "Animals", 
             "word": "whale"
         }, 
         {
@@ -14859,7 +14876,7 @@
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "colors", 
+            "small_collection": "Colors", 
             "tags": [
                 "'ite'"
             ], 
@@ -14891,7 +14908,7 @@
             "collections": [
                 "more_words"
             ], 
-            "small_collection": "family", 
+            "small_collection": "Family", 
             "word": "wife"
         }, 
         {
@@ -14943,7 +14960,7 @@
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "Time_of_the_year", 
+            "small_collection": "Times_of_the_year", 
             "word": "winter"
         }, 
         {
@@ -15137,6 +15154,7 @@
                 "Xmas1", 
                 "Xmas2"
             ], 
+            "small_collection": "Times_of_the_year", 
             "word": "Xmas"
         }, 
         {
@@ -15189,7 +15207,7 @@
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "colors", 
+            "small_collection": "Colors", 
             "word": "yellow"
         }, 
         {
@@ -15263,7 +15281,7 @@
             "collections": [
                 "first_words"
             ], 
-            "small_collection": "animals", 
+            "small_collection": "Animals", 
             "word": "zebra"
         }, 
         {
