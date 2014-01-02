@@ -197,7 +197,6 @@
                 
                 NSString *collectionTitle = [DD2Words displayNameForCollection:collection];
                 collectionTable.title = collectionTitle;
-//                collectionTable.allWordsForSpellingVariant = [self.wordBrain allWordsForCurrentSpellingVariant];
                 collectionTable.allWords = self.wordBrain.allWords;
                 
                 if ([collection isEqualToString:@"Recents"]) {
