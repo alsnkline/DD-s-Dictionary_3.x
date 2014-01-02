@@ -96,15 +96,14 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell ==nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-    }
+        }
     
     // Configure the cell...
+    if ([self getSplitViewWithDisplayWordViewController]) cell.accessoryType = UITableViewCellAccessoryNone;
     cell.backgroundColor = [UIColor clearColor]; //needed for iOS7
     cell.textLabel.font = self.useDyslexieFont ? [UIFont fontWithName:@"Dyslexiea-Regular" size:20] : [UIFont boldSystemFontOfSize:20];
     
     if (!self.sections) {
-//        NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"spelling" ascending:YES selector:@selector(caseInsensitiveCompare:)];
-//        NSArray *sortedWords = [self.wordList sortedArrayUsingDescriptors:[NSArray arrayWithObjects:descriptor, nil]];
         NSDictionary *word = [self.wordList objectAtIndex:indexPath.row];
         cell.textLabel.text = [word objectForKey:@"spelling"];
     } else {
