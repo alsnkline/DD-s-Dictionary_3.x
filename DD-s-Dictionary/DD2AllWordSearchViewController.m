@@ -312,14 +312,17 @@
     NSArray *bwMatches = [wordsForFilteredWords filteredArrayUsingPredicate:bwMatchPredicate];
     if ([bwMatches count] < 1) self.showAddWordButton = YES;
     
+    if (LOG_MORE) NSLog(@"search result list is %lu words long", (unsigned long)[wordsForFilteredWords count]);
+    
     if ([wordsForFilteredWords count] < 15) {
-        NSLog(@"Adding Levenshtein Distance matches");
+        if (LOG_MORE) NSLog(@"Adding Levenshtein Distance matches");
         //check and add words to end of list if their LevenshteinDistance is low
         [self appendLowestLevenshteinDistanceWordsForSearchText:searchText toWordList:wordsForFilteredWords];
+        if (LOG_MORE) NSLog(@"search result list is %lu words long  (with dups)", (unsigned long)[wordsForFilteredWords count]);
     }
     
     if ([wordsForFilteredWords count] < 15) {
-        NSLog(@"Adding doubleMetaphone matches");
+        if (LOG_MORE) NSLog(@"Adding doubleMetaphone matches");
         //check for and append doubleMetaphone matches
         NSArray *searchTextDMCodes = [DD2GlobalHelper doubleMetaphoneCodesFor:searchText];
         
@@ -339,6 +342,7 @@
             DMMatchPredicate = [NSPredicate predicateWithFormat:@"SELF.doubleMphoneAlt beginswith[c] %@",[searchTextDMCodes objectAtIndex:1]];
             [self appendDMMatchesUsingPredicate:DMMatchPredicate toWordList:wordsForFilteredWords];
         }
+        if (LOG_MORE) NSLog(@"search result list is %lu words long (with dups)", (unsigned long)[wordsForFilteredWords count]);
     }
     
     // clean out all duplicates keeping order of first occurance in list

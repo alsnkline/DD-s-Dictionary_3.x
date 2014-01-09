@@ -434,7 +434,7 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
     
     if ([pronunciations count] < 1) {   //all has failed set pronunciation to the root spelling and warn that its missing
         [pronunciations addObject:pronunciationFromSpelling];
-        NSLog(@"***** file needed: %@ *****", [word objectForKey:@"spelling"]);
+        if (FIND_MISSING_PRONUNCIATIONS) NSLog(@"***** file needed: %@ *****", [word objectForKey:@"spelling"]);
     }
     
     NSString *pronunciationsStringForLog;
@@ -519,6 +519,7 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
 + (void)logDD2WordProperty:(NSString *)property
 {
     if ([property isEqualToString:COLLECTION_NAMES]) NSLog(@"DD2Word.%@ = %@", COLLECTION_NAMES, [DD2Words sharedWords].collectionNames);
+    if ([property isEqualToString:SMALL_COLLECTION_NAMES]) NSLog(@"DD2Word.%@ = %@", SMALL_COLLECTION_NAMES, [DD2Words sharedWords].smallCollectionNames);
     if ([property isEqualToString:TAG_NAMES]) NSLog(@"DD2Word.%@ = %@", TAG_NAMES, [DD2Words sharedWords].tagNames);
     if ([property isEqualToString:ALL]) NSLog(@"DD2Word.%@ = %@", ALL, [DD2Words sharedWords].allWords);
     NSLog(@"-------- above or property missing ---------");
@@ -570,7 +571,11 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"collection: %@, tags: %@ word count: %lu recents: %@", self.collectionNames, self.tagNames, (unsigned long)[self.allWords count], self.recentlyViewedWords];
+    return [NSString stringWithFormat:@"collection: %@, tags: %@ word count: %lu recents: %@",
+            self.collectionNames,
+            self.tagNames,
+            (unsigned long)[self.allWords count],
+            self.recentlyViewedWords];
 }
 
 @end
