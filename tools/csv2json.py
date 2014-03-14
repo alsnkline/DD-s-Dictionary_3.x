@@ -33,6 +33,8 @@ def convert(infile, outfile):
     for lineno, line in enumerate(incsv):
         try:
             row=line.copy()
+            if row["collections"] == "EXCLUDE":
+                continue
             for k,v in row.items():
                 if not v or (k in list_ignore):
                     del row[k]
