@@ -38,7 +38,7 @@
     
     // call Appington
     [Appington control:@"placement" andValues:@{@"id": @"26"}];
-    if (LOG_APPINGTON_NOTIFICATIONS) NSLog(@"Appington placment id 26 (rate me please) sent");
+    if (LOG_APPINGTON_NOTIFICATIONS) NSLog(@"Appington placement id 26 (rate me please) sent");
 }
 
 - (IBAction) rateInStore:(id)sender

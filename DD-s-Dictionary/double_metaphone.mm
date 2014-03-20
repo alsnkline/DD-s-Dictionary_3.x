@@ -39,7 +39,7 @@ NewMetaString(const char *init_str)
 
     if (init_str == NULL)
 	init_str = empty_string;
-    s->length  = strlen(init_str);
+    s->length  = (int)strlen(init_str);
     /* preallocate a bit more for potential growth */
     s->bufsize = s->length + 7;
 
@@ -185,7 +185,7 @@ MetaphAdd(metastring * s, const char *new_str)
     if (new_str == NULL)
 	return;
 
-    add_length = strlen(new_str);
+    add_length = (int)strlen(new_str);
     if ((s->length + add_length) > (s->bufsize - 1))
       {
 	  IncreaseBuffer(s, add_length);
@@ -208,7 +208,7 @@ DoubleMetaphone(const char *str, char **primarycode, char **secondarycode)
 
     current = 0;
     /* we need the real length and last prior to padding */
-    length  = strlen(str); 
+    length  = (int)strlen(str);
     last    = length - 1; 
     original = NewMetaString(str);
     /* Pad original so we can index beyond end */

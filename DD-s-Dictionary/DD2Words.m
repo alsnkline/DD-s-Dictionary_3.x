@@ -79,7 +79,7 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
 {
     if (_allWords == nil) {
         _allWords = [self.processedWords objectForKey:ALL];
-        if (PROCESS_VERBOSELY) NSLog(@"%@ has = %d words", ALL ,[_allWords count]);
+        if (PROCESS_VERBOSELY) NSLog(@"%@ has = %lu words", ALL ,(unsigned long)[_allWords count]);
     }
     return _allWords;
 }
@@ -564,7 +564,7 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
         
         [defaults setObject:recentWords forKey:RECENTLY_VIEWED_WORDS_KEY];
         [defaults synchronize];
-        NSLog(@"recent word count: %d", [recentWords count]);
+        NSLog(@"recent word count: %lu", (unsigned long)[recentWords count]);
     }
     
 }

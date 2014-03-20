@@ -56,7 +56,7 @@
         NSArray *filteredWords = [NSArray arrayWithArray:[nsaWords filteredArrayUsingPredicate:predicate]];
         NSArray *sortedFilteredWords = [filteredWords sortedArrayUsingDescriptors:sortDescriptors];
         if (LOG_PREDICATE_RESULTS) {
-            NSLog(@"number of matches = %d", [filteredWords count]);
+            NSLog(@"number of matches = %lu", (unsigned long)[filteredWords count]);
             for (NSDictionary *word in sortedFilteredWords) {
                 NSLog(@"found: %@", [word objectForKey:@"spelling"]);
             }
@@ -177,8 +177,8 @@
     // licensed under http://www.codeproject.com/info/cpol10.aspx
     // degenerate cases
     if (s == t) return 0;
-    if (s.length == 0) return t.length;
-    if (t.length == 0) return s.length;
+    if (s.length == 0) return (int)t.length;
+    if (t.length == 0) return (int)s.length;
     
     // create two work vectors of integer distances
     // using plain old C arrays to avoid object type issues with NSNumber and Interger http://stackoverflow.com/questions/3340153/making-an-array-of-integers-in-objective-c
@@ -215,7 +215,7 @@
     }
     
     //NSLog(@"Levenshtein distance between %@ and %@ = %i", s, t, v1[t.length]);
-    return v1[t.length];
+    return (int)v1[t.length];
         
 }
 

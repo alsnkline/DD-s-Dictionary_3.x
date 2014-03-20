@@ -7,9 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B108F24A18DA4D99009E3A5C /* libAppington.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B108F24918DA4D99009E3A5C /* libAppington.a */; };
+		B108F24C18DA5069009E3A5C /* libFlurry_4.3.2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B108F24B18DA5069009E3A5C /* libFlurry_4.3.2.a */; };
+		B108F24E18DA64FD009E3A5C /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B108F24D18DA64FD009E3A5C /* libGoogleAnalyticsServices.a */; };
 		B1385A6917EEAF3F0015BA5A /* DD2SettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B1385A6817EEAF3F0015BA5A /* DD2SettingsTableViewController.m */; };
 		B160FFAC1819B504007946DB /* double_metaphone.mm in Sources */ = {isa = PBXBuildFile; fileRef = B160FFAB1819B504007946DB /* double_metaphone.mm */; };
-		B190B53018652A3E00E843F5 /* libAppington.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B190B52F18652A3E00E843F5 /* libAppington.a */; };
 		B191926317F8F6BF00B628E5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B191926217F8F6BF00B628E5 /* Images.xcassets */; };
 		B191C3F217E3CBA100A2ABFA /* DD2TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = B191C3F117E3CBA100A2ABFA /* DD2TabBarController.m */; };
 		B191C3F517E3EC0400A2ABFA /* FunWithWordsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B191C3F417E3EC0400A2ABFA /* FunWithWordsTableViewController.m */; };
@@ -23,7 +25,6 @@
 		B192DB4E17E291380075C072 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B192DB4D17E291380075C072 /* AVFoundation.framework */; };
 		B192DB5017E2913E0075C072 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B192DB4F17E2913E0075C072 /* AudioToolbox.framework */; };
 		B192DB5217E291510075C072 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B192DB5117E291510075C072 /* QuartzCore.framework */; };
-		B1954E8F17EE687000371610 /* libFlurry_4.2.3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B1954E8E17EE687000371610 /* libFlurry_4.2.3.a */; };
 		B1954E9217EE68A900371610 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1954E9117EE68A900371610 /* Security.framework */; };
 		B195672A17DA64D400CB7F4B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B195672917DA64D400CB7F4B /* UIKit.framework */; };
 		B195672C17DA64D400CB7F4B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B195672B17DA64D400CB7F4B /* Foundation.framework */; };
@@ -42,7 +43,6 @@
 		B197BD461801F8FB00E9D287 /* DD2TalkToUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B197BD451801F8FB00E9D287 /* DD2TalkToUsViewController.m */; };
 		B1B7D19617ED0C74004576F8 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1B7D19517ED0C74004576F8 /* SystemConfiguration.framework */; };
 		B1B7D19817ED0CDC004576F8 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B1B7D19717ED0CDC004576F8 /* libz.dylib */; };
-		B1B7D19A17ED25CC004576F8 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B1B7D19917ED25CC004576F8 /* libGoogleAnalyticsServices.a */; };
 		B1C0446E17ECFC44007395C3 /* iTunesArtwork.png in Resources */ = {isa = PBXBuildFile; fileRef = B1C0446C17ECFC44007395C3 /* iTunesArtwork.png */; };
 		B1C0446F17ECFC44007395C3 /* iTunesArtwork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B1C0446D17ECFC44007395C3 /* iTunesArtwork@2x.png */; };
 		B1C0447B17ED0875007395C3 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1C0447A17ED0875007395C3 /* CoreData.framework */; };
@@ -62,12 +62,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B108F24918DA4D99009E3A5C /* libAppington.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libAppington.a; sourceTree = "<group>"; };
+		B108F24B18DA5069009E3A5C /* libFlurry_4.3.2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_4.3.2.a; sourceTree = "<group>"; };
+		B108F24D18DA64FD009E3A5C /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
 		B1385A6717EEAF3F0015BA5A /* DD2SettingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DD2SettingsTableViewController.h; sourceTree = "<group>"; };
 		B1385A6817EEAF3F0015BA5A /* DD2SettingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DD2SettingsTableViewController.m; sourceTree = "<group>"; };
 		B160FFAA1819B504007946DB /* double_metaphone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = double_metaphone.h; sourceTree = "<group>"; };
 		B160FFAB1819B504007946DB /* double_metaphone.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = double_metaphone.mm; sourceTree = "<group>"; };
 		B190B52E18652A3E00E843F5 /* Appington.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Appington.h; sourceTree = "<group>"; };
-		B190B52F18652A3E00E843F5 /* libAppington.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libAppington.a; sourceTree = "<group>"; };
 		B191926217F8F6BF00B628E5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = "DD's Dictionary/Images.xcassets"; sourceTree = "<group>"; };
 		B191C3F017E3CBA100A2ABFA /* DD2TabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DD2TabBarController.h; sourceTree = "<group>"; };
 		B191C3F117E3CBA100A2ABFA /* DD2TabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DD2TabBarController.m; sourceTree = "<group>"; };
@@ -88,7 +90,6 @@
 		B192DB4F17E2913E0075C072 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		B192DB5117E291510075C072 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		B1954E8D17EE687000371610 /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
-		B1954E8E17EE687000371610 /* libFlurry_4.2.3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_4.2.3.a; sourceTree = "<group>"; };
 		B1954E9117EE68A900371610 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		B195672617DA64D400CB7F4B /* DD's Dictionary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DD's Dictionary.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B195672917DA64D400CB7F4B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -114,7 +115,6 @@
 		B197BD451801F8FB00E9D287 /* DD2TalkToUsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DD2TalkToUsViewController.m; sourceTree = "<group>"; };
 		B1B7D19517ED0C74004576F8 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		B1B7D19717ED0CDC004576F8 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
-		B1B7D19917ED25CC004576F8 /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
 		B1C0446C17ECFC44007395C3 /* iTunesArtwork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iTunesArtwork.png; sourceTree = "<group>"; };
 		B1C0446D17ECFC44007395C3 /* iTunesArtwork@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iTunesArtwork@2x.png"; sourceTree = "<group>"; };
 		B1C0447017ED07D3007395C3 /* GAI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAI.h; sourceTree = "<group>"; };
@@ -150,18 +150,18 @@
 				B1966A4E17F3F0BF007277A8 /* CoreTelephony.framework in Frameworks */,
 				B1954E9217EE68A900371610 /* Security.framework in Frameworks */,
 				B1B7D19817ED0CDC004576F8 /* libz.dylib in Frameworks */,
-				B190B53018652A3E00E843F5 /* libAppington.a in Frameworks */,
+				B108F24A18DA4D99009E3A5C /* libAppington.a in Frameworks */,
 				B1B7D19617ED0C74004576F8 /* SystemConfiguration.framework in Frameworks */,
 				B1C0447B17ED0875007395C3 /* CoreData.framework in Frameworks */,
 				B192DB5217E291510075C072 /* QuartzCore.framework in Frameworks */,
 				B192DB5017E2913E0075C072 /* AudioToolbox.framework in Frameworks */,
 				B192DB4E17E291380075C072 /* AVFoundation.framework in Frameworks */,
 				B1CCB5CE17DFC797009D7BF0 /* MessageUI.framework in Frameworks */,
+				B108F24E18DA64FD009E3A5C /* libGoogleAnalyticsServices.a in Frameworks */,
 				B195672A17DA64D400CB7F4B /* UIKit.framework in Frameworks */,
 				B195672C17DA64D400CB7F4B /* Foundation.framework in Frameworks */,
 				B195672E17DA64D400CB7F4B /* CoreGraphics.framework in Frameworks */,
-				B1B7D19A17ED25CC004576F8 /* libGoogleAnalyticsServices.a in Frameworks */,
-				B1954E8F17EE687000371610 /* libFlurry_4.2.3.a in Frameworks */,
+				B108F24C18DA5069009E3A5C /* libFlurry_4.3.2.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -182,7 +182,7 @@
 			isa = PBXGroup;
 			children = (
 				B1954E8D17EE687000371610 /* Flurry.h */,
-				B1954E8E17EE687000371610 /* libFlurry_4.2.3.a */,
+				B108F24B18DA5069009E3A5C /* libFlurry_4.3.2.a */,
 			);
 			name = Flurry;
 			sourceTree = "<group>";
@@ -284,7 +284,7 @@
 			isa = PBXGroup;
 			children = (
 				B190B52E18652A3E00E843F5 /* Appington.h */,
-				B190B52F18652A3E00E843F5 /* libAppington.a */,
+				B108F24918DA4D99009E3A5C /* libAppington.a */,
 			);
 			name = Appington;
 			sourceTree = "<group>";
@@ -319,7 +319,7 @@
 				B1C0447317ED07D3007395C3 /* GAILogger.h */,
 				B1C0447417ED07D3007395C3 /* GAITrackedViewController.h */,
 				B1C0447517ED07D3007395C3 /* GAITracker.h */,
-				B1B7D19917ED25CC004576F8 /* libGoogleAnalyticsServices.a */,
+				B108F24D18DA64FD009E3A5C /* libGoogleAnalyticsServices.a */,
 			);
 			name = "Google Analytics";
 			sourceTree = "<group>";
@@ -532,6 +532,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/DD-s-Dictionary",
+					"$(PROJECT_DIR)/DD-s-Dictionary",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -553,6 +554,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/DD-s-Dictionary",
+					"$(PROJECT_DIR)/DD-s-Dictionary",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

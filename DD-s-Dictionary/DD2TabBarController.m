@@ -259,7 +259,7 @@
         int msgIndex = arc4random()%[msgs count];
         // call Appington
         [Appington control:@"placement" andValues:@{@"id": [msgs objectAtIndex:msgIndex]}];
-        if (LOG_APPINGTON_NOTIFICATIONS) NSLog(@"Appington placment id %@ (fun tab) sent", [msgs objectAtIndex:msgIndex]);
+        if (LOG_APPINGTON_NOTIFICATIONS) NSLog(@"Appington placement id %@ (fun tab) sent", [msgs objectAtIndex:msgIndex]);
     }
 }
 

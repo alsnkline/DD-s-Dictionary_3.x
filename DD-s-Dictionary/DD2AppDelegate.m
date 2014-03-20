@@ -87,7 +87,7 @@
     if(![[NSUserDefaults standardUserDefaults] boolForKey:NOT_USE_VOICE_HINTS]) {
         // call Appington
         [Appington control:@"placement" andValues:@{@"id": @"1"}];
-        if (LOG_APPINGTON_NOTIFICATIONS) NSLog(@"Appington placment id 1 (welcome) sent");
+        if (LOG_APPINGTON_NOTIFICATIONS) NSLog(@"Appington placement id 1 (welcome) sent");
     }
     
     //timer for tip controls
@@ -101,7 +101,7 @@
     if(![[NSUserDefaults standardUserDefaults] boolForKey:NOT_USE_VOICE_HINTS]) {
         // call Appington
         [Appington control:@"placement" andValues:@{@"id": @"27"}];
-        if (LOG_APPINGTON_NOTIFICATIONS) NSLog(@"Appington placment id 27 (tip) sent");
+        if (LOG_APPINGTON_NOTIFICATIONS) NSLog(@"Appington placement id 27 (tip) sent");
     }
 }
 							

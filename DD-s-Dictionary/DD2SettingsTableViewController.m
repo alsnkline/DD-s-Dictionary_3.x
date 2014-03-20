@@ -246,7 +246,7 @@
     
     // call Appington
     [Appington control:@"placement" andValues:@{@"id": [messages objectAtIndex:msgIndex]}];
-    if (LOG_APPINGTON_NOTIFICATIONS) NSLog(@"Appington placment id %@ (voice hints button) sent", [messages objectAtIndex:msgIndex]);
+    if (LOG_APPINGTON_NOTIFICATIONS) NSLog(@"Appington placement id %@ (voice hints button) sent", [messages objectAtIndex:msgIndex]);
 
 }
 
@@ -285,7 +285,7 @@
 - (IBAction)backgroundSaturationSliderChanged:(UISlider *)sender
 {
     //slider runs from 0-2 to allow me to use interger rounding - storage and UIColor calulations assume a 0-1 range, so need to /10 and *10 where appropriate to deliver 10% and 20% saturation.
-    int sliderValue;
+    NSUInteger sliderValue;
     sliderValue = lroundf(sender.value);
     [sender setValue:sliderValue animated:YES];
     
@@ -355,7 +355,7 @@
 - (IBAction)spellingVariantSliderChanged:(UISlider *)sender
 {
     //slider runs from 0-1 to allow me to use interger rounding and be neutral re UK and US being On vs OFF.
-    int sliderValue;
+    NSUInteger sliderValue;
     sliderValue = lroundf(sender.value);
     [sender setValue:sliderValue animated:YES];
     
@@ -510,7 +510,7 @@
             cell.accessoryType = UITableViewCellAccessoryNone;
         }
     } else {
-        NSString *CellIdentifier = [NSString stringWithFormat:@"Settings %d %d", indexPath.section, indexPath.row ];
+        NSString *CellIdentifier = [NSString stringWithFormat:@"Settings %ld %ld", (long)indexPath.section, (long)indexPath.row ];
         cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         
         if ([cell isKindOfClass:[DD2SettingsTableViewCell class]]) {

@@ -224,7 +224,7 @@
         CGRect frame = CGRectMake(listenbutton.frame.origin.x - (buttonForLoop.frame.size.width/2 - listenbutton.frame.size.width/2), buttonForLoop.frame.origin.y, buttonForLoop.frame.size.width, buttonForLoop.frame.size.height);
         buttonForLoop.frame = frame;
     }
-    for (int i = [[self.homophonesForWord objectForKey:pronunciation] count]; i < [buttons count]; i++) {
+    for (NSUInteger i = [[self.homophonesForWord objectForKey:pronunciation] count]; i < [buttons count]; i++) {
         UIButton *buttonForLoop = [buttons objectAtIndex:i];
         buttonForLoop.hidden = YES;
     }
@@ -359,7 +359,7 @@
     
     for (NSString *pronunciation in pronunciations) {
         
-        if (([pronunciations count] > 1 && [pronunciation hasSuffix:[NSString stringWithFormat:@"%i",sender.tag]]) || ([pronunciations count] == 1)) {
+        if (([pronunciations count] > 1 && [pronunciation hasSuffix:[NSString stringWithFormat:@"%li",(long)sender.tag]]) || ([pronunciations count] == 1)) {
             [self playWord:pronunciation];
             
             //track word event with GA manual sent with Value 1
