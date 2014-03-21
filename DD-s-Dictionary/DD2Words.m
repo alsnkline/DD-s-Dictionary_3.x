@@ -393,7 +393,11 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
     NSCharacterSet *charSet = [NSCharacterSet characterSetWithCharactersInString:@"'.-"];
     NSString *cleanerString = [[cleanString componentsSeparatedByCharactersInSet:charSet] componentsJoinedByString:@""];
     
-    return [NSString stringWithString:cleanerString];
+    //convert accented characters to ascii for the filename
+    NSData *temp = [cleanerString dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+    NSString *result = [[NSString alloc] initWithData:temp encoding:NSASCIIStringEncoding];
+    
+    return [NSString stringWithString:result];
 }
 
 + (NSSet *) pronunciationsForWord:(NSDictionary *)word
