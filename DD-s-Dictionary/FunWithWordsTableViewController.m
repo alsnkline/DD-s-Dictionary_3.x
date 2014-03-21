@@ -14,6 +14,7 @@
 
 @property (nonatomic, strong) UIColor *customBackgroundColor;
 @property (nonatomic) BOOL useDyslexieFont;
+@property (nonatomic, strong) NSString *spellingVariant;
 @property (nonatomic, strong) NSPredicate *predicateForSelectedCell;
 
 @end
@@ -22,6 +23,7 @@
 
 @synthesize customBackgroundColor = _customBackgroundColor;
 @synthesize useDyslexieFont = _useDyslexieFont;
+@synthesize spellingVariant = _spellingVariant;
 @synthesize tagNames = _tagNames;
 @synthesize smallCollections = _smallCollections;
 @synthesize allWordsForSpellingVariant = _allWordsForSpellingVariant;
@@ -69,6 +71,19 @@
 -(void)setUseDyslexieFont:(BOOL)useDyslexieFont {
     if (useDyslexieFont != _useDyslexieFont) {
         _useDyslexieFont = useDyslexieFont;
+        [self.tableView reloadData];
+    }
+}
+
+
+-(NSString *)spellingVariant{
+    if (!_spellingVariant) _spellingVariant = [[NSUserDefaults standardUserDefaults] stringForKey:SPELLING_VARIANT];
+    return _spellingVariant;
+}
+
+-(void)setSpellingVariant:(NSString *)spellingVariant{
+    if (spellingVariant != _spellingVariant) {
+        _spellingVariant = spellingVariant;
         [self.tableView reloadData];
     }
 }
@@ -138,6 +153,11 @@
         NSDictionary *userinfo = [notification userInfo];
         self.useDyslexieFont = [[userinfo objectForKey:@"newValue"] boolValue];
     }
+    
+    if ([[notification name] isEqualToString:@"spellingVariantChanged"]) {
+        NSDictionary *userinfo = [notification userInfo];
+        self.spellingVariant = [userinfo objectForKey:@"newValue"];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -181,6 +201,11 @@
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(onNotification:)
                                                  name:@"useDyslexiFontChanged" object:nil];
+    
+    //registering for spellingVariantchange notifications remember to dealloc
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(onNotification:)
+                                                 name:@"spellingVariantChanged" object:nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -227,6 +252,25 @@
     return titleForSection;
 }
 
+//special handling for colors in UK
+-(NSString *)displayStringForSmallCollection:(NSString *)smallCollection
+{
+    NSString *result=smallCollection;
+    if ([self.spellingVariant isEqualToString:@"UK"] && [smallCollection isEqualToString:@"Colors"]) {
+         result= @"Colours";
+    }
+    return result;
+}
+
+-(NSString *)smallCollectionForPredicate:(NSString *)displayStringForSmallCollection
+{
+    NSString *result=displayStringForSmallCollection;
+    if ([displayStringForSmallCollection isEqualToString:@"Colours"]) {
+        result= @"Colors";
+    }
+    return result;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 
@@ -251,7 +295,7 @@
         if (row == 2) cell.textLabel.text = [NSString stringWithFormat:@"homophones"];
     }
     if (section == 2) {
-        cell.textLabel.text = [DD2Words exchangeUnderscoresForSpacesin:[self.smallCollections objectAtIndex:indexPath.row]];
+        cell.textLabel.text = [self displayStringForSmallCollection:[DD2Words exchangeUnderscoresForSpacesin:[self.smallCollections objectAtIndex:indexPath.row]]];
     }
     if (section == 3) {
         cell.textLabel.text = [DD2Words exchangeUnderscoresForSpacesin:[self.tagNames objectAtIndex:indexPath.row]];
@@ -339,7 +383,7 @@
         self.predicateForSelectedCell =[NSPredicate predicateWithFormat:@"SELF.usukVariant contains[c] %@",@"locHomophones"];
     } else if (indexPath.section == 2) {
         // small_collections
-        self.predicateForSelectedCell = [NSPredicate predicateWithFormat:@"SELF.small_collection contains[c] %@",[DD2Words exchangeSpacesForUnderscoresin:selectedCell.textLabel.text]];
+        self.predicateForSelectedCell = [NSPredicate predicateWithFormat:@"SELF.small_collection contains[c] %@",[self smallCollectionForPredicate:[DD2Words exchangeSpacesForUnderscoresin:selectedCell.textLabel.text]]];
     } else if (indexPath.section == 3) {
         // tags
         self.predicateForSelectedCell = [NSPredicate predicateWithFormat:@"SELF.tags contains[c] %@",[DD2Words exchangeSpacesForUnderscoresin:selectedCell.textLabel.text]];
