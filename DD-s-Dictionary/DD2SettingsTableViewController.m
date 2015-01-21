@@ -466,7 +466,7 @@
         label.textAlignment = NSTextAlignmentCenter;
         label.numberOfLines = 0;
         label.font = [UIFont systemFontOfSize:11];
-        label.text = @"Thank you - Alison\r\n\r\nCopyright © 2013 Alison Kline.\r\nAll rights reserved.";
+        label.text = @"Thank you - Alison\r\n\r\nCopyright © 2015 Alison Kline.\r\nAll rights reserved.";
         return label;
     } else {
         return nil;

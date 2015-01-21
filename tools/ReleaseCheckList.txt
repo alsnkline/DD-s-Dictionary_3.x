@@ -1,10 +1,11 @@
 Ship App Check List:
 
 0.0 check for new word group membership - and google dropping first ''
-0.1 create json
-0.2 check json > python -m json.tool filename.json
-0.3 check for duplicate words
-0.4 check for missing pronunciation files
+0.1 check for ‘extra’ small_collection
+0.2 create json
+0.3 check json > python -m json.tool filename.json
+0.4 check for duplicate words
+0.5 check for missing pronunciation files
 
 1. Update the build number to be above the previous shipping build.
 2. Create a tagged build http://git-scm.com/book/en/Git-Basics-Tagging

@@ -9,8 +9,8 @@
 #import <Foundation/Foundation.h>
 
 #define PLAY_WORDS_ON_SELECTION @"DDPrototype.PlayWordsOnSelection"
-#define VOICE_HINT_AVAILABLE @"DDPrototype.VoiceHintsAvailable"  //appington uses changeable
-#define NOT_USE_VOICE_HINTS @"DDPrototype.NotUseVoiceHints"
+#define VOICE_HINT_AVAILABLE @"DDPrototype.VoiceHintsAvailable"  //appington used this to provide control and voice groups (not used Jan 2015)
+#define NOT_USE_VOICE_HINTS @"DDPrototype.NotUseVoiceHints"     //user control to turn off voice hints (not used Jan 2015)
 #define USE_DYSLEXIE_FONT @"DDPrototype.UseDyslexieFont"
 #define BACKGROUND_COLOR_HUE @"DDPrototype.BackgroundColorHue"
 #define BACKGROUND_COLOR_SATURATION @"DDPrototype.BackgroundColorSaturation"
