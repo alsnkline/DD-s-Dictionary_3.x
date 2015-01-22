@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B108F24A18DA4D99009E3A5C /* libAppington.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B108F24918DA4D99009E3A5C /* libAppington.a */; };
 		B108F24C18DA5069009E3A5C /* libFlurry_4.3.2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B108F24B18DA5069009E3A5C /* libFlurry_4.3.2.a */; };
 		B108F24E18DA64FD009E3A5C /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B108F24D18DA64FD009E3A5C /* libGoogleAnalyticsServices.a */; };
 		B1385A6917EEAF3F0015BA5A /* DD2SettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B1385A6817EEAF3F0015BA5A /* DD2SettingsTableViewController.m */; };
@@ -62,14 +61,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		B108F24918DA4D99009E3A5C /* libAppington.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libAppington.a; sourceTree = "<group>"; };
 		B108F24B18DA5069009E3A5C /* libFlurry_4.3.2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_4.3.2.a; sourceTree = "<group>"; };
 		B108F24D18DA64FD009E3A5C /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
 		B1385A6717EEAF3F0015BA5A /* DD2SettingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DD2SettingsTableViewController.h; sourceTree = "<group>"; };
 		B1385A6817EEAF3F0015BA5A /* DD2SettingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DD2SettingsTableViewController.m; sourceTree = "<group>"; };
 		B160FFAA1819B504007946DB /* double_metaphone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = double_metaphone.h; sourceTree = "<group>"; };
 		B160FFAB1819B504007946DB /* double_metaphone.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = double_metaphone.mm; sourceTree = "<group>"; };
-		B190B52E18652A3E00E843F5 /* Appington.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Appington.h; sourceTree = "<group>"; };
 		B191926217F8F6BF00B628E5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = "DD's Dictionary/Images.xcassets"; sourceTree = "<group>"; };
 		B191C3F017E3CBA100A2ABFA /* DD2TabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DD2TabBarController.h; sourceTree = "<group>"; };
 		B191C3F117E3CBA100A2ABFA /* DD2TabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DD2TabBarController.m; sourceTree = "<group>"; };
@@ -150,7 +147,6 @@
 				B1966A4E17F3F0BF007277A8 /* CoreTelephony.framework in Frameworks */,
 				B1954E9217EE68A900371610 /* Security.framework in Frameworks */,
 				B1B7D19817ED0CDC004576F8 /* libz.dylib in Frameworks */,
-				B108F24A18DA4D99009E3A5C /* libAppington.a in Frameworks */,
 				B1B7D19617ED0C74004576F8 /* SystemConfiguration.framework in Frameworks */,
 				B1C0447B17ED0875007395C3 /* CoreData.framework in Frameworks */,
 				B192DB5217E291510075C072 /* QuartzCore.framework in Frameworks */,
@@ -256,7 +252,6 @@
 				B160FFAA1819B504007946DB /* double_metaphone.h */,
 				B160FFAB1819B504007946DB /* double_metaphone.mm */,
 				B1CCB5C917DFC3E6009D7BF0 /* NSUserDefaultKeys.h */,
-				B1966A4A17F3EFB7007277A8 /* Appington */,
 				B1954E9017EE687400371610 /* Flurry */,
 				B1C0447917ED07E8007395C3 /* Google Analytics */,
 				B195673017DA64D400CB7F4B /* Supporting Files */,
@@ -278,15 +273,6 @@
 				B1B7D19417ED0A08004576F8 /* AppImagesRequired */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		B1966A4A17F3EFB7007277A8 /* Appington */ = {
-			isa = PBXGroup;
-			children = (
-				B190B52E18652A3E00E843F5 /* Appington.h */,
-				B108F24918DA4D99009E3A5C /* libAppington.a */,
-			);
-			name = Appington;
 			sourceTree = "<group>";
 		};
 		B1B7D19417ED0A08004576F8 /* AppImagesRequired */ = {

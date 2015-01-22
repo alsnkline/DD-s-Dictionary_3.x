@@ -226,7 +226,7 @@
     NSString *switchSetting = sender.on ? @"ON" : @"OFF";
     [DD2GlobalHelper sendEventToGAWithCategory:@"uiAction_Setting" action:@"voiceHintsSelectionChanged" label:switchSetting value:nil];
     
-    //call Appington
+    //play button change voice message
     [self playButtonMsg:sender.on];
     
     //track switch change with Flurry
@@ -237,16 +237,15 @@
 - (void)playButtonMsg:(BOOL)buttonState
 {
     static NSArray *buttonOnMsgs = nil;
-    if (!buttonOnMsgs) buttonOnMsgs = [NSArray arrayWithObjects:@"18",@"19", nil];
+    if (!buttonOnMsgs) buttonOnMsgs = [NSArray arrayWithObjects:@"18",@"19", nil]; // files AK_dds_5_1.m4a AK_dds_5_2.m4a
     static NSArray *buttonOffMsgs = nil;
-    if (!buttonOffMsgs) buttonOffMsgs = [NSArray arrayWithObjects:@"20",@"21", nil];
+    if (!buttonOffMsgs) buttonOffMsgs = [NSArray arrayWithObjects:@"20",@"21", nil]; // files AK_dds_4.1.m4a & AK_dds_4_2.m4a
     
     NSArray *messages = buttonState ? buttonOffMsgs : buttonOnMsgs;
     int msgIndex = arc4random()%[messages count];
     
-    // call Appington
-    [Appington control:@"placement" andValues:@{@"id": [messages objectAtIndex:msgIndex]}];
-    if (LOG_APPINGTON_NOTIFICATIONS) NSLog(@"Appington placement id %@ (voice hints button) sent", [messages objectAtIndex:msgIndex]);
+    // play [messages objectAtIndex:msgIndex] voice message
+    if (LOG_VOICE_HINTS) NSLog(@"Play Voice Hint button change message %@ ", [messages objectAtIndex:msgIndex]);
 
 }
 
@@ -416,9 +415,7 @@
 {
     [super viewDidLoad];
     
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    self.voiceHintsAvailable = [defaults boolForKey:VOICE_HINT_AVAILABLE];
-    if (TEST_APPINGTON_ON) self.voiceHintsAvailable = YES; //for testing APPINGTON, set in DD2GlobalHelper.h
+    self.voiceHintsAvailable = [[NSUserDefaults standardUserDefaults] boolForKey:VOICE_HINT_AVAILABLE];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -519,7 +516,7 @@
             if (indexPath.section == 0 && indexPath.row == 1) self.playOnSelectionCell = stvc;
             if (indexPath.section == 0 && indexPath.row == 2) {
                 self.voiceHintsCell = stvc;
-                stvc.hidden = !self.voiceHintsAvailable;        //hiding cell if appington voice Hints are not available.
+                stvc.hidden = !self.voiceHintsAvailable;        //hiding cell if voice Hints are not available.
             }
             if (indexPath.section == 0 && indexPath.row == 3) self.useDyslexicFontCell = stvc;
             if (indexPath.section == 0 && indexPath.row == 4) self.backgroundColorSatCell = stvc;

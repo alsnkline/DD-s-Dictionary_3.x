@@ -113,6 +113,14 @@
     }
 }
 
++ (void)voiceHintDefaultSettings
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSLog(@"Voice Hint default values:");
+    NSLog(@"   VOICE_HINT_AVAILABLE: %@", [defaults boolForKey:VOICE_HINT_AVAILABLE]? @"Yes" : @"No");
+    NSLog(@"   NOT_USE_VOICE_HINTS: %@", [defaults boolForKey:NOT_USE_VOICE_HINTS]? @"Yes" : @"No");
+}
+
 #pragma mark - Analytics Methods
 
 + (void)sendViewToGAWithViewName:(NSString *)screenName {

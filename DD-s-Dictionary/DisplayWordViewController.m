@@ -149,7 +149,7 @@
                     }
                     completion:nil];
     if (self.isViewLoaded && self.view.window) {
-        //viewController is visible track with GA allowing iPad stats to show which word got loaded. Appington
+        //viewController is visible track with GA allowing iPad stats to show which word got loaded.
         [DD2GlobalHelper sendViewToGAWithViewName:[NSString stringWithFormat:@"Viewed Word :%@", self.spelling.text]];
         
         //track word view with Flurry

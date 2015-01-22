@@ -73,21 +73,29 @@
     //Setting up audioSession
     [self setupAudioSession];
     [self setAudioSessionCategoryToPlayback];
-
-    //Initializing Appington
-    [Appington start:@"c492b8fa-0e3c-46d9-82c0-3806c0046c70"];
     
-    //Register for Appington notifications
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(onAppingtonNotification:)
-                                                 name:nil object:[Appington notificationObject]];
-    
+    //Voice hints
+    //VOICE_HINT_AVAILABLE controls if voice hints are available in the app.
+    //availability via VOICE_HINT_AVAILABLE was controled by a notification from Appington since Kiuas the key notification doesn't come, so app stopped showing the voice hint button early in 2014.
+    //setting voice hints availability now no appington
+    BOOL voiceHintAvailable = [[NSUserDefaults standardUserDefaults] boolForKey:VOICE_HINT_AVAILABLE];
+    BOOL notUseVoiceHints = [[NSUserDefaults standardUserDefaults] boolForKey:NOT_USE_VOICE_HINTS];
+    if (!voiceHintAvailable && !notUseVoiceHints) {
+        //set up the default for the first time
+        NSLog(@"defaulting Voice_Hint_Available to: %@", ENABLE_VOICE_HINTS ? @"Yes" : @"No");
+        [[NSUserDefaults standardUserDefaults] setBool:ENABLE_VOICE_HINTS forKey:VOICE_HINT_AVAILABLE];
+        [[NSUserDefaults standardUserDefaults] setBool:!ENABLE_VOICE_HINTS forKey:NOT_USE_VOICE_HINTS];
+        //turn off hints if feature isn't available and on if it is
+        NSLog(@"defaulting Not_Use_Voice_Hints to: %@", !ENABLE_VOICE_HINTS ? @"Yes" : @"No");
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
+    if (LOG_VOICE_HINTS) [DD2GlobalHelper voiceHintDefaultSettings];
     
     //default behavior is on
     if(![[NSUserDefaults standardUserDefaults] boolForKey:NOT_USE_VOICE_HINTS]) {
-        // call Appington
-        [Appington control:@"placement" andValues:@{@"id": @"1"}];
-        if (LOG_APPINGTON_NOTIFICATIONS) NSLog(@"Appington placement id 1 (welcome) sent");
+        // play welcome voice message (files AK_dds_1_1.m4a, AK_dds_1_2.m4a)
+        // appington id 1
+        if (LOG_VOICE_HINTS) NSLog(@"Play welcome voice message");
     }
     
     //timer for tip controls
@@ -99,9 +107,9 @@
 - (void)playTip
 {
     if(![[NSUserDefaults standardUserDefaults] boolForKey:NOT_USE_VOICE_HINTS]) {
-        // call Appington
-        [Appington control:@"placement" andValues:@{@"id": @"27"}];
-        if (LOG_APPINGTON_NOTIFICATIONS) NSLog(@"Appington placement id 27 (tip) sent");
+        // play tip voice message (placement id 27) file one of the 2's or 7_1 about the fun tab?
+        // appington id 27
+        if (LOG_VOICE_HINTS) NSLog(@"Play start up tip voice message");
     }
 }
 							
@@ -161,76 +169,5 @@
     }
 }
 
-- (void) onAppingtonNotification:(NSNotification*)notification {
-    if (LOG_APPINGTON_NOTIFICATIONS) NSLog(@"Appington NR: %@", [notification name]);
-    NSLog(@"%@",notification);
-    if ([[notification name] isEqualToString:@"audio_start"])
-    {
-        NSString *audioString = [NSString stringWithFormat:@"id%@_%@_vol%@", [notification.userInfo objectForKey:@"id"], [notification.userInfo objectForKey:@"slot"], [notification.userInfo objectForKey:@"lowered_volume"]];
-        
-        //track event with GA
-        [DD2GlobalHelper sendEventToGAWithCategory:@"uiAction_Appington" action:@"audio_start" label:audioString value:nil];
-        
-        //track audio event with Flurry
-        NSDictionary *flurryParameters = @{@"id" : [notification.userInfo objectForKey:@"id"],
-                                           @"slot" : [notification.userInfo objectForKey:@"slot"],
-                                           @"volume" : [notification.userInfo objectForKey:@"lowered_volume"]};
-        [Flurry logEvent:@"uiAudio_start" withParameters:flurryParameters];
-        [Flurry logEvent:[NSString stringWithFormat:@"uiAudioSlot_%@",[notification.userInfo objectForKey:@"slot"]] withParameters:flurryParameters];
-        
-        if (LOG_APPINGTON_NOTIFICATIONS) NSLog(@"Appington NOTIF audio_start %@", audioString);
-    }
-    if ([[notification name] isEqualToString:@"audio_end"])
-    {
-        NSString *audioString = [NSString stringWithFormat:@"id%@_%@_vol%@", [notification.userInfo objectForKey:@"id"], [notification.userInfo objectForKey:@"slot"], [notification.userInfo objectForKey:@"lowered_volume"]];
-        
-        //track event with GA
-        [DD2GlobalHelper sendEventToGAWithCategory:@"uiAction_Appington" action:@"audio_end" label:audioString value:nil];
-        
-        //track audio event with Flurry
-        NSDictionary *flurryParameters = @{@"id" : [notification.userInfo objectForKey:@"id"],
-                                           @"slot" : [notification.userInfo objectForKey:@"slot"],
-                                           @"volume" : [notification.userInfo objectForKey:@"lowered_volume"]};
-        [Flurry logEvent:@"uiAudio_end" withParameters:flurryParameters];
-        [Flurry logEvent:[NSString stringWithFormat:@"uiAudioPlayed_%@_%@", [notification.userInfo objectForKey:@"id"],[notification.userInfo objectForKey:@"slot"]] withParameters:flurryParameters];
-        [Flurry logEvent:[NSString stringWithFormat:@"uiAudioPlayed_%@", [notification.userInfo objectForKey:@"id"]] withParameters:flurryParameters];
-        
-        if (LOG_APPINGTON_NOTIFICATIONS) NSLog(@"Appington NOTIF audio_end %@", audioString);
-        
-    }
-    if ([[notification name] isEqualToString:@"user_group_set"])
-    {
-        if (LOG_APPINGTON_NOTIFICATIONS) NSLog(@"Appington NOTIF user_group_set %@", notification.userInfo);
-        NSDictionary *values=notification.userInfo;
-        NSString *usersGroup = [values objectForKey:@"user_group"];
-        
-        //track event with GA
-        if ([usersGroup isEqualToString:@"A"]) usersGroup = @"voice_group";
-        [DD2GlobalHelper sendEventToGAWithCategory:@"uiAction_Appington" action:@"user_group" label:usersGroup value:nil];
-        
-        if (LOG_APPINGTON_NOTIFICATIONS) NSLog(@"Appington NOTIF user is in %@", usersGroup);
-        
-    }
-    if ([[notification name] isEqualToString:@"prompts"])
-    {
-        if (LOG_APPINGTON_NOTIFICATIONS) NSLog(@"Appington NOTIF prompts %@", notification.userInfo);
-        
-        NSDictionary *values=notification.userInfo;
-        //NSLog(@"values coming with the notification %@", values);
-        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        
-        BOOL vForChangeable = [[values objectForKey:@"changeable"] boolValue];
-        NSLog(@"value for 'changeable' in notification object %@", [values objectForKey:@"changeable"]);
-        [defaults setBool:vForChangeable forKey:VOICE_HINT_AVAILABLE];      //since Kiuas this doesn't come, so app never shows button.
-        
-        
-        BOOL vForEnabled = [[values objectForKey:@"enabled"] boolValue]; //could be used to control switch setting, currently just testing for similarity.
-        NSLog(@"value for 'enable' in notification object %@", [values objectForKey:@"enabled"]);
-        [defaults setBool:!vForEnabled forKey:NOT_USE_VOICE_HINTS];
-        //inverting switch logic to get default behavior to be ON (although appington is controlling that, so I don't have to tell them about a default setting. Could revert to USE_VOICE_HINTS !
-        
-        [[NSUserDefaults standardUserDefaults] synchronize];
-    }
-}
 
 @end

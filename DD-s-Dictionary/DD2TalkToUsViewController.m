@@ -36,9 +36,11 @@
 -(void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-    // call Appington
-    [Appington control:@"placement" andValues:@{@"id": @"26"}];
-    if (LOG_APPINGTON_NOTIFICATIONS) NSLog(@"Appington placement id 26 (rate me please) sent");
+    if(![[NSUserDefaults standardUserDefaults] boolForKey:NOT_USE_VOICE_HINTS]) {
+        // Play 'rate me please' in Talk to us voice message (file dds_8_3.m4a or 8.2 ?)
+        // appington id 26
+        if (LOG_VOICE_HINTS) NSLog(@"Play rate me please message");
+    }
 }
 
 - (IBAction) rateInStore:(id)sender
@@ -60,9 +62,8 @@
     NSString *logEventString = [NSString stringWithFormat:@"uiAction_RateAppTriggered"];
     [Flurry logEvent:logEventString withParameters:@{@"Button Pressed" : @"Review us"}];
     
-    // call Appington
-    [Appington control:@"conversion" andValues:@{@"id": @"26"}];
-    if (LOG_APPINGTON_NOTIFICATIONS) NSLog(@"Appington conversion id 26 (rated button) sent");
+    // appington conversion id 26
+    if (LOG_VOICE_HINTS) NSLog(@"AFFECT: Rated button pressed");
 }
 
 #pragma mark - Sending an Email

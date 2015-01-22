@@ -20,6 +20,5 @@
     #import "GAIFields.h"
 //for Flurry
     #import "Flurry.h"
-//for Appington
-    #import "Appington.h"
+
 #endif

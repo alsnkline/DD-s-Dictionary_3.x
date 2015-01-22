@@ -362,16 +362,14 @@
     if (indexPath.section == 0 && indexPath.row == 0) {
         // homophones
         self.predicateForSelectedCell = [NSPredicate predicateWithFormat:@"locHomophones.@count > 0"];
-        // Appington
-        [Appington control:@"conversion" andValues:@{@"id": @"22"}];
-        if (LOG_APPINGTON_NOTIFICATIONS) NSLog(@"Appington conversion id 22 (homophones) sent");
+        // appington conversion id 22
+        if (LOG_VOICE_HINTS) NSLog(@"AFFECT: Homophones viewed");
     } else if (indexPath.section == 0 && indexPath.row == 1) {
         // heteronyms
         self.predicateForSelectedCell = [NSPredicate predicateWithFormat:@"pronunciations.@count > 1"];
         // from http://www.raywenderlich.com/14742/core-data-on-ios-5-tutorial-how-to-work-with-relations-and-predicates
-        // Appington
-        [Appington control:@"conversion" andValues:@{@"id": @"23"}];
-        if (LOG_APPINGTON_NOTIFICATIONS) NSLog(@"Appington conversion id 23 (heteronyms) sent");
+        // appington conversion id 23
+        if (LOG_VOICE_HINTS) NSLog(@"AFFECT: Heteronyms viewed");
     } else if (indexPath.section == 1 && indexPath.row == 0) {
         // US / UK differences Spelling
         self.predicateForSelectedCell = [NSPredicate predicateWithFormat:@"SELF.usukVariant contains[c] %@",@"spelling"];

@@ -62,9 +62,9 @@
     
     if ([self.stringForTitle isEqualToString:@"Small Print"]) {
         if(![[NSUserDefaults standardUserDefaults] boolForKey:NOT_USE_VOICE_HINTS]) {
-            // call Appington
-            [Appington control:@"placement" andValues:@{@"id": @"25"}];
-            if (LOG_APPINGTON_NOTIFICATIONS) NSLog(@"Appington placement id 25 (about page) sent");
+            // play small print voice message (file dds_8_1.m4a)
+            // appington ID 25
+            if (LOG_VOICE_HINTS) NSLog(@"Play small print voice message");
         }
     }
     

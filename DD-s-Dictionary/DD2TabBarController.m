@@ -226,7 +226,7 @@
     if ([viewController isKindOfClass:[UINavigationController class]]) {
         UINavigationController *nvc = (UINavigationController *)viewController;
         if ([[nvc.viewControllers objectAtIndex:0] isKindOfClass:[FunWithWordsTableViewController class]]) {
-            [self playAppingtonMsgForFun];
+            [self playVoiceMsgForFun];
         } else if ([[nvc.viewControllers objectAtIndex:0] isKindOfClass:[DD2AllWordSearchViewController class]]) {
             DD2AllWordSearchViewController *searchTable = (DD2AllWordSearchViewController *)[nvc.viewControllers objectAtIndex:0];
             [searchTable.tableView deselectRowAtIndexPath:[searchTable.tableView indexPathForSelectedRow] animated:NO];
@@ -251,15 +251,15 @@
     }
 }
 
-- (void) playAppingtonMsgForFun
+- (void) playVoiceMsgForFun
 {
     if(![[NSUserDefaults standardUserDefaults] boolForKey:NOT_USE_VOICE_HINTS]) {
         static NSArray *msgs = nil;
-        if (!msgs) msgs = [NSArray arrayWithObjects:@"22",@"23", nil];
+        if (!msgs) msgs = [NSArray arrayWithObjects:@"22",@"23", nil]; // files AK_dds_6_1.m4a AK_dds_6_2.m4a
         int msgIndex = arc4random()%[msgs count];
-        // call Appington
-        [Appington control:@"placement" andValues:@{@"id": [msgs objectAtIndex:msgIndex]}];
-        if (LOG_APPINGTON_NOTIFICATIONS) NSLog(@"Appington placement id %@ (fun tab) sent", [msgs objectAtIndex:msgIndex]);
+        
+        // play [msgs objectAtIndex:msgIndex] voice message
+        if (LOG_VOICE_HINTS) NSLog(@"Play Fun Tab selected message %@ ", [msgs objectAtIndex:msgIndex]);
     }
 }
 

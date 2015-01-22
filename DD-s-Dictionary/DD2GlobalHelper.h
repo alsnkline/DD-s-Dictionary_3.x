@@ -11,13 +11,14 @@
 #define LOG_MORE NO                       // must be NO for ship
 #define PROCESS_VERBOSELY NO              // must be NO for ship
 #define LOG_PREDICATE_RESULTS NO          // must be NO for ship
-#define TEST_APPINGTON_ON YES              // must be NO for ship (forces voice group ie the voice hints switch will be shown.)
 #define LOG_ANALYTICS YES                  // must be NO for ship
 #define FIND_MISSING_PRONUNCIATIONS NO    // must be NO for ship
 #define FIND_DUPLICATE_WORDS NO           // must be NO for ship
 
 #define NO_GA YES                            // must be NO for ship
-#define LOG_APPINGTON_NOTIFICATIONS YES     // should be NO for ship
+#define LOG_VOICE_HINTS YES                    // should be NO for ship
+
+#define ENABLE_VOICE_HINTS NO              // should be NO for ship (until feature is reimplemented) - only sets on first app launch
 
 @interface DD2GlobalHelper : NSObject
 
@@ -28,6 +29,7 @@
 + (NSUInteger) testWordPredicate:(NSPredicate *)predicate onWords:(id)words;
 + (NSURL *) wordlistJSONFileDirectory;
 + (NSURL *) fileURLForPronunciation:(NSString *)pronunciation;
++ (void) voiceHintDefaultSettings;
 
 //Analytics Methods
 + (void)sendViewToGAWithViewName:(NSString *)screenName;
