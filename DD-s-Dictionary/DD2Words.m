@@ -9,13 +9,15 @@
 #import "DD2Words.h"
 #import "DD2AppDelegate.h"
 
+#define kDataFile @"Data.plist"
+
 #define COLLECTION_NAMES @"collectionNames"
 #define SMALL_COLLECTION_NAMES @"smallCollectionNames"
 #define TAG_NAMES @"tagNames"
 #define ALL @"allWords"
 
 @interface DD2Words ()
-
+@property (nonatomic) BOOL wordProcessingNeeded;
 @end
 
 @implementation DD2Words
@@ -30,6 +32,7 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
 @synthesize tagNames = _tagNames;
 @synthesize spellingVariant = _spellingVariant;
 @synthesize recentlyViewedWords = _recentlyViewedWords;
+@synthesize wordProcessingNeeded = _wordProcessingNeeded;
 
 
 + (DD2Words *)sharedWords
@@ -38,11 +41,25 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
     return sharedWords;
 }
 
-- recentlyViewedWords {
+- (NSArray *)recentlyViewedWords {
     if (_recentlyViewedWords == nil) _recentlyViewedWords = [[NSArray alloc] init];
     return _recentlyViewedWords;
 }
 
+- (BOOL) wordProcessingNeeded {
+    if (!_wordProcessingNeeded) {
+        NSString * lastBuildProcessed = [[NSUserDefaults standardUserDefaults] stringForKey:APPLICATION_BUILD];
+        NSString * thisBuild = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
+        NSLog(@" lastBuildProcessed = %@ , This build = %@", lastBuildProcessed, thisBuild);
+        if ([lastBuildProcessed intValue] < [thisBuild intValue]) {
+            //new build words need processing
+            self.wordProcessingNeeded = true;
+        } else {
+            self.wordProcessingNeeded = false;
+        }
+    }
+    return _wordProcessingNeeded;
+}
 
 - (NSDictionary *)rawWords
 {
@@ -111,11 +128,59 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
     return _tagNames;
 }
 
++ (BOOL)dataFileIsArchived
+{
+    NSError *error = nil;
+    NSFileManager *localFileManager = [[NSFileManager alloc] init];
+    NSArray *currentCache = [localFileManager contentsOfDirectoryAtURL:[DD2GlobalHelper archiveFileDirectory] includingPropertiesForKeys:nil options: NSDirectoryEnumerationSkipsHiddenFiles error:&error];
+    NSLog(@"currentCache = %@",currentCache);
+    
+    if (!error && [currentCache containsObject:[[DD2GlobalHelper archiveFileDirectory] URLByAppendingPathComponent:kDataFile]])
+    {
+        NSLog(@"%@ is in cache",kDataFile);
+        return true;
+    } else {
+        NSLog(@"error getting or no cached data = %@",error);
+        return false;
+    }
+}
+
 -(NSDictionary *)processedWords
 {
     if (_processedWords ==nil) {
-        NSMutableDictionary *workingProcessedWords = [[NSMutableDictionary alloc] init];
+        NSURL * archiveFullUrl = [[DD2GlobalHelper archiveFileDirectory] URLByAppendingPathComponent:kDataFile];
         
+        if ([DD2Words dataFileIsArchived] && !self.wordProcessingNeeded)
+        {
+            NSDictionary *pWords = [NSKeyedUnarchiver unarchiveObjectWithFile:archiveFullUrl.path];
+            _processedWords = pWords;
+        }
+        else
+        {
+            // process again from json shipped with app
+            NSDictionary * pWords = [self processWords];
+            _processedWords = pWords;
+            
+            //save file in cache/archive
+            BOOL success = [NSKeyedArchiver archiveRootObject:pWords toFile:archiveFullUrl.path];
+            if (success) {
+                self.wordProcessingNeeded = false;
+                // save version of app with sucessfully processed words to NSUserDefaults
+                NSString * build = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
+                [[NSUserDefaults standardUserDefaults] setObject:build forKey:APPLICATION_BUILD];
+                [[NSUserDefaults standardUserDefaults] synchronize];
+            }
+            NSLog(@"archived processed words = %@",success ? @"successfully" : @"archive failed");
+        }
+        
+    }
+    return _processedWords;
+}
+
+-(NSDictionary *)processWords
+{
+    NSLog(@"**** Processing Words ****");
+        NSMutableDictionary *workingProcessedWords = [[NSMutableDictionary alloc] init];
         NSMutableArray *workingCollectionNames = [[NSMutableArray alloc] init];
         NSMutableArray *workingSmallCollectionNames = [[NSMutableArray alloc] init];
         NSMutableArray *workingTagNames = [[NSMutableArray alloc] init];
@@ -183,10 +248,8 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
         //check for duplicate words
         if (FIND_DUPLICATE_WORDS) [self logAnyDuplicateWordsIn:workingAllWords];
         
-        _processedWords = [workingProcessedWords copy];
-    }
+        return [workingProcessedWords copy];
     
-    return _processedWords;
 }
 
 - (NSDictionary *) processRawWord:(NSDictionary *)rawWord forLocale:(NSString *)locale

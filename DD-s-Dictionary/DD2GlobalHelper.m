@@ -68,6 +68,15 @@
     
 }
 
++ (NSURL *)archiveFileDirectory
+{
+    NSFileManager *localFileManager = [[NSFileManager alloc] init];
+    NSArray *possibleUrls = [localFileManager URLsForDirectory:NSCachesDirectory inDomains:NSUserDomainMask];
+    NSURL *cacheDir = [possibleUrls lastObject];
+    // NSLog(@"Caches file directory: %@", cacheDir);
+    return cacheDir;
+}
+
 + (NSURL *)wordlistJSONFileDirectory
 {
     NSFileManager *localFileManager = [[NSFileManager alloc] init];
