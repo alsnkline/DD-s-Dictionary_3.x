@@ -520,6 +520,7 @@
 					"$(SRCROOT)/DD-s-Dictionary",
 					"$(PROJECT_DIR)/DD-s-Dictionary",
 				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
@@ -542,6 +543,7 @@
 					"$(SRCROOT)/DD-s-Dictionary",
 					"$(PROJECT_DIR)/DD-s-Dictionary",
 				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "D78BE064-4425-4B21-9185-330076B34906";
