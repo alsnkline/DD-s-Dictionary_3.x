@@ -131,16 +131,14 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
 + (BOOL)dataFileIsArchived
 {
     NSError *error = nil;
-    NSFileManager *localFileManager = [[NSFileManager alloc] init];
-    NSArray *currentCache = [localFileManager contentsOfDirectoryAtURL:[DD2GlobalHelper archiveFileDirectory] includingPropertiesForKeys:nil options: NSDirectoryEnumerationSkipsHiddenFiles error:&error];
-    NSLog(@"currentCache = %@",currentCache);
+    NSURL * archiveFullUrl = [[DD2GlobalHelper archiveFileDirectory] URLByAppendingPathComponent:kDataFile];
+    BOOL isCached = [archiveFullUrl checkResourceIsReachableAndReturnError:&error];
+    NSLog(@"%@ isCached = %@. Error = %@",kDataFile, isCached ? @"yes" : @"no", error);
     
-    if (!error && [currentCache containsObject:[[DD2GlobalHelper archiveFileDirectory] URLByAppendingPathComponent:kDataFile]])
+    if (!error && isCached)
     {
-        NSLog(@"%@ is in cache",kDataFile);
         return true;
     } else {
-        NSLog(@"error getting or no cached data = %@",error);
         return false;
     }
 }
