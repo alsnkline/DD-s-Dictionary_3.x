@@ -514,7 +514,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DD-s-Dictionary/DD-s-Dictionary-Prefix.pch";
 				INFOPLIST_FILE = "DD-s-Dictionary/DD-s-Dictionary-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/DD-s-Dictionary",
@@ -537,7 +537,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DD-s-Dictionary/DD-s-Dictionary-Prefix.pch";
 				INFOPLIST_FILE = "DD-s-Dictionary/DD-s-Dictionary-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/DD-s-Dictionary",
