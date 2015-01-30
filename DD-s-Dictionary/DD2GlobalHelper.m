@@ -82,7 +82,7 @@
     NSFileManager *localFileManager = [[NSFileManager alloc] init];
     NSURL *bundleUrl = [[NSBundle mainBundle] bundleURL];
     NSURL *dirUrl = [NSURL URLWithString:@"resources.bundle/json/" relativeToURL:bundleUrl];
-    NSLog(@"Wordlist Json file directory: %@", dirUrl);
+    // NSLog(@"Wordlist Json file directory: %@", dirUrl);
     
     BOOL isDir = YES;
     [localFileManager fileExistsAtPath:[dirUrl path] isDirectory:&isDir];

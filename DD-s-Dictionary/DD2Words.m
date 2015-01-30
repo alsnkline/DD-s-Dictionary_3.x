@@ -133,7 +133,12 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
     NSError *error = nil;
     NSURL * archiveFullUrl = [[DD2GlobalHelper archiveFileDirectory] URLByAppendingPathComponent:kDataFile];
     BOOL isCached = [archiveFullUrl checkResourceIsReachableAndReturnError:&error];
-    NSLog(@"%@ isCached = %@. Error = %@",kDataFile, isCached ? @"yes" : @"no", error);
+    if (LOG_MORE) NSLog(@"%@ is cached = %@.",kDataFile, isCached ? @"yes" : @"no");
+    if (LOG_MORE && error) {
+        NSLog(@"Error = %@", error);
+    } else if (LOG_MORE) {
+        NSLog(@"Archived file = %@", archiveFullUrl);
+    }
     
     if (!error && isCached)
     {
@@ -150,12 +155,13 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
         
         if ([DD2Words dataFileIsArchived] && !self.wordProcessingNeeded)
         {
+            NSLog(@"**** Using Archived Words ****");
             NSDictionary *pWords = [NSKeyedUnarchiver unarchiveObjectWithFile:archiveFullUrl.path];
             _processedWords = pWords;
         }
         else
         {
-            // process again from json shipped with app
+            NSLog(@"**** Processing Words ****");
             NSDictionary * pWords = [self processWords];
             _processedWords = pWords;
             
@@ -177,7 +183,6 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
 
 -(NSDictionary *)processWords
 {
-    NSLog(@"**** Processing Words ****");
         NSMutableDictionary *workingProcessedWords = [[NSMutableDictionary alloc] init];
         NSMutableArray *workingCollectionNames = [[NSMutableArray alloc] init];
         NSMutableArray *workingSmallCollectionNames = [[NSMutableArray alloc] init];
@@ -325,9 +330,13 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
 
 - (void) logAnyDuplicateWordsIn:(NSArray *)wordList{
     NSCountedSet *countedSet = [NSCountedSet setWithArray:[wordList valueForKey:@"spelling"]];
-    for (NSDictionary *word in wordList) {
-        if([countedSet countForObject:[word valueForKey:@"spelling"]] > 2) NSLog(@"***** duplicate %@ *****", [word valueForKey:@"spelling"]);
-    }
+    int n=0;
+    for (NSDictionary *word in wordList)
+        if([countedSet countForObject:[word valueForKey:@"spelling"]] > 2) {
+            NSLog(@"***** duplicate %@ *****", [word valueForKey:@"spelling"]);
+            n+=1;
+        }
+    if (n==0) NSLog(@"***** No duplicate words *****");
 }
 
 - (NSArray *)allWordsForCurrentSpellingVariant {
