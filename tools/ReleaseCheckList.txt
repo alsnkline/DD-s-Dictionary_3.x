@@ -13,6 +13,7 @@ Ship App Check List:
    (can Create Release Branch later if needed)
 (how to delete a tag if you need too)
 3. ensure Google Analytics is turned on and pointing to production (Supporting Files AppDelegate @"UA-37793922-1" is Production)
+4. Appington - obsolete
 5. complete upgrade test on iPhone and iPad
 6. search for "ship" and confirm that anything which needs to be removed has been.
     5i in GlobalHelper.h set PROCESS_VERBOSELY NO
