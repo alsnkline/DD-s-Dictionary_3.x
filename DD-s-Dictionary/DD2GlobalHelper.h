@@ -30,7 +30,7 @@
 + (NSURL *) archiveFileDirectory;
 + (NSURL *) wordlistJSONFileDirectory;
 + (NSURL *) fileURLForPronunciation:(NSString *)pronunciation;
-+ (void) voiceHintDefaultSettings;
++ (void) priontVoiceHintSettings;
 
 //Analytics Methods
 + (void)sendViewToGAWithViewName:(NSString *)screenName;

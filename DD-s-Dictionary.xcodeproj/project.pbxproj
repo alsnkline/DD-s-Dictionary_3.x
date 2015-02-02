@@ -36,7 +36,6 @@
 		B195675017DA65AC00CB7F4B /* resources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B195674F17DA65AC00CB7F4B /* resources.bundle */; };
 		B195675C17DA6B1400CB7F4B /* DD2Words.m in Sources */ = {isa = PBXBuildFile; fileRef = B195675B17DA6B1400CB7F4B /* DD2Words.m */; };
 		B195675F17DA6FB200CB7F4B /* DD2GlobalHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B195675E17DA6FB200CB7F4B /* DD2GlobalHelper.m */; };
-		B1966A4C17F3F07A007277A8 /* appington in Resources */ = {isa = PBXBuildFile; fileRef = B1966A4B17F3F07A007277A8 /* appington */; };
 		B1966A4E17F3F0BF007277A8 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1966A4D17F3F0BF007277A8 /* CoreTelephony.framework */; };
 		B1966A5017F3F0FF007277A8 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B1966A4F17F3F0FF007277A8 /* libsqlite3.dylib */; };
 		B197BD461801F8FB00E9D287 /* DD2TalkToUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B197BD451801F8FB00E9D287 /* DD2TalkToUsViewController.m */; };
@@ -105,7 +104,6 @@
 		B195675B17DA6B1400CB7F4B /* DD2Words.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DD2Words.m; sourceTree = "<group>"; };
 		B195675D17DA6FB200CB7F4B /* DD2GlobalHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DD2GlobalHelper.h; sourceTree = "<group>"; };
 		B195675E17DA6FB200CB7F4B /* DD2GlobalHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DD2GlobalHelper.m; sourceTree = "<group>"; };
-		B1966A4B17F3F07A007277A8 /* appington */ = {isa = PBXFileReference; lastKnownFileType = folder; path = appington; sourceTree = SOURCE_ROOT; };
 		B1966A4D17F3F0BF007277A8 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		B1966A4F17F3F0FF007277A8 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		B197BD441801F8FB00E9D287 /* DD2TalkToUsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DD2TalkToUsViewController.h; sourceTree = "<group>"; };
@@ -263,7 +261,6 @@
 		B195673017DA64D400CB7F4B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				B1966A4B17F3F07A007277A8 /* appington */,
 				B195673817DA64D400CB7F4B /* DD2AppDelegate.h */,
 				B195673917DA64D400CB7F4B /* DD2AppDelegate.m */,
 				B195673117DA64D400CB7F4B /* DD-s-Dictionary-Info.plist */,
@@ -388,7 +385,6 @@
 				B1C21C9E17ECF74B00C51C8C /* Default-Landscape~ipad.png in Resources */,
 				B1C0446E17ECFC44007395C3 /* iTunesArtwork.png in Resources */,
 				B1C0446F17ECFC44007395C3 /* iTunesArtwork@2x.png in Resources */,
-				B1966A4C17F3F07A007277A8 /* appington in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
