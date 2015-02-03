@@ -122,7 +122,7 @@
     }
 }
 
-+ (void)priontVoiceHintSettings
++ (void)printVoiceHintSettings
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSLog(@"Voice Hint default values:");

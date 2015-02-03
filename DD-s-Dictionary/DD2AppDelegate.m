@@ -89,7 +89,7 @@
         NSLog(@"defaulting Not_Use_Voice_Hints to: %@", !ENABLE_VOICE_HINTS ? @"Yes" : @"No");
         [[NSUserDefaults standardUserDefaults] synchronize];
     }
-    if (LOG_VOICE_HINTS) [DD2GlobalHelper priontVoiceHintSettings];
+    if (LOG_VOICE_HINTS) [DD2GlobalHelper printVoiceHintSettings];
     
     //default behavior is on
     if(![[NSUserDefaults standardUserDefaults] boolForKey:NOT_USE_VOICE_HINTS]) {
