@@ -68,12 +68,21 @@
     
 }
 
++ (NSURL *)archiveFileDirectory
+{
+    NSFileManager *localFileManager = [[NSFileManager alloc] init];
+    NSArray *possibleUrls = [localFileManager URLsForDirectory:NSCachesDirectory inDomains:NSUserDomainMask];
+    NSURL *cacheDir = [possibleUrls lastObject];
+    // NSLog(@"Caches file directory: %@", cacheDir);
+    return cacheDir;
+}
+
 + (NSURL *)wordlistJSONFileDirectory
 {
     NSFileManager *localFileManager = [[NSFileManager alloc] init];
     NSURL *bundleUrl = [[NSBundle mainBundle] bundleURL];
     NSURL *dirUrl = [NSURL URLWithString:@"resources.bundle/json/" relativeToURL:bundleUrl];
-    NSLog(@"Wordlist Json file directory: %@", dirUrl);
+    // NSLog(@"Wordlist Json file directory: %@", dirUrl);
     
     BOOL isDir = YES;
     [localFileManager fileExistsAtPath:[dirUrl path] isDirectory:&isDir];
@@ -113,7 +122,7 @@
     }
 }
 
-+ (void)voiceHintDefaultSettings
++ (void)printVoiceHintSettings
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSLog(@"Voice Hint default values:");

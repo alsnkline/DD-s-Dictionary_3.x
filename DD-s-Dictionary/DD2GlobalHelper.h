@@ -27,9 +27,10 @@
 + (NSArray *) alphabet;
 + (NSString *) getHexStringForColor:(UIColor *)color;
 + (NSUInteger) testWordPredicate:(NSPredicate *)predicate onWords:(id)words;
++ (NSURL *) archiveFileDirectory;
 + (NSURL *) wordlistJSONFileDirectory;
 + (NSURL *) fileURLForPronunciation:(NSString *)pronunciation;
-+ (void) voiceHintDefaultSettings;
++ (void) printVoiceHintSettings;
 
 //Analytics Methods
 + (void)sendViewToGAWithViewName:(NSString *)screenName;

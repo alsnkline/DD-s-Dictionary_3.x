@@ -513,6 +513,10 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    
+    //set AutocapitalizationTypeNone as iOS8 causes this not to be set correctly from storyboard
+    self.searchDisplayController.searchBar.autocapitalizationType = UITextAutocapitalizationTypeNone;
+    
     if ([self getSplitViewWithDisplayWordViewController] && self.selectedWord) {
         [self displaySelectedWord];
     }

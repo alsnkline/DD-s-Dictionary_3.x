@@ -9,13 +9,15 @@
 #import "DD2Words.h"
 #import "DD2AppDelegate.h"
 
+#define kDataFile @"Data.plist"
+
 #define COLLECTION_NAMES @"collectionNames"
 #define SMALL_COLLECTION_NAMES @"smallCollectionNames"
 #define TAG_NAMES @"tagNames"
 #define ALL @"allWords"
 
 @interface DD2Words ()
-
+@property (nonatomic) BOOL wordProcessingNeeded;
 @end
 
 @implementation DD2Words
@@ -30,6 +32,7 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
 @synthesize tagNames = _tagNames;
 @synthesize spellingVariant = _spellingVariant;
 @synthesize recentlyViewedWords = _recentlyViewedWords;
+@synthesize wordProcessingNeeded = _wordProcessingNeeded;
 
 
 + (DD2Words *)sharedWords
@@ -43,6 +46,20 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
     return _recentlyViewedWords;
 }
 
+- (BOOL) wordProcessingNeeded {
+    if (!_wordProcessingNeeded) {
+        NSString * lastBuildProcessed = [[NSUserDefaults standardUserDefaults] stringForKey:APPLICATION_BUILD];
+        NSString * thisBuild = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
+        NSLog(@" lastBuildProcessed = %@ , This build = %@", lastBuildProcessed, thisBuild);
+        if ([lastBuildProcessed intValue] < [thisBuild intValue]) {
+            //new build words need processing
+            self.wordProcessingNeeded = true;
+        } else {
+            self.wordProcessingNeeded = false;
+        }
+    }
+    return _wordProcessingNeeded;
+}
 
 - (NSDictionary *)rawWords
 {
@@ -111,82 +128,131 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
     return _tagNames;
 }
 
++ (BOOL)dataFileIsArchived
+{
+    NSError *error = nil;
+    NSURL * archiveFullUrl = [[DD2GlobalHelper archiveFileDirectory] URLByAppendingPathComponent:kDataFile];
+    BOOL isCached = [archiveFullUrl checkResourceIsReachableAndReturnError:&error];
+    if (LOG_MORE) NSLog(@"%@ is cached = %@.",kDataFile, isCached ? @"yes" : @"no");
+    if (LOG_MORE && error) {
+        NSLog(@"Error = %@", error);
+    } else if (LOG_MORE) {
+        NSLog(@"Archived file = %@", archiveFullUrl);
+    }
+    
+    if (!error && isCached)
+    {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+
 -(NSDictionary *)processedWords
 {
     if (_processedWords ==nil) {
-        NSMutableDictionary *workingProcessedWords = [[NSMutableDictionary alloc] init];
+        NSURL * archiveFullUrl = [[DD2GlobalHelper archiveFileDirectory] URLByAppendingPathComponent:kDataFile];
         
-        NSMutableArray *workingCollectionNames = [[NSMutableArray alloc] init];
-        NSMutableArray *workingSmallCollectionNames = [[NSMutableArray alloc] init];
-        NSMutableArray *workingTagNames = [[NSMutableArray alloc] init];
-        NSMutableArray *workingAllWords = [[NSMutableArray alloc] init];
-        
-        for (NSDictionary *rawWord in [self.rawWords objectForKey:@"words"]) {
-            if (PROCESS_VERBOSELY) NSLog(@"** start processing word **");
+        if ([DD2Words dataFileIsArchived] && !self.wordProcessingNeeded)
+        {
+            NSLog(@"**** Using Archived Words ****");
+            NSDictionary *pWords = [NSKeyedUnarchiver unarchiveObjectWithFile:archiveFullUrl.path];
+            _processedWords = pWords;
+        }
+        else
+        {
+            NSLog(@"**** Processing Words ****");
+            NSDictionary * pWords = [self processWords];
+            _processedWords = pWords;
             
-            //processing for each locale
-            NSMutableDictionary *ukProcessedWord = [[self processRawWord:rawWord forLocale:@"uk"] mutableCopy];
-            NSMutableDictionary *usProcessedWord = [[self processRawWord:rawWord forLocale:@"us"] mutableCopy];
-            
-            if (usProcessedWord && ukProcessedWord) {   // can only be a us/uk variation is both exsist
-                NSString *usukVariantType;
-                if ([ukProcessedWord objectForKey:@"locHomophones"] != [usProcessedWord objectForKey:@"locHomophones"]) {
-                    usukVariantType = [DD2Words appendText:@"locHomophones" toType:usukVariantType];
-                }
-                if (![[ukProcessedWord objectForKey:@"spelling"] isEqualToString:[usProcessedWord objectForKey:@"spelling"]]) {
-                    usukVariantType = [DD2Words appendText:@"spelling" toType:usukVariantType];
-                }
-                
-                NSSet *pronunciations = [DD2Words pronunciationsForWord:usProcessedWord];
-                [pronunciations setByAddingObjectsFromSet: [DD2Words pronunciationsForWord:ukProcessedWord]];
-                for (NSString *pronunciation in pronunciations) {
-                    if ([pronunciation length] > 3) {
-                        NSString *prefix = [pronunciation substringWithRange:NSMakeRange(0, 3)];
-                        if ([prefix isEqualToString:@"uk-"] || [prefix isEqualToString:@"us-"]) {
-                            usukVariantType = [DD2Words appendText:@"pronunciation" toType:usukVariantType];
-                        }
-                    }
-                }
-                if (usukVariantType && PROCESS_VERBOSELY) NSLog(@"US UK variant = %@", usukVariantType);
-                if (usukVariantType) [usProcessedWord setObject:usukVariantType forKey:@"usukVariant"];     // only add if there is a variant type
-                if (usukVariantType) [ukProcessedWord setObject:usukVariantType forKey:@"usukVariant"];
-                
-                if (PROCESS_VERBOSELY) NSLog(@"Added %@ to %@ (%@) and %@ (%@)", usukVariantType, [ukProcessedWord objectForKey:@"spelling"], [ukProcessedWord objectForKey:@"wordVariant"], [usProcessedWord objectForKey:@"spelling"], [usProcessedWord objectForKey:@"wordVariant"]);
+            //save file in cache/archive
+            BOOL success = [NSKeyedArchiver archiveRootObject:pWords toFile:archiveFullUrl.path];
+            if (success) {
+                self.wordProcessingNeeded = false;
+                // save version of app with sucessfully processed words to NSUserDefaults
+                NSString * build = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
+                [[NSUserDefaults standardUserDefaults] setObject:build forKey:APPLICATION_BUILD];
+                [[NSUserDefaults standardUserDefaults] synchronize];
             }
-            
-            if (usProcessedWord) [workingAllWords addObject:usProcessedWord];
-            if (ukProcessedWord) [workingAllWords addObject:ukProcessedWord];
-            
-            
-            //processing collections on raw word
-            NSMutableArray *collections = [NSMutableArray arrayWithArray:[rawWord objectForKey:@"collections"]];
-            for (NSString *collection in collections) {
-                if (![workingCollectionNames containsObject:collection]) [workingCollectionNames addObject:collection];
-            }
-            
-            //processing Small Collections on raw word
-            NSString *smallCollection = [rawWord objectForKey:@"small_collection"];
-            if (smallCollection && ![workingSmallCollectionNames containsObject:smallCollection]) [workingSmallCollectionNames addObject:smallCollection];
-                                          
-            //processing Tags on raw word (ignoring locale as no tagged words have a spelling variations will endup with all UK words)
-            NSArray *tags = [rawWord objectForKey:@"tags"];
-            for (NSString *tag in tags) {
-                if (![workingTagNames containsObject:tag]) [workingTagNames addObject:tag];
-            }
+            NSLog(@"archived processed words = %@",success ? @"successfully" : @"archive failed");
         }
         
-        [workingProcessedWords setObject:workingCollectionNames forKey:COLLECTION_NAMES];
-        [workingProcessedWords setObject:workingSmallCollectionNames forKey:SMALL_COLLECTION_NAMES];
-        [workingProcessedWords setObject:workingTagNames forKey:TAG_NAMES];
-        [workingProcessedWords setObject:workingAllWords forKey:ALL];
+    }
+    return _processedWords;
+}
+
+-(NSDictionary *)processWords
+{
+    NSMutableDictionary *workingProcessedWords = [[NSMutableDictionary alloc] init];
+    NSMutableArray *workingCollectionNames = [[NSMutableArray alloc] init];
+    NSMutableArray *workingSmallCollectionNames = [[NSMutableArray alloc] init];
+    NSMutableArray *workingTagNames = [[NSMutableArray alloc] init];
+    NSMutableArray *workingAllWords = [[NSMutableArray alloc] init];
+    
+    for (NSDictionary *rawWord in [self.rawWords objectForKey:@"words"]) {
+        if (PROCESS_VERBOSELY) NSLog(@"** start processing word **");
         
-        //check for duplicate words
-        if (FIND_DUPLICATE_WORDS) [self logAnyDuplicateWordsIn:workingAllWords];
+        //processing for each locale
+        NSMutableDictionary *ukProcessedWord = [[self processRawWord:rawWord forLocale:@"uk"] mutableCopy];
+        NSMutableDictionary *usProcessedWord = [[self processRawWord:rawWord forLocale:@"us"] mutableCopy];
         
-        _processedWords = [workingProcessedWords copy];
+        if (usProcessedWord && ukProcessedWord) {   // can only be a us/uk variation is both exsist
+            NSString *usukVariantType;
+            if ([ukProcessedWord objectForKey:@"locHomophones"] != [usProcessedWord objectForKey:@"locHomophones"]) {
+                usukVariantType = [DD2Words appendText:@"locHomophones" toType:usukVariantType];
+            }
+            if (![[ukProcessedWord objectForKey:@"spelling"] isEqualToString:[usProcessedWord objectForKey:@"spelling"]]) {
+                usukVariantType = [DD2Words appendText:@"spelling" toType:usukVariantType];
+            }
+            
+            NSSet *pronunciations = [DD2Words pronunciationsForWord:usProcessedWord];
+            [pronunciations setByAddingObjectsFromSet: [DD2Words pronunciationsForWord:ukProcessedWord]];
+            for (NSString *pronunciation in pronunciations) {
+                if ([pronunciation length] > 3) {
+                    NSString *prefix = [pronunciation substringWithRange:NSMakeRange(0, 3)];
+                    if ([prefix isEqualToString:@"uk-"] || [prefix isEqualToString:@"us-"]) {
+                        usukVariantType = [DD2Words appendText:@"pronunciation" toType:usukVariantType];
+                    }
+                }
+            }
+            if (usukVariantType && PROCESS_VERBOSELY) NSLog(@"US UK variant = %@", usukVariantType);
+            if (usukVariantType) [usProcessedWord setObject:usukVariantType forKey:@"usukVariant"];     // only add if there is a variant type
+            if (usukVariantType) [ukProcessedWord setObject:usukVariantType forKey:@"usukVariant"];
+            
+            if (PROCESS_VERBOSELY) NSLog(@"Added %@ to %@ (%@) and %@ (%@)", usukVariantType, [ukProcessedWord objectForKey:@"spelling"], [ukProcessedWord objectForKey:@"wordVariant"], [usProcessedWord objectForKey:@"spelling"], [usProcessedWord objectForKey:@"wordVariant"]);
+        }
+        
+        if (usProcessedWord) [workingAllWords addObject:usProcessedWord];
+        if (ukProcessedWord) [workingAllWords addObject:ukProcessedWord];
+        
+        
+        //processing collections on raw word
+        NSMutableArray *collections = [NSMutableArray arrayWithArray:[rawWord objectForKey:@"collections"]];
+        for (NSString *collection in collections) {
+            if (![workingCollectionNames containsObject:collection]) [workingCollectionNames addObject:collection];
+        }
+        
+        //processing Small Collections on raw word
+        NSString *smallCollection = [rawWord objectForKey:@"small_collection"];
+        if (smallCollection && ![workingSmallCollectionNames containsObject:smallCollection]) [workingSmallCollectionNames addObject:smallCollection];
+                                      
+        //processing Tags on raw word (ignoring locale as no tagged words have a spelling variations will endup with all UK words)
+        NSArray *tags = [rawWord objectForKey:@"tags"];
+        for (NSString *tag in tags) {
+            if (![workingTagNames containsObject:tag]) [workingTagNames addObject:tag];
+        }
     }
     
-    return _processedWords;
+    [workingProcessedWords setObject:workingCollectionNames forKey:COLLECTION_NAMES];
+    [workingProcessedWords setObject:workingSmallCollectionNames forKey:SMALL_COLLECTION_NAMES];
+    [workingProcessedWords setObject:workingTagNames forKey:TAG_NAMES];
+    [workingProcessedWords setObject:workingAllWords forKey:ALL];
+    
+    //check for duplicate words
+    if (FIND_DUPLICATE_WORDS) [self logAnyDuplicateWordsIn:workingAllWords];
+    
+    return [workingProcessedWords copy];
 }
 
 - (NSDictionary *) processRawWord:(NSDictionary *)rawWord forLocale:(NSString *)locale
@@ -264,9 +330,13 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
 
 - (void) logAnyDuplicateWordsIn:(NSArray *)wordList{
     NSCountedSet *countedSet = [NSCountedSet setWithArray:[wordList valueForKey:@"spelling"]];
-    for (NSDictionary *word in wordList) {
-        if([countedSet countForObject:[word valueForKey:@"spelling"]] > 2) NSLog(@"***** duplicate %@ *****", [word valueForKey:@"spelling"]);
-    }
+    int n=0;
+    for (NSDictionary *word in wordList)
+        if([countedSet countForObject:[word valueForKey:@"spelling"]] > 2) {
+            NSLog(@"***** duplicate %@ *****", [word valueForKey:@"spelling"]);
+            n+=1;
+        }
+    if (n==0) NSLog(@"***** No duplicate words *****");
 }
 
 - (NSArray *)allWordsForCurrentSpellingVariant {
