@@ -233,8 +233,12 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
             }
             
             //processing Small Collections on raw word
-            NSString *smallCollection = [rawWord objectForKey:@"small_collection"];
-            if (smallCollection && ![workingSmallCollectionNames containsObject:smallCollection]) [workingSmallCollectionNames addObject:smallCollection];
+            NSArray *rawSmallCollection = [rawWord objectForKey:@"small_collection"];
+            for (NSString *smallCollection in rawSmallCollection) {
+                if (![workingSmallCollectionNames containsObject:smallCollection]) {
+                    [workingSmallCollectionNames addObject:smallCollection];
+                }
+            }
                                           
             //processing Tags on raw word (ignoring locale as no tagged words have a spelling variations will endup with all UK words)
             NSArray *tags = [rawWord objectForKey:@"tags"];

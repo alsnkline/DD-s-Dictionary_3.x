@@ -6,11 +6,11 @@ import sys
 import traceback
 
 #: which columns are always lists
-list_cols={"collections", "dm", "homophones", "tags", "pronunciations"}
+list_cols={"collections", "dm", "homophones", "tags", "pronunciations", "small_collection"}
 #: which columns might be lists if space is present
 list_maybe={"word"}
 #: which columns are for the google spreadsheet only ie not to be put into the output.
-list_ignore={"Special", "Recording Needed", "Recording notes"}
+list_ignore={"Collection changes", "Recording Needed", "Recording notes"}
 
 def process_token(v):
     v=v.strip()
