@@ -174,7 +174,7 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
                 [[NSUserDefaults standardUserDefaults] setObject:build forKey:APPLICATION_BUILD];
                 [[NSUserDefaults standardUserDefaults] synchronize];
             }
-            NSLog(@"archived processed words = %@",success ? @"successfully" : @"archive failed");
+            NSLog(@"Archived processed words = %@\n                                                  **** Processing Ended ****",success ? @"successfully" : @"archive failed");
         }
         
     }
@@ -190,7 +190,7 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
         NSMutableArray *workingAllWords = [[NSMutableArray alloc] init];
         
         for (NSDictionary *rawWord in [self.rawWords objectForKey:@"words"]) {
-            if (PROCESS_VERBOSELY) NSLog(@"** start processing word **");
+            if (PROCESS_VERBOSELY) NSLog(@"\n                                                  ** start processing word **");
             
             //processing for each locale
             NSMutableDictionary *ukProcessedWord = [[self processRawWord:rawWord forLocale:@"uk"] mutableCopy];
@@ -205,7 +205,9 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
                     usukVariantType = [DD2Words appendText:@"spelling" toType:usukVariantType];
                 }
                 
+                if (PROCESS_VERBOSELY) NSLog(@"Pronunciations (us)");
                 NSSet *pronunciations = [DD2Words pronunciationsForWord:usProcessedWord];
+                if (PROCESS_VERBOSELY) NSLog(@"Pronunciations (uk)");
                 [pronunciations setByAddingObjectsFromSet: [DD2Words pronunciationsForWord:ukProcessedWord]];
                 for (NSString *pronunciation in pronunciations) {
                     if ([pronunciation length] > 3) {
@@ -215,11 +217,12 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
                         }
                     }
                 }
-                if (usukVariantType && PROCESS_VERBOSELY) NSLog(@"US UK variant = %@", usukVariantType);
-                if (usukVariantType) [usProcessedWord setObject:usukVariantType forKey:@"usukVariant"];     // only add if there is a variant type
-                if (usukVariantType) [ukProcessedWord setObject:usukVariantType forKey:@"usukVariant"];
-                
-                if (usukVariantType && PROCESS_VERBOSELY) NSLog(@"Added %@ to %@ (%@) and %@ (%@)", usukVariantType, [ukProcessedWord objectForKey:@"spelling"], [ukProcessedWord objectForKey:@"wordVariant"], [usProcessedWord objectForKey:@"spelling"], [usProcessedWord objectForKey:@"wordVariant"]);
+                // only add if there is a variant type
+                if (usukVariantType) {
+                    [usProcessedWord setObject:usukVariantType forKey:@"usukVariant"];
+                    [ukProcessedWord setObject:usukVariantType forKey:@"usukVariant"];
+                    if (PROCESS_VERBOSELY) NSLog(@"Added UK US VariantType %@ to %@ (%@) and %@ (%@)", usukVariantType, [ukProcessedWord objectForKey:@"spelling"], [ukProcessedWord objectForKey:@"wordVariant"], [usProcessedWord objectForKey:@"spelling"], [usProcessedWord objectForKey:@"wordVariant"]);
+                }
             }
             
             if (usProcessedWord) [workingAllWords addObject:usProcessedWord];
@@ -532,7 +535,7 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
         }
     }
     // don't log this if looking for missing pronunciations
-    if (!FIND_MISSING_PRONUNCIATIONS && PROCESS_VERBOSELY) NSLog(@"Pronunciations for %@ = %@", [word objectForKey:@"spelling"], pronunciationsStringForLog);
+    if (!FIND_MISSING_PRONUNCIATIONS && PROCESS_VERBOSELY) NSLog(@"%@ pronounced %@", [word objectForKey:@"spelling"], pronunciationsStringForLog);
     return [pronunciations copy];
 }
 
