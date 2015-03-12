@@ -196,7 +196,7 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
             NSMutableDictionary *ukProcessedWord = [[self processRawWord:rawWord forLocale:@"uk"] mutableCopy];
             NSMutableDictionary *usProcessedWord = [[self processRawWord:rawWord forLocale:@"us"] mutableCopy];
             
-            if (usProcessedWord && ukProcessedWord) {   // can only be a us/uk variation is both exsist
+            if (usProcessedWord && ukProcessedWord) {   // can only be a us/uk variation if both exist
                 NSString *usukVariantType;
                 if ([ukProcessedWord objectForKey:@"locHomophones"] != [usProcessedWord objectForKey:@"locHomophones"]) {
                     usukVariantType = [DD2Words appendText:@"locHomophones" toType:usukVariantType];
@@ -219,7 +219,7 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
                 if (usukVariantType) [usProcessedWord setObject:usukVariantType forKey:@"usukVariant"];     // only add if there is a variant type
                 if (usukVariantType) [ukProcessedWord setObject:usukVariantType forKey:@"usukVariant"];
                 
-                if (PROCESS_VERBOSELY) NSLog(@"Added %@ to %@ (%@) and %@ (%@)", usukVariantType, [ukProcessedWord objectForKey:@"spelling"], [ukProcessedWord objectForKey:@"wordVariant"], [usProcessedWord objectForKey:@"spelling"], [usProcessedWord objectForKey:@"wordVariant"]);
+                if (usukVariantType && PROCESS_VERBOSELY) NSLog(@"Added %@ to %@ (%@) and %@ (%@)", usukVariantType, [ukProcessedWord objectForKey:@"spelling"], [ukProcessedWord objectForKey:@"wordVariant"], [usProcessedWord objectForKey:@"spelling"], [usProcessedWord objectForKey:@"wordVariant"]);
             }
             
             if (usProcessedWord) [workingAllWords addObject:usProcessedWord];
