@@ -11,7 +11,6 @@
 
 @interface DD2WordListTableViewController () <UITableViewDataSource, UITableViewDelegate, DisplayWordViewControllerDelegate>
 @property (nonatomic, strong) NSDictionary *selectedWord;
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 
