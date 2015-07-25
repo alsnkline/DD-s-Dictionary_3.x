@@ -3665,8 +3665,12 @@
             "word": "feel"
         }, 
         {
+            "Explanations": "My feet are on the end of my legs.", 
             "collections": [
                 "first_words"
+            ], 
+            "homophones": [
+                "feat"
             ], 
             "word": "feet"
         }, 
@@ -3722,8 +3726,12 @@
             "word": "finally"
         }, 
         {
+            "Explanations": "My dog will find your shoe.", 
             "collections": [
                 "first_words"
+            ], 
+            "homophones": [
+                "fined"
             ], 
             "word": "find"
         }, 
@@ -4175,8 +4183,12 @@
             "word": "guess"
         }, 
         {
+            "Explanations": "During her visit she was a guest in my house.", 
             "collections": [
                 "first_words"
+            ], 
+            "homophones": [
+                "guessed"
             ], 
             "word": "guest"
         }, 
@@ -6100,8 +6112,12 @@
             "word": "pass"
         }, 
         {
+            "Explanations": "The summer holidays were in the past now.", 
             "collections": [
                 "first_words"
+            ], 
+            "homophones": [
+                "passed"
             ], 
             "word": "past"
         }, 
@@ -7115,6 +7131,9 @@
         {
             "collections": [
                 "first_words"
+            ], 
+            "homophones": [
+                "shoo"
             ], 
             "word": "shoe"
         }, 
@@ -10987,8 +11006,12 @@
             "word": "equinox"
         }, 
         {
+            "Explanations": "alternative", 
             "collections": [
                 "more_words"
+            ], 
+            "homophones": [
+                "Chanukah"
             ], 
             "small_collection": [
                 "Times_of_the_year"
@@ -12947,6 +12970,7 @@
             "collections": [
                 "more_words"
             ], 
+            "confusers": "carousal", 
             "word": "carousel"
         }, 
         {
@@ -17830,8 +17854,12 @@
             "word": "multiplication"
         }, 
         {
+            "Explanations": "fibrous tissue that provides movement or position of parts of the human body", 
             "collections": [
                 "more_words"
+            ], 
+            "homophones": [
+                "mussel"
             ], 
             "word": "muscle"
         }, 
@@ -22295,7 +22323,7 @@
         {
             "Explanations": "I saw a chamois (oir) on my holiday in Europe.\nI use a chamois (mmy) to dry the windows after washing them.", 
             "collections": [
-                "new"
+                "new_note"
             ], 
             "pronunciations": [
                 "chamois1", 
@@ -22322,7 +22350,7 @@
             "small_collection": [
                 "Animals"
             ], 
-            "word": "cockroach."
+            "word": "cockroach"
         }, 
         {
             "Explanations": "A small parasitic animal.", 
@@ -22411,7 +22439,7 @@
             "small_collection": [
                 "Animals"
             ], 
-            "word": "piglett"
+            "word": "piglet"
         }, 
         {
             "collections": [
@@ -22516,14 +22544,11 @@
             "collections": [
                 "new"
             ], 
-            "small_collection": [
-                "Brands"
-            ], 
-            "word": "Arsenal"
+            "word": "arsenal"
         }, 
         {
             "collections": [
-                "new"
+                "pickup"
             ], 
             "small_collection": [
                 "Brands"
@@ -22702,15 +22727,6 @@
             "small_collection": [
                 "Countries"
             ], 
-            "word": "Bazaruto_Island"
-        }, 
-        {
-            "collections": [
-                "new"
-            ], 
-            "small_collection": [
-                "Countries"
-            ], 
             "word": "Belgium"
         }, 
         {
@@ -22718,7 +22734,7 @@
                 "new"
             ], 
             "small_collection": [
-                "Countries"
+                "Places"
             ], 
             "word": "Bengal"
         }, 
@@ -22851,7 +22867,7 @@
         }, 
         {
             "collections": [
-                "new"
+                "new_medical"
             ], 
             "small_collection": [
                 "Medical"
@@ -22860,7 +22876,7 @@
         }, 
         {
             "collections": [
-                "new"
+                "new_medical"
             ], 
             "small_collection": [
                 "Medical"
@@ -22869,7 +22885,7 @@
         }, 
         {
             "collections": [
-                "new"
+                "new_medical"
             ], 
             "small_collection": [
                 "Medical"
@@ -22878,7 +22894,7 @@
         }, 
         {
             "collections": [
-                "new"
+                "new_Sounds"
             ], 
             "small_collection": [
                 "Sounds"
@@ -22886,9 +22902,12 @@
             "word": "uhh"
         }, 
         {
-            "Explanations": "relief or delight", 
+            "Explanations": "can denote positive emotions like relief or delight (generally, pronounced with a long a).", 
             "collections": [
-                "new"
+                "new_Sounds"
+            ], 
+            "homophones": [
+                "ahh"
             ], 
             "small_collection": [
                 "Sounds"
@@ -22896,9 +22915,18 @@
             "word": "ah"
         }, 
         {
-            "Explanations": "triumph or surprise", 
             "collections": [
-                "new"
+                "new_Sounds"
+            ], 
+            "homophones": [
+                "ah"
+            ], 
+            "word": "ahh"
+        }, 
+        {
+            "Explanations": "signals triumph or surprise, or perhaps derision.", 
+            "collections": [
+                "new_Sounds"
             ], 
             "small_collection": [
                 "Sounds"
@@ -22906,9 +22934,9 @@
             "word": "aha"
         }, 
         {
-            "Explanations": "gain attention", 
+            "Explanations": "is employed to gain attention.", 
             "collections": [
-                "new"
+                "new_Sounds"
             ], 
             "small_collection": [
                 "Sounds"
@@ -22916,9 +22944,9 @@
             "word": "ahem"
         }, 
         {
-            "Explanations": "frustration", 
+            "Explanations": "often drawn out with additional h\u2019s, is all about frustration.", 
             "collections": [
-                "new"
+                "new_Sounds"
             ], 
             "small_collection": [
                 "Sounds"
@@ -22926,18 +22954,9 @@
             "word": "argh"
         }, 
         {
+            "Explanations": "can be dismissive or indicative of disappointment, or, when drawn out, expressive of sympathy or adoration.", 
             "collections": [
-                "new"
-            ], 
-            "small_collection": [
-                "Sounds"
-            ], 
-            "word": "argh"
-        }, 
-        {
-            "Explanations": "disappointment", 
-            "collections": [
-                "new"
+                "new_Sounds"
             ], 
             "small_collection": [
                 "Sounds"
@@ -22945,9 +22964,9 @@
             "word": "aw"
         }, 
         {
-            "Explanations": "agreement", 
+            "Explanations": "denotes agreement.", 
             "collections": [
-                "new"
+                "new_Sounds"
             ], 
             "small_collection": [
                 "Sounds"
@@ -22955,9 +22974,9 @@
             "word": "aye"
         }, 
         {
-            "Explanations": "dismissive", 
+            "Explanations": "is dismissive.", 
             "collections": [
-                "new"
+                "new_Sounds"
             ], 
             "small_collection": [
                 "Sounds"
@@ -22965,9 +22984,9 @@
             "word": "bah"
         }, 
         {
-            "Explanations": "boredom or disappointment", 
+            "Explanations": "communicates boredom or disappointment.", 
             "collections": [
-                "new"
+                "new_Sounds"
             ], 
             "small_collection": [
                 "Sounds"
@@ -22975,9 +22994,9 @@
             "word": "blah"
         }, 
         {
-            "Explanations": "crying", 
+            "Explanations": "is imitative of crying and is derisive.", 
             "collections": [
-                "new"
+                "new_Sounds"
             ], 
             "small_collection": [
                 "Sounds"
@@ -22985,9 +23004,9 @@
             "word": "boo-hoo"
         }, 
         {
-            "Explanations": "Homer Simpson's face palm sound", 
+            "Explanations": "is the spelling for the muttering accompanying Homer Simpson\u2019s trademark head-slapping self-abuse.", 
             "collections": [
-                "new"
+                "new_Sounds"
             ], 
             "small_collection": [
                 "Sounds"
@@ -22995,9 +23014,9 @@
             "word": "d\u2019oh"
         }, 
         {
-            "Explanations": "dense", 
+            "Explanations": "derides someone who seems dense.", 
             "collections": [
-                "new"
+                "new_Sounds"
             ], 
             "small_collection": [
                 "Sounds"
@@ -23005,9 +23024,9 @@
             "word": "duh"
         }, 
         {
-            "Explanations": "unpleasant surprise", 
+            "Explanations": "indicates an unpleasant surprise.", 
             "collections": [
-                "new"
+                "new_Sounds"
             ], 
             "small_collection": [
                 "Sounds"
@@ -23015,9 +23034,9 @@
             "word": "eek"
         }, 
         {
-            "Explanations": "ask for repetition", 
+            "Explanations": "with a question mark, is a request for repetition or confirmation of what was just said; without, it is dismissive.", 
             "collections": [
-                "new"
+                "new_Sounds"
             ], 
             "small_collection": [
                 "Sounds"
@@ -23025,9 +23044,18 @@
             "word": "eh"
         }, 
         {
-            "Explanations": "plays for time", 
             "collections": [
-                "new"
+                "new_Sounds"
+            ], 
+            "small_collection": [
+                "Sounds"
+            ], 
+            "word": "eh?"
+        }, 
+        {
+            "Explanations": "(sometimes erm) plays for time.", 
+            "collections": [
+                "new_Sounds"
             ], 
             "small_collection": [
                 "Sounds"
@@ -23036,7 +23064,7 @@
         }, 
         {
             "collections": [
-                "new"
+                "new_Sounds"
             ], 
             "small_collection": [
                 "Sounds"
@@ -23044,8 +23072,9 @@
             "word": "erm"
         }, 
         {
+            "Explanations": "denotes disgust, intensified by the addition of one or more e\u2019s and/or w\u2019s.", 
             "collections": [
-                "new"
+                "new_Sounds"
             ], 
             "small_collection": [
                 "Sounds"
@@ -23053,8 +23082,9 @@
             "word": "ew"
         }, 
         {
+            "Explanations": "(and its cousin meh) is an indication of feeling underwhelmed or disappointed.", 
             "collections": [
-                "new"
+                "new_Sounds"
             ], 
             "small_collection": [
                 "Sounds"
@@ -23063,7 +23093,7 @@
         }, 
         {
             "collections": [
-                "new"
+                "new_Sounds"
             ], 
             "small_collection": [
                 "Sounds"
@@ -23072,7 +23102,7 @@
         }, 
         {
             "collections": [
-                "new"
+                "new_Sounds"
             ], 
             "small_collection": [
                 "Sounds"
@@ -23080,8 +23110,9 @@
             "word": "grr"
         }, 
         {
+            "Explanations": "expresses joy or surprise, or perhaps triumph.", 
             "collections": [
-                "new"
+                "new_Sounds"
             ], 
             "small_collection": [
                 "Sounds"
@@ -23089,8 +23120,9 @@
             "word": "ha"
         }, 
         {
+            "Explanations": "(with possible redoubling) communicates laughter or derision.", 
             "collections": [
-                "new"
+                "new_Sounds"
             ], 
             "small_collection": [
                 "Sounds"
@@ -23098,8 +23130,9 @@
             "word": "ha-ha"
         }, 
         {
+            "Explanations": "is a mischievous laugh, while its variants heh and heh-heh (and so on) can have a more derisive connotation.", 
             "collections": [
-                "new"
+                "new_Sounds"
             ], 
             "small_collection": [
                 "Sounds"
@@ -23107,8 +23140,9 @@
             "word": "hee-hee"
         }, 
         {
+            "Explanations": "can express surprise or exultation, or can be used to request repetition or call for attention.", 
             "collections": [
-                "new"
+                "new_Sounds"
             ], 
             "small_collection": [
                 "Sounds"
@@ -23116,8 +23150,9 @@
             "word": "hey"
         }, 
         {
+            "Explanations": "extended as needed, suggests curiosity, confusion, consternation, or skepticism.", 
             "collections": [
-                "new"
+                "new_Sounds"
             ], 
             "small_collection": [
                 "Sounds"
@@ -23125,8 +23160,9 @@
             "word": "hm"
         }, 
         {
+            "Explanations": "is expressive of mirth, or (along with its variant oh-ho) can indicate triumph of discovery.", 
             "collections": [
-                "new"
+                "new_Sounds"
             ], 
             "small_collection": [
                 "Sounds"
@@ -23134,8 +23170,9 @@
             "word": "ho-ho"
         }, 
         {
+            "Explanations": "signals indifference or boredom.", 
             "collections": [
-                "new"
+                "new_Sounds"
             ], 
             "small_collection": [
                 "Sounds"
@@ -23143,8 +23180,9 @@
             "word": "ho-hum"
         }, 
         {
+            "Explanations": "(or hunh) is a sign of disbelief, confusion, or surprise, or, with a question mark, is a request for repetition.", 
             "collections": [
-                "new"
+                "new_Sounds"
             ], 
             "small_collection": [
                 "Sounds"
@@ -23152,8 +23190,12 @@
             "word": "huh"
         }, 
         {
+            "Explanations": "(also hoorah, hooray, and hurray, and even huzzah) is an exclamation of triumph or happiness.", 
             "collections": [
-                "new"
+                "new_Sounds"
+            ], 
+            "homophones": [
+                "huzzah"
             ], 
             "small_collection": [
                 "Sounds"
@@ -23162,7 +23204,44 @@
         }, 
         {
             "collections": [
-                "new"
+                "new_Sounds"
+            ], 
+            "homophones": [
+                "hooray"
+            ], 
+            "small_collection": [
+                "Sounds"
+            ], 
+            "word": "hoorah"
+        }, 
+        {
+            "collections": [
+                "new_Sounds"
+            ], 
+            "homophones": [
+                "hoorah"
+            ], 
+            "small_collection": [
+                "Sounds"
+            ], 
+            "word": "hooray"
+        }, 
+        {
+            "collections": [
+                "new_Sounds"
+            ], 
+            "homophones": [
+                "hurrah"
+            ], 
+            "small_collection": [
+                "Sounds"
+            ], 
+            "word": "huzzah"
+        }, 
+        {
+            "Explanations": "signals disgust.", 
+            "collections": [
+                "new_Sounds"
             ], 
             "small_collection": [
                 "Sounds"
@@ -23170,8 +23249,9 @@
             "word": "ick"
         }, 
         {
+            "Explanations": "denotes nonchalance or dismissal, or derision about pretension.", 
             "collections": [
-                "new"
+                "new_Sounds"
             ], 
             "small_collection": [
                 "Sounds"
@@ -23179,8 +23259,9 @@
             "word": "lah-de-dah"
         }, 
         {
+            "Explanations": "extended as needed, conveys palatable or palpable pleasure.", 
             "collections": [
-                "new"
+                "new_Sounds"
             ], 
             "small_collection": [
                 "Sounds"
@@ -23188,8 +23269,9 @@
             "word": "mmm"
         }, 
         {
+            "Explanations": "is among the most versatile of interjections. Use it to indicate comprehension or acknowledgment (or, with a question mark, a request for verification), to preface direct address (\u201cOh, sir!\u201d), as a sign of approximation or example (\u201cOh, about three days\u201d), or to express emotion or serves as a response to a pain or pleasure. (Ooh is a variant useful for the last two purposes.)", 
             "collections": [
-                "new"
+                "new_Sounds"
             ], 
             "small_collection": [
                 "Sounds"
@@ -23198,7 +23280,7 @@
         }, 
         {
             "collections": [
-                "new"
+                "new_Sounds"
             ], 
             "small_collection": [
                 "Sounds"
@@ -23206,8 +23288,9 @@
             "word": "okay"
         }, 
         {
+            "Explanations": "with an accent mark over the e, is borrowed from Spanish and is a vocal flourish to celebrate a deft or adroit maneuver.", 
             "collections": [
-                "new"
+                "new_Sounds"
             ], 
             "small_collection": [
                 "Sounds"
@@ -23215,8 +23298,9 @@
             "word": "ol\u00e9"
         }, 
         {
+            "Explanations": "with o\u2019s repeated as needed, conveys interest or admiration, or, alternatively, disdain.", 
             "collections": [
-                "new"
+                "new_Sounds"
             ], 
             "small_collection": [
                 "Sounds"
@@ -23224,8 +23308,9 @@
             "word": "ooh"
         }, 
         {
+            "Explanations": "is a response to an attempt to impress or gently mocks pretension or finery.", 
             "collections": [
-                "new"
+                "new_Sounds"
             ], 
             "small_collection": [
                 "Sounds"
@@ -23233,8 +23318,9 @@
             "word": "ooh-la-la"
         }, 
         {
+            "Explanations": "(and the jocular diminutive variation oopsie or oopsy and the variant whoops) calls attention to an error or fault.", 
             "collections": [
-                "new"
+                "new_Sounds"
             ], 
             "small_collection": [
                 "Sounds"
@@ -23242,8 +23328,9 @@
             "word": "oops"
         }, 
         {
+            "Explanations": "(or ow, extended as needed) signals pain or is a response to a harsh word or action.", 
             "collections": [
-                "new"
+                "new_Sounds"
             ], 
             "small_collection": [
                 "Sounds"
@@ -23251,8 +23338,9 @@
             "word": "ouch"
         }, 
         {
+            "Explanations": ", or pew, communicates disgust, fatigue, or relief. (Phooey, also spelled pfui, is a signal for disgust, too, and can denote dismissal as well. PU and P.U. are also variants.)", 
             "collections": [
-                "new"
+                "new_Sounds"
             ], 
             "small_collection": [
                 "Sounds"
@@ -23260,8 +23348,9 @@
             "word": "phew"
         }, 
         {
+            "Explanations": "is imitative of a sudden disappearance, as if by magic.", 
             "collections": [
-                "new"
+                "new_Sounds"
             ], 
             "small_collection": [
                 "Sounds"
@@ -23269,8 +23358,9 @@
             "word": "poof"
         }, 
         {
+            "Explanations": "calls for quiet.", 
             "collections": [
-                "new"
+                "new_Sounds"
             ], 
             "small_collection": [
                 "Sounds"
@@ -23278,8 +23368,9 @@
             "word": "psst"
         }, 
         {
+            "Explanations": "(extended as necessary) is an imperative for silence.", 
             "collections": [
-                "new"
+                "new_Sounds"
             ], 
             "homophones": [
                 "sssh"
@@ -23291,7 +23382,14 @@
         }, 
         {
             "collections": [
-                "new"
+                "pickup"
+            ], 
+            "word": "sheesh"
+        }, 
+        {
+            "Explanations": "and its even snootier variant tut-tut are condemnations or scoldings; the related sound tch is the teeth-and-tongue click of disapproval.", 
+            "collections": [
+                "new_Sounds"
             ], 
             "small_collection": [
                 "Sounds"
@@ -23299,8 +23397,9 @@
             "word": "tsk-tsk"
         }, 
         {
+            "Explanations": "is an exclamation of disgust.", 
             "collections": [
-                "new"
+                "new_Sounds"
             ], 
             "small_collection": [
                 "Sounds"
@@ -23308,8 +23407,9 @@
             "word": "ugh"
         }, 
         {
+            "Explanations": "is an expression of skepticism or a delaying tactic.", 
             "collections": [
-                "new"
+                "new_Sounds"
             ], 
             "small_collection": [
                 "Sounds"
@@ -23317,8 +23417,9 @@
             "word": "uh"
         }, 
         {
+            "Explanations": "indicates affirmation or agreement.", 
             "collections": [
-                "new"
+                "new_Sounds"
             ], 
             "small_collection": [
                 "Sounds"
@@ -23326,8 +23427,9 @@
             "word": "uh-huh"
         }, 
         {
+            "Explanations": "signals concern or dismay.", 
             "collections": [
-                "new"
+                "new_Sounds"
             ], 
             "small_collection": [
                 "Sounds"
@@ -23335,8 +23437,9 @@
             "word": "uh-oh"
         }, 
         {
+            "Explanations": "is the sound of negation or refusal.", 
             "collections": [
-                "new"
+                "new_Sounds"
             ], 
             "small_collection": [
                 "Sounds"
@@ -23344,8 +23447,9 @@
             "word": "uh-uh"
         }, 
         {
+            "Explanations": "is a placeholder for a pause but also denotes skepticism.", 
             "collections": [
-                "new"
+                "new_Sounds"
             ], 
             "small_collection": [
                 "Sounds"
@@ -23354,7 +23458,7 @@
         }, 
         {
             "collections": [
-                "new"
+                "new_Sounds"
             ], 
             "small_collection": [
                 "Sounds"
@@ -23362,8 +23466,9 @@
             "word": "urgh"
         }, 
         {
+            "Explanations": "is an exclamation of excitement or delight.", 
             "collections": [
-                "new"
+                "new_Sounds"
             ], 
             "small_collection": [
                 "Sounds"
@@ -23371,8 +23476,9 @@
             "word": "whee"
         }, 
         {
+            "Explanations": "is a variant of phew but can also express amazement.", 
             "collections": [
-                "new"
+                "pickup"
             ], 
             "small_collection": [
                 "Sounds"
@@ -23380,8 +23486,9 @@
             "word": "whew"
         }, 
         {
+            "Explanations": "is a call to halt or an exclamation of surprise or relief.", 
             "collections": [
-                "new"
+                "new_Sounds"
             ], 
             "small_collection": [
                 "Sounds"
@@ -23389,8 +23496,9 @@
             "word": "whoa"
         }, 
         {
+            "Explanations": "and its many variants convey mocking reaction to something meant to impress.", 
             "collections": [
-                "new"
+                "new_Sounds"
             ], 
             "small_collection": [
                 "Sounds"
@@ -23398,8 +23506,9 @@
             "word": "whoop-de-doo"
         }, 
         {
+            "Explanations": "and woo-hoo (and variations like yahoo, yee-haw, and yippee) indicate excitement. (Woot, also spelled w00t among an online in-crowd, is a probably ephemeral variant.)", 
             "collections": [
-                "new"
+                "new_Sounds"
             ], 
             "small_collection": [
                 "Sounds"
@@ -23407,8 +23516,9 @@
             "word": "woo"
         }, 
         {
+            "Explanations": "expresses surprise.", 
             "collections": [
-                "new"
+                "pickup"
             ], 
             "small_collection": [
                 "Sounds"
@@ -23416,8 +23526,9 @@
             "word": "wow"
         }, 
         {
+            "Explanations": "is a congratulatory exclamation. (Not to be confused with yeah, a variant of yes.)", 
             "collections": [
-                "new"
+                "new_Sounds"
             ], 
             "small_collection": [
                 "Sounds"
@@ -23426,7 +23537,7 @@
         }, 
         {
             "collections": [
-                "new"
+                "new_Sounds"
             ], 
             "small_collection": [
                 "Sounds"
@@ -23434,8 +23545,9 @@
             "word": "yeah"
         }, 
         {
+            "Explanations": "is an expression of fear or concern, often used facetiously.", 
             "collections": [
-                "new"
+                "new_Sounds"
             ], 
             "small_collection": [
                 "Sounds"
@@ -23443,8 +23555,9 @@
             "word": "yikes"
         }, 
         {
+            "Explanations": "is the traditional pirates\u2019 refrain.", 
             "collections": [
-                "new"
+                "new_Sounds"
             ], 
             "small_collection": [
                 "Sounds"
@@ -23452,8 +23565,9 @@
             "word": "yo-ho-ho"
         }, 
         {
+            "Explanations": "attracts attention.", 
             "collections": [
-                "new"
+                "new_Sounds"
             ], 
             "small_collection": [
                 "Sounds"
@@ -23461,8 +23575,9 @@
             "word": "yoo-hoo"
         }, 
         {
+            "Explanations": "or yowza, is an exclamation of surprise or conveys being impressed.", 
             "collections": [
-                "new"
+                "new_Sounds"
             ], 
             "small_collection": [
                 "Sounds"
@@ -23470,8 +23585,9 @@
             "word": "yow"
         }, 
         {
+            "Explanations": "(also spelled yech or yecch) signals disgust. (Not to be confused with yuk, a laugh.)", 
             "collections": [
-                "new"
+                "new_Sounds"
             ], 
             "small_collection": [
                 "Sounds"
@@ -23479,8 +23595,9 @@
             "word": "yuck"
         }, 
         {
+            "Explanations": "or yummy, is a response to the taste of something delicious and, by extension, the sight of an attractive person.", 
             "collections": [
-                "new"
+                "new_Sounds"
             ], 
             "small_collection": [
                 "Sounds"
@@ -23489,7 +23606,7 @@
         }, 
         {
             "collections": [
-                "new"
+                "new_Sounds"
             ], 
             "small_collection": [
                 "Sounds"
@@ -23497,8 +23614,12 @@
             "word": "yup"
         }, 
         {
+            "Explanations": "Alternative", 
             "collections": [
                 "new"
+            ], 
+            "homophones": [
+                "Hanukkah"
             ], 
             "small_collection": [
                 "Times_of_the_year"
@@ -23557,7 +23678,7 @@
         }, 
         {
             "collections": [
-                "new"
+                "new_State"
             ], 
             "small_collection": [
                 "US_States"
@@ -23566,7 +23687,7 @@
         }, 
         {
             "collections": [
-                "new"
+                "new_State"
             ], 
             "small_collection": [
                 "US_States"
@@ -23575,7 +23696,7 @@
         }, 
         {
             "collections": [
-                "new"
+                "new_State"
             ], 
             "small_collection": [
                 "US_States"
@@ -23584,7 +23705,7 @@
         }, 
         {
             "collections": [
-                "new"
+                "new_State"
             ], 
             "small_collection": [
                 "US_States"
@@ -23593,7 +23714,7 @@
         }, 
         {
             "collections": [
-                "new"
+                "new_State"
             ], 
             "small_collection": [
                 "US_States"
@@ -23602,7 +23723,7 @@
         }, 
         {
             "collections": [
-                "new"
+                "new_State"
             ], 
             "small_collection": [
                 "US_States"
@@ -23611,7 +23732,7 @@
         }, 
         {
             "collections": [
-                "new"
+                "new_State"
             ], 
             "small_collection": [
                 "US_States"
@@ -23620,7 +23741,7 @@
         }, 
         {
             "collections": [
-                "new"
+                "new_State"
             ], 
             "small_collection": [
                 "US_States"
@@ -23629,7 +23750,7 @@
         }, 
         {
             "collections": [
-                "new"
+                "new_State"
             ], 
             "small_collection": [
                 "US_States"
@@ -23638,7 +23759,7 @@
         }, 
         {
             "collections": [
-                "new"
+                "new_State"
             ], 
             "small_collection": [
                 "US_States"
@@ -23647,7 +23768,7 @@
         }, 
         {
             "collections": [
-                "new"
+                "new_State"
             ], 
             "small_collection": [
                 "US_States"
@@ -23656,7 +23777,7 @@
         }, 
         {
             "collections": [
-                "new"
+                "new_State"
             ], 
             "small_collection": [
                 "US_States"
@@ -23665,7 +23786,7 @@
         }, 
         {
             "collections": [
-                "new"
+                "new_State"
             ], 
             "small_collection": [
                 "US_States"
@@ -23674,7 +23795,7 @@
         }, 
         {
             "collections": [
-                "new"
+                "new_State"
             ], 
             "small_collection": [
                 "US_States"
@@ -23683,7 +23804,7 @@
         }, 
         {
             "collections": [
-                "new"
+                "new_State"
             ], 
             "small_collection": [
                 "US_States"
@@ -23692,7 +23813,7 @@
         }, 
         {
             "collections": [
-                "new"
+                "new_State"
             ], 
             "small_collection": [
                 "US_States"
@@ -23701,7 +23822,7 @@
         }, 
         {
             "collections": [
-                "new"
+                "new_State"
             ], 
             "small_collection": [
                 "US_States"
@@ -23710,7 +23831,7 @@
         }, 
         {
             "collections": [
-                "new"
+                "new_State"
             ], 
             "small_collection": [
                 "US_States"
@@ -23719,7 +23840,7 @@
         }, 
         {
             "collections": [
-                "new"
+                "pickup"
             ], 
             "small_collection": [
                 "US_States"
@@ -23728,7 +23849,7 @@
         }, 
         {
             "collections": [
-                "new"
+                "new_State"
             ], 
             "small_collection": [
                 "US_States"
@@ -23737,7 +23858,7 @@
         }, 
         {
             "collections": [
-                "new"
+                "new_State"
             ], 
             "small_collection": [
                 "US_States"
@@ -23746,7 +23867,7 @@
         }, 
         {
             "collections": [
-                "new"
+                "new_State"
             ], 
             "small_collection": [
                 "US_States"
@@ -23755,7 +23876,7 @@
         }, 
         {
             "collections": [
-                "new"
+                "new_State"
             ], 
             "small_collection": [
                 "US_States"
@@ -23764,7 +23885,7 @@
         }, 
         {
             "collections": [
-                "new"
+                "new_State"
             ], 
             "small_collection": [
                 "US_States"
@@ -23773,7 +23894,7 @@
         }, 
         {
             "collections": [
-                "new"
+                "new_State"
             ], 
             "small_collection": [
                 "US_States"
@@ -23782,7 +23903,7 @@
         }, 
         {
             "collections": [
-                "new"
+                "new_State"
             ], 
             "small_collection": [
                 "US_States"
@@ -23791,7 +23912,7 @@
         }, 
         {
             "collections": [
-                "new"
+                "new_State"
             ], 
             "small_collection": [
                 "US_States"
@@ -23800,7 +23921,7 @@
         }, 
         {
             "collections": [
-                "new"
+                "new_State"
             ], 
             "small_collection": [
                 "US_States"
@@ -23809,7 +23930,7 @@
         }, 
         {
             "collections": [
-                "new"
+                "new_State"
             ], 
             "small_collection": [
                 "US_States"
@@ -23818,7 +23939,7 @@
         }, 
         {
             "collections": [
-                "new"
+                "new_State"
             ], 
             "small_collection": [
                 "US_States"
@@ -23827,7 +23948,7 @@
         }, 
         {
             "collections": [
-                "new"
+                "new_State"
             ], 
             "small_collection": [
                 "US_States"
@@ -23836,7 +23957,7 @@
         }, 
         {
             "collections": [
-                "new"
+                "new_State"
             ], 
             "small_collection": [
                 "US_States"
@@ -23845,7 +23966,7 @@
         }, 
         {
             "collections": [
-                "new"
+                "new_State"
             ], 
             "small_collection": [
                 "US_States"
@@ -23854,7 +23975,7 @@
         }, 
         {
             "collections": [
-                "new"
+                "new_State"
             ], 
             "small_collection": [
                 "US_States"
@@ -23863,7 +23984,7 @@
         }, 
         {
             "collections": [
-                "new"
+                "new_State"
             ], 
             "small_collection": [
                 "US_States"
@@ -23872,7 +23993,7 @@
         }, 
         {
             "collections": [
-                "new"
+                "new_State"
             ], 
             "small_collection": [
                 "US_States"
@@ -23881,7 +24002,7 @@
         }, 
         {
             "collections": [
-                "new"
+                "new_State"
             ], 
             "small_collection": [
                 "US_States"
@@ -23890,7 +24011,7 @@
         }, 
         {
             "collections": [
-                "new"
+                "new_State"
             ], 
             "small_collection": [
                 "US_States"
@@ -23899,7 +24020,7 @@
         }, 
         {
             "collections": [
-                "new"
+                "new_State"
             ], 
             "small_collection": [
                 "US_States"
@@ -23908,7 +24029,7 @@
         }, 
         {
             "collections": [
-                "new"
+                "new_State"
             ], 
             "small_collection": [
                 "US_States"
@@ -23917,7 +24038,7 @@
         }, 
         {
             "collections": [
-                "new"
+                "new_State"
             ], 
             "small_collection": [
                 "US_States"
@@ -23926,7 +24047,7 @@
         }, 
         {
             "collections": [
-                "new"
+                "new_State"
             ], 
             "small_collection": [
                 "US_States"
@@ -23935,7 +24056,7 @@
         }, 
         {
             "collections": [
-                "new"
+                "new_State"
             ], 
             "small_collection": [
                 "US_States"
@@ -23944,7 +24065,7 @@
         }, 
         {
             "collections": [
-                "new"
+                "new_State"
             ], 
             "small_collection": [
                 "US_States"
@@ -23953,7 +24074,7 @@
         }, 
         {
             "collections": [
-                "new"
+                "new_State"
             ], 
             "small_collection": [
                 "US_States"
@@ -23962,7 +24083,7 @@
         }, 
         {
             "collections": [
-                "new"
+                "new_State"
             ], 
             "small_collection": [
                 "US_States"
@@ -24061,14 +24182,33 @@
         }, 
         {
             "collections": [
+                "pickup"
+            ], 
+            "word": "addict"
+        }, 
+        {
+            "collections": [
                 "new"
             ], 
+            "root": "addict", 
             "word": "addicted"
         }, 
         {
             "collections": [
                 "new"
             ], 
+            "root": "addict", 
+            "tags": [
+                "'tion'"
+            ], 
+            "word": "addiction"
+        }, 
+        {
+            "Explanations": "I learnt addition in kindergarten.", 
+            "collections": [
+                "pickup"
+            ], 
+            "confusers": "edition", 
             "word": "addition"
         }, 
         {
@@ -24202,13 +24342,32 @@
             "collections": [
                 "new"
             ], 
-            "word": "anesthetist"
+            "word": "atheist"
         }, 
         {
             "collections": [
+                "pickup"
+            ], 
+            "small_collection": [
+                "Medical"
+            ], 
+            "word": "anesthetist"
+        }, 
+        {
+            "Explanations": "The angel came down from heaven.", 
+            "collections": [
                 "new"
             ], 
+            "confusers": "angle", 
             "word": "angel"
+        }, 
+        {
+            "Explanations": "The angle in the corner of a square is 90deg", 
+            "collections": [
+                "pickup"
+            ], 
+            "confusers": "angel", 
+            "word": "angle"
         }, 
         {
             "collections": [
@@ -24244,7 +24403,7 @@
             "collections": [
                 "new"
             ], 
-            "word": "antidisestablismantarinsm"
+            "word": "antidisestablishmentarianism"
         }, 
         {
             "collections": [
@@ -24262,13 +24421,7 @@
             "collections": [
                 "new"
             ], 
-            "word": "appearantly"
-        }, 
-        {
-            "collections": [
-                "new"
-            ], 
-            "word": "appendices"
+            "word": "apparently"
         }, 
         {
             "collections": [
@@ -24359,7 +24512,7 @@
         {
             "Explanations": "alternatives", 
             "collections": [
-                "new"
+                "new_note"
             ], 
             "pronunciations": [
                 "art_deco1", 
@@ -24368,10 +24521,15 @@
             "word": "art_deco"
         }, 
         {
+            "Explanations": "articulate1 adjective - she is an articulate speaker.\narticulate2 verb - articulate the word clearly.", 
             "collections": [
                 "new"
             ], 
-            "word": "articlate"
+            "pronunciations": [
+                "articulate1", 
+                "articulate2"
+            ], 
+            "word": "articulate"
         }, 
         {
             "collections": [
@@ -24609,6 +24767,12 @@
         }, 
         {
             "collections": [
+                "pickup"
+            ], 
+            "word": "badge"
+        }, 
+        {
+            "collections": [
                 "new"
             ], 
             "word": "barnyard"
@@ -24723,19 +24887,19 @@
         }, 
         {
             "collections": [
-                "new"
+                "pickup"
             ], 
             "word": "besides"
         }, 
         {
             "collections": [
-                "new"
+                "pickup"
             ], 
             "word": "beyond"
         }, 
         {
             "collections": [
-                "new"
+                "pickup"
             ], 
             "word": "bias"
         }, 
@@ -24814,6 +24978,9 @@
         {
             "collections": [
                 "new"
+            ], 
+            "small_collection": [
+                "Sounds"
             ], 
             "word": "boo"
         }, 
@@ -24965,12 +25132,6 @@
             "collections": [
                 "new"
             ], 
-            "word": "bushland"
-        }, 
-        {
-            "collections": [
-                "new"
-            ], 
             "word": "button"
         }, 
         {
@@ -25043,8 +25204,9 @@
         }, 
         {
             "collections": [
-                "new"
+                "new_note"
             ], 
+            "confusers": "carousel", 
             "word": "carousal"
         }, 
         {
@@ -25118,6 +25280,15 @@
             "collections": [
                 "new"
             ], 
+            "homophones": [
+                "serial"
+            ], 
+            "word": "cereal"
+        }, 
+        {
+            "collections": [
+                "new"
+            ], 
             "word": "certificate"
         }, 
         {
@@ -25160,6 +25331,34 @@
             "collections": [
                 "new"
             ], 
+            "homophones": [
+                "Chile"
+            ], 
+            "root": "chill", 
+            "word": "chilly"
+        }, 
+        {
+            "collections": [
+                "new"
+            ], 
+            "homophones": [
+                "chilly"
+            ], 
+            "small_collection": [
+                "Countries"
+            ], 
+            "word": "Chile"
+        }, 
+        {
+            "collections": [
+                "pickup"
+            ], 
+            "word": "chilly"
+        }, 
+        {
+            "collections": [
+                "new"
+            ], 
             "word": "chink"
         }, 
         {
@@ -25184,7 +25383,19 @@
             "collections": [
                 "new"
             ], 
-            "word": "civilize"
+            "word": {
+                "uk": "civilised", 
+                "us": "civilized"
+            }
+        }, 
+        {
+            "collections": [
+                "new"
+            ], 
+            "word": {
+                "uk": "civilise", 
+                "us": "civilize"
+            }
         }, 
         {
             "collections": [
@@ -25207,7 +25418,7 @@
         {
             "Explanations": "I had to coax the dog to come to me\nTV's use coax cable", 
             "collections": [
-                "new"
+                "new_note"
             ], 
             "pronunciations": [
                 "coax1", 
@@ -25249,7 +25460,10 @@
             "collections": [
                 "new"
             ], 
-            "word": "colonised"
+            "word": {
+                "uk": "colonised", 
+                "us": "colonized"
+            }
         }, 
         {
             "collections": [
@@ -25285,13 +25499,15 @@
             "collections": [
                 "new"
             ], 
+            "root": "compete", 
             "word": "competition"
         }, 
         {
             "collections": [
                 "new"
             ], 
-            "word": "competive"
+            "root": "compete", 
+            "word": "competitive"
         }, 
         {
             "collections": [
@@ -25420,23 +25636,44 @@
             "collections": [
                 "new"
             ], 
-            "tags": [
-                "tion'"
-            ], 
-            "word": "confrontation"
+            "word": "confront"
         }, 
         {
             "collections": [
                 "new"
             ], 
+            "root": "confront", 
+            "tags": [
+                "'tion'"
+            ], 
+            "word": "confrontation"
+        }, 
+        {
+            "collections": [
+                "pickup"
+            ], 
+            "word": "congest"
+        }, 
+        {
+            "collections": [
+                "new"
+            ], 
+            "root": "congest", 
             "word": "congested"
         }, 
         {
             "collections": [
                 "new"
             ], 
+            "root": "congest", 
+            "word": "congestion"
+        }, 
+        {
+            "collections": [
+                "pickup"
+            ], 
             "tags": [
-                "tion'"
+                "'tion'"
             ], 
             "word": "congregation"
         }, 
@@ -25493,6 +25730,12 @@
                 "new"
             ], 
             "word": "coral"
+        }, 
+        {
+            "collections": [
+                "new"
+            ], 
+            "word": "corral"
         }, 
         {
             "collections": [
@@ -25571,6 +25814,7 @@
             "collections": [
                 "new"
             ], 
+            "root": "crash", 
             "word": "crashed"
         }, 
         {
@@ -25732,7 +25976,7 @@
         }, 
         {
             "collections": [
-                "new"
+                "pickup"
             ], 
             "word": "deadly"
         }, 
@@ -25792,7 +26036,7 @@
         }, 
         {
             "collections": [
-                "new"
+                "pickup"
             ], 
             "word": "demonstrable"
         }, 
@@ -25809,8 +26053,18 @@
             "word": "describe"
         }, 
         {
+            "Explanations": "He got his just deserts.\nI like crossing deserts an a camel.", 
             "collections": [
                 "new"
+            ], 
+            "homophones": {
+                "deserts1": [
+                    "desserts"
+                ]
+            }, 
+            "pronunciations": [
+                "deserts1", 
+                "deserts2"
             ], 
             "root": "desert", 
             "word": "deserts"
@@ -25827,6 +26081,12 @@
             ], 
             "root": "deserve", 
             "word": "deserves"
+        }, 
+        {
+            "collections": [
+                "new"
+            ], 
+            "word": "deserving"
         }, 
         {
             "collections": [
@@ -25855,6 +26115,9 @@
         {
             "collections": [
                 "new"
+            ], 
+            "homophones": [
+                "deserts1"
             ], 
             "root": "dessert", 
             "word": "desserts"
@@ -25899,18 +26162,20 @@
             "collections": [
                 "new"
             ], 
+            "root": "different", 
             "word": "difference"
         }, 
         {
             "collections": [
                 "new"
             ], 
-            "word": "differentate"
+            "word": "differentiate"
         }, 
         {
             "collections": [
                 "new"
             ], 
+            "root": "different", 
             "word": "differently"
         }, 
         {
@@ -25965,6 +26230,7 @@
             "collections": [
                 "new"
             ], 
+            "root": "discriminate", 
             "word": "discrimination"
         }, 
         {
@@ -26052,7 +26318,22 @@
             "collections": [
                 "new"
             ], 
+            "homophones": [
+                "Donut"
+            ], 
             "word": "doughnut"
+        }, 
+        {
+            "collections": [
+                "new"
+            ], 
+            "homophones": [
+                "doughnut"
+            ], 
+            "small_collection": [
+                "Brand"
+            ], 
+            "word": "Donut"
         }, 
         {
             "collections": [
@@ -26091,6 +26372,12 @@
             "collections": [
                 "new"
             ], 
+            "word": "drilled"
+        }, 
+        {
+            "collections": [
+                "new"
+            ], 
             "word": "drum"
         }, 
         {
@@ -26113,7 +26400,7 @@
         }, 
         {
             "collections": [
-                "new"
+                "new_note"
             ], 
             "word": "dysgraphia"
         }, 
@@ -26148,9 +26435,11 @@
             "word": "ecosystem"
         }, 
         {
+            "Explanations": "The first edition of the book came out last week.", 
             "collections": [
                 "new"
             ], 
+            "confusers": "addition", 
             "word": "edition"
         }, 
         {
@@ -26193,6 +26482,12 @@
             "collections": [
                 "new"
             ], 
+            "word": "emigrant"
+        }, 
+        {
+            "collections": [
+                "new"
+            ], 
             "word": "encroach"
         }, 
         {
@@ -26230,7 +26525,7 @@
         {
             "Explanations": "The front entrance had a green door\"\nI hope your clown will entrance the children", 
             "collections": [
-                "new"
+                "new_note"
             ], 
             "pronunciations": [
                 "entrance1", 
@@ -26240,7 +26535,7 @@
         }, 
         {
             "collections": [
-                "new"
+                "new_note"
             ], 
             "word": "entrepreneur"
         }, 
@@ -26272,11 +26567,20 @@
             "collections": [
                 "new"
             ], 
-            "word": "etymology"
+            "word": "entomology"
         }, 
         {
             "collections": [
                 "new"
+            ], 
+            "word": "entomological"
+        }, 
+        {
+            "collections": [
+                "pickup"
+            ], 
+            "small_collection": [
+                "Places"
             ], 
             "word": "Europe"
         }, 
@@ -26340,11 +26644,17 @@
             "collections": [
                 "new"
             ], 
-            "word": "excit"
+            "word": "excite"
         }, 
         {
             "collections": [
-                "new"
+                "pickup"
+            ], 
+            "word": "exclaim"
+        }, 
+        {
+            "collections": [
+                "pickup"
             ], 
             "word": "exclaimed"
         }, 
@@ -26358,12 +26668,14 @@
             "collections": [
                 "new"
             ], 
+            "root": "exclude", 
             "word": "excluding"
         }, 
         {
             "collections": [
                 "new"
             ], 
+            "root": "exclude", 
             "word": "exclusive"
         }, 
         {
@@ -26472,15 +26784,25 @@
             "word": "faithful"
         }, 
         {
+            "Explanations": "Two families went on holiday.", 
             "collections": [
                 "new"
             ], 
+            "homophones": [
+                "family's"
+            ], 
+            "root": "family", 
             "word": "families"
         }, 
         {
+            "Explanations": "The family's dog died today.", 
             "collections": [
                 "new"
             ], 
+            "homophones": [
+                "families"
+            ], 
+            "root": "family", 
             "word": "family's"
         }, 
         {
@@ -26505,17 +26827,18 @@
             "collections": [
                 "new"
             ], 
+            "small_collection": [
+                "Times_of_the_year"
+            ], 
             "word": "Father's_Day"
         }, 
         {
+            "Explanations": "That climb was a great feat.", 
             "collections": [
                 "new"
             ], 
-            "word": "Fathers's_Day"
-        }, 
-        {
-            "collections": [
-                "new"
+            "homophones": [
+                "feet"
             ], 
             "word": "feat"
         }, 
@@ -26557,8 +26880,12 @@
             "word": "fine"
         }, 
         {
+            "Explanations": "I was fined for over staying my parking meter.", 
             "collections": [
                 "new"
+            ], 
+            "homophones": [
+                "find"
             ], 
             "root": "fine", 
             "word": "fined"
@@ -26579,7 +26906,7 @@
             "collections": [
                 "new"
             ], 
-            "word": "firetruck"
+            "word": "fire_truck"
         }, 
         {
             "collections": [
@@ -26733,7 +27060,7 @@
         }, 
         {
             "collections": [
-                "new"
+                "pickup"
             ], 
             "word": "genus"
         }, 
@@ -26822,8 +27149,12 @@
             "word": "grumpy"
         }, 
         {
+            "Explanations": "I guessed the answers I didn't know.", 
             "collections": [
                 "new"
+            ], 
+            "homophones": [
+                "guest"
             ], 
             "word": "guessed"
         }, 
@@ -26987,18 +27318,14 @@
             "collections": [
                 "new"
             ], 
-            "word": "hooray"
-        }, 
-        {
-            "collections": [
-                "new"
-            ], 
+            "root": "hope", 
             "word": "hopeful"
         }, 
         {
             "collections": [
                 "new"
             ], 
+            "root": "hope", 
             "word": "hoping"
         }, 
         {
@@ -27024,13 +27351,6 @@
                 "new"
             ], 
             "word": "hover"
-        }, 
-        {
-            "collections": [
-                "new"
-            ], 
-            "root": "how", 
-            "word": "how's"
         }, 
         {
             "collections": [
@@ -27109,10 +27429,26 @@
             "word": "hypocrite"
         }, 
         {
+            "Explanations": "It was so cold I got hypothermia.", 
             "collections": [
                 "new"
             ], 
+            "confusers": "hyperthermia", 
+            "small_collection": [
+                "Medical"
+            ], 
             "word": "hypothermia"
+        }, 
+        {
+            "Explanations": "It was so hot I got hyperthermia.", 
+            "collections": [
+                "new"
+            ], 
+            "confusers": "hypothermia", 
+            "small_collection": [
+                "Medical"
+            ], 
+            "word": "hyperthermia"
         }, 
         {
             "collections": [
@@ -27408,8 +27744,9 @@
         }, 
         {
             "collections": [
-                "new"
+                "pickup"
             ], 
+            "root": "jump", 
             "word": "jumper"
         }, 
         {
@@ -27476,6 +27813,9 @@
             "collections": [
                 "new"
             ], 
+            "tags": [
+                "'tion'"
+            ], 
             "word": "laceration"
         }, 
         {
@@ -27507,7 +27847,7 @@
         }, 
         {
             "collections": [
-                "new"
+                "pickup"
             ], 
             "word": "launch"
         }, 
@@ -27536,6 +27876,7 @@
             "collections": [
                 "new"
             ], 
+            "root": "lean", 
             "word": "leaned"
         }, 
         {
@@ -27543,11 +27884,22 @@
             "collections": [
                 "new"
             ], 
+            "confusers": "learnt", 
             "homophones": [
                 "Lent", 
                 "lent"
             ], 
+            "root": "lean", 
             "word": "leant"
+        }, 
+        {
+            "Explanations": "Past of learn (I learnt addition in Kindergarten)", 
+            "collections": [
+                "new"
+            ], 
+            "confusers": "leant", 
+            "root": "learn", 
+            "word": "learnt"
         }, 
         {
             "collections": [
@@ -27589,6 +27941,7 @@
                 "Lent", 
                 "leant"
             ], 
+            "root": "lend", 
             "word": "lent"
         }, 
         {
@@ -27632,7 +27985,10 @@
             "collections": [
                 "new"
             ], 
-            "word": "licorice"
+            "word": {
+                "uk": "liquorice", 
+                "us": "licorice"
+            }
         }, 
         {
             "collections": [
@@ -27642,7 +27998,7 @@
         }, 
         {
             "collections": [
-                "new"
+                "new_note"
             ], 
             "word": "lingerie"
         }, 
@@ -27656,17 +28012,16 @@
             "collections": [
                 "new"
             ], 
-            "word": "liquorice"
-        }, 
-        {
-            "collections": [
-                "new"
-            ], 
             "word": "litigator"
         }, 
         {
+            "Explanations": "He lives at number 64.\nMy cat has 9 lives.", 
             "collections": [
                 "new"
+            ], 
+            "pronunciations": [
+                "lives1", 
+                "lives2"
             ], 
             "word": "lives"
         }, 
@@ -27829,7 +28184,7 @@
         }, 
         {
             "collections": [
-                "new"
+                "pickup"
             ], 
             "word": "materials"
         }, 
@@ -27880,7 +28235,10 @@
         }, 
         {
             "collections": [
-                "new"
+                "new_Sounds"
+            ], 
+            "small_collection": [
+                "Sounds"
             ], 
             "word": "meh"
         }, 
@@ -27936,7 +28294,10 @@
             "collections": [
                 "new"
             ], 
-            "word": "microfibre"
+            "word": {
+                "uk": "microfibre", 
+                "us": "microfiber"
+            }
         }, 
         {
             "collections": [
@@ -27981,10 +28342,24 @@
             "word": "miserable"
         }, 
         {
+            "Explanations": "My shot missed the goal.", 
             "collections": [
                 "new"
             ], 
+            "homophones": [
+                "mist"
+            ], 
             "word": "missed"
+        }, 
+        {
+            "Explanations": "The morning mist was beautiful over the lake", 
+            "collections": [
+                "new"
+            ], 
+            "homophones": [
+                "missed"
+            ], 
+            "word": "mist"
         }, 
         {
             "collections": [
@@ -28026,11 +28401,17 @@
             "collections": [
                 "new"
             ], 
+            "small_collection": [
+                "Animals"
+            ], 
             "word": "mole"
         }, 
         {
             "collections": [
                 "new"
+            ], 
+            "small_collection": [
+                "Times_of_the_Year"
             ], 
             "word": "monsoon"
         }, 
@@ -28119,10 +28500,42 @@
             "word": "musicians"
         }, 
         {
+            "Explanations": "a small edible mollusc.", 
             "collections": [
                 "new"
             ], 
+            "homophones": [
+                "muscle"
+            ], 
+            "small_collection": [
+                "Animals"
+            ], 
+            "word": "mussel"
+        }, 
+        {
+            "Explanations": "plural of mussel", 
+            "collections": [
+                "new"
+            ], 
+            "homophones": [
+                "muscles"
+            ], 
+            "root": "mussel", 
+            "small_collection": [
+                "Animals"
+            ], 
             "word": "mussels"
+        }, 
+        {
+            "Explanations": "plural of muscle", 
+            "collections": [
+                "new"
+            ], 
+            "homophones": [
+                "mussels"
+            ], 
+            "root": "muscle", 
+            "word": "muscles"
         }, 
         {
             "collections": [
@@ -28156,7 +28569,7 @@
         }, 
         {
             "collections": [
-                "new"
+                "new_note"
             ], 
             "word": "nauseous"
         }, 
@@ -28318,7 +28731,7 @@
             "collections": [
                 "new"
             ], 
-            "word": "onomatapoeic"
+            "word": "onomatopoeic"
         }, 
         {
             "collections": [
@@ -28372,7 +28785,10 @@
             "collections": [
                 "new"
             ], 
-            "word": "organized"
+            "word": {
+                "uk": "organised", 
+                "us": "organized"
+            }
         }, 
         {
             "collections": [
@@ -28419,7 +28835,10 @@
         }, 
         {
             "collections": [
-                "new"
+                "new_medical"
+            ], 
+            "small_collection": [
+                "Medical"
             ], 
             "word": "ovaries"
         }, 
@@ -28430,10 +28849,24 @@
             "word": "overuse"
         }, 
         {
+            "Explanations": "I paced my work out nicely this week.", 
             "collections": [
                 "new"
             ], 
+            "homophones": [
+                "paste"
+            ], 
             "word": "paced"
+        }, 
+        {
+            "Explanations": "I mixed the ingredients into a thick paste.", 
+            "collections": [
+                "new"
+            ], 
+            "homophones": [
+                "paced"
+            ], 
+            "word": "paste"
         }, 
         {
             "collections": [
@@ -28527,8 +28960,12 @@
             "word": "particle"
         }, 
         {
+            "Explanations": "I passed by the shop on my way home", 
             "collections": [
                 "new"
+            ], 
+            "homophones": [
+                "past"
             ], 
             "word": "passed"
         }, 
@@ -28592,13 +29029,35 @@
             "collections": [
                 "new"
             ], 
-            "word": "pebble"
+            "word": {
+                "uk": "petrol"
+            }
         }, 
         {
             "collections": [
                 "new"
             ], 
+            "word": "pebble"
+        }, 
+        {
+            "Explanations": "Those apples are sold per pound.", 
+            "collections": [
+                "new"
+            ], 
+            "homophones": [
+                "purr"
+            ], 
             "word": "per"
+        }, 
+        {
+            "Explanations": "A happy cat purr is a calming sound.", 
+            "collections": [
+                "new"
+            ], 
+            "homophones": [
+                "per"
+            ], 
+            "word": "purr"
         }, 
         {
             "collections": [
@@ -28707,7 +29166,7 @@
         }, 
         {
             "collections": [
-                "new"
+                "pickup"
             ], 
             "word": "piercing"
         }, 
@@ -28828,8 +29287,13 @@
             "word": "primary"
         }, 
         {
+            "Explanations": "A coat of primer under the final paint helped.\nReading a primer is a great way to start learning a subject.", 
             "collections": [
-                "new"
+                "new_note"
+            ], 
+            "pronunciations": [
+                "primer1", 
+                "us-primer2"
             ], 
             "word": "primer"
         }, 
@@ -28903,16 +29367,48 @@
             "word": "professor"
         }, 
         {
+            "Explanations": "The company made a good profit this year.", 
             "collections": [
                 "new"
+            ], 
+            "homophones": [
+                "prophet"
             ], 
             "word": "profit"
         }, 
         {
+            "Explanations": "One prophet in the Old Testament is Jeremiah.", 
             "collections": [
                 "new"
             ], 
-            "word": "programme"
+            "homophones": [
+                "profit"
+            ], 
+            "word": "prophet"
+        }, 
+        {
+            "Explanations": "I like that TV programme.", 
+            "collections": [
+                "new"
+            ], 
+            "homophones": [
+                "program"
+            ], 
+            "word": {
+                "uk": "programme"
+            }
+        }, 
+        {
+            "Explanations": "A computer program tells a computer what to do.", 
+            "collections": [
+                "new"
+            ], 
+            "homophones": {
+                "uk": [
+                    "programme"
+                ]
+            }, 
+            "word": "program"
         }, 
         {
             "collections": [
@@ -28943,12 +29439,6 @@
                 "new"
             ], 
             "word": "property"
-        }, 
-        {
-            "collections": [
-                "new"
-            ], 
-            "word": "prophet"
         }, 
         {
             "collections": [
@@ -29037,6 +29527,12 @@
                 "new"
             ], 
             "word": "ranking"
+        }, 
+        {
+            "collections": [
+                "new"
+            ], 
+            "word": "ranked"
         }, 
         {
             "collections": [
@@ -29145,7 +29641,21 @@
             "collections": [
                 "new"
             ], 
+            "word": "relieve"
+        }, 
+        {
+            "collections": [
+                "new"
+            ], 
+            "root": "relive", 
             "word": "relived"
+        }, 
+        {
+            "collections": [
+                "new"
+            ], 
+            "root": "relieve", 
+            "word": "relieved"
         }, 
         {
             "collections": [
@@ -29215,7 +29725,7 @@
         }, 
         {
             "collections": [
-                "new"
+                "new_note"
             ], 
             "word": "retinue"
         }, 
@@ -29419,6 +29929,15 @@
             "collections": [
                 "new"
             ], 
+            "homophones": [
+                "seems"
+            ], 
+            "word": "seams"
+        }, 
+        {
+            "collections": [
+                "new"
+            ], 
             "word": "seaside"
         }, 
         {
@@ -29446,6 +29965,9 @@
         {
             "collections": [
                 "new"
+            ], 
+            "homophones": [
+                "seams"
             ], 
             "word": "seems"
         }, 
@@ -29486,6 +30008,9 @@
         {
             "collections": [
                 "new"
+            ], 
+            "homophones": [
+                "cereal"
             ], 
             "word": "serial"
         }, 
@@ -29534,6 +30059,12 @@
         {
             "collections": [
                 "new"
+            ], 
+            "homophones": [
+                "shoe"
+            ], 
+            "small_collection": [
+                "Sounds"
             ], 
             "word": "shoo"
         }, 
@@ -29585,12 +30116,6 @@
                 "new"
             ], 
             "word": "simile"
-        }, 
-        {
-            "collections": [
-                "new"
-            ], 
-            "word": "since"
         }, 
         {
             "collections": [
@@ -29770,13 +30295,16 @@
             "collections": [
                 "new"
             ], 
+            "tags": [
+                "tion"
+            ], 
             "word": "sophistication"
         }, 
         {
             "collections": [
                 "new"
             ], 
-            "word": "sorethroat"
+            "word": "sore_throat"
         }, 
         {
             "collections": [
@@ -29907,6 +30435,9 @@
             "homophones": [
                 "shh"
             ], 
+            "small_collection": [
+                "Sounds"
+            ], 
             "word": "sssh"
         }, 
         {
@@ -29928,6 +30459,13 @@
             "word": "starred"
         }, 
         {
+            "Explanations": "The man stared at the girl rudly.", 
+            "collections": [
+                "new"
+            ], 
+            "word": "stared"
+        }, 
+        {
             "collections": [
                 "new"
             ], 
@@ -29939,6 +30477,9 @@
                 "new"
             ], 
             "confusers": "stationery", 
+            "homophones": [
+                "stationery"
+            ], 
             "word": "stationary"
         }, 
         {
@@ -29947,6 +30488,9 @@
                 "new"
             ], 
             "confusers": "stationary", 
+            "homophones": [
+                "stationary"
+            ], 
             "word": "stationery"
         }, 
         {
@@ -29956,10 +30500,24 @@
             "word": "steady"
         }, 
         {
+            "Explanations": "Its illegal to steal a loaf of bread", 
             "collections": [
                 "new"
             ], 
+            "homophones": [
+                "steel"
+            ], 
             "word": "steal"
+        }, 
+        {
+            "Explanations": "My knife blade is made of steel", 
+            "collections": [
+                "new"
+            ], 
+            "homophones": [
+                "steal"
+            ], 
+            "word": "steel"
         }, 
         {
             "collections": [
@@ -30109,7 +30667,7 @@
         }, 
         {
             "collections": [
-                "new"
+                "pickup"
             ], 
             "word": "subordinate"
         }, 
@@ -30118,6 +30676,9 @@
                 "new"
             ], 
             "root": "subordinate", 
+            "tags": [
+                "tion"
+            ], 
             "word": "subordination"
         }, 
         {
@@ -30129,6 +30690,9 @@
         {
             "collections": [
                 "new"
+            ], 
+            "tags": [
+                "tion"
             ], 
             "word": "subtraction"
         }, 
@@ -30165,6 +30729,9 @@
         {
             "collections": [
                 "new"
+            ], 
+            "tags": [
+                "tion"
             ], 
             "word": "suggestion"
         }, 
@@ -30267,6 +30834,9 @@
             "collections": [
                 "new"
             ], 
+            "small_collection": [
+                "Sounds"
+            ], 
             "word": "ta-da"
         }, 
         {
@@ -30346,13 +30916,25 @@
             "collections": [
                 "new"
             ], 
-            "word": "tertary"
+            "word": "tertiary"
         }, 
         {
             "collections": [
                 "new"
             ], 
+            "small_collection": [
+                "Medical"
+            ], 
             "word": "testicles"
+        }, 
+        {
+            "collections": [
+                "new"
+            ], 
+            "small_collection": [
+                "Medical"
+            ], 
+            "word": "testicle"
         }, 
         {
             "collections": [
@@ -30583,7 +31165,19 @@
             "collections": [
                 "new"
             ], 
-            "word": "triped"
+            "word": "tri-ped"
+        }, 
+        {
+            "collections": [
+                "new"
+            ], 
+            "word": "tripped"
+        }, 
+        {
+            "collections": [
+                "new"
+            ], 
+            "word": "tripod"
         }, 
         {
             "collections": [
@@ -30600,6 +31194,9 @@
         {
             "collections": [
                 "new"
+            ], 
+            "small_collection": [
+                "Sounds"
             ], 
             "word": "tut-tut"
         }, 
@@ -30702,12 +31299,6 @@
             "collections": [
                 "new"
             ], 
-            "word": "underneath"
-        }, 
-        {
-            "collections": [
-                "new"
-            ], 
             "word": "undisclosed"
         }, 
         {
@@ -30742,6 +31333,12 @@
         }, 
         {
             "collections": [
+                "pickup"
+            ], 
+            "word": "urinate"
+        }, 
+        {
+            "collections": [
                 "new"
             ], 
             "word": "urinated"
@@ -30755,7 +31352,10 @@
         {
             "Explanations": "an instrument with two jaws to hold work", 
             "collections": [
-                "new"
+                "new_note"
+            ], 
+            "homophones": [
+                "vice"
             ], 
             "word": {
                 "us": "vise"
@@ -30833,7 +31433,7 @@
         }, 
         {
             "collections": [
-                "new"
+                "pickup"
             ], 
             "word": "veterinarian"
         }, 
@@ -30931,6 +31531,7 @@
             "collections": [
                 "new"
             ], 
+            "root": "weather", 
             "word": "weathering"
         }, 
         {
@@ -30973,11 +31574,17 @@
             "collections": [
                 "new"
             ], 
+            "small_collection": [
+                "Animals"
+            ], 
             "word": "wildcats"
         }, 
         {
             "collections": [
                 "new"
+            ], 
+            "small_collection": [
+                "Places"
             ], 
             "word": "Wirral"
         }, 
@@ -31003,18 +31610,22 @@
             "collections": [
                 "new"
             ], 
-            "word": "without"
-        }, 
-        {
-            "collections": [
-                "new"
-            ], 
             "word": "woke_up"
         }, 
         {
+            "Explanations": "I wander around my garden.", 
             "collections": [
                 "new"
             ], 
+            "confusers": "wonder", 
+            "word": "wander"
+        }, 
+        {
+            "Explanations": "I wonder what you are thinking.", 
+            "collections": [
+                "new"
+            ], 
+            "confusers": "wander", 
             "word": "wonder"
         }, 
         {
@@ -31145,7 +31756,7 @@
             "small_collection": [
                 "Medical"
             ], 
-            "word": "Alzheimer"
+            "word": "Alzheimer's"
         }, 
         {
             "collections": [
@@ -31353,15 +31964,6 @@
                 "Medical"
             ], 
             "word": "mitochondria"
-        }, 
-        {
-            "collections": [
-                "new_medical"
-            ], 
-            "small_collection": [
-                "Medical"
-            ], 
-            "word": "Neurozan"
         }, 
         {
             "collections": [
