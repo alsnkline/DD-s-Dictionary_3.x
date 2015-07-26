@@ -423,27 +423,16 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
     NSDictionary *foundWord = nil;
     for (NSDictionary *candidateWord in matches) {
         
-        if (candidateWord == word) continue;   //to avoid setting foundWord for tomatoe etc.
-
-        if ([candidateWord objectForKey:@"locHomophones"] != [word objectForKey:@"locHomophones"]) {
+        if (candidateWord == word) {
+            continue;   //to avoid setting foundWord to self.
+        } else if ([[candidateWord objectForKey:@"usukVariant"] isEqualToString:[word objectForKey:@"usukVariant"]]) {
             foundWord = candidateWord;
-        }
-        if (![[candidateWord objectForKey:@"spelling"] isEqualToString:[word objectForKey:@"spelling"]]) {
-            foundWord = candidateWord;
-        }
-        
-        NSSet *pronunciations = [DD2Words pronunciationsForWord:candidateWord];
-        [pronunciations setByAddingObjectsFromSet: [DD2Words pronunciationsForWord:word]];
-        for (NSString *pronunciation in pronunciations) {
-            if ([pronunciation length] > 3) {
-                NSString *prefix = [pronunciation substringWithRange:NSMakeRange(0, 3)];
-                if ([prefix isEqualToString:@"uk-"] || [prefix isEqualToString:@"us-"]) {
-                    foundWord = candidateWord;
-                }
-            }
+            if (PROCESS_VERBOSELY) NSLog(@"US/UK spelling variant found %@", foundWord);
+        } else {
+            NSLog(@"US/UK spelling variant not found");
         }
     }
-    if (PROCESS_VERBOSELY && foundWord) NSLog(@"US/UK spelling variant found %@", foundWord);
+    
     return foundWord;
 }
 
