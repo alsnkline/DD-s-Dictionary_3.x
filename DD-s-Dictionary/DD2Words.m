@@ -301,13 +301,6 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
         NSString *section = [[cleanSpelling substringToIndex:1] uppercaseString];
         [processedWord setObject:section forKey:@"section"];
         
-        //add root if present in raw word
-        NSString *root = [rawWord objectForKey:@"root"];
-        if (root)[processedWord setObject:root forKey:@"root"];
-        
-        //add confusers if present in raw word
-        NSString *confusers = [rawWord objectForKey:@"confusers"];
-        if (confusers)[processedWord setObject:confusers forKey:@"confusers"];
         
         //processing for homophones
         id homophonesElement = [rawWord objectForKey:@"homophones"];
