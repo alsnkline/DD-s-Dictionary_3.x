@@ -204,11 +204,19 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
                 if (![[ukProcessedWord objectForKey:@"spelling"] isEqualToString:[usProcessedWord objectForKey:@"spelling"]]) {
                     usukVariantType = [DD2Words appendText:@"spelling" toType:usukVariantType];
                 }
+                NSSet *pronunciationsUS = [DD2Words pronunciationsForWord:usProcessedWord];
+                NSSet *pronunciationsUK = [DD2Words pronunciationsForWord:ukProcessedWord];
+                NSSet *pronunciations = [NSSet setWithSet:pronunciationsUS];
+                [pronunciations setByAddingObjectsFromSet: pronunciationsUK];
+                if (PROCESS_VERBOSELY) {
+                    if ([pronunciationsUS isEqualToSet:pronunciationsUK]) {
+                        NSLog(@"Pronunciations, %@", pronunciationsUS);
+                    } else {
+                        if (PROCESS_VERBOSELY) NSLog(@"Pronunciations (us), %@", pronunciationsUS);
+                        if (PROCESS_VERBOSELY) NSLog(@"Pronunciations (uk), %@", pronunciationsUK);
+                    }
+                }
                 
-                if (PROCESS_VERBOSELY) NSLog(@"Pronunciations (us)");
-                NSSet *pronunciations = [DD2Words pronunciationsForWord:usProcessedWord];
-                if (PROCESS_VERBOSELY) NSLog(@"Pronunciations (uk)");
-                [pronunciations setByAddingObjectsFromSet: [DD2Words pronunciationsForWord:ukProcessedWord]];
                 for (NSString *pronunciation in pronunciations) {
                     if ([pronunciation length] > 3) {
                         NSString *prefix = [pronunciation substringWithRange:NSMakeRange(0, 3)];
