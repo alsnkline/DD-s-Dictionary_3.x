@@ -14,6 +14,7 @@
 #define LOG_ANALYTICS NO                  // must be NO for ship
 #define FIND_MISSING_PRONUNCIATIONS NO    // must be NO for ship
 #define FIND_DUPLICATE_WORDS NO           // must be NO for ship
+#define PROCESS_ON_BUILD NO               // must be NO for ship
 
 #define NO_GA YES                            // must be NO for ship
 #define LOG_VOICE_HINTS NO                    // should be NO for ship

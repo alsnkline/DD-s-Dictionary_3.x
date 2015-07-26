@@ -51,7 +51,7 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
         NSString * lastBuildProcessed = [[NSUserDefaults standardUserDefaults] stringForKey:APPLICATION_BUILD];
         NSString * thisBuild = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
         NSLog(@" lastBuildProcessed = %@ , This build = %@", lastBuildProcessed, thisBuild);
-        if ([lastBuildProcessed intValue] < [thisBuild intValue]) {
+        if ([lastBuildProcessed intValue] < [thisBuild intValue] || PROCESS_ON_BUILD) {
             //new build words need processing
             self.wordProcessingNeeded = true;
         } else {
