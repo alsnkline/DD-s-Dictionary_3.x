@@ -322,7 +322,11 @@
     //set need to show addWord button if no beginswith (includes exact) matches for searchText
     NSPredicate *bwMatchPredicate = [NSPredicate predicateWithFormat:@"SELF.spelling beginswith[c] %@",searchText];
     NSArray *bwMatches = [wordsForFilteredWords filteredArrayUsingPredicate:bwMatchPredicate];
-    if ([bwMatches count] < 1) self.showAddWordButton = YES;
+    
+    //Check USUKVariants "spelling" type for matches (hide addWord button)
+    NSMutableArray *usukVariantMatches = [NSMutableArray arrayWithArray:[self.allWords filteredArrayUsingPredicate:bwMatchPredicate]];
+    
+    if ([bwMatches count] < 1 && [usukVariantMatches count] < 1) self.showAddWordButton = YES;
     
     if (LOG_MORE) NSLog(@"search result list is %lu words long", (unsigned long)[wordsForFilteredWords count]);
     
