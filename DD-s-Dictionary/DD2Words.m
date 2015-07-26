@@ -204,6 +204,10 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
                 if (![[ukProcessedWord objectForKey:@"spelling"] isEqualToString:[usProcessedWord objectForKey:@"spelling"]]) {
                     usukVariantType = [DD2Words appendText:@"spelling" toType:usukVariantType];
                 }
+                if ([ukProcessedWord objectForKey:@"pronunciations"] != [usProcessedWord objectForKey:@"pronunciations"]) {
+                    usukVariantType = [DD2Words appendText:@"locHeteronyms" toType:usukVariantType];
+                }
+                
                 NSSet *pronunciationsUS = [DD2Words pronunciationsForWord:usProcessedWord];
                 NSSet *pronunciationsUK = [DD2Words pronunciationsForWord:ukProcessedWord];
                 NSSet *pronunciations = [NSSet setWithSet:pronunciationsUS];
@@ -328,6 +332,15 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
                 if (PROCESS_VERBOSELY) NSLog(@"no locHomophones for %@ %@", spelling, locale);      // needed where locHomophones only exsit in one locale eg buoy (uk:boy)
             }
         }
+        
+        //processing for homophones - primer (homophones only for US local)
+        id pronunciationsElement = [rawWord objectForKey:@"pronunciations"];
+        if ([pronunciationsElement isKindOfClass:[NSDictionary class]]) {
+            NSDictionary *pronunciationsElementDictionary = (NSDictionary *)pronunciationsElement;
+            if (PROCESS_VERBOSELY) NSLog(@"Pronunciations is a Dictionary, %@", pronunciationsElement);
+            [processedWord setObject:[pronunciationsElementDictionary objectForKey:locale] forKey:@"pronunciations"];
+        }
+        
     }
     
     //if (PROCESS_VERBOSELY) NSLog(@"processed word %@", processedWord);
