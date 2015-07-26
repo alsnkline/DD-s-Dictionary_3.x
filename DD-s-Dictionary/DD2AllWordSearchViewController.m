@@ -154,6 +154,25 @@
 }
 
 #define ADD_WORD_BUTTON_TAG 1111
+#define USUK_NOTIFIER_VIEW_TAG 2222
+
+- (void) setupCell:(UITableViewCell *)cell WithWord:(NSDictionary *)word{
+    cell.textLabel.text = [word objectForKey:@"spelling"];
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    if ([[word objectForKey:@"usukVariant"] isEqualToString:@"spelling"]) {
+        UIImageView *notifier = [self getUSUKVariantNotifier];
+        notifier.tag = USUK_NOTIFIER_VIEW_TAG;
+        [cell.contentView addSubview:notifier];
+    }
+}
+
+- (void) setupAddWordCell:(UITableViewCell *)cell {
+    cell.textLabel.text = @"";      //make sure clean for button reuse
+    UIButton *button = [self getAddWordButton];
+    button.tag = ADD_WORD_BUTTON_TAG;
+    [cell.contentView addSubview:button];
+}
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -167,6 +186,7 @@
     
     cell.backgroundColor = [UIColor clearColor]; //needed for iOS7
     cell.textLabel.font = self.useDyslexieFont ? [UIFont fontWithName:@"Dyslexiea-Regular" size:20] : [UIFont boldSystemFontOfSize:20];
+    if ([cell.contentView viewWithTag:USUK_NOTIFIER_VIEW_TAG]) [[cell.contentView viewWithTag:USUK_NOTIFIER_VIEW_TAG] removeFromSuperview]; //clean cell before reuse
     
     if (tableView == self.searchDisplayController.searchResultsTableView) {
         if ([self.filteredWords count]>0) {
@@ -174,33 +194,25 @@
             if ([cell.contentView viewWithTag:ADD_WORD_BUTTON_TAG]) [[cell.contentView viewWithTag:ADD_WORD_BUTTON_TAG] removeFromSuperview];
             
             if ([self.filteredWords count] == indexPath.row) {      //looking for last cell when we need to show the addWord button
-                cell.textLabel.text = @"";      //make sure clean for button reuse
-                UIButton *button = [self getAddWordButton];
-                button.tag = ADD_WORD_BUTTON_TAG;
-                [cell.contentView addSubview:button];
+                [self setupAddWordCell:cell];
             } else {
                 NSDictionary *word = [self.filteredWords objectAtIndex:indexPath.row];
-                cell.textLabel.text = [word objectForKey:@"spelling"];
+                [self setupCell:cell WithWord:word];
             }
         } else {    //Search has no results
             if (![cell.contentView viewWithTag:ADD_WORD_BUTTON_TAG]) { //button isn't already present
-                cell.textLabel.text = @"";      //make sure clean for button reuse
-                UIButton *button = [self getAddWordButton];
-                button.tag = ADD_WORD_BUTTON_TAG;
-                [cell.contentView addSubview:button];
+                [self setupAddWordCell:cell];
             }
         }
     } else {
         // clean out add button if there is one
         if ([cell.contentView viewWithTag:ADD_WORD_BUTTON_TAG]) [[cell.contentView viewWithTag:ADD_WORD_BUTTON_TAG] removeFromSuperview];
-        // reset accessoryType
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         // set text for cell
         NSArray *wordsForSection = [self.allWordsWithSections objectForKey:[self.sections objectAtIndex:indexPath.section]];
         NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"spelling" ascending:YES selector:@selector(caseInsensitiveCompare:)];
         NSArray *sortedWords = [wordsForSection sortedArrayUsingDescriptors:[NSArray arrayWithObjects:descriptor, nil]];
         NSDictionary *word = [sortedWords objectAtIndex:indexPath.row];
-        cell.textLabel.text = [word objectForKey:@"spelling"];
+        [self setupCell:cell WithWord:word];
         
         //NSLog(@"After reconfigure Cell content view %@", cell.contentView.subviews);
         //NSLog(@"cell: %@", cell.textLabel.text);
@@ -510,6 +522,25 @@
     
     return myButton;
 }
+
+- (UIImageView *)getUSUKVariantNotifier
+{
+    UIImageView *myImage = [UIImageView new];
+    
+    CGFloat imageWidth = 32;  //hard coded for now
+    CGFloat leftSpacing = (self.tableView.frame.size.width)-(imageWidth*2.5);  //centralizing the image in the tableView
+    CGFloat cRadius = 8; //corner radius for button
+    myImage.frame = CGRectMake(leftSpacing, 8, imageWidth, 32);
+    
+    [myImage setImage:[UIImage imageNamed:@"resources.bundle/Images/dinoOnlyIcon32x32.png"]];
+    
+    myImage.layer.masksToBounds = YES;
+    myImage.layer.cornerRadius = cRadius;
+    myImage.layer.needsDisplayOnBoundsChange = YES;
+    
+    return myImage;
+}
+
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
