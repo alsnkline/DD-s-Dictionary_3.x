@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" variant="6xAndEarlier" propertyAccessControl="none" initialViewController="sbX-O3-UlK">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" variant="6xAndEarlier" propertyAccessControl="none" initialViewController="sbX-O3-UlK">
     <dependencies>
         <deployment identifier="iOS"/>
         <development version="4600" identifier="xcode"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -323,7 +323,7 @@ the Dyslexic's Dictionary</string>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Settings 0 0" id="ILW-tY-mJk" customClass="DD2SettingsTableViewCell">
-                                        <rect key="frame" x="0.0" y="46" width="320" height="45"/>
+                                        <rect key="frame" x="0.0" y="58" width="318" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="1" width="298" height="42"/>
@@ -352,7 +352,7 @@ the Dyslexic's Dictionary</string>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Settings 0 1" id="Q70-ct-6C0" customClass="DD2SettingsTableViewCell">
-                                        <rect key="frame" x="0.0" y="91" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="102" width="318" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="0.0" width="298" height="43"/>
@@ -380,7 +380,7 @@ the Dyslexic's Dictionary</string>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Settings 0 2" id="uNj-tW-0Jg" customClass="DD2SettingsTableViewCell">
-                                        <rect key="frame" x="0.0" y="135" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="146" width="318" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="0.0" width="298" height="43"/>
@@ -408,7 +408,7 @@ the Dyslexic's Dictionary</string>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Settings 0 3" id="fFv-Db-JNg" customClass="DD2SettingsTableViewCell">
-                                        <rect key="frame" x="0.0" y="179" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="190" width="318" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="0.0" width="298" height="43"/>
@@ -436,7 +436,7 @@ the Dyslexic's Dictionary</string>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Settings 0 4" id="rkP-v4-hmK" customClass="DD2SettingsTableViewCell">
-                                        <rect key="frame" x="0.0" y="223" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="234" width="318" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="0.0" width="298" height="43"/>
@@ -465,7 +465,7 @@ the Dyslexic's Dictionary</string>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Settings 0 5" id="awt-5M-ToU" customClass="DD2SettingsTableViewCell">
-                                        <rect key="frame" x="0.0" y="267" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="278" width="318" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="0.0" width="298" height="43"/>
@@ -486,7 +486,7 @@ the Dyslexic's Dictionary</string>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell tag="10" contentMode="scaleToFill" selectionStyle="blue" accessoryType="checkmark" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Settings Collection" id="cPK-b9-1QF" customClass="DD2SettingsTableViewCell">
-                                        <rect key="frame" x="0.0" y="311" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="322" width="318" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="0.0" width="278" height="43"/>
@@ -507,7 +507,7 @@ the Dyslexic's Dictionary</string>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell tag="20" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Settings 2 0" textLabel="xT4-yq-7Id" style="IBUITableViewCellStyleDefault" id="mjL-0S-Z8j" customClass="DD2SettingsTableViewCell">
-                                        <rect key="frame" x="0.0" y="355" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="366" width="318" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="0.0" width="278" height="43"/>
@@ -525,7 +525,7 @@ the Dyslexic's Dictionary</string>
                                         </view>
                                     </tableViewCell>
                                     <tableViewCell tag="21" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Settings 2 1" textLabel="Clg-KR-Bsb" style="IBUITableViewCellStyleDefault" id="yyU-uy-xXT" customClass="DD2SettingsTableViewCell">
-                                        <rect key="frame" x="0.0" y="399" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="410" width="318" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="0.0" width="278" height="43"/>
@@ -543,7 +543,7 @@ the Dyslexic's Dictionary</string>
                                         </view>
                                     </tableViewCell>
                                     <tableViewCell tag="22" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Settings 2 2" textLabel="aRH-bo-6uV" style="IBUITableViewCellStyleDefault" id="ObU-e0-nWE" customClass="DD2SettingsTableViewCell">
-                                        <rect key="frame" x="0.0" y="443" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="454" width="318" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="0.0" width="278" height="43"/>
@@ -561,7 +561,7 @@ the Dyslexic's Dictionary</string>
                                         </view>
                                     </tableViewCell>
                                     <tableViewCell tag="23" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Settings 2 3" textLabel="GyL-Ys-002" style="IBUITableViewCellStyleDefault" id="VfJ-K9-gQH" customClass="DD2SettingsTableViewCell">
-                                        <rect key="frame" x="0.0" y="487" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="498" width="318" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="0.0" width="278" height="43"/>
@@ -579,7 +579,7 @@ the Dyslexic's Dictionary</string>
                                         </view>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Settings 2 4" id="tY9-Jm-kmR" customClass="DD2SettingsTableViewCell">
-                                        <rect key="frame" x="0.0" y="531" width="320" height="45"/>
+                                        <rect key="frame" x="0.0" y="542" width="318" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="0.0" width="298" height="42"/>
@@ -626,7 +626,7 @@ the Dyslexic's Dictionary</string>
             <objects>
                 <viewController id="dSV-C7-sB1" customClass="DisplayWordViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ohI-Qa-0QX">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <view contentMode="scaleToFill" id="x77-lk-vJH">
@@ -838,7 +838,7 @@ the Dyslexic's Dictionary</string>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Fun With Words Cell" textLabel="mTJ-FJ-PXW" style="IBUITableViewCellStyleDefault" id="TjN-Fh-UEA">
-                                <rect key="frame" x="0.0" y="46" width="320" height="46"/>
+                                <rect key="frame" x="0.0" y="58" width="318" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="10" y="1" width="278" height="41"/>
@@ -933,6 +933,6 @@ the Dyslexic's Dictionary</string>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="D4T-mn-i2d"/>
+        <segue reference="n3n-aH-KiR"/>
     </inferredMetricsTieBreakers>
 </document>
