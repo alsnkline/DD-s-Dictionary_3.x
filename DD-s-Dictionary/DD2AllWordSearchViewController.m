@@ -160,7 +160,8 @@
     cell.textLabel.text = [word objectForKey:@"spelling"];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     if ([[word objectForKey:@"usukVariant"] isEqualToString:@"spelling"]) {
-        UIImageView *notifier = [self getUSUKVariantNotifier];
+        if (LOG_MORE) NSLog(@"%@", word);
+        UIImageView *notifier = [self getUSUKVariantNotifierWithVariant:[word objectForKey:@"wordVariant"]];
         notifier.tag = USUK_NOTIFIER_VIEW_TAG;
         [cell.contentView addSubview:notifier];
     }
@@ -527,16 +528,17 @@
     return myButton;
 }
 
-- (UIImageView *)getUSUKVariantNotifier
+- (UIImageView *)getUSUKVariantNotifierWithVariant: (NSString *)variant
 {
     UIImageView *myImage = [UIImageView new];
     
     CGFloat imageWidth = 32;  //hard coded for now
-    CGFloat leftSpacing = (self.tableView.frame.size.width)-(imageWidth*2.5);  //centralizing the image in the tableView
-    CGFloat cRadius = 8; //corner radius for button
-    myImage.frame = CGRectMake(leftSpacing, 8, imageWidth, 32);
+    CGFloat leftSpacing = (self.tableView.frame.size.width)-(imageWidth*2.5);  //image to right in the tableView
+    CGFloat cRadius = 2; //corner radius for button
+    myImage.frame = CGRectMake(leftSpacing, 14, imageWidth, 32);
     
-    [myImage setImage:[UIImage imageNamed:@"resources.bundle/Images/dinoOnlyIcon32x32.png"]];
+    NSString *imageToUse = [NSString stringWithFormat:@"resources.bundle/Images/%@_front_32x32.png", [variant capitalizedString]];
+    [myImage setImage:[UIImage imageNamed:imageToUse]];
     
     myImage.layer.masksToBounds = YES;
     myImage.layer.cornerRadius = cRadius;

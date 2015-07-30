@@ -39,6 +39,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *homophoneButton5;
 @property (weak, nonatomic) IBOutlet UIButton *homophoneButton6;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *usukVariantSegmentedControl;
+@property (weak, nonatomic) IBOutlet UIButton *usukVariantButton;
 
 - (IBAction)listenToWord:(id)sender;
 - (void)playAllWords:(NSSet *)pronunciations;

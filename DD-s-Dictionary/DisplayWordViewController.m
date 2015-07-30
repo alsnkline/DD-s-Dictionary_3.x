@@ -43,6 +43,7 @@
 @synthesize homophoneButton5 = _homophoneButton5;
 @synthesize homophoneButton6 = _homophoneButton6;
 @synthesize usukVariantSegmentedControl = _usukVariantSegmentedControl;
+@synthesize usukVariantButton = _usukVariantButton;
 @synthesize audioPlayer = _audioPlayer;
 @synthesize soundsToPlay = _soundsToPlay;
 
@@ -127,6 +128,7 @@
         [self manageListenButtons];
         if (self.hasOtherVariantWord) {
             self.usukVariantSegmentedControl.hidden = NO;
+            self.usukVariantButton.hidden = NO;
             NSString *variant = [word objectForKey:@"wordVariant"];
             if ([variant isEqualToString:@"uk"]) {
                 //select the UK segment
@@ -137,6 +139,7 @@
             }
         } else {
             self.usukVariantSegmentedControl.hidden = YES;
+            self.usukVariantButton.hidden = YES;
         }
         forDisplay = [word objectForKey:@"spelling"];
     } else {
