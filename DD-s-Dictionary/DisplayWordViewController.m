@@ -42,7 +42,6 @@
 @synthesize homophoneButton4 = _homophoneButton4;
 @synthesize homophoneButton5 = _homophoneButton5;
 @synthesize homophoneButton6 = _homophoneButton6;
-@synthesize usukVariantSegmentedControl = _usukVariantSegmentedControl;
 @synthesize usukVariantButton = _usukVariantButton;
 @synthesize audioPlayer = _audioPlayer;
 @synthesize soundsToPlay = _soundsToPlay;
@@ -127,18 +126,16 @@
     if (word) {
         [self manageListenButtons];
         if (self.hasOtherVariantWord) {
-            self.usukVariantSegmentedControl.hidden = NO;
             self.usukVariantButton.hidden = NO;
             NSString *variant = [word objectForKey:@"wordVariant"];
             if ([variant isEqualToString:@"uk"]) {
-                //select the UK segment
-                self.usukVariantSegmentedControl.selectedSegmentIndex = 0;
+                //select the UK variant
+                [self.usukVariantButton setImage:[UIImage imageNamed:@"resources.bundle/Images/UK_front_32x32.png"] forState:UIControlStateNormal];
             } else {
-                //select the US segment
-                self.usukVariantSegmentedControl.selectedSegmentIndex = 1;
+                //select the US variant
+                [self.usukVariantButton setImage:[UIImage imageNamed:@"resources.bundle/Images/US_front_32x32.png"] forState:UIControlStateNormal];
             }
         } else {
-            self.usukVariantSegmentedControl.hidden = YES;
             self.usukVariantButton.hidden = YES;
         }
         forDisplay = [word objectForKey:@"spelling"];
@@ -167,7 +164,7 @@
     }
     self.listenButton.hidden = YES;
     self.heteronymListenButton.hidden = YES;
-    self.usukVariantSegmentedControl.hidden = YES;
+    self.usukVariantButton.hidden = YES;
 }
 
 - (void) manageListenButtons
@@ -403,12 +400,13 @@
     [self.delegate DisplayWordViewController:self homophoneSelected:[matches lastObject]];
 }
 
-- (IBAction)usukVariantSegmentedControlPressed:(UISegmentedControl *)sender {
-    NSString *selection = sender.selectedSegmentIndex ? @"us" : @"uk";
-    NSLog(@"segmented control '%@' pressed", selection);
+- (IBAction)usukVariantButtonPressed:(UIButton *)sender {
+    NSString *currentSelection =[self.word objectForKey:@"wordVariant"];
+    NSLog(@"ukus button '%@' pressed", [currentSelection capitalizedString]);
     
-    [self.delegate DisplayWordViewController:self otherVariantSegmentedControlSelected:selection whileDisplayingWord:self.word];
+    [self.delegate DisplayWordViewController:self otherVariantSelected:[currentSelection capitalizedString] whileDisplayingWord:self.word];
 }
+
 
 -(void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)playedSuccessfully
 {

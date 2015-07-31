@@ -14,7 +14,7 @@
 @optional
 
 - (void) DisplayWordViewController:(DisplayWordViewController *) sender homophoneSelected:(NSDictionary *)word;
-- (void) DisplayWordViewController:(DisplayWordViewController *)sender otherVariantSegmentedControlSelected:(NSString *)selection whileDisplayingWord:(NSDictionary *)word;
+- (void) DisplayWordViewController:(DisplayWordViewController *)sender otherVariantSelected:(NSString *)selection whileDisplayingWord:(NSDictionary *)word;
 @end
 
 
@@ -38,7 +38,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *homophoneButton4;
 @property (weak, nonatomic) IBOutlet UIButton *homophoneButton5;
 @property (weak, nonatomic) IBOutlet UIButton *homophoneButton6;
-@property (weak, nonatomic) IBOutlet UISegmentedControl *usukVariantSegmentedControl;
 @property (weak, nonatomic) IBOutlet UIButton *usukVariantButton;
 
 - (IBAction)listenToWord:(id)sender;
