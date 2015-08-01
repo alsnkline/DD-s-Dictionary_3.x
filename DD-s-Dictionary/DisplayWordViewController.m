@@ -11,6 +11,7 @@
 #import <AVFoundation/AVFoundation.h> //for audioPlayer
 #import "NSUserDefaultKeys.h"
 #import <QuartzCore/QuartzCore.h>
+#import <Apptimize/Apptimize.h>
 
 @interface DisplayWordViewController () <AVAudioPlayerDelegate>
 
@@ -47,6 +48,7 @@
 @synthesize audioPlayer = _audioPlayer;
 @synthesize soundsToPlay = _soundsToPlay;
 
+ApptimizeBoolean(useUsukFlagIcons, NO);
 
 -(void)awakeFromNib
 {
@@ -127,21 +129,26 @@
     if (word) {
         [self manageListenButtons];
         if (self.hasOtherVariantWord) {
-            self.usukVariantSegmentedControl.hidden = NO;
-            self.usukVariantButton.hidden = NO;
+            if ([useUsukFlagIcons boolValue]) {
+                    self.usukVariantButton.hidden = NO;
+                    self.usukVariantSegmentedControl.hidden = YES;
+                } else {
+                    self.usukVariantButton.hidden = YES;
+                    self.usukVariantSegmentedControl.hidden = NO;
+                }
             NSString *variant = [word objectForKey:@"wordVariant"];
             if ([variant isEqualToString:@"uk"]) {
                 //select the UK variant
-                self.usukVariantSegmentedControl.selectedSegmentIndex = 0;
                 [self.usukVariantButton setImage:[UIImage imageNamed:@"resources.bundle/Images/UK_front_32x32.png"] forState:UIControlStateNormal];
+                self.usukVariantSegmentedControl.selectedSegmentIndex = 0;
             } else {
                 //select the US variant
-                self.usukVariantSegmentedControl.selectedSegmentIndex = 1;
                 [self.usukVariantButton setImage:[UIImage imageNamed:@"resources.bundle/Images/US_front_32x32.png"] forState:UIControlStateNormal];
+                self.usukVariantSegmentedControl.selectedSegmentIndex = 1;
             }
         } else {
-            self.usukVariantSegmentedControl.hidden = YES;
             self.usukVariantButton.hidden = YES;
+            self.usukVariantSegmentedControl.hidden = YES;
         }
         forDisplay = [word objectForKey:@"spelling"];
     } else {
@@ -160,6 +167,9 @@
         //track word view with Flurry
         NSDictionary *flurryParameters = @{@"Viewed Word": self.spelling.text};
         [Flurry logEvent:@"uiAction_Word" withParameters:flurryParameters];
+        
+        //track word view with Apptimize
+        [Apptimize track:@"Viewed Word"];
     }
 }
 
@@ -482,6 +492,9 @@
     [super viewDidAppear:animated];
     //track screen with GA
     [DD2GlobalHelper sendViewToGAWithViewName:[NSString stringWithFormat:@"Viewed Word :%@", self.spelling.text]];
+    
+    //track word view with Apptimize
+    [Apptimize track:@"Viewed Word"];
 }
 
 - (void)viewDidLoad

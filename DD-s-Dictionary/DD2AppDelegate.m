@@ -72,7 +72,11 @@
     [Flurry logEvent:@"App_initial_active" timed:YES];
     
     //setting up Apptimize
-    [Apptimize startApptimizeWithApplicationKey:@"CMF7bsBFzh95sQgtwgeQXheHamsdeAs"];
+    if (APPTIMIZE_NON_PRODUCTION) {
+        [Apptimize startApptimizeWithApplicationKey:@"CMF7bsBFzh95sQgtwgeQXheHamsdeAs"];
+    } else {
+        [Apptimize startApptimizeWithApplicationKey:@"CMF7bsBFzh95sQgtwgeQXheHamsdeAs"];
+    }
     
     //Setting up audioSession
     [self setupAudioSession];
