@@ -482,11 +482,10 @@
     }
 }
 
-- (void)DisplayWordViewController:(DisplayWordViewController *)sender otherVariantSelected:(NSString *)selection whileDisplayingWord:(NSDictionary *)word
+- (void)DisplayWordViewController:(DisplayWordViewController *)sender otherVariantSelectedWhileDisplayingWord:(NSDictionary *)word
 {
     // find otherVariant word,
     // display word
-    NSLog(@"Other Word selected show %@",selection);
     
     if (![self getSplitViewWithDisplayWordViewController]) { //iPhone
         //pop old word off navigation controller

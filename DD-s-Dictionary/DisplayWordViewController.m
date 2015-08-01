@@ -418,16 +418,24 @@ ApptimizeBoolean(useUsukFlagIcons, NO);
 
 - (IBAction)usukVariantSegmentedControlPressed:(UISegmentedControl *)sender {
     NSString *selection = sender.selectedSegmentIndex ? @"us" : @"uk";
-    NSLog(@"segmented control '%@' pressed", selection);
-    
-    [self.delegate DisplayWordViewController:self otherVariantSelected:selection whileDisplayingWord:self.word];
+    [self usukChangeMadeWithSelection:selection];
 }
 
 - (IBAction)usukVariantButtonPressed:(UIButton *)sender {
-    NSString *currentSelection =[self.word objectForKey:@"wordVariant"];
-    NSLog(@"ukus button '%@' pressed", [currentSelection capitalizedString]);
-    
-    [self.delegate DisplayWordViewController:self otherVariantSelected:[currentSelection capitalizedString] whileDisplayingWord:self.word];
+    NSString *selection;
+    if ([[self.word objectForKey:@"wordVariant"] isEqualToString:@"us"]) {
+        selection = @"uk";
+    } else {
+        selection = @"us";
+    }
+    [self usukChangeMadeWithSelection:selection];
+}
+
+- (void) usukChangeMadeWithSelection:(NSString *)selection {
+    //report to Apptimize
+    if (LOG_MORE) NSLog(@"Other Word selected show '%@' variant", selection);
+    [Apptimize track:@"usukChangeMade"];
+    [self.delegate DisplayWordViewController:self otherVariantSelectedWhileDisplayingWord:self.word];
 }
 
 

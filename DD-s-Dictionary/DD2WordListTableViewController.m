@@ -230,7 +230,7 @@
     }
 }
 
-- (void)DisplayWordViewController:(DisplayWordViewController *)sender otherVariantSelected:(NSString *)selection whileDisplayingWord:(NSDictionary *)word
+- (void)DisplayWordViewController:(DisplayWordViewController *)sender otherVariantSelectedWhileDisplayingWord:(NSDictionary *)word
 {
     // find otherVariant word,
     // display word

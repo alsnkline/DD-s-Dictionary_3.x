@@ -11,10 +11,11 @@
 @class DisplayWordViewController;
 
 @protocol DisplayWordViewControllerDelegate <NSObject> //added <NSObject> so we can do a respondsToSelector: on the delegate
+
 @optional
 
 - (void) DisplayWordViewController:(DisplayWordViewController *) sender homophoneSelected:(NSDictionary *)word;
-- (void) DisplayWordViewController:(DisplayWordViewController *)sender otherVariantSelected:(NSString *)selection whileDisplayingWord:(NSDictionary *)word;
+- (void) DisplayWordViewController:(DisplayWordViewController *) sender otherVariantSelectedWhileDisplayingWord:(NSDictionary *)word;
 @end
 
 
