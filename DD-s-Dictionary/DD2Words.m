@@ -128,42 +128,25 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
     return _tagNames;
 }
 
-+ (BOOL)dataFileIsArchived
-{
-    NSError *error = nil;
-    NSURL * archiveFullUrl = [[DD2GlobalHelper archiveFileDirectory] URLByAppendingPathComponent:kDataFile];
-    BOOL isCached = [archiveFullUrl checkResourceIsReachableAndReturnError:&error];
-    if (LOG_MORE) NSLog(@"%@ is cached = %@.",kDataFile, isCached ? @"yes" : @"no");
-    if (LOG_MORE && error) {
-        NSLog(@"Error = %@", error);
-    } else if (LOG_MORE) {
-        NSLog(@"Archived file = %@", archiveFullUrl);
-    }
-    
-    if (!error && isCached)
-    {
-        return true;
-    } else {
-        return false;
-    }
-}
-
 -(NSDictionary *)processedWords
 {
-    if (_processedWords ==nil) {
+    if (_processedWords == nil) {
         NSURL * archiveFullUrl = [[DD2GlobalHelper archiveFileDirectory] URLByAppendingPathComponent:kDataFile];
+        NSDictionary *pWords = nil;
         
-        if ([DD2Words dataFileIsArchived] && !self.wordProcessingNeeded)
-        {
-            NSLog(@"**** Using Archived Words ****");
-            NSDictionary *pWords = [NSKeyedUnarchiver unarchiveObjectWithFile:archiveFullUrl.path];
-            _processedWords = pWords;
+        if (!self.wordProcessingNeeded) {
+            @try {
+                NSLog(@"**** attempting to get Archived Words ****");
+                pWords = [NSKeyedUnarchiver unarchiveObjectWithFile:archiveFullUrl.path];
+            }
+            @catch (NSException *exception) {
+                NSLog(@"**** NSKeyedUnarchiver threw exception ****");
+                NSLog(@"%@", exception);
+            }
         }
-        else
-        {
+        if (!pWords) {
             NSLog(@"**** Processing Words ****");
             NSDictionary * pWords = [self processWords];
-            _processedWords = pWords;
             
             //save file in cache/archive
             BOOL success = [NSKeyedArchiver archiveRootObject:pWords toFile:archiveFullUrl.path];
@@ -175,8 +158,10 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
                 [[NSUserDefaults standardUserDefaults] synchronize];
             }
             NSLog(@"Archived processed words = %@\n                                                  **** Processing Ended ****",success ? @"successfully" : @"archive failed");
+        } else {
+            NSLog(@"**** Using Archived Words ****");
         }
-        
+        _processedWords = pWords;
     }
     return _processedWords;
 }
