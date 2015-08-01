@@ -10,6 +10,7 @@
 #import "DD2SettingsTableViewController.h"
 #import <AudioToolbox/AudioToolbox.h>  //for system sounds
 #import <AVFoundation/AVFoundation.h> //for audioPlayer
+#import <Apptimize/Apptimize.h>
 
 //core data framework, systemConfiguration framework, libz.dylib added for Google Analytics
 //systemConfiguration framework and security framework (as we have v4.2.3), for Flurry
@@ -69,6 +70,9 @@
     //track app duration and active session with Flurry
     [Flurry logEvent:@"App_duration" timed:YES];
     [Flurry logEvent:@"App_initial_active" timed:YES];
+    
+    //setting up Apptimize
+    [Apptimize startApptimizeWithApplicationKey:@"CMF7bsBFzh95sQgtwgeQXheHamsdeAs"];
     
     //Setting up audioSession
     [self setupAudioSession];

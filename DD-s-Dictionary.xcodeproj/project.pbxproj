@@ -57,6 +57,8 @@
 		B1C21C9E17ECF74B00C51C8C /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = B1C21C9D17ECF74B00C51C8C /* Default-Landscape~ipad.png */; };
 		B1CCB5CC17DFC444009D7BF0 /* htmlPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B1CCB5CB17DFC443009D7BF0 /* htmlPageViewController.m */; };
 		B1CCB5CE17DFC797009D7BF0 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1CCB5CD17DFC797009D7BF0 /* MessageUI.framework */; };
+		B1E8C9C91B6D619E0055C519 /* Apptimize.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1E8C9C81B6D619D0055C519 /* Apptimize.framework */; };
+		B1E8C9CB1B6D61DA0055C519 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1E8C9CA1B6D61DA0055C519 /* CFNetwork.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -134,6 +136,8 @@
 		B1CCB5CA17DFC443009D7BF0 /* htmlPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = htmlPageViewController.h; sourceTree = "<group>"; };
 		B1CCB5CB17DFC443009D7BF0 /* htmlPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = htmlPageViewController.m; sourceTree = "<group>"; };
 		B1CCB5CD17DFC797009D7BF0 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		B1E8C9C81B6D619D0055C519 /* Apptimize.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Apptimize.framework; sourceTree = "<group>"; };
+		B1E8C9CA1B6D61DA0055C519 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,8 +145,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B1E8C9CB1B6D61DA0055C519 /* CFNetwork.framework in Frameworks */,
 				B1966A5017F3F0FF007277A8 /* libsqlite3.dylib in Frameworks */,
 				B1966A4E17F3F0BF007277A8 /* CoreTelephony.framework in Frameworks */,
+				B1E8C9C91B6D619E0055C519 /* Apptimize.framework in Frameworks */,
 				B1954E9217EE68A900371610 /* Security.framework in Frameworks */,
 				B1B7D19817ED0CDC004576F8 /* libz.dylib in Frameworks */,
 				B1B7D19617ED0C74004576F8 /* SystemConfiguration.framework in Frameworks */,
@@ -203,6 +209,8 @@
 		B195672817DA64D400CB7F4B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B1E8C9CA1B6D61DA0055C519 /* CFNetwork.framework */,
+				B1E8C9C81B6D619D0055C519 /* Apptimize.framework */,
 				B1966A4F17F3F0FF007277A8 /* libsqlite3.dylib */,
 				B1966A4D17F3F0BF007277A8 /* CoreTelephony.framework */,
 				B1954E9117EE68A900371610 /* Security.framework */,
@@ -507,6 +515,10 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DD-s-Dictionary/DD-s-Dictionary-Prefix.pch";
 				INFOPLIST_FILE = "DD-s-Dictionary/DD-s-Dictionary-Info.plist";
@@ -530,6 +542,10 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DD-s-Dictionary/DD-s-Dictionary-Prefix.pch";
 				INFOPLIST_FILE = "DD-s-Dictionary/DD-s-Dictionary-Info.plist";
