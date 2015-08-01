@@ -248,6 +248,17 @@
                                             <action selector="usukVariantButtonPressed:" destination="L1r-PX-mtS" eventType="touchUpInside" id="N6M-OV-1Vv"/>
                                         </connections>
                                     </button>
+                                    <segmentedControl hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="6o8-YG-uHj">
+                                        <rect key="frame" x="583" y="2" width="67" height="29"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                        <segments>
+                                            <segment title="UK"/>
+                                            <segment title="US"/>
+                                        </segments>
+                                        <connections>
+                                            <action selector="usukVariantSegmentedControlPressed:" destination="L1r-PX-mtS" eventType="valueChanged" id="9s9-r8-rTw"/>
+                                        </connections>
+                                    </segmentedControl>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
@@ -267,6 +278,7 @@
                         <outlet property="listenButton" destination="4vB-KF-i9t" id="vUL-SP-HrF"/>
                         <outlet property="spelling" destination="Tth-iQ-4Pa" id="Pkr-gr-N5Y"/>
                         <outlet property="usukVariantButton" destination="7SQ-uk-2SF" id="rfX-Z1-ra6"/>
+                        <outlet property="usukVariantSegmentedControl" destination="6o8-YG-uHj" id="FT4-Vu-yhe"/>
                         <outlet property="wordView" destination="fDM-h4-7IS" id="LrA-ts-82t"/>
                         <outletCollection property="homophoneButtons" destination="O5M-GB-5WO" id="t27-P6-UtN"/>
                         <outletCollection property="homophoneButtons" destination="YCL-FH-ihq" id="8XN-IR-Onp"/>

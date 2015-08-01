@@ -768,7 +768,7 @@ the Dyslexic's Dictionary</string>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="fpO-0Y-Nxd">
-                                        <rect key="frame" x="270" y="8" width="32" height="32"/>
+                                        <rect key="frame" x="270" y="13" width="32" height="32"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <state key="normal" title="Button" image="resources.bundle/Images/UK_front_32x32.png"/>
@@ -776,6 +776,17 @@ the Dyslexic's Dictionary</string>
                                             <action selector="usukVariantButtonPressed:" destination="dSV-C7-sB1" eventType="touchUpInside" id="LK4-Pv-nOa"/>
                                         </connections>
                                     </button>
+                                    <segmentedControl hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="b0i-S4-QN0">
+                                        <rect key="frame" x="177" y="7" width="80" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                        <segments>
+                                            <segment title="UK"/>
+                                            <segment title="US"/>
+                                        </segments>
+                                        <connections>
+                                            <action selector="usukVariantSegmentedControlPressed:" destination="dSV-C7-sB1" eventType="valueChanged" id="gig-y1-uCI"/>
+                                        </connections>
+                                    </segmentedControl>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
@@ -797,6 +808,7 @@ the Dyslexic's Dictionary</string>
                         <outlet property="listenButton" destination="M6V-GS-lcI" id="nM7-52-yzP"/>
                         <outlet property="spelling" destination="KKd-vQ-a23" id="owO-Iv-jHP"/>
                         <outlet property="usukVariantButton" destination="fpO-0Y-Nxd" id="7IO-AF-8On"/>
+                        <outlet property="usukVariantSegmentedControl" destination="b0i-S4-QN0" id="RCe-5W-9zN"/>
                         <outlet property="wordView" destination="x77-lk-vJH" id="Zlk-Vf-gSF"/>
                         <outletCollection property="homophoneButtons" destination="TPV-KV-dTB" id="J9u-xm-aIi"/>
                         <outletCollection property="homophoneButtons" destination="LJX-SX-5mb" id="y2y-KZ-zst"/>
