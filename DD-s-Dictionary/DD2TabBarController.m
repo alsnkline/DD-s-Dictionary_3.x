@@ -32,11 +32,12 @@
 -(DD2Words *)wordBrain
 {
     if (!_wordBrain) {
-        _wordBrain = [DD2Words sharedWords];
+        _wordBrain = [[DD2Words alloc] init];
         _wordBrain.spellingVariant = self.spellingVariant;
     }
     return _wordBrain;
 }
+
 
 - (NSString *)spellingVariant
 {

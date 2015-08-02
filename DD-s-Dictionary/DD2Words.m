@@ -35,14 +35,8 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
 @synthesize wordProcessingNeeded = _wordProcessingNeeded;
 
 
-+ (DD2Words *)sharedWords
-{
-    if (sharedWords == nil) sharedWords = [[DD2Words alloc] init];
-    return sharedWords;
-}
-
 - (NSArray *)recentlyViewedWords {
-    if (_recentlyViewedWords == nil) _recentlyViewedWords = [[NSArray alloc] init];
+    if (!_recentlyViewedWords) _recentlyViewedWords = [[NSArray alloc] init];
     return _recentlyViewedWords;
 }
 
@@ -63,7 +57,7 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
 
 - (NSDictionary *)rawWords
 {
-    if (_rawWords ==nil) {
+    if (!_rawWords) {
         NSURL *fileURL = [NSURL URLWithString:[NSString stringWithFormat:@"wordlist.json"] relativeToURL:[DD2GlobalHelper wordlistJSONFileDirectory]];
         NSLog (@"fileURL = %@", fileURL);
         NSError *error;
@@ -94,7 +88,7 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
 
 -(NSArray *)allWords
 {
-    if (_allWords == nil) {
+    if (!_allWords) {
         _allWords = [self.processedWords objectForKey:ALL];
         if (PROCESS_VERBOSELY) NSLog(@"%@ has = %lu words", ALL ,(unsigned long)[_allWords count]);
     }
@@ -103,7 +97,7 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
 
 -(NSArray *)collectionNames
 {
-    if(_collectionNames == nil) {
+    if(!_collectionNames) {
         _collectionNames = [self.processedWords objectForKey:COLLECTION_NAMES];
         if (PROCESS_VERBOSELY) NSLog(@"%@ has = %@",COLLECTION_NAMES, _collectionNames);
     }
@@ -112,7 +106,7 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
 
 -(NSArray *)smallCollectionNames
 {
-    if(_smallCollectionNames == nil) {
+    if(!_smallCollectionNames) {
         _smallCollectionNames = [self.processedWords objectForKey:SMALL_COLLECTION_NAMES];
         if (PROCESS_VERBOSELY) NSLog(@"%@ has = %@",SMALL_COLLECTION_NAMES, _smallCollectionNames);
     }
@@ -121,7 +115,7 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
 
 -(NSArray *)tagNames
 {
-    if(_tagNames == nil) {
+    if(!_tagNames) {
         _tagNames = [self.processedWords objectForKey:TAG_NAMES];
         if (PROCESS_VERBOSELY) NSLog(@"%@ has = %@", TAG_NAMES, _tagNames);
     }
@@ -130,7 +124,7 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
 
 -(NSDictionary *)processedWords
 {
-    if (_processedWords == nil) {
+    if (!_processedWords) {
         NSURL * archiveFullUrl = [[DD2GlobalHelper archiveFileDirectory] URLByAppendingPathComponent:kDataFile];
         NSDictionary *pWords = nil;
         
@@ -138,15 +132,16 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
             @try {
                 NSLog(@"**** attempting to get Archived Words ****");
                 pWords = [NSKeyedUnarchiver unarchiveObjectWithFile:archiveFullUrl.path];
+                _processedWords = pWords;
             }
             @catch (NSException *exception) {
                 NSLog(@"**** NSKeyedUnarchiver threw exception ****");
                 NSLog(@"%@", exception);
             }
         }
-        if (!pWords) {
+        if (!_processedWords) {
             NSLog(@"**** Processing Words ****");
-            NSDictionary * pWords = [self processWords];
+            pWords = [self processWords];
             
             //save file in cache/archive
             BOOL success = [NSKeyedArchiver archiveRootObject:pWords toFile:archiveFullUrl.path];
@@ -254,7 +249,7 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
         
         //check for duplicate words
         if (FIND_DUPLICATE_WORDS) [self logAnyDuplicateWordsIn:workingAllWords];
-        
+
         return [workingProcessedWords copy];
     
 }
