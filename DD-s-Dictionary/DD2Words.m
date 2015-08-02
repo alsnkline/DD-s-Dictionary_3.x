@@ -126,7 +126,7 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
 {
     if (!_processedWords) {
         NSURL * archiveFullUrl = [[DD2GlobalHelper archiveFileDirectory] URLByAppendingPathComponent:kDataFile];
-        NSDictionary *pWords = nil;
+        NSDictionary *pWords = [[NSDictionary alloc] init];
         
         if (!self.wordProcessingNeeded) {
             @try {
