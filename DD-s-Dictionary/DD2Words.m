@@ -35,6 +35,14 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
 @synthesize wordProcessingNeeded = _wordProcessingNeeded;
 
 
++ (DD2Words *)sharedWords
+{
+    if (sharedWords == nil)  {
+        sharedWords = [[DD2Words alloc] init];
+    }
+    return sharedWords;
+}
+
 - (NSArray *)recentlyViewedWords {
     if (!_recentlyViewedWords) _recentlyViewedWords = [[NSArray alloc] init];
     return _recentlyViewedWords;
