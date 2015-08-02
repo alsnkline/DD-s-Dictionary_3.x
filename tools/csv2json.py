@@ -10,8 +10,9 @@ list_cols={"collections", "dm", "homophones", "tags", "pronunciations", "small_c
 #: which columns might be lists if space is present
 list_maybe={"word"}
 #: which columns are for the google spreadsheet only ie not to be put into the output.
-list_ignore={"Collection changes", "Recording Needed", "Recording notes"}
-
+list_ignore_columns={"Collection changes", "Recording Needed", "Recording notes"}
+#: which collections to ignore.
+list_ignore_collections={"EXCLUDE", "pickup", "hard_medical"}
 def process_token(v):
     v=v.strip()
     return v
@@ -33,10 +34,10 @@ def convert(infile, outfile):
     for lineno, line in enumerate(incsv):
         try:
             row=line.copy()
-            if row["collections"] == "EXCLUDE" or row["collections"] == "pickup":
+            if row["collections"] in list_ignore_collections:
                 continue
             for k,v in row.items():
-                if not v or (k in list_ignore):
+                if not v or (k in list_ignore_columns):
                     del row[k]
                     continue
                 if ":" in v:
