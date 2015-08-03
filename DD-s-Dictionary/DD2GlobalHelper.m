@@ -92,11 +92,17 @@
     return dirUrl;
 }
 
++(NSString *)filePathForPronunciationFolder {
+    NSString *pathComponentForBundle = [NSString stringWithFormat:@"resources.bundle"];
+    NSString *pathForSoundFolder = [NSString pathWithComponents:[NSArray arrayWithObjects:pathComponentForBundle,@"audio", nil]];
+    return pathForSoundFolder;
+}
+
 + (NSURL *)fileURLForPronunciation:(NSString *)pronunciation
 {
 
-    NSString *pathComponentForBundle = [NSString stringWithFormat:@"resources.bundle"];
-    NSString *pathForSoundName = [NSString pathWithComponents:[NSArray arrayWithObjects:pathComponentForBundle,@"audio",pronunciation, nil]];
+    NSString *pathForSoundFolder = [DD2GlobalHelper filePathForPronunciationFolder];
+    NSString *pathForSoundName = [NSString pathWithComponents:[NSArray arrayWithObjects:pathForSoundFolder,pronunciation, nil]];
 
     //NSLog(@"current pronunciation = %@", pronunciation);
     //NSLog(@"pathForSoundName = %@",pathForSoundName);
@@ -120,6 +126,22 @@
     } else {
         return nil;
     }
+}
+
++(NSArray *)allPronunciationFiles
+{
+    //-----> Getting all Pronunciation files <-----//
+    NSLog(@"Getting all Pronunciation files");
+    
+    NSURL *bundleUrl = [[NSBundle mainBundle] bundleURL];
+    NSURL *dirUrl = [NSURL URLWithString:[DD2GlobalHelper filePathForPronunciationFolder] relativeToURL:bundleUrl];
+    
+    NSLog(@"pronunciations directory = %@", dirUrl);
+    NSError * error = nil;
+    NSArray * directoryContent = [[NSFileManager defaultManager] contentsOfDirectoryAtURL:dirUrl includingPropertiesForKeys:[NSArray arrayWithObject:NSURLNameKey] options:NSDirectoryEnumerationSkipsHiddenFiles error:&error];
+    if (error) NSLog(@"contents error %@", error);
+    
+    return directoryContent;
 }
 
 + (void)printVoiceHintSettings

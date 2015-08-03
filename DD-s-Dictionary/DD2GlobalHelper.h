@@ -15,6 +15,7 @@
 #define FIND_MISSING_PRONUNCIATIONS NO    // must be NO for ship
 #define FIND_DUPLICATE_WORDS NO           // must be NO for ship
 #define PROCESS_ON_BUILD NO               // must be NO for ship
+#define FIND_UNUSED_PRONUNCIATIONS YES    // must be NO for ship
 
 #define APPTIMIZE_NON_PRODUCTION YES         // must be NO for ship
 
@@ -33,6 +34,7 @@
 + (NSURL *) archiveFileDirectory;
 + (NSURL *) wordlistJSONFileDirectory;
 + (NSURL *) fileURLForPronunciation:(NSString *)pronunciation;
++ (NSArray *) allPronunciationFiles;
 + (void) printVoiceHintSettings;
 
 //Analytics Methods

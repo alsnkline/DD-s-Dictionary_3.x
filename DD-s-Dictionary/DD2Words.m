@@ -171,94 +171,114 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
 
 -(NSDictionary *)processWords
 {
-        NSMutableDictionary *workingProcessedWords = [[NSMutableDictionary alloc] init];
-        NSMutableArray *workingCollectionNames = [[NSMutableArray alloc] init];
-        NSMutableArray *workingSmallCollectionNames = [[NSMutableArray alloc] init];
-        NSMutableArray *workingTagNames = [[NSMutableArray alloc] init];
-        NSMutableArray *workingAllWords = [[NSMutableArray alloc] init];
+    NSMutableDictionary *workingProcessedWords = [[NSMutableDictionary alloc] init];
+    NSMutableArray *workingCollectionNames = [[NSMutableArray alloc] init];
+    NSMutableArray *workingSmallCollectionNames = [[NSMutableArray alloc] init];
+    NSMutableArray *workingTagNames = [[NSMutableArray alloc] init];
+    NSMutableArray *workingAllWords = [[NSMutableArray alloc] init];
+    NSMutableSet *unusedPronunciations = [[NSMutableSet alloc] init];
+    if (FIND_UNUSED_PRONUNCIATIONS) {
+        for (NSURL *fileURL in [DD2GlobalHelper allPronunciationFiles]) {
+            [unusedPronunciations addObject:[[fileURL lastPathComponent] stringByDeletingPathExtension]];
+        }
+        NSLog(@"unused pronunciations initial count: %lu", (unsigned long)[unusedPronunciations count]);
+    }
+    
+    for (NSDictionary *rawWord in [self.rawWords objectForKey:@"words"]) {
+        if (PROCESS_VERBOSELY) NSLog(@"\n                                                  ** start processing word **");
         
-        for (NSDictionary *rawWord in [self.rawWords objectForKey:@"words"]) {
-            if (PROCESS_VERBOSELY) NSLog(@"\n                                                  ** start processing word **");
+        //processing for each locale
+        NSMutableDictionary *ukProcessedWord = [[self processRawWord:rawWord forLocale:@"uk"] mutableCopy];
+        NSMutableDictionary *usProcessedWord = [[self processRawWord:rawWord forLocale:@"us"] mutableCopy];
+        
+        if (usProcessedWord && ukProcessedWord) {   // can only be a us/uk variation if both exist
+            NSString *usukVariantType;
+            if ([ukProcessedWord objectForKey:@"locHomophones"] != [usProcessedWord objectForKey:@"locHomophones"]) {
+                usukVariantType = [DD2Words appendText:@"locHomophones" toType:usukVariantType];
+            }
+            if (![[ukProcessedWord objectForKey:@"spelling"] isEqualToString:[usProcessedWord objectForKey:@"spelling"]]) {
+                usukVariantType = [DD2Words appendText:@"spelling" toType:usukVariantType];
+            }
+            if ([ukProcessedWord objectForKey:@"pronunciations"] != [usProcessedWord objectForKey:@"pronunciations"]) {
+                usukVariantType = [DD2Words appendText:@"locHeteronyms" toType:usukVariantType];
+            }
             
-            //processing for each locale
-            NSMutableDictionary *ukProcessedWord = [[self processRawWord:rawWord forLocale:@"uk"] mutableCopy];
-            NSMutableDictionary *usProcessedWord = [[self processRawWord:rawWord forLocale:@"us"] mutableCopy];
+            NSSet *pronunciationsUS = [DD2Words pronunciationsForWord:usProcessedWord];
+            NSSet *pronunciationsUK = [DD2Words pronunciationsForWord:ukProcessedWord];
+            NSSet *pronunciations = [NSSet setWithSet:pronunciationsUS];
+            pronunciations = [pronunciations setByAddingObjectsFromSet: pronunciationsUK];
+            if (PROCESS_VERBOSELY) {
+                if ([pronunciationsUS isEqualToSet:pronunciationsUK]) {
+                    NSLog(@"Pronunciations, %@", pronunciationsUS);
+                } else {
+                    if (PROCESS_VERBOSELY) NSLog(@"Pronunciations (us), %@", pronunciationsUS);
+                    if (PROCESS_VERBOSELY) NSLog(@"Pronunciations (uk), %@", pronunciationsUK);
+                }
+            }
             
-            if (usProcessedWord && ukProcessedWord) {   // can only be a us/uk variation if both exist
-                NSString *usukVariantType;
-                if ([ukProcessedWord objectForKey:@"locHomophones"] != [usProcessedWord objectForKey:@"locHomophones"]) {
-                    usukVariantType = [DD2Words appendText:@"locHomophones" toType:usukVariantType];
-                }
-                if (![[ukProcessedWord objectForKey:@"spelling"] isEqualToString:[usProcessedWord objectForKey:@"spelling"]]) {
-                    usukVariantType = [DD2Words appendText:@"spelling" toType:usukVariantType];
-                }
-                if ([ukProcessedWord objectForKey:@"pronunciations"] != [usProcessedWord objectForKey:@"pronunciations"]) {
-                    usukVariantType = [DD2Words appendText:@"locHeteronyms" toType:usukVariantType];
-                }
-                
-                NSSet *pronunciationsUS = [DD2Words pronunciationsForWord:usProcessedWord];
-                NSSet *pronunciationsUK = [DD2Words pronunciationsForWord:ukProcessedWord];
-                NSSet *pronunciations = [NSSet setWithSet:pronunciationsUS];
-                [pronunciations setByAddingObjectsFromSet: pronunciationsUK];
-                if (PROCESS_VERBOSELY) {
-                    if ([pronunciationsUS isEqualToSet:pronunciationsUK]) {
-                        NSLog(@"Pronunciations, %@", pronunciationsUS);
-                    } else {
-                        if (PROCESS_VERBOSELY) NSLog(@"Pronunciations (us), %@", pronunciationsUS);
-                        if (PROCESS_VERBOSELY) NSLog(@"Pronunciations (uk), %@", pronunciationsUK);
+            for (NSString *pronunciation in pronunciations) {
+                if ([pronunciation length] > 3) {
+                    NSString *prefix = [pronunciation substringWithRange:NSMakeRange(0, 3)];
+                    if ([prefix isEqualToString:@"uk-"] || [prefix isEqualToString:@"us-"]) {
+                        usukVariantType = [DD2Words appendText:@"pronunciation" toType:usukVariantType];
                     }
                 }
-                
-                for (NSString *pronunciation in pronunciations) {
-                    if ([pronunciation length] > 3) {
-                        NSString *prefix = [pronunciation substringWithRange:NSMakeRange(0, 3)];
-                        if ([prefix isEqualToString:@"uk-"] || [prefix isEqualToString:@"us-"]) {
-                            usukVariantType = [DD2Words appendText:@"pronunciation" toType:usukVariantType];
-                        }
-                    }
-                }
-                // only add if there is a variant type
-                if (usukVariantType) {
-                    [usProcessedWord setObject:usukVariantType forKey:@"usukVariant"];
-                    [ukProcessedWord setObject:usukVariantType forKey:@"usukVariant"];
-                    if (PROCESS_VERBOSELY) NSLog(@"Added UK US VariantType %@ to %@ (%@) and %@ (%@)", usukVariantType, [ukProcessedWord objectForKey:@"spelling"], [ukProcessedWord objectForKey:@"wordVariant"], [usProcessedWord objectForKey:@"spelling"], [usProcessedWord objectForKey:@"wordVariant"]);
-                }
             }
             
-            if (usProcessedWord) [workingAllWords addObject:usProcessedWord];
-            if (ukProcessedWord) [workingAllWords addObject:ukProcessedWord];
-            
-            
-            //processing collections on raw word
-            NSMutableArray *collections = [NSMutableArray arrayWithArray:[rawWord objectForKey:@"collections"]];
-            for (NSString *collection in collections) {
-                if (![workingCollectionNames containsObject:collection]) [workingCollectionNames addObject:collection];
+            if (unusedPronunciations){
+                NSLog(@"pronuncation = %@", pronunciations);
+                [unusedPronunciations minusSet:pronunciations];
+                NSLog(@"unusedPronunciations count: %lu", (unsigned long)[unusedPronunciations count]);
             }
             
-            //processing Small Collections on raw word
-            NSArray *rawSmallCollection = [rawWord objectForKey:@"small_collection"];
-            for (NSString *smallCollection in rawSmallCollection) {
-                if (![workingSmallCollectionNames containsObject:smallCollection]) {
-                    [workingSmallCollectionNames addObject:smallCollection];
-                }
-            }
-                                          
-            //processing Tags on raw word (ignoring locale as no tagged words have a spelling variations will endup with all UK words)
-            NSArray *tags = [rawWord objectForKey:@"tags"];
-            for (NSString *tag in tags) {
-                if (![workingTagNames containsObject:tag]) [workingTagNames addObject:tag];
+            // only add if there is a variant type
+            if (usukVariantType) {
+                [usProcessedWord setObject:usukVariantType forKey:@"usukVariant"];
+                [ukProcessedWord setObject:usukVariantType forKey:@"usukVariant"];
+                if (PROCESS_VERBOSELY) NSLog(@"Added UK US VariantType %@ to %@ (%@) and %@ (%@)", usukVariantType, [ukProcessedWord objectForKey:@"spelling"], [ukProcessedWord objectForKey:@"wordVariant"], [usProcessedWord objectForKey:@"spelling"], [usProcessedWord objectForKey:@"wordVariant"]);
             }
         }
         
-        [workingProcessedWords setObject:workingCollectionNames forKey:COLLECTION_NAMES];
-        [workingProcessedWords setObject:workingSmallCollectionNames forKey:SMALL_COLLECTION_NAMES];
-        [workingProcessedWords setObject:workingTagNames forKey:TAG_NAMES];
-        [workingProcessedWords setObject:workingAllWords forKey:ALL];
+        if (usProcessedWord) [workingAllWords addObject:usProcessedWord];
+        if (ukProcessedWord) [workingAllWords addObject:ukProcessedWord];
         
-        //check for duplicate words
-        if (FIND_DUPLICATE_WORDS) [self logAnyDuplicateWordsIn:workingAllWords];
+        
+        //processing collections on raw word
+        NSMutableArray *collections = [NSMutableArray arrayWithArray:[rawWord objectForKey:@"collections"]];
+        for (NSString *collection in collections) {
+            if (![workingCollectionNames containsObject:collection]) [workingCollectionNames addObject:collection];
+        }
+        
+        //processing Small Collections on raw word
+        NSArray *rawSmallCollection = [rawWord objectForKey:@"small_collection"];
+        for (NSString *smallCollection in rawSmallCollection) {
+            if (![workingSmallCollectionNames containsObject:smallCollection]) {
+                [workingSmallCollectionNames addObject:smallCollection];
+            }
+        }
+                                      
+        //processing Tags on raw word (ignoring locale as no tagged words have a spelling variations will endup with all UK words)
+        NSArray *tags = [rawWord objectForKey:@"tags"];
+        for (NSString *tag in tags) {
+            if (![workingTagNames containsObject:tag]) [workingTagNames addObject:tag];
+        }
+    }
+    
+    [workingProcessedWords setObject:workingCollectionNames forKey:COLLECTION_NAMES];
+    [workingProcessedWords setObject:workingSmallCollectionNames forKey:SMALL_COLLECTION_NAMES];
+    [workingProcessedWords setObject:workingTagNames forKey:TAG_NAMES];
+    [workingProcessedWords setObject:workingAllWords forKey:ALL];
+    
+    //check for duplicate words
+    if (FIND_DUPLICATE_WORDS) [self logAnyDuplicateWordsIn:workingAllWords];
+    // check for unused pronunciations
+    if (FIND_UNUSED_PRONUNCIATIONS) {
+        for (NSURL *fileURL in unusedPronunciations) {
+            NSLog(@"unused file:%@", [fileURL lastPathComponent]);
+        };
+    }
 
-        return [workingProcessedWords copy];
+    return [workingProcessedWords copy];
     
 }
 
@@ -517,16 +537,18 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
         if (FIND_MISSING_PRONUNCIATIONS) NSLog(@"***** file needed: %@ *****", [word objectForKey:@"spelling"]);
     }
     
-    NSString *pronunciationsStringForLog;
-    for (NSString *pronunciation in pronunciations) {
-        if (pronunciationsStringForLog) {
-            pronunciationsStringForLog = [NSString stringWithFormat:@"%@, %@",pronunciationsStringForLog, pronunciation];
-        } else {
-            pronunciationsStringForLog = [NSString stringWithFormat:@"%@", pronunciation];
-        }
-    }
     // don't log this if looking for missing pronunciations
-    if (!FIND_MISSING_PRONUNCIATIONS && PROCESS_VERBOSELY) NSLog(@"%@ pronounced %@", [word objectForKey:@"spelling"], pronunciationsStringForLog);
+    if (!FIND_MISSING_PRONUNCIATIONS && PROCESS_VERBOSELY) {
+        NSString *pronunciationsStringForLog;
+        for (NSString *pronunciation in pronunciations) {
+            if (pronunciationsStringForLog) {
+                pronunciationsStringForLog = [NSString stringWithFormat:@"%@, %@",pronunciationsStringForLog, pronunciation];
+            } else {
+                pronunciationsStringForLog = [NSString stringWithFormat:@"%@", pronunciation];
+            }
+        }
+        NSLog(@"%@ pronounced %@", [word objectForKey:@"spelling"], pronunciationsStringForLog);
+    }
     return [pronunciations copy];
 }
 
