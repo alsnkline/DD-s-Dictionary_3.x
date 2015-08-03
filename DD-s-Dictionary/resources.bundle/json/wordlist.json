@@ -1800,12 +1800,6 @@
             "collections": [
                 "first_words"
             ], 
-            "word": "ah"
-        }, 
-        {
-            "collections": [
-                "first_words"
-            ], 
             "word": "air"
         }, 
         {
@@ -2867,12 +2861,6 @@
                 "first_words"
             ], 
             "word": "centimeter"
-        }, 
-        {
-            "collections": [
-                "first_words"
-            ], 
-            "word": "cereal"
         }, 
         {
             "collections": [
@@ -4411,15 +4399,6 @@
             "collections": [
                 "first_words"
             ], 
-            "homophones": [
-                "hay"
-            ], 
-            "word": "hey"
-        }, 
-        {
-            "collections": [
-                "first_words"
-            ], 
             "confusers": "  ", 
             "homophones": [
                 "high"
@@ -5502,12 +5481,6 @@
             "collections": [
                 "first_words"
             ], 
-            "word": "meter"
-        }, 
-        {
-            "collections": [
-                "first_words"
-            ], 
             "tags": [
                 "'ight'"
             ], 
@@ -5914,12 +5887,6 @@
                 "first_words"
             ], 
             "word": "often"
-        }, 
-        {
-            "collections": [
-                "first_words"
-            ], 
-            "word": "oh"
         }, 
         {
             "collections": [
@@ -8841,267 +8808,6 @@
         }, 
         {
             "collections": [
-                "hard"
-            ], 
-            "small_collection": [
-                "Medical"
-            ], 
-            "word": "alimentation"
-        }, 
-        {
-            "collections": [
-                "hard"
-            ], 
-            "small_collection": [
-                "Medical"
-            ], 
-            "word": "alinine"
-        }, 
-        {
-            "collections": [
-                "hard"
-            ], 
-            "small_collection": [
-                "Medical"
-            ], 
-            "word": "ascites"
-        }, 
-        {
-            "collections": [
-                "hard"
-            ], 
-            "small_collection": [
-                "Medical"
-            ], 
-            "word": "asystole"
-        }, 
-        {
-            "collections": [
-                "hard"
-            ], 
-            "small_collection": [
-                "Medical"
-            ], 
-            "word": "auscultation"
-        }, 
-        {
-            "collections": [
-                "hard"
-            ], 
-            "small_collection": [
-                "Medical"
-            ], 
-            "word": "curettage"
-        }, 
-        {
-            "collections": [
-                "hard"
-            ], 
-            "small_collection": [
-                "Medical"
-            ], 
-            "word": "decubitus"
-        }, 
-        {
-            "collections": [
-                "hard"
-            ], 
-            "small_collection": [
-                "Medical"
-            ], 
-            "word": "diabetes_mellitus"
-        }, 
-        {
-            "collections": [
-                "hard"
-            ], 
-            "small_collection": [
-                "Medical"
-            ], 
-            "word": "diaphoresis"
-        }, 
-        {
-            "collections": [
-                "hard"
-            ], 
-            "small_collection": [
-                "Medical"
-            ], 
-            "word": "eczema"
-        }, 
-        {
-            "collections": [
-                "hard"
-            ], 
-            "small_collection": [
-                "Medical"
-            ], 
-            "word": "epididymitis"
-        }, 
-        {
-            "collections": [
-                "hard"
-            ], 
-            "small_collection": [
-                "Medical"
-            ], 
-            "word": "fascia"
-        }, 
-        {
-            "collections": [
-                "hard"
-            ], 
-            "small_collection": [
-                "Medical"
-            ], 
-            "word": "hemoptysis"
-        }, 
-        {
-            "collections": [
-                "hard"
-            ], 
-            "small_collection": [
-                "Medical"
-            ], 
-            "word": "icterus"
-        }, 
-        {
-            "collections": [
-                "hard"
-            ], 
-            "small_collection": [
-                "Medical"
-            ], 
-            "word": "intraocular"
-        }, 
-        {
-            "collections": [
-                "hard"
-            ], 
-            "small_collection": [
-                "Medical"
-            ], 
-            "word": "intussusception"
-        }, 
-        {
-            "collections": [
-                "hard"
-            ], 
-            "small_collection": [
-                "Medical"
-            ], 
-            "word": "ischemia"
-        }, 
-        {
-            "collections": [
-                "hard"
-            ], 
-            "small_collection": [
-                "Medical"
-            ], 
-            "word": "leukocytes"
-        }, 
-        {
-            "collections": [
-                "hard"
-            ], 
-            "small_collection": [
-                "Medical"
-            ], 
-            "word": "midsagittal"
-        }, 
-        {
-            "collections": [
-                "hard"
-            ], 
-            "small_collection": [
-                "Medical"
-            ], 
-            "word": "oophorectomy"
-        }, 
-        {
-            "collections": [
-                "hard"
-            ], 
-            "small_collection": [
-                "Medical"
-            ], 
-            "word": "orthopnea"
-        }, 
-        {
-            "collections": [
-                "hard"
-            ], 
-            "small_collection": [
-                "Medical"
-            ], 
-            "word": "periosteum"
-        }, 
-        {
-            "collections": [
-                "hard"
-            ], 
-            "small_collection": [
-                "Medical"
-            ], 
-            "word": "peritoneum"
-        }, 
-        {
-            "collections": [
-                "hard"
-            ], 
-            "small_collection": [
-                "Medical"
-            ], 
-            "word": "peroneal"
-        }, 
-        {
-            "collections": [
-                "hard"
-            ], 
-            "small_collection": [
-                "Medical"
-            ], 
-            "word": "pruritus"
-        }, 
-        {
-            "collections": [
-                "hard"
-            ], 
-            "small_collection": [
-                "Medical"
-            ], 
-            "word": "sagittal"
-        }, 
-        {
-            "collections": [
-                "hard"
-            ], 
-            "small_collection": [
-                "Medical"
-            ], 
-            "word": "sequela"
-        }, 
-        {
-            "collections": [
-                "hard"
-            ], 
-            "small_collection": [
-                "Medical"
-            ], 
-            "word": "syncope"
-        }, 
-        {
-            "collections": [
-                "hard"
-            ], 
-            "small_collection": [
-                "Medical"
-            ], 
-            "word": "xiphoid"
-        }, 
-        {
-            "collections": [
                 "hard_words"
             ], 
             "small_collection": [
@@ -10752,24 +10458,6 @@
             "collections": [
                 "more_words"
             ], 
-            "small_collection": [
-                "Numbers"
-            ], 
-            "word": "billion"
-        }, 
-        {
-            "collections": [
-                "more_words"
-            ], 
-            "small_collection": [
-                "Numbers"
-            ], 
-            "word": "million"
-        }, 
-        {
-            "collections": [
-                "more_words"
-            ], 
             "root": "eight", 
             "small_collection": [
                 "Ordinal_Number"
@@ -10997,15 +10685,6 @@
             "word": "Easter"
         }, 
         {
-            "collections": [
-                "more_words"
-            ], 
-            "small_collection": [
-                "Times_of_the_year"
-            ], 
-            "word": "equinox"
-        }, 
-        {
             "Explanations": "alternative", 
             "collections": [
                 "more_words"
@@ -11017,27 +10696,6 @@
                 "Times_of_the_year"
             ], 
             "word": "Hanukkah"
-        }, 
-        {
-            "collections": [
-                "more_words"
-            ], 
-            "small_collection": [
-                "Times_of_the_year"
-            ], 
-            "word": "Ramadan"
-        }, 
-        {
-            "collections": [
-                "more_words"
-            ], 
-            "small_collection": [
-                "Times_of_the_year"
-            ], 
-            "tags": [
-                "'ice_(i's)'"
-            ], 
-            "word": "solstice"
         }, 
         {
             "Explanations": "alternative", 
@@ -12280,6 +11938,10 @@
             "collections": [
                 "more_words"
             ], 
+            "pronunciations": [
+                "baroque1", 
+                "baroque2"
+            ], 
             "word": "baroque"
         }, 
         {
@@ -12320,15 +11982,6 @@
                 "'be'"
             ], 
             "word": "beginning"
-        }, 
-        {
-            "collections": [
-                "more_words"
-            ], 
-            "tags": [
-                "'be'"
-            ], 
-            "word": "behavior"
         }, 
         {
             "collections": [
@@ -12646,12 +12299,6 @@
             "collections": [
                 "more_words"
             ], 
-            "word": "broccoli"
-        }, 
-        {
-            "collections": [
-                "more_words"
-            ], 
             "word": "brochure"
         }, 
         {
@@ -12752,12 +12399,6 @@
                 "more_words"
             ], 
             "word": "bureau"
-        }, 
-        {
-            "collections": [
-                "more_words"
-            ], 
-            "word": "bureaucracy"
         }, 
         {
             "collections": [
@@ -13358,8 +12999,15 @@
         }, 
         {
             "collections": [
+                "new"
+            ], 
+            "word": "coerce"
+        }, 
+        {
+            "collections": [
                 "more_words"
             ], 
+            "root": "coerce", 
             "word": "coercion"
         }, 
         {
@@ -13461,15 +13109,6 @@
                 "more_words"
             ], 
             "tags": [
-                "'ate'"
-            ], 
-            "word": "communicate"
-        }, 
-        {
-            "collections": [
-                "more_words"
-            ], 
-            "tags": [
                 "'tion'"
             ], 
             "word": "communication"
@@ -13491,12 +13130,6 @@
                 "more_words"
             ], 
             "word": "compete"
-        }, 
-        {
-            "collections": [
-                "more_words"
-            ], 
-            "word": "competitive"
         }, 
         {
             "collections": [
@@ -13618,12 +13251,6 @@
                 "more_words"
             ], 
             "word": "conquer"
-        }, 
-        {
-            "collections": [
-                "more_words"
-            ], 
-            "word": "consensus"
         }, 
         {
             "collections": [
@@ -19573,12 +19200,6 @@
             "collections": [
                 "more_words"
             ], 
-            "word": "relieved"
-        }, 
-        {
-            "collections": [
-                "more_words"
-            ], 
             "word": "religion"
         }, 
         {
@@ -22548,15 +22169,6 @@
         }, 
         {
             "collections": [
-                "pickup"
-            ], 
-            "small_collection": [
-                "Brands"
-            ], 
-            "word": "Disneyland"
-        }, 
-        {
-            "collections": [
                 "new"
             ], 
             "small_collection": [
@@ -23011,7 +22623,7 @@
             "small_collection": [
                 "Sounds"
             ], 
-            "word": "d\u2019oh"
+            "word": "d'oh"
         }, 
         {
             "Explanations": "derides someone who seems dense.", 
@@ -23034,18 +22646,11 @@
             "word": "eek"
         }, 
         {
-            "Explanations": "with a question mark, is a request for repetition or confirmation of what was just said; without, it is dismissive.", 
             "collections": [
                 "new_Sounds"
             ], 
-            "small_collection": [
-                "Sounds"
-            ], 
-            "word": "eh"
-        }, 
-        {
-            "collections": [
-                "new_Sounds"
+            "pronunciations": [
+                "ehq"
             ], 
             "small_collection": [
                 "Sounds"
@@ -23144,6 +22749,9 @@
             "collections": [
                 "new_Sounds"
             ], 
+            "homophones": [
+                "hay"
+            ], 
             "small_collection": [
                 "Sounds"
             ], 
@@ -23195,7 +22803,7 @@
                 "new_Sounds"
             ], 
             "homophones": [
-                "huzzah"
+                "hoorah"
             ], 
             "small_collection": [
                 "Sounds"
@@ -23207,7 +22815,7 @@
                 "new_Sounds"
             ], 
             "homophones": [
-                "hooray"
+                "hurrah"
             ], 
             "small_collection": [
                 "Sounds"
@@ -23218,25 +22826,10 @@
             "collections": [
                 "new_Sounds"
             ], 
-            "homophones": [
-                "hoorah"
-            ], 
             "small_collection": [
                 "Sounds"
             ], 
             "word": "hooray"
-        }, 
-        {
-            "collections": [
-                "new_Sounds"
-            ], 
-            "homophones": [
-                "hurrah"
-            ], 
-            "small_collection": [
-                "Sounds"
-            ], 
-            "word": "huzzah"
         }, 
         {
             "Explanations": "signals disgust.", 
@@ -23381,12 +22974,6 @@
             "word": "shh"
         }, 
         {
-            "collections": [
-                "pickup"
-            ], 
-            "word": "sheesh"
-        }, 
-        {
             "Explanations": "and its even snootier variant tut-tut are condemnations or scoldings; the related sound tch is the teeth-and-tongue click of disapproval.", 
             "collections": [
                 "new_Sounds"
@@ -23476,16 +23063,6 @@
             "word": "whee"
         }, 
         {
-            "Explanations": "is a variant of phew but can also express amazement.", 
-            "collections": [
-                "pickup"
-            ], 
-            "small_collection": [
-                "Sounds"
-            ], 
-            "word": "whew"
-        }, 
-        {
             "Explanations": "is a call to halt or an exclamation of surprise or relief.", 
             "collections": [
                 "new_Sounds"
@@ -23516,16 +23093,6 @@
             "word": "woo"
         }, 
         {
-            "Explanations": "expresses surprise.", 
-            "collections": [
-                "pickup"
-            ], 
-            "small_collection": [
-                "Sounds"
-            ], 
-            "word": "wow"
-        }, 
-        {
             "Explanations": "is a congratulatory exclamation. (Not to be confused with yeah, a variant of yes.)", 
             "collections": [
                 "new_Sounds"
@@ -23534,15 +23101,6 @@
                 "Sounds"
             ], 
             "word": "yay"
-        }, 
-        {
-            "collections": [
-                "new_Sounds"
-            ], 
-            "small_collection": [
-                "Sounds"
-            ], 
-            "word": "yeah"
         }, 
         {
             "Explanations": "is an expression of fear or concern, often used facetiously.", 
@@ -23641,7 +23199,7 @@
                 "new"
             ], 
             "homophones": [
-                "lent,", 
+                "lent", 
                 "leant"
             ], 
             "small_collection": [
@@ -23837,15 +23395,6 @@
                 "US_States"
             ], 
             "word": "Maine"
-        }, 
-        {
-            "collections": [
-                "pickup"
-            ], 
-            "small_collection": [
-                "US_States"
-            ], 
-            "word": "Maryland"
         }, 
         {
             "collections": [
@@ -24112,12 +23661,6 @@
             "collections": [
                 "new"
             ], 
-            "word": "absolutely"
-        }, 
-        {
-            "collections": [
-                "new"
-            ], 
             "word": "accessible"
         }, 
         {
@@ -24182,12 +23725,6 @@
         }, 
         {
             "collections": [
-                "pickup"
-            ], 
-            "word": "addict"
-        }, 
-        {
-            "collections": [
                 "new"
             ], 
             "root": "addict", 
@@ -24202,14 +23739,6 @@
                 "'tion'"
             ], 
             "word": "addiction"
-        }, 
-        {
-            "Explanations": "I learnt addition in kindergarten.", 
-            "collections": [
-                "pickup"
-            ], 
-            "confusers": "edition", 
-            "word": "addition"
         }, 
         {
             "collections": [
@@ -24345,29 +23874,12 @@
             "word": "atheist"
         }, 
         {
-            "collections": [
-                "pickup"
-            ], 
-            "small_collection": [
-                "Medical"
-            ], 
-            "word": "anesthetist"
-        }, 
-        {
             "Explanations": "The angel came down from heaven.", 
             "collections": [
                 "new"
             ], 
             "confusers": "angle", 
             "word": "angel"
-        }, 
-        {
-            "Explanations": "The angle in the corner of a square is 90deg", 
-            "collections": [
-                "pickup"
-            ], 
-            "confusers": "angel", 
-            "word": "angle"
         }, 
         {
             "collections": [
@@ -24416,12 +23928,6 @@
                 "new"
             ], 
             "word": "antonym"
-        }, 
-        {
-            "collections": [
-                "new"
-            ], 
-            "word": "apparently"
         }, 
         {
             "collections": [
@@ -24515,8 +24021,7 @@
                 "new_note"
             ], 
             "pronunciations": [
-                "art_deco1", 
-                "art_deco2"
+                "art_deco"
             ], 
             "word": "art_deco"
         }, 
@@ -24767,12 +24272,6 @@
         }, 
         {
             "collections": [
-                "pickup"
-            ], 
-            "word": "badge"
-        }, 
-        {
-            "collections": [
                 "new"
             ], 
             "word": "barnyard"
@@ -24793,6 +24292,9 @@
             "collections": [
                 "new"
             ], 
+            "homophones": [
+                "bathtime"
+            ], 
             "word": "bath_time"
         }, 
         {
@@ -24804,6 +24306,9 @@
         {
             "collections": [
                 "new"
+            ], 
+            "homophones": [
+                "bath_time"
             ], 
             "word": "bathtime"
         }, 
@@ -24853,7 +24358,13 @@
             "collections": [
                 "new"
             ], 
-            "word": "behaviour"
+            "tags": [
+                "'be'"
+            ], 
+            "word": {
+                "uk": "behaviour", 
+                "us": "behavior"
+            }
         }, 
         {
             "collections": [
@@ -24887,25 +24398,10 @@
         }, 
         {
             "collections": [
-                "pickup"
-            ], 
-            "word": "besides"
-        }, 
-        {
-            "collections": [
-                "pickup"
-            ], 
-            "word": "beyond"
-        }, 
-        {
-            "collections": [
-                "pickup"
-            ], 
-            "word": "bias"
-        }, 
-        {
-            "collections": [
                 "new"
+            ], 
+            "small_collection": [
+                "Numbers"
             ], 
             "word": "billion"
         }, 
@@ -25351,12 +24847,6 @@
         }, 
         {
             "collections": [
-                "pickup"
-            ], 
-            "word": "chilly"
-        }, 
-        {
-            "collections": [
                 "new"
             ], 
             "word": "chink"
@@ -25650,12 +25140,6 @@
         }, 
         {
             "collections": [
-                "pickup"
-            ], 
-            "word": "congest"
-        }, 
-        {
-            "collections": [
                 "new"
             ], 
             "root": "congest", 
@@ -25667,15 +25151,6 @@
             ], 
             "root": "congest", 
             "word": "congestion"
-        }, 
-        {
-            "collections": [
-                "pickup"
-            ], 
-            "tags": [
-                "'tion'"
-            ], 
-            "word": "congregation"
         }, 
         {
             "collections": [
@@ -25976,12 +25451,6 @@
         }, 
         {
             "collections": [
-                "pickup"
-            ], 
-            "word": "deadly"
-        }, 
-        {
-            "collections": [
                 "new"
             ], 
             "word": "dedication"
@@ -26036,12 +25505,6 @@
         }, 
         {
             "collections": [
-                "pickup"
-            ], 
-            "word": "demonstrable"
-        }, 
-        {
-            "collections": [
                 "new"
             ], 
             "word": "derogatory"
@@ -26079,13 +25542,6 @@
             "collections": [
                 "new"
             ], 
-            "root": "deserve", 
-            "word": "deserves"
-        }, 
-        {
-            "collections": [
-                "new"
-            ], 
             "word": "deserving"
         }, 
         {
@@ -26099,12 +25555,6 @@
                 "new"
             ], 
             "word": "desperate"
-        }, 
-        {
-            "collections": [
-                "new"
-            ], 
-            "word": "despite"
         }, 
         {
             "collections": [
@@ -26567,22 +26017,7 @@
             "collections": [
                 "new"
             ], 
-            "word": "entomology"
-        }, 
-        {
-            "collections": [
-                "new"
-            ], 
             "word": "entomological"
-        }, 
-        {
-            "collections": [
-                "pickup"
-            ], 
-            "small_collection": [
-                "Places"
-            ], 
-            "word": "Europe"
         }, 
         {
             "collections": [
@@ -26644,24 +26079,6 @@
             "collections": [
                 "new"
             ], 
-            "word": "excite"
-        }, 
-        {
-            "collections": [
-                "pickup"
-            ], 
-            "word": "exclaim"
-        }, 
-        {
-            "collections": [
-                "pickup"
-            ], 
-            "word": "exclaimed"
-        }, 
-        {
-            "collections": [
-                "new"
-            ], 
             "word": "exclude"
         }, 
         {
@@ -26701,12 +26118,6 @@
                 "new"
             ], 
             "word": "expensive"
-        }, 
-        {
-            "collections": [
-                "new"
-            ], 
-            "word": "experience"
         }, 
         {
             "collections": [
@@ -26970,12 +26381,6 @@
             "collections": [
                 "new"
             ], 
-            "word": "fortune"
-        }, 
-        {
-            "collections": [
-                "new"
-            ], 
             "word": "freckles"
         }, 
         {
@@ -27057,12 +26462,6 @@
                 "new"
             ], 
             "word": "gay"
-        }, 
-        {
-            "collections": [
-                "pickup"
-            ], 
-            "word": "genus"
         }, 
         {
             "collections": [
@@ -27392,12 +26791,6 @@
             "collections": [
                 "new"
             ], 
-            "word": "hyper"
-        }, 
-        {
-            "collections": [
-                "new"
-            ], 
             "word": "hyperventilate"
         }, 
         {
@@ -27414,7 +26807,7 @@
             "collections": [
                 "new"
             ], 
-            "word": "hyperventillated"
+            "word": "hyperventilated"
         }, 
         {
             "collections": [
@@ -27573,12 +26966,6 @@
             ], 
             "root": "independent", 
             "word": "independently"
-        }, 
-        {
-            "collections": [
-                "new"
-            ], 
-            "word": "indict"
         }, 
         {
             "collections": [
@@ -27744,13 +27131,6 @@
         }, 
         {
             "collections": [
-                "pickup"
-            ], 
-            "root": "jump", 
-            "word": "jumper"
-        }, 
-        {
-            "collections": [
                 "new"
             ], 
             "word": "jungle"
@@ -27844,12 +27224,6 @@
                 "new"
             ], 
             "word": "laughed"
-        }, 
-        {
-            "collections": [
-                "pickup"
-            ], 
-            "word": "launch"
         }, 
         {
             "collections": [
@@ -28184,12 +27558,6 @@
         }, 
         {
             "collections": [
-                "pickup"
-            ], 
-            "word": "materials"
-        }, 
-        {
-            "collections": [
                 "new"
             ], 
             "word": "maternity"
@@ -28309,11 +27677,14 @@
             "collections": [
                 "new"
             ], 
-            "word": "mikshake"
+            "word": "milkshake"
         }, 
         {
             "collections": [
                 "new"
+            ], 
+            "small_collection": [
+                "Numbers"
             ], 
             "word": "million"
         }, 
@@ -28419,12 +27790,6 @@
             "collections": [
                 "new"
             ], 
-            "word": "monstrous"
-        }, 
-        {
-            "collections": [
-                "new"
-            ], 
             "word": "moral"
         }, 
         {
@@ -28480,18 +27845,6 @@
                 "new"
             ], 
             "word": "multicellular"
-        }, 
-        {
-            "collections": [
-                "new"
-            ], 
-            "word": "munch"
-        }, 
-        {
-            "collections": [
-                "new"
-            ], 
-            "word": "muscular"
         }, 
         {
             "collections": [
@@ -28732,12 +28085,6 @@
                 "new"
             ], 
             "word": "onomatopoeic"
-        }, 
-        {
-            "collections": [
-                "new"
-            ], 
-            "word": "onomatopoeia"
         }, 
         {
             "collections": [
@@ -29132,12 +28479,6 @@
             "collections": [
                 "new"
             ], 
-            "word": "phlegm"
-        }, 
-        {
-            "collections": [
-                "new"
-            ], 
             "word": "phone"
         }, 
         {
@@ -29163,12 +28504,6 @@
                 "new"
             ], 
             "word": "piano"
-        }, 
-        {
-            "collections": [
-                "pickup"
-            ], 
-            "word": "piercing"
         }, 
         {
             "collections": [
@@ -29291,10 +28626,15 @@
             "collections": [
                 "new_note"
             ], 
-            "pronunciations": [
-                "primer1", 
-                "us-primer2"
-            ], 
+            "pronunciations": {
+                "uk": [
+                    "primer1"
+                ], 
+                "us": [
+                    "primer1", 
+                    "primer2"
+                ]
+            }, 
             "word": "primer"
         }, 
         {
@@ -29316,12 +28656,6 @@
             ], 
             "confusers": "principal", 
             "word": "principle"
-        }, 
-        {
-            "collections": [
-                "new"
-            ], 
-            "word": "prints"
         }, 
         {
             "collections": [
@@ -29445,6 +28779,12 @@
                 "new"
             ], 
             "word": "proud"
+        }, 
+        {
+            "collections": [
+                "new"
+            ], 
+            "word": "psychological"
         }, 
         {
             "collections": [
@@ -29581,12 +28921,6 @@
             "collections": [
                 "new"
             ], 
-            "word": "recommend"
-        }, 
-        {
-            "collections": [
-                "new"
-            ], 
             "word": "rectangle"
         }, 
         {
@@ -29612,12 +28946,6 @@
                 "new"
             ], 
             "word": "regular"
-        }, 
-        {
-            "collections": [
-                "new"
-            ], 
-            "word": "rehearsal"
         }, 
         {
             "collections": [
@@ -29829,12 +29157,6 @@
             "collections": [
                 "new"
             ], 
-            "word": "sacrilegious"
-        }, 
-        {
-            "collections": [
-                "new"
-            ], 
             "word": "salad"
         }, 
         {
@@ -29970,12 +29292,6 @@
                 "seams"
             ], 
             "word": "seems"
-        }, 
-        {
-            "collections": [
-                "new"
-            ], 
-            "word": "seldom"
         }, 
         {
             "collections": [
@@ -30667,12 +29983,6 @@
         }, 
         {
             "collections": [
-                "pickup"
-            ], 
-            "word": "subordinate"
-        }, 
-        {
-            "collections": [
                 "new"
             ], 
             "root": "subordinate", 
@@ -30706,12 +30016,6 @@
             "collections": [
                 "new"
             ], 
-            "word": "success"
-        }, 
-        {
-            "collections": [
-                "new"
-            ], 
             "word": "suck"
         }, 
         {
@@ -30734,12 +30038,6 @@
                 "tion"
             ], 
             "word": "suggestion"
-        }, 
-        {
-            "collections": [
-                "new"
-            ], 
-            "word": "suitable"
         }, 
         {
             "collections": [
@@ -30867,7 +30165,7 @@
             "collections": [
                 "new"
             ], 
-            "word": "taxis"
+            "word": "taxi"
         }, 
         {
             "collections": [
@@ -31141,7 +30439,7 @@
             "collections": [
                 "new"
             ], 
-            "word": "traquil"
+            "word": "tranquil"
         }, 
         {
             "collections": [
@@ -31275,12 +30573,6 @@
             "collections": [
                 "new"
             ], 
-            "word": "unaware"
-        }, 
-        {
-            "collections": [
-                "new"
-            ], 
             "word": "unbreakable"
         }, 
         {
@@ -31323,19 +30615,7 @@
             "collections": [
                 "new"
             ], 
-            "word": "unnecessary"
-        }, 
-        {
-            "collections": [
-                "new"
-            ], 
             "word": "urban"
-        }, 
-        {
-            "collections": [
-                "pickup"
-            ], 
-            "word": "urinate"
         }, 
         {
             "collections": [
@@ -31433,7 +30713,7 @@
         }, 
         {
             "collections": [
-                "pickup"
+                "new"
             ], 
             "word": "veterinarian"
         }, 
@@ -31563,12 +30843,6 @@
                 "new"
             ], 
             "word": "whiteboard"
-        }, 
-        {
-            "collections": [
-                "new"
-            ], 
-            "word": "whoa"
         }, 
         {
             "collections": [
