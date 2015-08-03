@@ -189,7 +189,25 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
         
         //processing for each locale
         NSMutableDictionary *ukProcessedWord = [[self processRawWord:rawWord forLocale:@"uk"] mutableCopy];
+        NSSet *pronunciationsUK = [DD2Words pronunciationsForWord:ukProcessedWord];
+        
         NSMutableDictionary *usProcessedWord = [[self processRawWord:rawWord forLocale:@"us"] mutableCopy];
+        NSSet *pronunciationsUS = [DD2Words pronunciationsForWord:usProcessedWord];
+        
+        NSSet *pronunciations = [NSSet setWithSet:pronunciationsUS];
+        pronunciations = [pronunciations setByAddingObjectsFromSet: pronunciationsUK];
+        if (PROCESS_VERBOSELY) {
+            if ([pronunciationsUS isEqualToSet:pronunciationsUK]) {
+                NSLog(@"Pronunciations, %@", pronunciationsUS);
+            } else {
+                if (PROCESS_VERBOSELY) NSLog(@"Pronunciations (us), %@", pronunciationsUS);
+                if (PROCESS_VERBOSELY) NSLog(@"Pronunciations (uk), %@", pronunciationsUK);
+            }
+        }
+        if (FIND_UNUSED_PRONUNCIATIONS){
+            [unusedPronunciations minusSet:pronunciations];
+            //NSLog(@"unusedPronunciations count: %lu", (unsigned long)[unusedPronunciations count]);
+        }
         
         if (usProcessedWord && ukProcessedWord) {   // can only be a us/uk variation if both exist
             NSString *usukVariantType;
@@ -203,19 +221,6 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
                 usukVariantType = [DD2Words appendText:@"locHeteronyms" toType:usukVariantType];
             }
             
-            NSSet *pronunciationsUS = [DD2Words pronunciationsForWord:usProcessedWord];
-            NSSet *pronunciationsUK = [DD2Words pronunciationsForWord:ukProcessedWord];
-            NSSet *pronunciations = [NSSet setWithSet:pronunciationsUS];
-            pronunciations = [pronunciations setByAddingObjectsFromSet: pronunciationsUK];
-            if (PROCESS_VERBOSELY) {
-                if ([pronunciationsUS isEqualToSet:pronunciationsUK]) {
-                    NSLog(@"Pronunciations, %@", pronunciationsUS);
-                } else {
-                    if (PROCESS_VERBOSELY) NSLog(@"Pronunciations (us), %@", pronunciationsUS);
-                    if (PROCESS_VERBOSELY) NSLog(@"Pronunciations (uk), %@", pronunciationsUK);
-                }
-            }
-            
             for (NSString *pronunciation in pronunciations) {
                 if ([pronunciation length] > 3) {
                     NSString *prefix = [pronunciation substringWithRange:NSMakeRange(0, 3)];
@@ -223,12 +228,6 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
                         usukVariantType = [DD2Words appendText:@"pronunciation" toType:usukVariantType];
                     }
                 }
-            }
-            
-            if (unusedPronunciations){
-                NSLog(@"pronuncation = %@", pronunciations);
-                [unusedPronunciations minusSet:pronunciations];
-                NSLog(@"unusedPronunciations count: %lu", (unsigned long)[unusedPronunciations count]);
             }
             
             // only add if there is a variant type
@@ -273,9 +272,14 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
     if (FIND_DUPLICATE_WORDS) [self logAnyDuplicateWordsIn:workingAllWords];
     // check for unused pronunciations
     if (FIND_UNUSED_PRONUNCIATIONS) {
-        for (NSURL *fileURL in unusedPronunciations) {
-            NSLog(@"unused file:%@", [fileURL lastPathComponent]);
-        };
+        if ([unusedPronunciations count] > 0) {
+            for (NSURL *fileURL in unusedPronunciations) {
+                NSLog(@"unused file:%@", [fileURL lastPathComponent]);
+            };
+        } else {
+            NSLog(@"***** No unused pronunciation files *****");
+        }
+        
     }
 
     return [workingProcessedWords copy];
@@ -490,6 +494,9 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
 
 + (NSSet *) pronunciationsForWord:(NSDictionary *)word
 {
+    if (!word) {
+        return Nil;
+    }
     NSMutableSet *pronunciations = [NSMutableSet setWithArray:[word objectForKey:@"pronunciations"]];
     NSString *pronunciationFromSpelling = [DD2Words pronunciationFromSpelling:[word objectForKey:@"spelling"]];
     
