@@ -531,12 +531,12 @@
 {
     UIImageView *myImage = [UIImageView new];
     
-    CGFloat imageWidth = 32;  //hard coded for now
+    CGFloat imageWidth = 35;  //hard coded for now
     CGFloat leftSpacing = (self.tableView.frame.size.width)-(imageWidth*2.5);  //image to right in the tableView
-    CGFloat cRadius = 2; //corner radius for button
-    myImage.frame = CGRectMake(leftSpacing, 14, imageWidth, 32);
+    CGFloat cRadius = 0; //corner radius for button
+    myImage.frame = CGRectMake(leftSpacing, 11, imageWidth, 32);
     
-    NSString *imageToUse = [NSString stringWithFormat:@"resources.bundle/Images/%@_front_32x32.png", [variant capitalizedString]];
+    NSString *imageToUse = [NSString stringWithFormat:@"resources.bundle/Images/%@_front_35x32.png", [variant capitalizedString]];
     [myImage setImage:[UIImage imageNamed:imageToUse]];
     
     myImage.layer.masksToBounds = YES;

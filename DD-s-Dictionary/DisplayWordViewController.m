@@ -139,11 +139,11 @@ ApptimizeBoolean(useUsukFlagIcons, NO);
             NSString *variant = [word objectForKey:@"wordVariant"];
             if ([variant isEqualToString:@"uk"]) {
                 //select the UK variant
-                [self.usukVariantButton setImage:[UIImage imageNamed:@"resources.bundle/Images/UK_front_32x32.png"] forState:UIControlStateNormal];
+                [self.usukVariantButton setImage:[UIImage imageNamed:@"resources.bundle/Images/UK_front_35x32.png"] forState:UIControlStateNormal];
                 self.usukVariantSegmentedControl.selectedSegmentIndex = 0;
             } else {
                 //select the US variant
-                [self.usukVariantButton setImage:[UIImage imageNamed:@"resources.bundle/Images/US_front_32x32.png"] forState:UIControlStateNormal];
+                [self.usukVariantButton setImage:[UIImage imageNamed:@"resources.bundle/Images/US_front_35x32.png"] forState:UIControlStateNormal];
                 self.usukVariantSegmentedControl.selectedSegmentIndex = 1;
             }
         } else {
