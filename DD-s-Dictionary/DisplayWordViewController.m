@@ -45,6 +45,7 @@
 @synthesize homophoneButton6 = _homophoneButton6;
 @synthesize usukVariantSegmentedControl = _usukVariantSegmentedControl;
 @synthesize usukVariantButton = _usukVariantButton;
+@synthesize spellingToClipboardButton = _spellingToClipboardButton;
 @synthesize audioPlayer = _audioPlayer;
 @synthesize soundsToPlay = _soundsToPlay;
 
@@ -128,6 +129,7 @@ ApptimizeBoolean(useUsukFlagIcons, NO);
     NSString *forDisplay;
     if (word) {
         [self manageListenButtons];
+        self.spellingToClipboardButton.hidden = NO;
         if (self.hasOtherVariantWord) {
             if ([useUsukFlagIcons boolValue]) {
                     self.usukVariantButton.hidden = NO;
@@ -181,6 +183,7 @@ ApptimizeBoolean(useUsukFlagIcons, NO);
     self.heteronymListenButton.hidden = YES;
     self.usukVariantSegmentedControl.hidden = YES;
     self.usukVariantButton.hidden = YES;
+    self.spellingToClipboardButton.hidden = YES;
 }
 
 - (void) manageListenButtons
@@ -438,6 +441,12 @@ ApptimizeBoolean(useUsukFlagIcons, NO);
     [self.delegate DisplayWordViewController:self otherVariantSelectedWhileDisplayingWord:self.word];
 }
 
+- (IBAction)spellingToClipboardButtonPressed:(UIButton *)sender {
+    UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+    pasteboard.string = self.spelling.text;
+}
+
+
 
 -(void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)playedSuccessfully
 {
@@ -529,6 +538,9 @@ ApptimizeBoolean(useUsukFlagIcons, NO);
     [self setWord:nil];
     [self setSpelling:nil];
     [self setToolbar:nil];
+//    [self setUsukVariantButton:nil];
+//    [self setUsukVariantSegmentedControl:nil];
+//    [self setSpellingToClipboardButton:nil];
     [self setListenButton:nil];
     [self setHeteronymListenButton:nil];
     [self setWordView:nil];

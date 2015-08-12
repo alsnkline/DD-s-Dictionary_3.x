@@ -259,6 +259,16 @@
                                             <action selector="usukVariantSegmentedControlPressed:" destination="L1r-PX-mtS" eventType="valueChanged" id="9s9-r8-rTw"/>
                                         </connections>
                                     </segmentedControl>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="GDf-bv-hvN">
+                                        <rect key="frame" x="0.0" y="0.0" width="46" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Copy">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="spellingToClipboardButtonPressed:" destination="L1r-PX-mtS" eventType="touchUpInside" id="8jH-Pl-nbe"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
@@ -277,6 +287,7 @@
                         <outlet property="homophoneButton6" destination="Q2p-qN-A5G" id="vXK-fd-EHe"/>
                         <outlet property="listenButton" destination="4vB-KF-i9t" id="vUL-SP-HrF"/>
                         <outlet property="spelling" destination="Tth-iQ-4Pa" id="Pkr-gr-N5Y"/>
+                        <outlet property="spellingToClipboardButton" destination="GDf-bv-hvN" id="YCp-c4-X0r"/>
                         <outlet property="usukVariantButton" destination="7SQ-uk-2SF" id="rfX-Z1-ra6"/>
                         <outlet property="usukVariantSegmentedControl" destination="6o8-YG-uHj" id="FT4-Vu-yhe"/>
                         <outlet property="wordView" destination="fDM-h4-7IS" id="LrA-ts-82t"/>
