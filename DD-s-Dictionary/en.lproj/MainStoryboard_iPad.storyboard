@@ -145,7 +145,7 @@
                                         <rect key="frame" x="169" y="246" width="357" height="320"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
-                                            <button hidden="YES" opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="4vB-KF-i9t">
+                                            <button hidden="YES" opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="4vB-KF-i9t">
                                                 <rect key="frame" x="56" y="0.0" width="72" height="72"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" image="resources.bundle/Images/DyDiListen72-72.png">
@@ -155,10 +155,9 @@
                                                     <action selector="listenToWord:" destination="L1r-PX-mtS" eventType="touchDown" id="izO-Hd-oe2"/>
                                                 </connections>
                                             </button>
-                                            <button hidden="YES" opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="O5M-GB-5WO">
+                                            <button hidden="YES" opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="O5M-GB-5WO">
                                                 <rect key="frame" x="11" y="132" width="163" height="38"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                                 <state key="normal" title="..." image="resources.bundle/Images/DyDiWrite32-32.png">
                                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -167,10 +166,9 @@
                                                     <action selector="homophoneButtonPressed:" destination="L1r-PX-mtS" eventType="touchUpInside" id="m7c-vj-AB6"/>
                                                 </connections>
                                             </button>
-                                            <button hidden="YES" opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="YCL-FH-ihq">
+                                            <button hidden="YES" opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="YCL-FH-ihq">
                                                 <rect key="frame" x="11" y="183" width="163" height="38"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                                 <state key="normal" title="..." image="resources.bundle/Images/DyDiWrite32-32.png">
                                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -179,10 +177,9 @@
                                                     <action selector="homophoneButtonPressed:" destination="L1r-PX-mtS" eventType="touchUpInside" id="pUK-9w-UDr"/>
                                                 </connections>
                                             </button>
-                                            <button hidden="YES" opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ea3-i4-oNa">
+                                            <button hidden="YES" opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ea3-i4-oNa">
                                                 <rect key="frame" x="11" y="233" width="163" height="38"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                                 <state key="normal" title="..." image="resources.bundle/Images/DyDiWrite32-32.png">
                                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -191,10 +188,9 @@
                                                     <action selector="homophoneButtonPressed:" destination="L1r-PX-mtS" eventType="touchUpInside" id="Yoz-e3-tIa"/>
                                                 </connections>
                                             </button>
-                                            <button hidden="YES" opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="1zd-vL-IZF">
+                                            <button hidden="YES" opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="1zd-vL-IZF">
                                                 <rect key="frame" x="182" y="132" width="163" height="38"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                                 <state key="normal" title="..." image="resources.bundle/Images/DyDiWrite32-32.png">
                                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -203,10 +199,9 @@
                                                     <action selector="homophoneButtonPressed:" destination="L1r-PX-mtS" eventType="touchUpInside" id="9s9-Ih-8Na"/>
                                                 </connections>
                                             </button>
-                                            <button hidden="YES" opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="wvC-Es-5K2">
+                                            <button hidden="YES" opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="wvC-Es-5K2">
                                                 <rect key="frame" x="182" y="183" width="163" height="38"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                                 <state key="normal" title="..." image="resources.bundle/Images/DyDiWrite32-32.png">
                                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -215,10 +210,9 @@
                                                     <action selector="homophoneButtonPressed:" destination="L1r-PX-mtS" eventType="touchUpInside" id="WqJ-hz-aBE"/>
                                                 </connections>
                                             </button>
-                                            <button hidden="YES" opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Q2p-qN-A5G">
+                                            <button hidden="YES" opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Q2p-qN-A5G">
                                                 <rect key="frame" x="182" y="233" width="163" height="38"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                                 <state key="normal" title="..." image="resources.bundle/Images/DyDiWrite32-32.png">
                                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -227,7 +221,7 @@
                                                     <action selector="homophoneButtonPressed:" destination="L1r-PX-mtS" eventType="touchUpInside" id="EvE-II-Xuy"/>
                                                 </connections>
                                             </button>
-                                            <button hidden="YES" opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Ic2-7m-h61">
+                                            <button hidden="YES" opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Ic2-7m-h61">
                                                 <rect key="frame" x="267" y="0.0" width="72" height="72"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" image="resources.bundle/Images/DyDiListen72-72.png">

@@ -50,7 +50,7 @@
 @synthesize soundsToPlay = _soundsToPlay;
 
 ApptimizeBoolean(useUsukFlagIcons, NO);
-ApptimizeBoolean(hideCopySpellingToClipboardButton, YES);
+ApptimizeBoolean(hideCopySpellingToClipboardButton, NO);
 
 -(void)awakeFromNib
 {
