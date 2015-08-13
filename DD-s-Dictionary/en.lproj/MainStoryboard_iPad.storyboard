@@ -259,10 +259,10 @@
                                             <action selector="usukVariantSegmentedControlPressed:" destination="L1r-PX-mtS" eventType="valueChanged" id="9s9-r8-rTw"/>
                                         </connections>
                                     </segmentedControl>
-                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="GDf-bv-hvN">
-                                        <rect key="frame" x="0.0" y="0.0" width="46" height="30"/>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="GDf-bv-hvN">
+                                        <rect key="frame" x="0.0" y="0.0" width="32" height="32"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Copy">
+                                        <state key="normal" image="resources.bundle/Images/copyIcon_32x32.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -902,6 +902,7 @@
         <image name="resources.bundle/Images/DyDiWrite32-32.png" width="16" height="16"/>
         <image name="resources.bundle/Images/FunWithWordsIconV1.png" width="16" height="16"/>
         <image name="resources.bundle/Images/UK_front_35x32.png" width="16" height="16"/>
+        <image name="resources.bundle/Images/copyIcon_32x32.png" width="16" height="16"/>
         <image name="resources.bundle/Images/dinoOnlyIcon.png" width="16" height="16"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

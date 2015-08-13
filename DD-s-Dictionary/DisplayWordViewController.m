@@ -50,6 +50,7 @@
 @synthesize soundsToPlay = _soundsToPlay;
 
 ApptimizeBoolean(useUsukFlagIcons, NO);
+ApptimizeBoolean(hideCopySpellingToClipboardButton, YES);
 
 -(void)awakeFromNib
 {
@@ -129,7 +130,9 @@ ApptimizeBoolean(useUsukFlagIcons, NO);
     NSString *forDisplay;
     if (word) {
         [self manageListenButtons];
-        self.spellingToClipboardButton.hidden = NO;
+        
+        self.spellingToClipboardButton.hidden = [hideCopySpellingToClipboardButton boolValue];
+        
         if (self.hasOtherVariantWord) {
             if ([useUsukFlagIcons boolValue]) {
                     self.usukVariantButton.hidden = NO;

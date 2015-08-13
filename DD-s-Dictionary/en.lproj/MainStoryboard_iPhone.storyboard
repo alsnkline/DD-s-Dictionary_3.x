@@ -650,7 +650,6 @@ the Dyslexic's Dictionary</string>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" image="resources.bundle/Images/DyDiListen72-72.png">
                                                     <color key="titleColor" red="0.19607843137254902" green="0.30980392156862746" blue="0.52156862745098043" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <state key="highlighted">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -674,13 +673,12 @@ the Dyslexic's Dictionary</string>
                                                     <action selector="listenToWord:" destination="dSV-C7-sB1" eventType="touchDown" id="onb-HH-npZ"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="TPV-KV-dTB">
+                                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="TPV-KV-dTB">
                                                 <rect key="frame" x="23" y="94" width="117" height="38"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="..." image="resources.bundle/Images/DyDiWrite32-32.png">
-                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="titleColor" red="0.19607843137254902" green="0.30980392156862746" blue="0.52156862745098043" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <state key="highlighted">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -719,13 +717,12 @@ the Dyslexic's Dictionary</string>
                                                     <action selector="homophoneButtonPressed:" destination="dSV-C7-sB1" eventType="touchUpInside" id="bVD-I4-CoD"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="z2B-9P-8zx">
+                                            <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="z2B-9P-8zx">
                                                 <rect key="frame" x="171" y="94" width="117" height="38"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="..." image="resources.bundle/Images/DyDiWrite32-32.png">
-                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="titleColor" red="0.19607843137254902" green="0.30980392156862746" blue="0.52156862745098043" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <state key="highlighted">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -787,17 +784,11 @@ the Dyslexic's Dictionary</string>
                                             <action selector="usukVariantSegmentedControlPressed:" destination="dSV-C7-sB1" eventType="valueChanged" id="gig-y1-uCI"/>
                                         </connections>
                                     </segmentedControl>
-                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="s7l-MO-2nL">
-                                        <rect key="frame" x="0.0" y="8" width="72" height="44"/>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="s7l-MO-2nL">
+                                        <rect key="frame" x="8" y="13" width="32" height="32"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                        <state key="normal" title="Copy">
-                                            <color key="titleColor" red="0.19607843137254902" green="0.30980392156862746" blue="0.52156862745098043" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <state key="highlighted">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <state key="normal" image="resources.bundle/Images/copyIcon_32x32.png"/>
                                         <connections>
                                             <action selector="spellingToClipboardButtonPressed:" destination="dSV-C7-sB1" eventType="touchUpInside" id="OxJ-RF-AHy"/>
                                         </connections>
@@ -952,6 +943,7 @@ the Dyslexic's Dictionary</string>
         <image name="resources.bundle/Images/DyDiWrite32-32.png" width="16" height="16"/>
         <image name="resources.bundle/Images/FunWithWordsIconV1.png" width="16" height="16"/>
         <image name="resources.bundle/Images/UK_front_35x32.png" width="16" height="16"/>
+        <image name="resources.bundle/Images/copyIcon_32x32.png" width="16" height="16"/>
         <image name="resources.bundle/Images/dinoOnlyIcon.png" width="16" height="16"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
