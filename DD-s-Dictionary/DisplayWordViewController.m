@@ -49,6 +49,8 @@
 @synthesize audioPlayer = _audioPlayer;
 @synthesize soundsToPlay = _soundsToPlay;
 
+#define StringFromBOOL(b) ((b) ? @"YES" : @"NO")
+
 ApptimizeBoolean(useUsukFlagIcons, NO);
 ApptimizeBoolean(hideCopySpellingToClipboardButton, NO);
 
@@ -130,6 +132,10 @@ ApptimizeBoolean(hideCopySpellingToClipboardButton, NO);
     NSString *forDisplay;
     if (word) {
         [self manageListenButtons];
+        
+        NSLog(@"Enrolled Tests: %@",[Apptimize testInfo]);
+        NSLog(@"hideCopySpellingToClipboardButton = %@", StringFromBOOL([hideCopySpellingToClipboardButton boolValue]));
+        NSLog(@"useUsukFlagIcons = %@", StringFromBOOL([useUsukFlagIcons boolValue]));
         
         self.spellingToClipboardButton.hidden = [hideCopySpellingToClipboardButton boolValue];
         
