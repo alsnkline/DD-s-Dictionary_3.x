@@ -538,7 +538,7 @@
     CGFloat cRadius = 0; //corner radius for button
     myImage.frame = CGRectMake(leftSpacing, 11, imageWidth, 32);
     
-    NSString *imageToUse = [NSString stringWithFormat:@"resources.bundle/Images/%@_front_35x32.png", [variant capitalizedString]];
+    NSString *imageToUse = [NSString stringWithFormat:@"resources.bundle/Images/%@_front_35x32.png", [variant uppercaseString]];
     [myImage setImage:[UIImage imageNamed:imageToUse]];
     
     myImage.layer.masksToBounds = YES;
