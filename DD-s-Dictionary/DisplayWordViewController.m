@@ -521,6 +521,8 @@ ApptimizeBoolean(hideCopySpellingToClipboardButton, NO);
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
+    
     //check if correct background color is set - needed if user changed color in settings while a word is showing in iPhone.
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     UIColor *currentDesiredColor = [UIColor colorWithHue:[defaults floatForKey:BACKGROUND_COLOR_HUE] saturation:[defaults floatForKey:BACKGROUND_COLOR_SATURATION] brightness:1 alpha:1];

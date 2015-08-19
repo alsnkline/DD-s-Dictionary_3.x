@@ -163,6 +163,8 @@
                                            @"Collections" : [self stringForCurrentlySelectedCollections]};
         [Flurry logEvent:@"uiTracking_Customisations" withParameters:flurryParameters];
     }
+    
+    [super viewDidDisappear:animated];
 }
 
 - (NSString *)stringForCurrentlySelectedCollections {

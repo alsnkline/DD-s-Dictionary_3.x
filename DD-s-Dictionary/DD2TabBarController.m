@@ -107,6 +107,7 @@
 -(void)viewDidAppear:(BOOL)animated {
     //track all page views with Flurry
     [Flurry logAllPageViews:self];
+    [super viewDidAppear:animated];
 }
 
 -(void)onNotification:(NSNotification *)notification

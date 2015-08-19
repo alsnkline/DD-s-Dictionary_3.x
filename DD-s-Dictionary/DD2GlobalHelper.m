@@ -49,15 +49,15 @@
 
 + (NSUInteger) testWordPredicate:(NSPredicate *)predicate onWords:(id)words
 {
-    NSArray *sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"spelling" ascending:YES selector:@selector(caseInsensitiveCompare:)]];
+//    NSArray *sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"spelling" ascending:YES selector:@selector(caseInsensitiveCompare:)]];
     
     if ([words isKindOfClass:[NSArray class]]) {
         NSArray *nsaWords = (NSArray *)words;
         NSArray *filteredWords = [NSArray arrayWithArray:[nsaWords filteredArrayUsingPredicate:predicate]];
-        NSArray *sortedFilteredWords = [filteredWords sortedArrayUsingDescriptors:sortDescriptors];
+//        NSArray *sortedFilteredWords = [filteredWords sortedArrayUsingDescriptors:sortDescriptors];
         if (LOG_PREDICATE_RESULTS) {
             NSLog(@"number of matches = %lu", (unsigned long)[filteredWords count]);
-            for (NSDictionary *word in sortedFilteredWords) {
+            for (NSDictionary *word in filteredWords) {
                 NSLog(@"found: %@", [word objectForKey:@"spelling"]);
             }
         }

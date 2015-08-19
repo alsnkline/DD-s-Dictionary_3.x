@@ -18,6 +18,7 @@
 
 @interface DD2Words ()
 @property (nonatomic) BOOL wordProcessingNeeded;
+@property (nonatomic, strong) NSMutableSet *unusedPronunciations;
 @end
 
 @implementation DD2Words
@@ -33,13 +34,12 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
 @synthesize spellingVariant = _spellingVariant;
 @synthesize recentlyViewedWords = _recentlyViewedWords;
 @synthesize wordProcessingNeeded = _wordProcessingNeeded;
+@synthesize unusedPronunciations = _unusedPronunciations;
 
 
 + (DD2Words *)sharedWords
 {
-    if (sharedWords == nil)  {
-        sharedWords = [[DD2Words alloc] init];
-    }
+    if (sharedWords == nil) sharedWords = [[DD2Words alloc] init];
     return sharedWords;
 }
 
@@ -47,6 +47,12 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
     if (!_recentlyViewedWords) _recentlyViewedWords = [[NSArray alloc] init];
     return _recentlyViewedWords;
 }
+
+- (NSMutableSet *)unusedPronunciations {
+    if (!_unusedPronunciations) _unusedPronunciations = [[NSMutableSet alloc] init];
+    return _unusedPronunciations;
+}
+
 
 - (BOOL) wordProcessingNeeded {
     if (!_wordProcessingNeeded) {
@@ -84,8 +90,7 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
             
             NSLog(@"word count = %lu",(unsigned long)[[json objectForKey:@"words"] count]);
             
-            id firstWord = [[json objectForKey:@"words"] objectAtIndex:0];
-            if (PROCESS_VERBOSELY) NSLog(@"first word = %@",firstWord);
+            if (PROCESS_VERBOSELY) NSLog(@"first word = %@",[[json objectForKey:@"words"] objectAtIndex:0]);
             if (PROCESS_VERBOSELY) NSLog(@"first word spelling = %@",[[[json objectForKey:@"words"] objectAtIndex:0] objectForKey:@"word"] );
             
             _rawWords = json;
@@ -176,12 +181,12 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
     NSMutableArray *workingSmallCollectionNames = [[NSMutableArray alloc] init];
     NSMutableArray *workingTagNames = [[NSMutableArray alloc] init];
     NSMutableArray *workingAllWords = [[NSMutableArray alloc] init];
-    NSMutableSet *unusedPronunciations = [[NSMutableSet alloc] init];
+    
     if (FIND_UNUSED_PRONUNCIATIONS) {
         for (NSURL *fileURL in [DD2GlobalHelper allPronunciationFiles]) {
-            [unusedPronunciations addObject:[[fileURL lastPathComponent] stringByDeletingPathExtension]];
+            [self.unusedPronunciations addObject:[[fileURL lastPathComponent] stringByDeletingPathExtension]];
         }
-        NSLog(@"unused pronunciations initial count: %lu", (unsigned long)[unusedPronunciations count]);
+        NSLog(@"unused pronunciations initial count: %lu", (unsigned long)[self.unusedPronunciations count]);
     }
     
     for (NSDictionary *rawWord in [self.rawWords objectForKey:@"words"]) {
@@ -205,7 +210,7 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
             }
         }
         if (FIND_UNUSED_PRONUNCIATIONS){
-            [unusedPronunciations minusSet:pronunciations];
+            [self.unusedPronunciations minusSet:pronunciations];
             //NSLog(@"unusedPronunciations count: %lu", (unsigned long)[unusedPronunciations count]);
         }
         
@@ -272,8 +277,8 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
     if (FIND_DUPLICATE_WORDS) [self logAnyDuplicateWordsIn:workingAllWords];
     // check for unused pronunciations
     if (FIND_UNUSED_PRONUNCIATIONS) {
-        if ([unusedPronunciations count] > 0) {
-            for (NSURL *fileURL in unusedPronunciations) {
+        if ([self.unusedPronunciations count] > 0) {
+            for (NSURL *fileURL in self.unusedPronunciations) {
                 NSLog(@"unused file:%@", [fileURL lastPathComponent]);
             };
         } else {
