@@ -738,17 +738,26 @@ the Dyslexic's Dictionary</string>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </view>
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="fpO-0Y-Nxd">
-                                        <rect key="frame" x="270" y="13" width="35" height="32"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <rect key="frame" x="223" y="13" width="35" height="32"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <state key="normal" title="Button" image="resources.bundle/Images/UK_front_35x32.png"/>
                                         <connections>
                                             <action selector="usukVariantButtonPressed:" destination="dSV-C7-sB1" eventType="touchUpInside" id="LK4-Pv-nOa"/>
                                         </connections>
                                     </button>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="s7l-MO-2nL">
+                                        <rect key="frame" x="270" y="13" width="32" height="32"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <state key="normal" image="resources.bundle/Images/copyIcon_32x32.png"/>
+                                        <connections>
+                                            <action selector="spellingToClipboardButtonPressed:" destination="dSV-C7-sB1" eventType="touchUpInside" id="OxJ-RF-AHy"/>
+                                        </connections>
+                                    </button>
                                     <segmentedControl hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="b0i-S4-QN0">
-                                        <rect key="frame" x="222" y="7" width="80" height="44"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                        <rect key="frame" x="178" y="7" width="80" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                         <segments>
                                             <segment title="UK"/>
                                             <segment title="US"/>
@@ -757,15 +766,6 @@ the Dyslexic's Dictionary</string>
                                             <action selector="usukVariantSegmentedControlPressed:" destination="dSV-C7-sB1" eventType="valueChanged" id="gig-y1-uCI"/>
                                         </connections>
                                     </segmentedControl>
-                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="s7l-MO-2nL">
-                                        <rect key="frame" x="8" y="13" width="32" height="32"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                        <state key="normal" image="resources.bundle/Images/copyIcon_32x32.png"/>
-                                        <connections>
-                                            <action selector="spellingToClipboardButtonPressed:" destination="dSV-C7-sB1" eventType="touchUpInside" id="OxJ-RF-AHy"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
