@@ -423,11 +423,25 @@ ApptimizeBoolean(hideCopySpellingToClipboardButton, NO);
 }
 
 - (IBAction)usukVariantSegmentedControlPressed:(UISegmentedControl *)sender {
+    //track word event with GA manual sent with Value 1
+    [DD2GlobalHelper sendEventToGAWithCategory:@"uiAction_Word" action:@"usukVariantPressed" label:self.spelling.text value:nil];
+    
+    //track word view with Flurry
+    NSDictionary *flurryParameters = @{@"usukVariantPressed" : self.spelling.text};
+    [Flurry logEvent:@"uiAction_Word" withParameters:flurryParameters];
+    
     NSString *selection = sender.selectedSegmentIndex ? @"us" : @"uk";
     [self usukChangeMadeWithSelection:selection];
 }
 
 - (IBAction)usukVariantButtonPressed:(UIButton *)sender {
+    //track word event with GA manual sent with Value 1
+    [DD2GlobalHelper sendEventToGAWithCategory:@"uiAction_Word" action:@"usukVariantPressed" label:self.spelling.text value:nil];
+    
+    //track word view with Flurry
+    NSDictionary *flurryParameters = @{@"usukVariantPressed" : self.spelling.text};
+    [Flurry logEvent:@"uiAction_Word" withParameters:flurryParameters];
+    
     NSString *selection;
     if ([[self.word objectForKey:@"wordVariant"] isEqualToString:@"us"]) {
         selection = @"uk";
@@ -447,6 +461,14 @@ ApptimizeBoolean(hideCopySpellingToClipboardButton, NO);
 - (IBAction)spellingToClipboardButtonPressed:(UIButton *)sender {
     UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
     pasteboard.string = self.spelling.text;
+    
+    //track word event with GA manual sent with Value 1
+    [DD2GlobalHelper sendEventToGAWithCategory:@"uiAction_Word" action:@"copyToClipboard" label:self.spelling.text value:nil];
+    
+    //track word view with Flurry
+    NSDictionary *flurryParameters = @{@"copyToClipboard" : self.spelling.text};
+    [Flurry logEvent:@"uiAction_Word" withParameters:flurryParameters];
+    
 }
 
 
