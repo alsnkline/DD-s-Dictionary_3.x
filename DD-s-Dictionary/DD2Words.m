@@ -449,7 +449,8 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
     NSDictionary *foundWord = nil;
     for (NSDictionary *candidateWord in matches) {
         
-        if (candidateWord == word) {
+        if ([candidateWord isEqualToDictionary:word]) {
+            if (LOG_MORE) NSLog(@"Removed current word from other spelling variant matches");
             continue;   //to avoid setting foundWord to self.
         } else if ([[candidateWord objectForKey:@"usukVariant"] isEqualToString:[word objectForKey:@"usukVariant"]]) {
             foundWord = candidateWord;
