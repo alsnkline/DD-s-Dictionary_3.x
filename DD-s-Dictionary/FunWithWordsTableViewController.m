@@ -290,9 +290,9 @@
         if (row == 1) cell.textLabel.text = [NSString stringWithFormat:@"heteronyms"];
     }
     if (section == 1) {
-        if (row == 0) cell.textLabel.text = [NSString stringWithFormat:@"spelling"];
-        if (row == 1) cell.textLabel.text = [NSString stringWithFormat:@"pronunciation"];
-        if (row == 2) cell.textLabel.text = [NSString stringWithFormat:@"homophones"];
+        if (row == 0) cell.textLabel.text = [NSString stringWithFormat:@"us/uk spelling"];
+        if (row == 1) cell.textLabel.text = [NSString stringWithFormat:@"us/uk pronunciation"];
+        if (row == 2) cell.textLabel.text = [NSString stringWithFormat:@"us/uk homophones"];
     }
     if (section == 2) {
         cell.textLabel.text = [self displayStringForSmallCollection:[DD2Words exchangeUnderscoresForSpacesin:[self.smallCollections objectAtIndex:indexPath.row]]];
