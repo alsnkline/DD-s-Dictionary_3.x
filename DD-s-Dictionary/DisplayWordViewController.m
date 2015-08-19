@@ -535,6 +535,10 @@ ApptimizeBoolean(hideCopySpellingToClipboardButton, NO);
     //track screen with GA
     [DD2GlobalHelper sendViewToGAWithViewName:[NSString stringWithFormat:@"Viewed Word :%@", self.spelling.text]];
     
+    //track word view with Flurry
+    NSDictionary *flurryParameters = @{@"Viewed Word": self.spelling.text};
+    [Flurry logEvent:@"uiAction_Word" withParameters:flurryParameters];
+    
     //track word view with Apptimize
     [Apptimize track:@"Viewed Word"];
 }
