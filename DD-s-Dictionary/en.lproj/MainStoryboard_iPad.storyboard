@@ -245,22 +245,22 @@
                                             <action selector="usukVariantSegmentedControlPressed:" destination="L1r-PX-mtS" eventType="valueChanged" id="9s9-r8-rTw"/>
                                         </connections>
                                     </segmentedControl>
-                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="GDf-bv-hvN">
-                                        <rect key="frame" x="662" y="0.0" width="32" height="32"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" image="resources.bundle/Images/copyIcon_32x32.png">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="spellingToClipboardButtonPressed:" destination="L1r-PX-mtS" eventType="touchUpInside" id="8jH-Pl-nbe"/>
-                                        </connections>
-                                    </button>
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="7SQ-uk-2SF">
                                         <rect key="frame" x="619" y="0.0" width="35" height="32"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="Button" image="resources.bundle/Images/UK_front_35x32.png"/>
                                         <connections>
                                             <action selector="usukVariantButtonPressed:" destination="L1r-PX-mtS" eventType="touchUpInside" id="N6M-OV-1Vv"/>
+                                        </connections>
+                                    </button>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="GDf-bv-hvN">
+                                        <rect key="frame" x="662" y="0.0" width="32" height="32"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="resources.bundle/Images/copyIcon_32x32.png">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="spellingToClipboardButtonPressed:" destination="L1r-PX-mtS" eventType="touchUpInside" id="8jH-Pl-nbe"/>
                                         </connections>
                                     </button>
                                 </subviews>
