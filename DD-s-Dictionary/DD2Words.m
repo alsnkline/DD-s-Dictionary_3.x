@@ -300,7 +300,7 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
     } else {
         NSLog(@"Badly formed wordElement: %@", wordElement);
     }
-    if (!spelling) processedWord = nil;       // some words only have a uk variant eg cheque
+    if (!spelling) processedWord = nil;       // some words only have a uk variant eg cheque, tyre
     if (PROCESS_VERBOSELY) NSLog(@"%@ (%@)", spelling, locale);
     
     if (processedWord) {            // only continue processing if a variant exsists for this locale
@@ -374,8 +374,11 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
 
 - (NSArray *)allWordsForCurrentSpellingVariant {
     NSPredicate *selectionPredicate = [NSPredicate predicateWithFormat:@"SELF.wordVariant LIKE[c] %@",[self.spellingVariant lowercaseString]];
-    if (LOG_PREDICATE_RESULTS) NSLog(@"predicate = %@", selectionPredicate);
-    if (LOG_PREDICATE_RESULTS) [DD2GlobalHelper testWordPredicate:selectionPredicate onWords:self.allWords];
+    if (LOG_PREDICATE_RESULTS) {
+        NSLog(@"Searching in allWordsForCurrentSpellingVariant");
+        NSLog(@"predicate = %@", selectionPredicate);
+//        if (LOG_PREDICATE_RESULTS) [DD2GlobalHelper testWordPredicate:selectionPredicate onWords:self.allWords];
+    }
     NSArray *matches = [NSArray arrayWithArray:[self.allWords filteredArrayUsingPredicate:selectionPredicate]];
     return matches;
 }
@@ -384,8 +387,11 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
     NSArray *wordListForCurrentSV = [self allWordsForCurrentSpellingVariant];
     
     NSPredicate *selectionPredicate = [NSPredicate predicateWithFormat:@"SELF.collections contains[c] %@", collectionName];
-    if (LOG_PREDICATE_RESULTS) NSLog(@"predicate = %@", selectionPredicate);
-    if (LOG_PREDICATE_RESULTS) [DD2GlobalHelper testWordPredicate:selectionPredicate onWords:wordListForCurrentSV];
+    if (LOG_PREDICATE_RESULTS) {
+        NSLog(@"Searching in wordsForCurrentSpellingVariantInCollectionNamed:");
+        NSLog(@"predicate = %@", selectionPredicate);
+//        [DD2GlobalHelper testWordPredicate:selectionPredicate onWords:wordListForCurrentSV];
+    }
     NSArray *matches = [NSArray arrayWithArray:[wordListForCurrentSV filteredArrayUsingPredicate:selectionPredicate]];
     return matches;
 }
@@ -398,8 +404,11 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
     
     for (NSString *sectionName in possibleSectionNames) {
         NSPredicate *selectionPredicate = [NSPredicate predicateWithFormat:@"SELF.section LIKE[c] %@",[sectionName uppercaseString]];
-        if (LOG_PREDICATE_RESULTS) NSLog(@"predicate = %@", selectionPredicate);
-        if (LOG_PREDICATE_RESULTS) [DD2GlobalHelper testWordPredicate:selectionPredicate onWords:wordList];
+        if (LOG_PREDICATE_RESULTS) {
+            NSLog(@"Searching in wordsBySectionFromWordList:");
+            NSLog(@"predicate = %@", selectionPredicate);
+//            [DD2GlobalHelper testWordPredicate:selectionPredicate onWords:wordList];
+        }
         NSArray *matches = [NSArray arrayWithArray:[wordList filteredArrayUsingPredicate:selectionPredicate]];
         
         if ([matches count] > 0) {
@@ -425,10 +434,15 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
 
 + (NSDictionary *) wordWithOtherSpellingVariantFrom:(NSDictionary *)word andListOfAllWords:(NSArray *)allWords {
     id wordElement = [word objectForKey:@"word"];
+    NSLog(@"usuk wordWithOtherSpellingVariantFrom wordElement= %@", wordElement);
     
     NSPredicate *selectionPredicate = [NSPredicate predicateWithFormat:@"SELF.word = %@", wordElement];
-    if (LOG_PREDICATE_RESULTS) NSLog(@"predicate = %@", selectionPredicate);
-    if (LOG_PREDICATE_RESULTS) [DD2GlobalHelper testWordPredicate:selectionPredicate onWords:allWords];
+    if (LOG_PREDICATE_RESULTS) {
+        NSLog(@"Searching in wordWithOtherSpellingVariantFrom:andListOfAllWords:");
+        NSLog(@"predicate = %@", selectionPredicate);
+        [DD2GlobalHelper testWordPredicate:selectionPredicate onWords:allWords];
+    }
+    
     
     NSArray *matches = [NSArray arrayWithArray:[allWords filteredArrayUsingPredicate:selectionPredicate]];
     if ([matches count] > 2) NSLog(@"*** too many matches (when looking for other spelling variants) ***");
@@ -439,9 +453,9 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
             continue;   //to avoid setting foundWord to self.
         } else if ([[candidateWord objectForKey:@"usukVariant"] isEqualToString:[word objectForKey:@"usukVariant"]]) {
             foundWord = candidateWord;
-            if (PROCESS_VERBOSELY) NSLog(@"US/UK spelling variant found %@", foundWord);
+            if (LOG_MORE) NSLog(@"US/UK spelling variant found %@", foundWord);
         } else {
-            NSLog(@"US/UK spelling variant not found");
+            if (LOG_MORE) NSLog(@"US/UK spelling variant not found");
         }
     }
     
@@ -564,8 +578,11 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
     //filtering word list to only contain words of the same wordVariant as the subject word.
     NSString *subjectWordVariant = [word objectForKey:@"wordVariant"];
     NSPredicate *selectionPredicate = [NSPredicate predicateWithFormat:@"SELF.wordVariant LIKE[c] %@",subjectWordVariant];
-    if (LOG_PREDICATE_RESULTS) NSLog(@"predicate = %@", selectionPredicate);
-    if (LOG_PREDICATE_RESULTS) [DD2GlobalHelper testWordPredicate:selectionPredicate onWords:wordList];
+    if (LOG_PREDICATE_RESULTS) {
+        NSLog(@"Searching in homophonesForWord:andWordList:");
+        NSLog(@"predicate = %@", selectionPredicate);
+//        if (LOG_PREDICATE_RESULTS) [DD2GlobalHelper testWordPredicate:selectionPredicate onWords:wordList];
+    }
     NSArray *filteredWordList = [NSMutableArray arrayWithArray:[wordList filteredArrayUsingPredicate:selectionPredicate]];
     
     
@@ -601,8 +618,11 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
     
     // get word if pronunciation is listed directly in pronunciation field
     NSPredicate *selectionPredicate = [NSPredicate predicateWithFormat:@"SELF.pronunciations contains[c] %@",pronunciation];
-    if (LOG_PREDICATE_RESULTS) NSLog(@"predicate = %@", selectionPredicate);
-    if (LOG_PREDICATE_RESULTS) [DD2GlobalHelper testWordPredicate:selectionPredicate onWords:wordList];
+    if (LOG_PREDICATE_RESULTS) {
+        NSLog(@"Searching in wordForPronunciation:fromWordList:");
+        NSLog(@"predicate = %@", selectionPredicate);
+        [DD2GlobalHelper testWordPredicate:selectionPredicate onWords:wordList];
+    }
     NSMutableArray *matches = [NSMutableArray arrayWithArray:[wordList filteredArrayUsingPredicate:selectionPredicate]];
     
     if ([matches count] == 1) {
@@ -614,8 +634,11 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
         }
         // get the word that matches if the pronunciation is the spelling
         selectionPredicate = [NSPredicate predicateWithFormat:@"SELF.spelling LIKE %@",pronunciation];      //case sensitive to pick up Miss and miss
-        if (LOG_PREDICATE_RESULTS) NSLog(@"predicate = %@", selectionPredicate);
-        if (LOG_PREDICATE_RESULTS) [DD2GlobalHelper testWordPredicate:selectionPredicate onWords:wordList];
+        if (LOG_PREDICATE_RESULTS) {
+            NSLog(@"Searching in wordForPronunciation:fromWordList: getting word that matches pronunciation is the spelling");
+            NSLog(@"predicate = %@", selectionPredicate);
+            [DD2GlobalHelper testWordPredicate:selectionPredicate onWords:wordList];
+        }
         matches = [NSMutableArray arrayWithArray:[wordList filteredArrayUsingPredicate:selectionPredicate]];
     
         if ([matches count] > 1) NSLog(@"DD2Words more than one matches ** PROBLEM **");
@@ -653,8 +676,11 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
     //checking to see if usukOtherWordVariant is in the list (if wordVariant was the same it would already have been removed).
     id wordElement = [word objectForKey:@"word"];
     NSPredicate *selectionPredicate = [NSPredicate predicateWithFormat:@"SELF.word = %@", wordElement];
-    if (LOG_PREDICATE_RESULTS) NSLog(@"predicate = %@", selectionPredicate);
-    if (LOG_PREDICATE_RESULTS) [DD2GlobalHelper testWordPredicate:selectionPredicate onWords:recentWords];
+    if (LOG_PREDICATE_RESULTS) {
+        NSLog(@"Searching in viewingWordNow recentWord list management");
+        NSLog(@"predicate = %@", selectionPredicate);
+        [DD2GlobalHelper testWordPredicate:selectionPredicate onWords:recentWords];
+    }
     NSArray *matches = [NSArray arrayWithArray:[recentWords filteredArrayUsingPredicate:selectionPredicate]];
     
     if ([matches count] > 0) {

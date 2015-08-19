@@ -413,8 +413,11 @@ ApptimizeBoolean(hideCopySpellingToClipboardButton, NO);
         [allHomophones addObjectsFromArray:[self.homophonesForWord objectForKey:pronunciation]];
     }
     NSPredicate *selectionPredicate = [NSPredicate predicateWithFormat:@"SELF.spelling LIKE[c] %@",spelling];
-    if (LOG_PREDICATE_RESULTS) NSLog(@"predicate = %@", selectionPredicate);
-    if (LOG_PREDICATE_RESULTS) [DD2GlobalHelper testWordPredicate:selectionPredicate onWords:allHomophones];
+    if (LOG_PREDICATE_RESULTS) {
+        NSLog(@"Searching in homophoneButtonPressed");
+        NSLog(@"predicate = %@", selectionPredicate);
+        [DD2GlobalHelper testWordPredicate:selectionPredicate onWords:allHomophones];
+    }
     NSArray *matches = [NSArray arrayWithArray:[allHomophones filteredArrayUsingPredicate:selectionPredicate]];
     if ([matches count] != 1) NSLog(@"DisplayWordVC more or less than one matches ** PROBLEM **");
     
@@ -523,7 +526,7 @@ ApptimizeBoolean(hideCopySpellingToClipboardButton, NO);
     
     if (self.word) {
         [self setUpViewForWord:self.word];
-        if (self.playWordsOnSelection) { //only used in iPhone - playwords on iPad done from DD2WordListTableViewController no need to follow notifications as in iPhone view will be instanciated with the right setting just before the setting is used.
+        if (self.playWordsOnSelection) { //only used in iPhone - playwords on iPad done from DD2Table/SearchViewController no need to follow notifications as in iPhone view will be instanciated with the right setting just before the setting is used.
             [self playAllWords:[DD2Words pronunciationsForWord:self.word]];
         }
     }

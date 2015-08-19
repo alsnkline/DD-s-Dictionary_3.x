@@ -401,8 +401,11 @@
             //selectionPredicate = [NSPredicate predicateWithFormat:@"inGroups.@count > 0"]; //worked
             //selectionPredicate = [NSPredicate predicateWithFormat:@"%@ IN SELF.inGroups.displayName", cell.textLabel.text];
 
-            if (LOG_PREDICATE_RESULTS) NSLog(@"predicate = %@", self.predicateForSelectedCell);
-            if (LOG_PREDICATE_RESULTS) [DD2GlobalHelper testWordPredicate:self.predicateForSelectedCell onWords:self.allWordsForSpellingVariant];
+            if (LOG_PREDICATE_RESULTS) {
+                NSLog(@"Searching in prepareForSegue");
+                NSLog(@"predicate = %@", self.predicateForSelectedCell);
+                [DD2GlobalHelper testWordPredicate:self.predicateForSelectedCell onWords:self.allWordsForSpellingVariant];
+            }
             
             [segue.destinationViewController setAllWords:self.allWords];
             [segue.destinationViewController setTitle:cell.textLabel.text];

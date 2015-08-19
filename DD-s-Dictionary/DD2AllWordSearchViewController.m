@@ -160,7 +160,7 @@
     cell.textLabel.text = [word objectForKey:@"spelling"];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     if ([[word objectForKey:@"usukVariant"] isEqualToString:@"spelling"]) {
-        if (LOG_MORE) NSLog(@"%@", word);
+        if (LOG_MORE) NSLog(@"Adding usuk spelling indicator to:%@", word[@"spelling"]);
         UIImageView *notifier = [self getUSUKVariantNotifierWithVariant:[word objectForKey:@"wordVariant"]];
         notifier.tag = USUK_NOTIFIER_VIEW_TAG;
         [cell.contentView addSubview:notifier];
@@ -245,7 +245,7 @@
 
 - (void) displaySelectedWord
 {
-    if (LOG_MORE) NSLog(@"displaying word %@", self.selectedWord);
+    if (LOG_MORE) NSLog(@"displaying word %@, %@", self.selectedWord[@"spelling"], self.selectedWord[@"wordVariant"]);
     if ([self getSplitViewWithDisplayWordViewController]) { //iPad
         DisplayWordViewController *dwvc = [self getSplitViewWithDisplayWordViewController];
         [self setupDwvc:dwvc foriPhone:NO];
@@ -395,12 +395,13 @@
     }
     NSSortDescriptor *sortByLD = [NSSortDescriptor sortDescriptorWithKey:@"LD" ascending:YES];
     NSArray *sortedWordList = [workingWordList sortedArrayUsingDescriptors:[NSArray arrayWithObject:sortByLD]];
-    [sortedWordList makeObjectsPerformSelector:@selector(removeObjectForKey:) withObject:@"LD"];
-    
+    //print out if wanted the added LD words before removing the LD key/value ready for next search
     if (LOG_MORE) NSLog(@"sorted Word List LD < %i search = %@", LDcutOff, searchText);
     for (NSDictionary *word in sortedWordList) {
        if (LOG_MORE) NSLog(@"%@ LD = %@", word[@"spelling"], word[@"LD"]);
     }
+    [sortedWordList makeObjectsPerformSelector:@selector(removeObjectForKey:) withObject:@"LD"];
+    
     [wordList addObjectsFromArray:sortedWordList];
 }
 
@@ -492,6 +493,7 @@
         [self.navigationController popViewControllerAnimated:NO]; //Not animated as this is just preparing the Navigation Controller stack for the new word to be pushed on.
     }
     NSDictionary *wordToBeDisplayed = [DD2Words wordWithOtherSpellingVariantFrom:word andListOfAllWords:self.allWords];
+    if (LOG_MORE) NSLog(@"usukVariant to be displayed = %@", wordToBeDisplayed[@"spelling"]);
     self.selectedWord = wordToBeDisplayed;
     [self displaySelectedWord];
     
