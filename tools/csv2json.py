@@ -6,11 +6,11 @@ import sys
 import traceback
 
 #: which columns are always lists
-list_cols={"collections", "dm", "homophones", "tags", "pronunciations", "small_collection"}
+list_cols={"collections", "dm", "homophones", "tags", "pronunciations", "small_collection", "explanations"}
 #: which columns might be lists if space is present
 list_maybe={"word"}
 #: which columns are for the google spreadsheet only ie not to be put into the output.
-list_ignore_columns={"Collection changes", "Recording Needed", "Recording notes"}
+list_ignore_columns={"Collection changes", "Recording Needed", "Recording notes", "frequent_2000_fifths"}
 #: which collections to ignore.
 list_ignore_collections={"EXCLUDE", "pickup", "hard_medical"}
 def process_token(v):
@@ -34,7 +34,7 @@ def convert(infile, outfile):
     for lineno, line in enumerate(incsv):
         try:
             row=line.copy()
-            if row["collections"] in list_ignore_collections:
+            if row["collections"] in list_ignore_collections or row["collections"].startswith("tbr_"):
                 continue
             for k,v in row.items():
                 if not v or (k in list_ignore_columns):
