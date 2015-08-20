@@ -180,7 +180,7 @@ ApptimizeBoolean(hideCopySpellingToClipboardButton, NO);
         [Flurry logEvent:@"uiAction_Word" withParameters:flurryParameters];
         
         //track word view with Apptimize
-        [Apptimize track:@"Viewed Word"];
+        [Apptimize track:@"Viewed Word" value:1] ;
     }
 }
 
@@ -463,7 +463,7 @@ ApptimizeBoolean(hideCopySpellingToClipboardButton, NO);
 - (void) usukChangeMadeWithSelection:(NSString *)selection {
     //report to Apptimize
     if (LOG_MORE) NSLog(@"Other Word selected show '%@' variant", selection);
-    [Apptimize track:@"usukChangeMade"];
+    [Apptimize track:@"usukChangeMade" value:1];
     [self.delegate DisplayWordViewController:self otherVariantSelectedWhileDisplayingWord:self.word];
 }
 
@@ -551,7 +551,7 @@ ApptimizeBoolean(hideCopySpellingToClipboardButton, NO);
     [Flurry logEvent:@"uiAction_Word" withParameters:flurryParameters];
     
     //track word view with Apptimize
-    [Apptimize track:@"Viewed Word"];
+    [Apptimize track:@"Viewed Word" value:1];
 }
 
 - (void)viewDidLoad
