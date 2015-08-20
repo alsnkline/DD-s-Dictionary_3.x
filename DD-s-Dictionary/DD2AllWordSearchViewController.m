@@ -251,8 +251,14 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    self.selectedWord = [self wordForIndexPath:indexPath fromTableView:tableView];
-    [self displaySelectedWord];
+    UITableViewCell *selectedCell = [tableView cellForRowAtIndexPath:indexPath];
+    if ([selectedCell.contentView viewWithTag:ADD_WORD_BUTTON_TAG]) {
+        NSLog(@"cell containing Ask DD button pressed");
+        [self addwordButtonPressed];
+    } else {
+        self.selectedWord = [self wordForIndexPath:indexPath fromTableView:tableView];
+        [self displaySelectedWord];
+    }
 }
 
 - (void) displaySelectedWord
