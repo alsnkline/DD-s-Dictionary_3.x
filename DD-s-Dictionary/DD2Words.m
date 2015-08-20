@@ -14,6 +14,8 @@
 #define COLLECTION_NAMES @"collectionNames"
 #define SMALL_COLLECTION_NAMES @"smallCollectionNames"
 #define TAG_NAMES @"tagNames"
+#define ALL_UK_WORDS @"allUKWords"
+#define ALL_US_WORDS @"allUSWords"
 #define ALL @"allWords"
 
 @interface DD2Words ()
@@ -31,6 +33,8 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
 @synthesize collectionNames = _collectionNames;
 @synthesize smallCollectionNames = _smallCollectionNames;
 @synthesize tagNames = _tagNames;
+@synthesize allUKWords = _allUKWords;
+@synthesize allUSWords = _allUSWords;
 @synthesize spellingVariant = _spellingVariant;
 @synthesize recentlyViewedWords = _recentlyViewedWords;
 @synthesize wordProcessingNeeded = _wordProcessingNeeded;
@@ -135,6 +139,24 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
     return _tagNames;
 }
 
+-(NSArray *)allUKWords
+{
+    if (!_allUKWords) {
+        _allUKWords = [self.processedWords objectForKey:ALL_UK_WORDS];
+        if (PROCESS_VERBOSELY) NSLog(@"%@ has = %lu words", ALL_UK_WORDS, (unsigned long)[_allUKWords count]);
+    }
+    return _allUKWords;
+}
+
+-(NSArray *)allUSWords
+{
+    if (!_allUSWords) {
+        _allUSWords = [self.processedWords objectForKey:ALL_US_WORDS];
+        if (PROCESS_VERBOSELY) NSLog(@"%@ has = %lu words", ALL_US_WORDS, (unsigned long)[_allUSWords count]);
+    }
+    return _allUSWords;
+}
+
 -(NSDictionary *)processedWords
 {
     if (!_processedWords) {
@@ -179,6 +201,8 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
     NSMutableDictionary *workingProcessedWords = [[NSMutableDictionary alloc] init];
     NSMutableArray *workingCollectionNames = [[NSMutableArray alloc] init];
     NSMutableArray *workingSmallCollectionNames = [[NSMutableArray alloc] init];
+    NSMutableArray *workingUKWords = [[NSMutableArray alloc] init];
+    NSMutableArray *workingUSWords = [[NSMutableArray alloc] init];
     NSMutableArray *workingTagNames = [[NSMutableArray alloc] init];
     NSMutableArray *workingAllWords = [[NSMutableArray alloc] init];
     
@@ -243,9 +267,14 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
             }
         }
         
-        if (usProcessedWord) [workingAllWords addObject:usProcessedWord];
-        if (ukProcessedWord) [workingAllWords addObject:ukProcessedWord];
-        
+        if (usProcessedWord) {
+            [workingAllWords addObject:usProcessedWord];
+            [workingUSWords addObject:usProcessedWord];
+        }
+        if (ukProcessedWord) {
+            [workingAllWords addObject:ukProcessedWord];
+            [workingUKWords addObject:ukProcessedWord];
+        }
         
         //processing collections on raw word
         NSMutableArray *collections = [NSMutableArray arrayWithArray:[rawWord objectForKey:@"collections"]];
@@ -271,6 +300,8 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
     [workingProcessedWords setObject:workingCollectionNames forKey:COLLECTION_NAMES];
     [workingProcessedWords setObject:workingSmallCollectionNames forKey:SMALL_COLLECTION_NAMES];
     [workingProcessedWords setObject:workingTagNames forKey:TAG_NAMES];
+    [workingProcessedWords setObject:workingUKWords forKey:ALL_UK_WORDS];
+    [workingProcessedWords setObject:workingUSWords forKey:ALL_US_WORDS];
     [workingProcessedWords setObject:workingAllWords forKey:ALL];
     
     //check for duplicate words
@@ -378,6 +409,7 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
 }
 
 - (NSArray *)allWordsForCurrentSpellingVariant {
+    /* inefficient
     NSPredicate *selectionPredicate = [NSPredicate predicateWithFormat:@"SELF.wordVariant LIKE[c] %@",[self.spellingVariant lowercaseString]];
     if (LOG_PREDICATE_RESULTS) {
         NSLog(@"Searching in allWordsForCurrentSpellingVariant");
@@ -386,6 +418,14 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
     }
     NSArray *matches = [NSArray arrayWithArray:[self.allWords filteredArrayUsingPredicate:selectionPredicate]];
     return matches;
+     */
+    if(LOG_MORE) NSLog(@"spelling variant for allWordsForCurrentSpellingVariant = %@", self.spellingVariant);
+    if ([self.spellingVariant isEqualToString:@"UK"]) {
+        return self.allUKWords;
+    } else {
+        return self.allUSWords;
+    }
+    
 }
 
 - (NSArray *)wordsForCurrentSpellingVariantInCollectionNamed:(NSString *)collectionName {
@@ -661,6 +701,8 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
     if ([property isEqualToString:COLLECTION_NAMES]) NSLog(@"DD2Word.%@ = %@", COLLECTION_NAMES, [DD2Words sharedWords].collectionNames);
     if ([property isEqualToString:SMALL_COLLECTION_NAMES]) NSLog(@"DD2Word.%@ = %@", SMALL_COLLECTION_NAMES, [DD2Words sharedWords].smallCollectionNames);
     if ([property isEqualToString:TAG_NAMES]) NSLog(@"DD2Word.%@ = %@", TAG_NAMES, [DD2Words sharedWords].tagNames);
+    if ([property isEqualToString:ALL_US_WORDS]) NSLog(@"DD2Word.%@ = %@", ALL_US_WORDS, [DD2Words sharedWords].allUSWords);
+    if ([property isEqualToString:ALL_UK_WORDS]) NSLog(@"DD2Word.%@ = %@", ALL_UK_WORDS, [DD2Words sharedWords].allUKWords);
     if ([property isEqualToString:ALL]) NSLog(@"DD2Word.%@ = %@", ALL, [DD2Words sharedWords].allWords);
     NSLog(@"-------- above or property missing ---------");
 }
