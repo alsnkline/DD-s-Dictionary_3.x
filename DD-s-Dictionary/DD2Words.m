@@ -162,6 +162,7 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
     if (!_processedWords) {
         NSURL * archiveFullUrl = [[DD2GlobalHelper archiveFileDirectory] URLByAppendingPathComponent:kDataFile];
         NSDictionary *pWords = [[NSDictionary alloc] init];
+        NSDate *start = [NSDate date];
         
         if (!self.wordProcessingNeeded) {
             @try {
@@ -176,7 +177,6 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
         }
         if (!_processedWords) {
             NSLog(@"**** Processing Words ****");
-            NSDate *start = [NSDate date];
             pWords = [self processWords];
             
             //save file in cache/archive
@@ -193,6 +193,8 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
             NSLog( @"processed words in %.4lf seconds", -ti);
             NSLog(@"**** Processing Ended ****");
         } else {
+            NSTimeInterval ti = [start timeIntervalSinceNow];
+            NSLog( @"archive retrieved in %.4lf seconds", -ti);
             NSLog(@"**** Using Archived Words ****");
         }
         _processedWords = pWords;
