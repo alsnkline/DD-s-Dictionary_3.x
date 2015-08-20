@@ -18,6 +18,8 @@
 @property (nonatomic, strong) NSMutableArray *filteredWords;
 @property (nonatomic, strong) NSArray *sections;    //only used in main tableview
 @property (nonatomic) BOOL showAddWordButton;
+@property (nonatomic, strong) NSString *currentSearchText;
+@property (nonatomic, assign) dispatch_queue_t workQueue;
 @end
 
 @implementation DD2AllWordSearchViewController
@@ -29,7 +31,17 @@
 @synthesize filteredWords = _filteredWords;
 @synthesize sections = _sections;
 @synthesize selectedWord = _selectedWord;
+@synthesize currentSearchText = _currentSearchText;
+@synthesize workQueue = _workQueue;
 
+
+
+- (dispatch_queue_t)workQueue {
+    if (!_workQueue) {
+        _workQueue = dispatch_queue_create("com.AlisonKline.DD-s-Dictionary", DISPATCH_QUEUE_SERIAL);
+    }
+    return _workQueue;
+}
 
 -(void)setAllWordsForSpellingVariant:(NSArray *)allWordsForSpellingVariant
 {
@@ -297,16 +309,18 @@
 }
 
 #pragma mark Content Filtering
--(void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope {
-    
-    // Update the filtered array based on the search text and scope.
-    // Remove all objects from the filtered search array
-    [self.filteredWords removeAllObjects];
-    self.showAddWordButton = NO;
+
+-(NSMutableArray *)wordsForFilteredWordsWithSearchText:(NSString*)searchText scope:(NSString*)scope stop:(BOOL *)stop {
     
     // Filter the array using NSPredicate
     NSPredicate *containsPredicate = [NSPredicate predicateWithFormat:@"SELF.spelling contains[c] %@",searchText];
     NSMutableArray *wordsForFilteredWords = [NSMutableArray arrayWithArray:[self sortArrayAlphabetically:[self.allWordsForSpellingVariant filteredArrayUsingPredicate:containsPredicate]]];
+    
+    if (![self isCurrentSearchText: searchText]) {
+        *stop = YES;     //checking to see if searchText has changed
+        NSLog(@"stop 0");
+        return [wordsForFilteredWords copy];
+    }
     
     //check for exact match(es) and put at top of list
     NSPredicate *exactMatchPredicate = [NSPredicate predicateWithFormat:@"SELF.spelling like %@",searchText];
@@ -320,6 +334,12 @@
     }
     if ([exactMatch count] == 1) [wordsForFilteredWords insertObject:[exactMatch lastObject] atIndex:0];
     
+    if (![self isCurrentSearchText: searchText]) {
+        *stop = YES;     //checking to see if searchText has changed
+        NSLog(@"stop 1");
+        return [wordsForFilteredWords copy];
+    }
+    
     //set need to show addWord button if no beginswith (includes exact) matches for searchText
     NSPredicate *bwMatchPredicate = [NSPredicate predicateWithFormat:@"SELF.spelling beginswith[c] %@",searchText];
     NSArray *bwMatches = [wordsForFilteredWords filteredArrayUsingPredicate:bwMatchPredicate];
@@ -331,11 +351,23 @@
     
     if (LOG_MORE) NSLog(@"search result list is %lu words long", (unsigned long)[wordsForFilteredWords count]);
     
+    if (![self isCurrentSearchText: searchText]) {
+        *stop = YES;     //checking to see if searchText has changed
+        NSLog(@"stop 2");
+        return [wordsForFilteredWords copy];
+    }
+    
     if ([wordsForFilteredWords count] < 15) {
         if (LOG_MORE) NSLog(@"Adding Levenshtein Distance matches");
         //check and add words to end of list if their LevenshteinDistance is low
         [self appendLowestLevenshteinDistanceWordsForSearchText:searchText toWordList:wordsForFilteredWords];
         if (LOG_MORE) NSLog(@"search result list is %lu words long  (with dups)", (unsigned long)[wordsForFilteredWords count]);
+    }
+    
+    if (![self isCurrentSearchText: searchText]) {
+        *stop = YES;     //checking to see if searchText has changed
+        NSLog(@"stop 3");
+        return [wordsForFilteredWords copy];
     }
     
     if ([wordsForFilteredWords count] < 15) {
@@ -361,9 +393,56 @@
         }
         if (LOG_MORE) NSLog(@"search result list is %lu words long (with dups)", (unsigned long)[wordsForFilteredWords count]);
     }
+    return [wordsForFilteredWords copy];
+}
+
+-(void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope {
     
-    // clean out all duplicates keeping order of first occurance in list
-    self.filteredWords = [NSMutableArray arrayWithArray:[[NSOrderedSet orderedSetWithArray:wordsForFilteredWords] array]];
+    // Update the filtered array based on the search text and scope.
+    // Remove all objects from the filtered search array
+    [self.filteredWords removeAllObjects];
+    self.showAddWordButton = NO;
+    
+    // complete the search (on different thread - soon http://stackoverflow.com/questions/16685922/speed-up-search-using-dispatch-async)
+    
+    dispatch_async(self.workQueue, ^{
+        NSDate *start = [NSDate date];
+        
+        //// quit before we even begin?
+        if ( ![self isCurrentSearchText: searchText] )
+            return;
+    
+        // we're going to search, so show the indicator (may already be showing)        //taken out as wasn't visible on the searchDisplayController
+//        [self.activityIndicatorView performSelectorOnMainThread: @selector( startAnimating )
+//                                                 withObject: nil
+//                                              waitUntilDone: NO];
+        
+        BOOL stop = NO;
+        NSMutableArray *wordsForFilteredWords = [self wordsForFilteredWordsWithSearchText:searchText scope:scope stop:&stop];
+        
+        if (stop)
+        {
+            NSTimeInterval ti = [start timeIntervalSinceNow];
+            NSLog( @"interrupted search after %.4lf seconds, searchText = %@", -ti, self.currentSearchText);
+            return;
+        }
+        
+
+        if ( [self isCurrentSearchText:searchText] )
+        {
+            NSTimeInterval ti = [start timeIntervalSinceNow];
+            NSLog( @"completed search in %.4lf seconds, searchText = %@", -ti, self.currentSearchText);
+            
+            dispatch_sync( dispatch_get_main_queue(), ^{
+                
+                // clean out all duplicates keeping order of first occurance in list
+                self.filteredWords = [NSMutableArray arrayWithArray:[[NSOrderedSet orderedSetWithArray:wordsForFilteredWords] array]];
+                NSLog(@"Showing %lu results", (unsigned long)[self.filteredWords count]);
+                [self.searchDisplayController.searchResultsTableView reloadData];
+//                [self.activityIndicatorView stopAnimating];
+            });
+        }
+    });
     
     //track search event with GA
     [DD2GlobalHelper sendEventToGAWithCategory:@"uiAction_Search" action:@"All_words" label:searchText value:nil];
@@ -405,14 +484,30 @@
     [wordList addObjectsFromArray:sortedWordList];
 }
 
+- (BOOL) isCurrentSearchText: (NSString*) searchText
+{
+    @synchronized (self)
+    {
+        // are we current at this point?
+        BOOL current = [self.currentSearchText isEqualToString: searchText];
+        return current;
+    }
+}
+
+
 #pragma mark - UISearchDisplayController Delegate Methods
 
 -(BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString {
+    
+    @synchronized (self) {          //setting currentSearchText so we can stop search if it changes.
+        self.currentSearchText = searchString;
+    }
+    
     // Tells the table data source to reload when text changes
     [self filterContentForSearchText:searchString scope:
      [[self.searchDisplayController.searchBar scopeButtonTitles] objectAtIndex:[self.searchDisplayController.searchBar selectedScopeButtonIndex]]];
-    // Return YES to cause the search result table view to be reloaded.
-    return YES;
+    // Return YES to cause the search result table view to be reloaded. (don't always want to reload as search may be slow and out dated by it returns)
+    return NO;
 }
 
 -(BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchScope:(NSInteger)searchOption {
