@@ -176,10 +176,12 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
         }
         if (!_processedWords) {
             NSLog(@"**** Processing Words ****");
+            NSDate *start = [NSDate date];
             pWords = [self processWords];
             
             //save file in cache/archive
             BOOL success = [NSKeyedArchiver archiveRootObject:pWords toFile:archiveFullUrl.path];
+            NSLog(@"Archived processed words = %@", success ? @"successfully" : @"archive failed");
             if (success) {
                 self.wordProcessingNeeded = false;
                 // save version of app with sucessfully processed words to NSUserDefaults
@@ -187,7 +189,9 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
                 [[NSUserDefaults standardUserDefaults] setObject:build forKey:APPLICATION_BUILD];
                 [[NSUserDefaults standardUserDefaults] synchronize];
             }
-            NSLog(@"Archived processed words = %@\n                                                  **** Processing Ended ****",success ? @"successfully" : @"archive failed");
+            NSTimeInterval ti = [start timeIntervalSinceNow];
+            NSLog( @"processed words in %.4lf seconds", -ti);
+            NSLog(@"**** Processing Ended ****");
         } else {
             NSLog(@"**** Using Archived Words ****");
         }
