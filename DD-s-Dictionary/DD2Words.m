@@ -403,21 +403,23 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
 
 + (NSDictionary *)wordsBySectionFromWordList:(NSArray *)wordList
 {
-    NSArray *possibleSectionNames = [DD2GlobalHelper alphabet];
     NSMutableDictionary *wordsBySections = [[NSMutableDictionary alloc] init];
     NSLog(@"# words = %lu", (unsigned long)[wordList count]);
     
-    for (NSString *sectionName in possibleSectionNames) {
-        NSPredicate *selectionPredicate = [NSPredicate predicateWithFormat:@"SELF.section LIKE[c] %@",[sectionName uppercaseString]];
-        if (LOG_PREDICATE_RESULTS) {
-            NSLog(@"Searching in wordsBySectionFromWordList:");
-            NSLog(@"predicate = %@", selectionPredicate);
-//            [DD2GlobalHelper testWordPredicate:selectionPredicate onWords:wordList];
+    for (NSDictionary *word in wordList) {
+        NSString *sectionForWord = word[@"section"];
+        if([wordsBySections objectForKey:sectionForWord]) {
+            NSArray *currentWordsForSection = [wordsBySections objectForKey:sectionForWord];
+            currentWordsForSection = [currentWordsForSection arrayByAddingObject:word];
+            [wordsBySections setObject:currentWordsForSection forKey:sectionForWord];
+        } else {        // first word in section
+            [wordsBySections setObject:[NSArray arrayWithObject:word] forKey:sectionForWord];
         }
-        NSArray *matches = [NSArray arrayWithArray:[wordList filteredArrayUsingPredicate:selectionPredicate]];
-        
-        if ([matches count] > 0) {
-            [wordsBySections setObject:matches forKey:[sectionName uppercaseString]];
+    }
+    
+    if (LOG_MORE) {
+        for (NSString* section in [[wordsBySections allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)]) {
+            NSLog(@"count of words in section %@ = %lu", section, (unsigned long)[wordsBySections[section] count]);
         }
     }
     return [wordsBySections copy];
