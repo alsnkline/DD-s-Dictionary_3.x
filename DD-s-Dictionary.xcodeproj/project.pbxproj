@@ -558,7 +558,6 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "D78BE064-4425-4B21-9185-330076B34906";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
