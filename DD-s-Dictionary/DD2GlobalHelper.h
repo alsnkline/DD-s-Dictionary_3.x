@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-#define LOG_MORE YES                      // must be NO for ship
+#define LOG_MORE NO                      // must be NO for ship
 #define PROCESS_VERBOSELY NO              // must be NO for ship
 #define LOG_PREDICATE_RESULTS NO          // must be NO for ship
 #define LOG_ANALYTICS NO                  // must be NO for ship
@@ -19,7 +19,7 @@
 
 #define APPTIMIZE_NON_PRODUCTION NO         // must be NO for ship
 
-#define NO_GA YES                            // must be NO for ship
+#define NO_GA NO                            // must be NO for ship
 #define LOG_VOICE_HINTS NO                    // should be NO for ship
 
 #define ENABLE_VOICE_HINTS NO              // should be NO for ship (until feature is reimplemented) - only sets on first app launch
