@@ -176,6 +176,25 @@
     
 }
 
++ (void)sendApptimizeExperimentDataToGoogle:(NSDictionary *)testInfo {
+    //Apptimize Track experiments with Google Analytics
+    for (id test in [testInfo allValues]) {
+        if ([test conformsToProtocol:@protocol(ApptimizeTestInfo)]) {
+            if (LOG_MORE) {
+                NSLog(@"testName = %@, testID = %@", [test testName], [test testID]);
+                NSLog(@"variantName = %@, variantID = %@", [test enrolledVariantName], [test enrolledVariantID]);
+                NSLog(@"testStartedDate = %@, enrolledDate = %@", [test testStartedDate], [test testEnrolledDate]);
+                NSLog(@"userHasParticipated = %@", [test userHasParticipated]? @"Yes":@"No");
+            }
+            NSString *categoryForGA = [NSString stringWithFormat:@"uiExperiment_%@", [test testID]];
+            NSString *actionForGA = [NSString stringWithFormat:@"e:%@_v:%@_(e:%@_v:%@)", [test testID], [test enrolledVariantID], [test testName], [test enrolledVariantName]];
+            NSString *labelForGA = [NSString stringWithFormat:@"participated:%@", [test userHasParticipated]? @"Yes":@"No"];
+            if (LOG_ANALYTICS) NSLog(@"category:%@, action:%@, label:%@", categoryForGA, actionForGA, labelForGA);
+            [DD2GlobalHelper sendEventToGAWithCategory:categoryForGA action:actionForGA label:labelForGA value:nil];
+        }
+    };
+}
+
 #pragma mark - Double Metaphone Methods
 
 + (NSArray *)doubleMetaphoneCodesFor:(NSString *)spelling

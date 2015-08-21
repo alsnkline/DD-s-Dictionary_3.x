@@ -50,7 +50,7 @@
 
 #define StringFromBOOL(b) ((b) ? @"YES" : @"NO")
 
-ApptimizeBoolean(useUsukFlagIcons, NO);
+ApptimizeBoolean(useUsukFlagIcons, YES);
 ApptimizeBoolean(hideCopySpellingToClipboardButton, NO);
 
 -(void)awakeFromNib
@@ -132,9 +132,10 @@ ApptimizeBoolean(hideCopySpellingToClipboardButton, NO);
     if (word) {
         [self manageListenButtons];
         
-        NSLog(@"Enrolled Tests: %@",[Apptimize testInfo]);
-        NSLog(@"hideCopySpellingToClipboardButton = %@", StringFromBOOL([hideCopySpellingToClipboardButton boolValue]));
-        NSLog(@"useUsukFlagIcons = %@", StringFromBOOL([useUsukFlagIcons boolValue]));
+        if(LOG_MORE) {
+            NSLog(@"hideCopySpellingToClipboardButton = %@", StringFromBOOL([hideCopySpellingToClipboardButton boolValue]));
+            NSLog(@"useUsukFlagIcons = %@", StringFromBOOL([useUsukFlagIcons boolValue]));
+        }
         
         self.spellingToClipboardButton.hidden = [hideCopySpellingToClipboardButton boolValue];
         
@@ -180,6 +181,10 @@ ApptimizeBoolean(hideCopySpellingToClipboardButton, NO);
         
         //track word view with Apptimize
         [Apptimize track:@"Viewed Word" value:1] ;
+        
+        //track Apptimize experiment participation
+        NSDictionary *testInfo = [Apptimize testInfo];
+        [DD2GlobalHelper sendApptimizeExperimentDataToGoogle:testInfo];
     }
 }
 

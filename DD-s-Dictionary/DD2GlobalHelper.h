@@ -40,6 +40,7 @@
 //Analytics Methods
 + (void)sendViewToGAWithViewName:(NSString *)screenName;
 + (void)sendEventToGAWithCategory:(NSString *)category action:(NSString *)action label:(NSString *)label value:(NSNumber *)value;
++ (void)sendApptimizeExperimentDataToGoogle:(NSDictionary *)testInfo;
 
 //Double Metophone Methods
 + (NSArray *)doubleMetaphoneCodesFor:(NSString *)spelling;
