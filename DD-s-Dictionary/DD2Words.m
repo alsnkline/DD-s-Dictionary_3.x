@@ -90,7 +90,6 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
             if (error2) {
                 NSLog(@"error = %@", error2);
             }
-            //if (PROCESS_VERBOSELY) NSLog(@"contents from file json = %@",json);
             
             NSLog(@"word count = %lu",(unsigned long)[[json objectForKey:@"words"] count]);
             
@@ -191,16 +190,21 @@ static DD2Words *sharedWords = nil;     //The shared instance of this class not 
             }
             NSTimeInterval ti = [start timeIntervalSinceNow];
             NSLog( @"processed words in %.4lf seconds", -ti);
+            //track processing time with GA
+            [DD2GlobalHelper sendEventToGAWithCategory:@"uiStartup" action:@"words" label:@"processed" value:[NSNumber numberWithFloat:-ti ]];
             NSLog(@"**** Processing Ended ****");
         } else {
             NSTimeInterval ti = [start timeIntervalSinceNow];
             NSLog( @"archive retrieved in %.4lf seconds", -ti);
+            //track processing time with GA
+            [DD2GlobalHelper sendEventToGAWithCategory:@"uiStartup" action:@"words" label:@"archiveUsed" value:[NSNumber numberWithFloat:-ti]];
             NSLog(@"**** Using Archived Words ****");
         }
         _processedWords = pWords;
     }
     return _processedWords;
 }
+
 
 -(NSDictionary *)processWords
 {
