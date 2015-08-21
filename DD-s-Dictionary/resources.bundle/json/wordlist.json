@@ -9115,9 +9115,6 @@
             "word": "bereavement"
         }, 
         {
-            "collections": [
-                "hard_words"
-            ], 
             "root": "biography", 
             "word": "biographies"
         }, 
@@ -9208,9 +9205,6 @@
             "word": "committee"
         }, 
         {
-            "collections": [
-                "hard_words"
-            ], 
             "root": "committee", 
             "word": "committees"
         }, 
@@ -9310,9 +9304,6 @@
             "word": "discombobulate"
         }, 
         {
-            "collections": [
-                "hard_words"
-            ], 
             "root": "discombobulate", 
             "tags": [
                 "'ate'"
@@ -9411,9 +9402,6 @@
             "word": "gerund"
         }, 
         {
-            "collections": [
-                "hard_words"
-            ], 
             "root": "gerund", 
             "word": "gerunds"
         }, 
@@ -9762,7 +9750,8 @@
         }, 
         {
             "collections": [
-                "hard_words"
+                "hard_words", 
+                "misspelled_words"
             ], 
             "word": {
                 "uk": "diarrhoea", 
@@ -9798,9 +9787,10 @@
             }
         }, 
         {
-            "collections": [
-                "hard_words"
-            ], 
+            "root": {
+                "uk": "memorise", 
+                "us": "memorize"
+            }, 
             "word": {
                 "uk": "memorised", 
                 "us": "memorized"
@@ -9810,6 +9800,10 @@
             "collections": [
                 "hard_words"
             ], 
+            "root": {
+                "uk": "memorise", 
+                "us": "memorize"
+            }, 
             "word": {
                 "uk": "memorising", 
                 "us": "memorizing"
@@ -25858,10 +25852,10 @@
             "word": "discriminate"
         }, 
         {
-            "collections": [
-                "hard_words"
-            ], 
             "root": "discriminate", 
+            "tags": [
+                "'tion'"
+            ], 
             "word": "discrimination"
         }, 
         {
@@ -25953,7 +25947,7 @@
                 "doughnut"
             ], 
             "small_collection": [
-                "Brand"
+                "Brands"
             ], 
             "word": "Donut"
         }, 
@@ -26635,7 +26629,7 @@
         }, 
         {
             "collections": [
-                "misspelled_words"
+                "more_words"
             ], 
             "word": "giant's_castle"
         }, 
@@ -26966,9 +26960,6 @@
             "word": "hyperventilate"
         }, 
         {
-            "collections": [
-                "hard_words"
-            ], 
             "root": "hyperventilate", 
             "tags": [
                 "'tion'"
@@ -26976,9 +26967,7 @@
             "word": "hyperventilation"
         }, 
         {
-            "collections": [
-                "hard_words"
-            ], 
+            "root": "hyperventilate", 
             "word": "hyperventilated"
         }, 
         {
@@ -27983,7 +27972,7 @@
                 "more_words"
             ], 
             "small_collection": [
-                "Times_of_the_Year"
+                "Times_of_the_year"
             ], 
             "word": "monsoon"
         }, 
