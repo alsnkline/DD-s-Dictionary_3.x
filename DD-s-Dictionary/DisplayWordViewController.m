@@ -11,7 +11,6 @@
 #import <AVFoundation/AVFoundation.h> //for audioPlayer
 #import "NSUserDefaultKeys.h"
 #import <QuartzCore/QuartzCore.h>
-#import <Apptimize/Apptimize.h>
 
 @interface DisplayWordViewController () <AVAudioPlayerDelegate>
 
