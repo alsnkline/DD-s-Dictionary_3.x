@@ -446,16 +446,17 @@
                 NSLog(@"Showing %lu results", (unsigned long)[self.filteredWords count]);
                 [self.searchDisplayController.searchResultsTableView reloadData];
 //                [self.activityIndicatorView stopAnimating];
+                
+                //track search event with GA
+                [DD2GlobalHelper sendEventToGAWithCategory:@"uiAction_Search" action:@"All_words" label:searchText value:nil];
+                
+                //track search event with Flurry
+                NSDictionary *flurryParameters = @{@"searchTerm" : searchText};
+                [Flurry logEvent:@"uiAction_Search" withParameters:flurryParameters];
+
             });
         }
     });
-    
-    //track search event with GA
-    [DD2GlobalHelper sendEventToGAWithCategory:@"uiAction_Search" action:@"All_words" label:searchText value:nil];
-    
-    //track search event with Flurry
-    NSDictionary *flurryParameters = @{@"searchTerm" : searchText};
-    [Flurry logEvent:@"uiAction_Search" withParameters:flurryParameters];
 }
 
 - (void)appendDMMatchesUsingPredicate:(NSPredicate *)predicate toWordList:(NSMutableArray *)wordList
@@ -693,6 +694,10 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)dealloc {
+    dispatch_release(self.workQueue);
 }
 
 @end
