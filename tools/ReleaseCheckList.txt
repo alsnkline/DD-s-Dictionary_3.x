@@ -10,6 +10,9 @@ Ship App Check List:
 
 1. Update the build number to be above the previous shipping build.
 2. Create a tagged build http://git-scm.com/book/en/Git-Basics-Tagging
+	git tags (lists all the current tags)
+	git show <tag name> (shows all the details for that tag)
+	git tag -a <new name> -m “<message>” (actually sets a new tag)
 	don't forget to push the new tag to git "git push --tags"
    (can Create Release Branch later if needed)
 (how to delete a tag if you need too)
