@@ -1,6 +1,6 @@
 //
 //  Apptimize+Variables.h
-//  Apptimize (v2.12.0)
+//  Apptimize 2.16.10
 //
 //  Copyright (c) 2015 Apptimize, Inc. All rights reserved.
 //

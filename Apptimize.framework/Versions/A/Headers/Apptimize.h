@@ -1,6 +1,6 @@
 //
 //  Apptimize.h
-//  Apptimize (v2.12.0)
+//  Apptimize 2.16.10
 //
 //  Copyright (c) 2014 Apptimize, Inc. All rights reserved.
 //
@@ -99,6 +99,8 @@ APPTIMIZE_VISIBLE @interface Apptimize : NSObject
  Start apptimize with the provided options, where options is a dictionary
  containing ApptimizeDevicePairingOption or ApptimizeLogLevelOption
  and their respective values.
+ Apptimize should be started on the main thread and can be safely started 
+ more than once.
  */
 + (void)startApptimizeWithApplicationKey:(NSString *)applicationKey options:(NSDictionary *)options;
 
@@ -126,17 +128,42 @@ APPTIMIZE_VISIBLE @interface Apptimize : NSObject
 + (BOOL)isOffline;
 
 /**
+ @return Returns YES if and only if the feature flag is on.
+ */
++ (BOOL)isFeatureFlagOn:(NSString *)featureFlagName;
+
+/**
  Run a test. Either the baseline or one of the variation blocks will be called synchronously exactly once
  per call. To run a test, set it up at https://apptimize.com/admin/ and then copy and paste the
- provided code template into your code to use this.
+ provided code template into your code to use this. For Swift use: runTest:withBaseline:codeBlocks:andOptions:
+ @see runTest:withBaseline:apptimizeCodeBlocks:andOptions:
  */
 + (void)runTest:(NSString *)testName withBaseline:(void (^)(void))baselineBlock variations:(NSDictionary *)variations andOptions:(NSDictionary *)options;
 
 /**
- Same as runExperiment:withBaseline:variations:options: passing nil for options.
- @see runExperiment:withBaseline:variations:options:
+ Same as runTest:withBaseline:variations:andOptions: passing nil for options.
+ For Swift use: runTest:withBaseline:andCodeBlocks:
+ @see runTest:withBaseline:variations:andOptions:
+ @see runTest:withBaseline:apptimizeCodeBlocks:andOptions:
+ @see runTest:withBaseline:andApptimizeCodeBlocks:
  */
 + (void)runTest:(NSString *)testName withBaseline:(void (^)(void))baselineBlock andVariations:(NSDictionary *)variations;
+
+/**
+ Same as runTest:withBaseline:variations:andOptions: except takes an array of ApptimizeCodeBlock.
+ This is useful in Swift where using runTest:withBaseline:variations:andOptions: is problematic
+ because of bridging issues.
+ @see runTest:withBaseline:variations:andOptions:
+ @param
+ */
++ (void)runTest:(NSString *)testName withBaseline:(void (^)(void))baselineBlock apptimizeCodeBlocks:(NSArray *)codeBlocks andOptions:(NSDictionary *)options;
+
+/**
+ Same as runTest:withBaseline:codeBlocks:andOptions: passing nil for options.
+ @see runTest:withBaseline:apptimizeCodeBlocks:andOptions:
+ @see runTest:withBaseline:variations:andOptions:
+ */
++ (void)runTest:(NSString *)testName withBaseline:(void (^)(void))baselineBlock andApptimizeCodeBlocks:(NSArray *)codeBlocks;
 
 /**
  Track an event
@@ -164,16 +191,39 @@ APPTIMIZE_VISIBLE @interface Apptimize : NSObject
 + (NSString *)userID;
 
 /**
- * Returns information about all Apptimize A/B tests that this device is
- * enrolled in. Note that this does NOT include information about Apptimize
- * A/B tests that are running but that this device is not enrolled in.
+ Set the pilotTargetingID if you want to use the pilot targeting feature available on your Apptimize web dashboard.
+ Pilot targeting allows you to select specific pilotTargingID's and groups of pilotTargetingID's
+ in the Apptimize web dashboard for the purposes of targeting experiments and feature flags to specific app/user instances.
+ Setting this value will cause pilot targeting to be recalculated if applicable.
+ */
++ (void)setPilotTargetingID:(NSString *)pilotTargetingID;
+
+/**
+ @return Returns the pilotTargetingID. By default this value is nil. It should be set by your application
+ to enable pilot targeting for the device.
+ Pilot targeting allows you to select specific pilotTargingID's and groups of pilotTargetingID's
+ in the Apptimize web dashboard for the purposes of targeting experiments and feature flags to specific app/user instances.
+ Setting this value will cause pilot targeting to be recalculated if applicable.
+ */
++ (NSString *)pilotTargetingID;
+
+/**
+ * Returns information about all Apptimize A/B tests and Feature Flags that this device is
+ * enrolled in. Note that this does NOT include information about Apptimize A/B tests and
+ * Feature Flags that are running but that this device is not enrolled in.
  *
- * @return The NSDictionary whose keys are the names of all tests the device is enrolled in, and whose values are ApptimizeTestInfo objects containing information about the test
+ * @return The NSDictionary whose keys are the names of all tests the device is enrolled in,
+ * and whose values are ApptimizeTestInfo objects containing information about the test.
+ * The return will be empty if this device is enrolled in no tests.
+ *
+ * Returns nil if Apptimize::startApptimizeWithApplicationKey... has not been called.
  */
 + (NSDictionary *)testInfo;
 
 /**
- Wait for the initial set of tests to become available. This method will block for `timeout` milliseconds (up to 8000) while Apptimize attempts to fetch tests and any related assets. It is meant to be used as part of application initialization, usually during a loading screen.
+ Wait for the initial set of tests to become available. This method will block for `timeout` 
+ milliseconds (up to 8000) while Apptimize attempts to fetch tests and any related assets. 
+ It is meant to be used as part of application initialization, usually during a loading screen.
  */
 + (BOOL)waitForTestsToBecomeAvailable:(NSTimeInterval)timeout;
 
@@ -296,10 +346,27 @@ APPTIMIZE_VISIBLE @interface Apptimize : NSObject
         @"experimentName": <NSString* experiment name>,
         @"experimentID": <NSNumber* id>
     @}
+ The returned dictionary will be empty if there are no available variants.
  
  Returns nil if Apptimize::startApptimizeWithApplicationKey... has not been called.
  */
 + (NSDictionary*)getVariants;
+@end
+
+/** @name Apptimize Code Block */
+/**
+ Wraps a code block with its corresponding name.
+ Useful in Swift for passing closures to
+ runTest:withBaseline:andApptimizeCodeBlocks:
+ */
+@interface ApptimizeCodeBlock : NSObject
+@property (nonatomic, copy) NSString *name;
+@property (nonatomic, copy) void (^block)(void);
+/**
+ * Initialize an ApptimizeCodeBlock that contains block and corresponding name
+ * @return ApptimizeCodeBlock
+ */
+- (instancetype)initWithName:(NSString *)name andBlock:(void (^)(void))block;
 @end
 
 /** @name Test Information */

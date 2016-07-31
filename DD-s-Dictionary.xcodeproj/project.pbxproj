@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		B108F24C18DA5069009E3A5C /* libFlurry_4.3.2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B108F24B18DA5069009E3A5C /* libFlurry_4.3.2.a */; };
 		B108F24E18DA64FD009E3A5C /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B108F24D18DA64FD009E3A5C /* libGoogleAnalyticsServices.a */; };
+		B111F7541D4D9B5C0020EB40 /* Apptimize.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B111F7531D4D9B5C0020EB40 /* Apptimize.framework */; };
 		B1385A6917EEAF3F0015BA5A /* DD2SettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B1385A6817EEAF3F0015BA5A /* DD2SettingsTableViewController.m */; };
 		B160FFAC1819B504007946DB /* double_metaphone.mm in Sources */ = {isa = PBXBuildFile; fileRef = B160FFAB1819B504007946DB /* double_metaphone.mm */; };
 		B191926317F8F6BF00B628E5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B191926217F8F6BF00B628E5 /* Images.xcassets */; };
@@ -57,13 +58,13 @@
 		B1C21C9E17ECF74B00C51C8C /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = B1C21C9D17ECF74B00C51C8C /* Default-Landscape~ipad.png */; };
 		B1CCB5CC17DFC444009D7BF0 /* htmlPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B1CCB5CB17DFC443009D7BF0 /* htmlPageViewController.m */; };
 		B1CCB5CE17DFC797009D7BF0 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1CCB5CD17DFC797009D7BF0 /* MessageUI.framework */; };
-		B1E8C9C91B6D619E0055C519 /* Apptimize.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1E8C9C81B6D619D0055C519 /* Apptimize.framework */; };
 		B1E8C9CB1B6D61DA0055C519 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1E8C9CA1B6D61DA0055C519 /* CFNetwork.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		B108F24B18DA5069009E3A5C /* libFlurry_4.3.2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_4.3.2.a; sourceTree = "<group>"; };
 		B108F24D18DA64FD009E3A5C /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
+		B111F7531D4D9B5C0020EB40 /* Apptimize.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Apptimize.framework; sourceTree = "<group>"; };
 		B1385A6717EEAF3F0015BA5A /* DD2SettingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DD2SettingsTableViewController.h; sourceTree = "<group>"; };
 		B1385A6817EEAF3F0015BA5A /* DD2SettingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DD2SettingsTableViewController.m; sourceTree = "<group>"; };
 		B160FFAA1819B504007946DB /* double_metaphone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = double_metaphone.h; sourceTree = "<group>"; };
@@ -136,7 +137,6 @@
 		B1CCB5CA17DFC443009D7BF0 /* htmlPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = htmlPageViewController.h; sourceTree = "<group>"; };
 		B1CCB5CB17DFC443009D7BF0 /* htmlPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = htmlPageViewController.m; sourceTree = "<group>"; };
 		B1CCB5CD17DFC797009D7BF0 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
-		B1E8C9C81B6D619D0055C519 /* Apptimize.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Apptimize.framework; sourceTree = "<group>"; };
 		B1E8C9CA1B6D61DA0055C519 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -148,7 +148,6 @@
 				B1E8C9CB1B6D61DA0055C519 /* CFNetwork.framework in Frameworks */,
 				B1966A5017F3F0FF007277A8 /* libsqlite3.dylib in Frameworks */,
 				B1966A4E17F3F0BF007277A8 /* CoreTelephony.framework in Frameworks */,
-				B1E8C9C91B6D619E0055C519 /* Apptimize.framework in Frameworks */,
 				B1954E9217EE68A900371610 /* Security.framework in Frameworks */,
 				B1B7D19817ED0CDC004576F8 /* libz.dylib in Frameworks */,
 				B1B7D19617ED0C74004576F8 /* SystemConfiguration.framework in Frameworks */,
@@ -161,6 +160,7 @@
 				B195672A17DA64D400CB7F4B /* UIKit.framework in Frameworks */,
 				B195672C17DA64D400CB7F4B /* Foundation.framework in Frameworks */,
 				B195672E17DA64D400CB7F4B /* CoreGraphics.framework in Frameworks */,
+				B111F7541D4D9B5C0020EB40 /* Apptimize.framework in Frameworks */,
 				B108F24C18DA5069009E3A5C /* libFlurry_4.3.2.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -209,8 +209,8 @@
 		B195672817DA64D400CB7F4B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B111F7531D4D9B5C0020EB40 /* Apptimize.framework */,
 				B1E8C9CA1B6D61DA0055C519 /* CFNetwork.framework */,
-				B1E8C9C81B6D619D0055C519 /* Apptimize.framework */,
 				B1966A4F17F3F0FF007277A8 /* libsqlite3.dylib */,
 				B1966A4D17F3F0BF007277A8 /* CoreTelephony.framework */,
 				B1954E9117EE68A900371610 /* Security.framework */,

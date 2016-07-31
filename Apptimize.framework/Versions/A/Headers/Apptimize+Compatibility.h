@@ -1,6 +1,6 @@
 //
 //  Apptimize+Compatibility.h
-//  Apptimize (v2.12.0)
+//  Apptimize 2.16.10
 //
 //  Copyright (c) 2014 Apptimize, Inc. All rights reserved.
 //
