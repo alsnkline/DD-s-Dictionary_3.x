@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" variant="6xAndEarlier" propertyAccessControl="none" initialViewController="sbX-O3-UlK">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="sbX-O3-UlK">
     <dependencies>
-        <deployment identifier="iOS"/>
-        <development version="4600" identifier="xcode"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <deployment version="1536" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -29,7 +28,7 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="55" sectionHeaderHeight="22" sectionFooterHeight="22" id="a8l-FX-5pZ">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="55" sectionHeaderHeight="22" sectionFooterHeight="22" id="a8l-FX-5pZ">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -37,7 +36,7 @@
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="List Word" textLabel="5bf-Bd-U8i" style="IBUITableViewCellStyleDefault" id="4ae-RS-9Dd">
                                         <rect key="frame" x="0.0" y="22" width="320" height="55"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4ae-RS-9Dd" id="KJF-2a-Lj3">
                                             <rect key="frame" x="0.0" y="0.0" width="300" height="54"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
@@ -49,8 +48,7 @@
                                                     <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
+                                        </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -97,7 +95,7 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="55" sectionHeaderHeight="22" sectionFooterHeight="22" id="vrw-h4-RbT">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="55" sectionHeaderHeight="22" sectionFooterHeight="22" id="vrw-h4-RbT">
                                 <rect key="frame" x="0.0" y="44" width="320" height="411"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -105,20 +103,19 @@
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Search Word" textLabel="0ti-Tt-bAc" style="IBUITableViewCellStyleDefault" id="1iW-ol-ffM">
                                         <rect key="frame" x="0.0" y="22" width="320" height="55"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="300" height="54"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1iW-ol-ffM" id="0Vx-3l-hLv">
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="54"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0ti-Tt-bAc">
-                                                    <rect key="frame" x="10" y="0.0" width="280" height="54"/>
+                                                    <rect key="frame" x="15" y="0.0" width="270" height="54"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
+                                        </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -252,11 +249,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <state key="normal" title="Email us">
-                                            <color key="titleColor" red="0.19607843137254902" green="0.30980392156862746" blue="0.52156862745098043" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <state key="highlighted">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
                                             <action selector="sendEmail:" destination="umX-g8-PvS" eventType="touchUpInside" id="D0a-CV-tuL"/>
@@ -267,11 +260,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <state key="normal" title=" Review us">
-                                            <color key="titleColor" red="0.19607843137254902" green="0.30980392156862746" blue="0.52156862745098043" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <state key="highlighted">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
                                             <action selector="rateInStore:" destination="umX-g8-PvS" eventType="touchUpInside" id="069-bf-svT"/>
@@ -317,15 +306,15 @@ the Dyslexic's Dictionary</string>
                         <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="vED-u4-naa">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="vED-u4-naa">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Settings 0 0" id="ILW-tY-mJk" customClass="DD2SettingsTableViewCell">
-                                        <rect key="frame" x="0.0" y="58" width="318" height="44"/>
+                                        <rect key="frame" x="0.0" y="48" width="318" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ILW-tY-mJk" id="PLA-4q-gyg">
                                             <rect key="frame" x="10" y="1" width="298" height="42"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
@@ -337,29 +326,28 @@ the Dyslexic's Dictionary</string>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
                                                 <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" continuous="NO" id="EvG-ZC-WRA">
-                                                    <rect key="frame" x="209" y="11" width="81" height="23"/>
+                                                    <rect key="frame" x="209" y="11" width="81" height="29"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <connections>
                                                         <action selector="spellingVariantSliderChanged:" destination="EyP-35-0cz" eventType="valueChanged" id="YPs-wC-6v6"/>
                                                     </connections>
                                                 </slider>
                                             </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
+                                        </tableViewCellContentView>
                                         <connections>
                                             <outlet property="label" destination="Ns7-nr-kUx" id="V93-qK-zvK"/>
                                             <outlet property="smallSlider" destination="EvG-ZC-WRA" id="oPJ-9q-rzr"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Settings 0 1" id="Q70-ct-6C0" customClass="DD2SettingsTableViewCell">
-                                        <rect key="frame" x="0.0" y="102" width="318" height="44"/>
+                                        <rect key="frame" x="0.0" y="92" width="318" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Q70-ct-6C0" id="NQy-Pk-X5p">
                                             <rect key="frame" x="10" y="0.0" width="298" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="YYJ-8a-AwL">
-                                                    <rect key="frame" x="211" y="8" width="79" height="27"/>
+                                                    <rect key="frame" x="211" y="8" width="51" height="31"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <connections>
                                                         <action selector="playOnSelectionSwitchChanged:" destination="EyP-35-0cz" eventType="valueChanged" id="wIa-73-jnH"/>
@@ -373,16 +361,15 @@ the Dyslexic's Dictionary</string>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
+                                        </tableViewCellContentView>
                                         <connections>
                                             <outlet property="cellSwitch" destination="YYJ-8a-AwL" id="6lo-xE-EHE"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Settings 0 2" id="uNj-tW-0Jg" customClass="DD2SettingsTableViewCell">
-                                        <rect key="frame" x="0.0" y="146" width="318" height="44"/>
+                                        <rect key="frame" x="0.0" y="136" width="318" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uNj-tW-0Jg" id="ErP-DR-oMA">
                                             <rect key="frame" x="10" y="0.0" width="298" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
@@ -394,28 +381,27 @@ the Dyslexic's Dictionary</string>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="WfC-kQ-9E2">
-                                                    <rect key="frame" x="211" y="8" width="79" height="27"/>
+                                                    <rect key="frame" x="211" y="8" width="51" height="31"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <connections>
                                                         <action selector="voiceHintsSwitchChanged:" destination="EyP-35-0cz" eventType="valueChanged" id="9O5-Yb-xBe"/>
                                                     </connections>
                                                 </switch>
                                             </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
+                                        </tableViewCellContentView>
                                         <connections>
                                             <outlet property="cellSwitch" destination="WfC-kQ-9E2" id="iCr-IJ-tw0"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Settings 0 3" id="fFv-Db-JNg" customClass="DD2SettingsTableViewCell">
-                                        <rect key="frame" x="0.0" y="190" width="318" height="44"/>
+                                        <rect key="frame" x="0.0" y="180" width="318" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fFv-Db-JNg" id="hTf-AJ-EBP">
                                             <rect key="frame" x="10" y="0.0" width="298" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="6yF-Kw-qZ0">
-                                                    <rect key="frame" x="211" y="8" width="79" height="27"/>
+                                                    <rect key="frame" x="211" y="8" width="51" height="31"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <connections>
                                                         <action selector="useDyslexieFontSwitchChanged:" destination="EyP-35-0cz" eventType="valueChanged" id="NJo-uB-y3b"/>
@@ -429,16 +415,15 @@ the Dyslexic's Dictionary</string>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
+                                        </tableViewCellContentView>
                                         <connections>
                                             <outlet property="cellSwitch" destination="6yF-Kw-qZ0" id="7Mh-at-9pK"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Settings 0 4" id="rkP-v4-hmK" customClass="DD2SettingsTableViewCell">
-                                        <rect key="frame" x="0.0" y="234" width="318" height="44"/>
+                                        <rect key="frame" x="0.0" y="224" width="318" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rkP-v4-hmK" id="c4e-jA-DoZ">
                                             <rect key="frame" x="10" y="0.0" width="298" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
@@ -450,45 +435,43 @@ the Dyslexic's Dictionary</string>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
                                                 <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="2" continuous="NO" id="FGH-RA-ykX">
-                                                    <rect key="frame" x="209" y="11" width="81" height="23"/>
+                                                    <rect key="frame" x="209" y="11" width="81" height="29"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <connections>
                                                         <action selector="backgroundSaturationSliderChanged:" destination="EyP-35-0cz" eventType="valueChanged" id="8wH-rc-lPq"/>
                                                     </connections>
                                                 </slider>
                                             </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
+                                        </tableViewCellContentView>
                                         <connections>
                                             <outlet property="label" destination="WTc-2e-NuU" id="hT6-xC-yQP"/>
                                             <outlet property="smallSlider" destination="FGH-RA-ykX" id="ci6-hA-Y3Z"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Settings 0 5" id="awt-5M-ToU" customClass="DD2SettingsTableViewCell">
-                                        <rect key="frame" x="0.0" y="278" width="318" height="44"/>
+                                        <rect key="frame" x="0.0" y="268" width="318" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="awt-5M-ToU" id="UIH-J2-YRp">
                                             <rect key="frame" x="10" y="0.0" width="298" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" id="K4B-Qy-Ch1">
-                                                    <rect key="frame" x="18" y="11" width="264" height="23"/>
+                                                    <rect key="frame" x="18" y="11" width="264" height="29"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <connections>
                                                         <action selector="backgroundHueSliderChanged:" destination="EyP-35-0cz" eventType="valueChanged" id="LtX-1T-hOB"/>
                                                     </connections>
                                                 </slider>
                                             </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
+                                        </tableViewCellContentView>
                                         <connections>
                                             <outlet property="bigSlider" destination="K4B-Qy-Ch1" id="Hjz-sd-KEk"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell tag="10" contentMode="scaleToFill" selectionStyle="blue" accessoryType="checkmark" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Settings Collection" id="cPK-b9-1QF" customClass="DD2SettingsTableViewCell">
-                                        <rect key="frame" x="0.0" y="322" width="318" height="44"/>
+                                        <rect key="frame" x="0.0" y="312" width="318" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cPK-b9-1QF" id="P4G-eu-YtW">
                                             <rect key="frame" x="10" y="0.0" width="278" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
@@ -500,16 +483,15 @@ the Dyslexic's Dictionary</string>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
+                                        </tableViewCellContentView>
                                         <connections>
                                             <outlet property="label" destination="SNr-bk-2ga" id="WDe-CY-3iP"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell tag="20" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Settings 2 0" textLabel="xT4-yq-7Id" style="IBUITableViewCellStyleDefault" id="mjL-0S-Z8j" customClass="DD2SettingsTableViewCell">
-                                        <rect key="frame" x="0.0" y="366" width="318" height="44"/>
+                                        <rect key="frame" x="0.0" y="356" width="318" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mjL-0S-Z8j" id="Q5o-8b-qIw">
                                             <rect key="frame" x="10" y="0.0" width="278" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
@@ -521,13 +503,12 @@ the Dyslexic's Dictionary</string>
                                                     <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
+                                        </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell tag="21" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Settings 2 1" textLabel="Clg-KR-Bsb" style="IBUITableViewCellStyleDefault" id="yyU-uy-xXT" customClass="DD2SettingsTableViewCell">
-                                        <rect key="frame" x="0.0" y="410" width="318" height="44"/>
+                                        <rect key="frame" x="0.0" y="400" width="318" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yyU-uy-xXT" id="k8R-np-w0J">
                                             <rect key="frame" x="10" y="0.0" width="278" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
@@ -539,13 +520,12 @@ the Dyslexic's Dictionary</string>
                                                     <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
+                                        </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell tag="22" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Settings 2 2" textLabel="aRH-bo-6uV" style="IBUITableViewCellStyleDefault" id="ObU-e0-nWE" customClass="DD2SettingsTableViewCell">
-                                        <rect key="frame" x="0.0" y="454" width="318" height="44"/>
+                                        <rect key="frame" x="0.0" y="444" width="318" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ObU-e0-nWE" id="Xhk-9a-pc8">
                                             <rect key="frame" x="10" y="0.0" width="278" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
@@ -557,13 +537,12 @@ the Dyslexic's Dictionary</string>
                                                     <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
+                                        </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell tag="23" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Settings 2 3" textLabel="GyL-Ys-002" style="IBUITableViewCellStyleDefault" id="VfJ-K9-gQH" customClass="DD2SettingsTableViewCell">
-                                        <rect key="frame" x="0.0" y="498" width="318" height="44"/>
+                                        <rect key="frame" x="0.0" y="488" width="318" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VfJ-K9-gQH" id="RrC-R5-7oc">
                                             <rect key="frame" x="10" y="0.0" width="278" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
@@ -575,13 +554,12 @@ the Dyslexic's Dictionary</string>
                                                     <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
+                                        </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Settings 2 4" id="tY9-Jm-kmR" customClass="DD2SettingsTableViewCell">
-                                        <rect key="frame" x="0.0" y="542" width="318" height="45"/>
+                                        <rect key="frame" x="0.0" y="532" width="318" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tY9-Jm-kmR" id="Dq3-4O-ala">
                                             <rect key="frame" x="10" y="0.0" width="298" height="42"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
@@ -593,8 +571,7 @@ the Dyslexic's Dictionary</string>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
+                                        </tableViewCellContentView>
                                         <connections>
                                             <outlet property="label" destination="Adc-dc-MUx" id="RQY-xa-deT"/>
                                         </connections>
@@ -647,7 +624,6 @@ the Dyslexic's Dictionary</string>
                                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="NMq-xf-7Mc">
                                                 <rect key="frame" x="193" y="9" width="72" height="72"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <state key="normal" image="resources.bundle/Images/DyDiListen72-72.png"/>
                                                 <connections>
                                                     <action selector="listenToWord:" destination="dSV-C7-sB1" eventType="touchDown" id="O8j-lg-FB7"/>
@@ -656,7 +632,6 @@ the Dyslexic's Dictionary</string>
                                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="M6V-GS-lcI">
                                                 <rect key="frame" x="45" y="9" width="72" height="72"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <state key="normal" image="resources.bundle/Images/DyDiListen72-72.png">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
@@ -667,7 +642,6 @@ the Dyslexic's Dictionary</string>
                                             <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="TPV-KV-dTB">
                                                 <rect key="frame" x="23" y="94" width="117" height="38"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <state key="normal" title="..." image="resources.bundle/Images/DyDiWrite32-32.png">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
@@ -678,7 +652,6 @@ the Dyslexic's Dictionary</string>
                                             <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="LJX-SX-5mb">
                                                 <rect key="frame" x="23" y="139" width="117" height="38"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <state key="normal" title="..." image="resources.bundle/Images/DyDiWrite32-32.png">
                                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -690,7 +663,6 @@ the Dyslexic's Dictionary</string>
                                             <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="IGD-cV-dBt">
                                                 <rect key="frame" x="23" y="184" width="117" height="38"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <state key="normal" title="..." image="resources.bundle/Images/DyDiWrite32-32.png">
                                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -702,7 +674,6 @@ the Dyslexic's Dictionary</string>
                                             <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="z2B-9P-8zx">
                                                 <rect key="frame" x="171" y="94" width="117" height="38"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <state key="normal" title="..." image="resources.bundle/Images/DyDiWrite32-32.png">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
@@ -713,7 +684,6 @@ the Dyslexic's Dictionary</string>
                                             <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="YGa-LV-7gH">
                                                 <rect key="frame" x="171" y="139" width="117" height="38"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <state key="normal" title="..." image="resources.bundle/Images/DyDiWrite32-32.png">
                                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -725,7 +695,6 @@ the Dyslexic's Dictionary</string>
                                             <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="PFT-xl-8W9">
                                                 <rect key="frame" x="171" y="184" width="117" height="38"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <state key="normal" title="..." image="resources.bundle/Images/DyDiWrite32-32.png">
                                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -740,7 +709,6 @@ the Dyslexic's Dictionary</string>
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="fpO-0Y-Nxd">
                                         <rect key="frame" x="223" y="13" width="35" height="32"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <state key="normal" title="Button" image="resources.bundle/Images/UK_front_35x32.png"/>
                                         <connections>
                                             <action selector="usukVariantButtonPressed:" destination="dSV-C7-sB1" eventType="touchUpInside" id="LK4-Pv-nOa"/>
@@ -749,14 +717,13 @@ the Dyslexic's Dictionary</string>
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="s7l-MO-2nL">
                                         <rect key="frame" x="270" y="13" width="32" height="32"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <state key="normal" image="resources.bundle/Images/copyIcon_32x32.png"/>
                                         <connections>
                                             <action selector="spellingToClipboardButtonPressed:" destination="dSV-C7-sB1" eventType="touchUpInside" id="OxJ-RF-AHy"/>
                                         </connections>
                                     </button>
                                     <segmentedControl hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="b0i-S4-QN0">
-                                        <rect key="frame" x="178" y="7" width="80" height="44"/>
+                                        <rect key="frame" x="178" y="7" width="80" height="29"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                         <segments>
                                             <segment title="UK"/>
@@ -822,15 +789,15 @@ the Dyslexic's Dictionary</string>
         <scene sceneID="4Vm-t5-59r">
             <objects>
                 <tableViewController id="2fB-91-lrJ" customClass="FunWithWordsTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="34S-4x-nTv">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="34S-4x-nTv">
                         <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Fun With Words Cell" textLabel="mTJ-FJ-PXW" style="IBUITableViewCellStyleDefault" id="TjN-Fh-UEA">
-                                <rect key="frame" x="0.0" y="58" width="318" height="44"/>
+                                <rect key="frame" x="0.0" y="48" width="318" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TjN-Fh-UEA" id="ofL-3M-CfL">
                                     <rect key="frame" x="10" y="1" width="278" height="41"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
@@ -842,8 +809,7 @@ the Dyslexic's Dictionary</string>
                                             <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </label>
                                     </subviews>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </view>
+                                </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
                         <sections/>
@@ -866,7 +832,7 @@ the Dyslexic's Dictionary</string>
                         <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="55" sectionHeaderHeight="22" sectionFooterHeight="22" id="39P-Oj-qQN">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="55" sectionHeaderHeight="22" sectionFooterHeight="22" id="39P-Oj-qQN">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -874,7 +840,7 @@ the Dyslexic's Dictionary</string>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="List Word" textLabel="t9c-pM-ifj" style="IBUITableViewCellStyleDefault" id="Xil-el-c8g">
                                         <rect key="frame" x="0.0" y="22" width="320" height="55"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Xil-el-c8g" id="eBT-fa-CgW">
                                             <rect key="frame" x="0.0" y="0.0" width="300" height="54"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
@@ -886,8 +852,7 @@ the Dyslexic's Dictionary</string>
                                                     <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
+                                        </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -919,11 +884,6 @@ the Dyslexic's Dictionary</string>
         <image name="resources.bundle/Images/copyIcon_32x32.png" width="16" height="16"/>
         <image name="resources.bundle/Images/dinoOnlyIcon.png" width="16" height="16"/>
     </resources>
-    <simulatedMetricsContainer key="defaultSimulatedMetrics">
-        <simulatedStatusBarMetrics key="statusBar"/>
-        <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4"/>
-    </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="D4T-mn-i2d"/>
     </inferredMetricsTieBreakers>
