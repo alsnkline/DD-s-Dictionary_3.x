@@ -105,8 +105,6 @@
 }
 
 -(void)viewDidAppear:(BOOL)animated {
-    //track all page views with Flurry
-    [Flurry logAllPageViews:self];
     [super viewDidAppear:animated];
     
     //Apptimize Track experiments with Google Analytics

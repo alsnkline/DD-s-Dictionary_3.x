@@ -58,10 +58,6 @@
     //track screen with GA
     [DD2GlobalHelper sendViewToGAWithViewName:[NSString stringWithFormat:@"RateApp triggered"]];
     
-    //track switch change with Flurry
-    NSString *logEventString = [NSString stringWithFormat:@"uiAction_RateAppTriggered"];
-    [Flurry logEvent:logEventString withParameters:@{@"Button Pressed" : @"Review us"}];
-    
     // appington conversion id 26
     if (LOG_VOICE_HINTS) NSLog(@"AFFECT: Rated button pressed");
 }
@@ -75,10 +71,6 @@
     
     //track screen with GA
     [DD2GlobalHelper sendViewToGAWithViewName:[NSString stringWithFormat:@"SendEmail triggered"]];
-    
-    //track switch change with Flurry
-    NSString *logEventString = [NSString stringWithFormat:@"uiAction_SendEmailTriggered"];
-    [Flurry logEvent:logEventString withParameters:@{@"Button Pressed" : @"Email us"}];
     
 	if (!bCanSendMail)
 	{

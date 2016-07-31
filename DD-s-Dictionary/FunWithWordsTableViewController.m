@@ -177,8 +177,6 @@
     
     //track screen with GA
     [DD2GlobalHelper sendViewToGAWithViewName:@"Fun With Words Tab Shown"];
-    //track Tab Appeared with Flurry
-    [Flurry logEvent:@"Tab Appeared: Fun"];
 }
 
 - (void)viewDidLoad

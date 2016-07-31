@@ -95,17 +95,11 @@
 - (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
     //track screen with GA
     [DD2GlobalHelper sendViewToGAWithViewName:@"Dict Search Started"];
-    
-    //track search start with Flurry
-    [Flurry logEvent:@"Dict Search Started"];
 }
 
 - (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar {
     //track screen with GA
     [DD2GlobalHelper sendViewToGAWithViewName:@"Dict Search Ended"];
-    
-    //track search start with Flurry
-    [Flurry logEvent:@"Dict Search Ended"];
 }
 
 #pragma mark - Table view data source
@@ -449,10 +443,6 @@
                 
                 //track search event with GA
                 [DD2GlobalHelper sendEventToGAWithCategory:@"uiAction_Search" action:@"All_words" label:searchText value:nil];
-                
-                //track search event with Flurry
-                NSDictionary *flurryParameters = @{@"searchTerm" : searchText};
-                [Flurry logEvent:@"uiAction_Search" withParameters:flurryParameters];
 
             });
         }
@@ -543,9 +533,6 @@
     
     //track Add Word request event with GA
     [DD2GlobalHelper sendEventToGAWithCategory:@"uiAction_WordAddRequest" action:@"word_add_request" label:requestedText value:nil];
-    //track Add Word request event with Flurry
-    NSDictionary *flurryParameters = @{@"word_add_request" : requestedText};
-    [Flurry logEvent:@"uiAction_WordAddRequest" withParameters:flurryParameters];
     
 }
 
@@ -672,8 +659,6 @@
     [super viewDidAppear:animated];
     //track screen with GA
     [DD2GlobalHelper sendViewToGAWithViewName:@"Search Tab Shown"];
-    //track Tab Appeared with Flurry
-    [Flurry logEvent:@"Tab Appeared: Search"];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -696,8 +681,5 @@
     // Dispose of any resources that can be recreated.
 }
 
--(void)dealloc {
-    dispatch_release(self.workQueue);
-}
 
 @end

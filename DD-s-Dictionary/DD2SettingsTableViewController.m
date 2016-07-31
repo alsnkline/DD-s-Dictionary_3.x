@@ -103,18 +103,6 @@
     
     [self manageBackgroundColorLable];
     
-    //track starting settings with Flurry
-    NSDictionary *flurryParameters = @{@"backgroundColorSaturation" : self.customBackgroundColorSaturation,
-                                       @"backgroundColorInHEX" : [DD2GlobalHelper getHexStringForColor:self.customBackgroundColor],
-                                       @"Font" : self.useDyslexicFontCell.cellSwitch.on ? @"Dyslexie_Font" : @"System_Font",
-                                       @"PlayOnSelection" : self.playOnSelectionCell.cellSwitch.on ? @"Auto_Play" : @"Manual_Play",
-                                       @"Variant" : [self.spellingVariant isEqualToString:@"US"] ? @"US" : @"UK",
-                                       @"Collections" : [self stringForCurrentlySelectedCollections]};
-    [Flurry logEvent:@"uiTracking_Customisations_Start" withParameters:flurryParameters];
-    
-    //track Tab Appeared with Flurry
-    [Flurry logEvent:@"Tab Appeared: Settings"];
-    
     [super viewDidAppear:animated];
 }
 
@@ -153,15 +141,6 @@
         
         //track event with GA to confirm final selcected collections
         [DD2GlobalHelper sendEventToGAWithCategory:@"uiTracking_Customisations" action:@"Collections" label:[self stringForCurrentlySelectedCollections] value:nil];
-        
-        //track final settings with Flurry
-        NSDictionary *flurryParameters = @{@"backgroundColorSaturation" : self.customBackgroundColorSaturation,
-                                           @"backgroundColorInHEX" : [DD2GlobalHelper getHexStringForColor:self.customBackgroundColor],
-                                           @"Font" : self.useDyslexicFontCell.cellSwitch.on ? @"Dyslexie_Font" : @"System_Font",
-                                           @"PlayOnSelection" : self.playOnSelectionCell.cellSwitch.on ? @"Auto_Play" : @"Manual_Play",
-                                           @"Variant" : [self.spellingVariant isEqualToString:@"US"] ? @"US" : @"UK",
-                                           @"Collections" : [self stringForCurrentlySelectedCollections]};
-        [Flurry logEvent:@"uiTracking_Customisations" withParameters:flurryParameters];
     }
     
     [super viewDidDisappear:animated];
@@ -210,10 +189,6 @@
     //track event with GA
     NSString *switchSetting = sender.on ? @"ON" : @"OFF";
     [DD2GlobalHelper sendEventToGAWithCategory:@"uiAction_Setting" action:@"playOnSelectionChanged" label:switchSetting value:nil];
-    
-    //track switch change with Flurry
-    NSString *logEventString = [NSString stringWithFormat:@"uiAction_playOnSelectionSwitch_%@", sender.on ? @"ON" : @"OFF"];
-    [Flurry logEvent:logEventString withParameters:@{@"playOnSelectedSwitchSetting" : sender.on ? @"ON" : @"OFF"}];
 }
 
 - (IBAction)voiceHintsSwitchChanged:(UISwitch *)sender
@@ -230,10 +205,6 @@
     
     //play button change voice message
     [self playButtonMsg:sender.on];
-    
-    //track switch change with Flurry
-    NSString *logEventString = [NSString stringWithFormat:@"uiAction_voiceHintsSwitch_%@", sender.on ? @"ON" : @"OFF"];
-    [Flurry logEvent:logEventString withParameters:@{@"voiceHintsSwitchSetting" : sender.on ? @"ON" : @"OFF"}];
 }
 
 - (void)playButtonMsg:(BOOL)buttonState
@@ -262,10 +233,6 @@
     //track event with GA
     NSString *switchSetting = sender.on ? @"ON" : @"OFF";
     [DD2GlobalHelper sendEventToGAWithCategory:@"uiAction_Setting" action:@"useDyslexieFontChanged" label:switchSetting value:nil];
-    
-    //track switch change with Flurry
-    NSString *logEventString = [NSString stringWithFormat:@"uiAction_useDyslexieFontSwitch_%@", sender.on ? @"ON" : @"OFF"];
-    [Flurry logEvent:logEventString withParameters:@{@"useDyslexieFontSwitchSetting" : sender.on ? @"ON" : @"OFF"}];
 }
 
 - (IBAction)backgroundHueSliderChanged:(UISlider *)sender
@@ -277,10 +244,6 @@
     
     //track event with GA
     [DD2GlobalHelper sendEventToGAWithCategory:@"uiAction_Setting" action:@"backgroundColorChanged" label:@"Color Hue Changed" value:nil];
-    
-    //track switch change with Flurry
-    NSString *logEventString = [NSString stringWithFormat:@"uiAction_BackgroundColorHueChanged"];
-    [Flurry logEvent:logEventString withParameters:@{@"BackgroundColorHue" : [DD2GlobalHelper getHexStringForColor:self.customBackgroundColor]}];
 }
 
 - (IBAction)backgroundSaturationSliderChanged:(UISlider *)sender
@@ -302,10 +265,6 @@
     //track event with GA
     NSString *customBackgroundColorSaturationSetting = [NSString stringWithFormat:@"Color Saturation:%f", saturation];
     [DD2GlobalHelper sendEventToGAWithCategory:@"uiAction_Setting" action:@"backgroundColorChanged" label:customBackgroundColorSaturationSetting value:nil];
-    
-    //track switch change with Flurry
-    NSString *logEventString = [NSString stringWithFormat:@"uiAction_BackgroundColorSatChanged_%f", saturation];
-    [Flurry logEvent:logEventString withParameters:@{@"BackgroundColorSat" : [NSString stringWithFormat:@"%f", saturation]}];
 }
 
 - (void) backgroundColorChanged
@@ -374,10 +333,6 @@
     //track event with GA
     NSString *variantSetting = [NSString stringWithFormat:@"Spelling Variant:%@", self.spellingVariant];
     [DD2GlobalHelper sendEventToGAWithCategory:@"uiAction_Setting" action:@"spellingVariantChanged" label:variantSetting value:nil];
-    
-    //track switch change with Flurry
-    NSString *logEventString = [NSString stringWithFormat:@"uiAction_SpellingVariantChanged_%@", self.spellingVariant];
-    [Flurry logEvent:logEventString withParameters:@{@"SpellingVariant" : self.spellingVariant}];
 }
 
 - (void) manageSpellingVariantLable
@@ -557,10 +512,6 @@
         //track event with GA
         NSString *collectionsChanged = [NSString stringWithFormat:@"collectionSelected:%@", stringForTracking];
         [DD2GlobalHelper sendEventToGAWithCategory:@"uiAction_Setting" action:@"collectionsChanged" label:collectionsChanged value:nil];
-        
-        //track switch change with Flurry
-        NSString *logEventString = [NSString stringWithFormat:@"uiAction_collectionSelected_%@", stringForTracking];
-        [Flurry logEvent:logEventString withParameters:@{@"Collection Changed" : stringForTracking}];
         
     } else if (selectedCell.tag  == 21) {
         [self performSegueWithIdentifier:@"display Talk To Us" sender:selectedCell];

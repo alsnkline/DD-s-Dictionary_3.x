@@ -175,10 +175,6 @@ ApptimizeBoolean(hideCopySpellingToClipboardButton, NO);
         //viewController is visible track with GA allowing iPad stats to show which word got loaded.
         [DD2GlobalHelper sendViewToGAWithViewName:[NSString stringWithFormat:@"Viewed Word :%@", self.spelling.text]];
         
-        //track word view with Flurry
-        NSDictionary *flurryParameters = @{@"Viewed Word": self.spelling.text};
-        [Flurry logEvent:@"uiAction_Word" withParameters:flurryParameters];
-        
         //track word view with Apptimize
         [Apptimize track:@"Viewed Word" value:1] ;
         
@@ -341,11 +337,6 @@ ApptimizeBoolean(hideCopySpellingToClipboardButton, NO);
             
             //track word event with GA auto sent with Value 2
             [DD2GlobalHelper sendEventToGAWithCategory:@"uiAction_Word" action:@"listenToWord" label:pronunciation value:[NSNumber numberWithInt:2]];
-            
-            //track word view with Flurry
-            NSDictionary *flurryParameters = @{@"listenToWord" : pronunciation,
-                                               @"wordPlayMode" : @"Auto_Play"};
-            [Flurry logEvent:@"uiAction_Word" withParameters:flurryParameters];
         };
     } else {
         NSMutableArray *pronunciationsArray = [[pronunciations allObjects] mutableCopy];
@@ -356,11 +347,6 @@ ApptimizeBoolean(hideCopySpellingToClipboardButton, NO);
         
         //track word event with GA auto sent with Value 2
         [DD2GlobalHelper sendEventToGAWithCategory:@"uiAction_Word" action:@"listenToWord" label:[pronunciationsArray lastObject] value:[NSNumber numberWithInt:2]];
-        
-        //track word view with Flurry
-        NSDictionary *flurryParameters = @{@"listenToWord" : [pronunciationsArray lastObject],
-                                           @"wordPlayMode" : @"Auto_Play"};
-        [Flurry logEvent:@"uiAction_Word" withParameters:flurryParameters];
     }
     
 }
@@ -396,11 +382,6 @@ ApptimizeBoolean(hideCopySpellingToClipboardButton, NO);
             
             //track word event with GA manual sent with Value 1
             [DD2GlobalHelper sendEventToGAWithCategory:@"uiAction_Word" action:@"listenToWord" label:pronunciation value:[NSNumber numberWithInt:1]];
-            
-            //track word view with Flurry
-            NSDictionary *flurryParameters = @{@"listenToWord" : pronunciation,
-                                               @"wordPlayMode" : @"Manual_Play"};
-            [Flurry logEvent:@"uiAction_Word" withParameters:flurryParameters];
         }
     }
 }
@@ -412,10 +393,6 @@ ApptimizeBoolean(hideCopySpellingToClipboardButton, NO);
     
     //track word event with GA manual sent with Value 1
     [DD2GlobalHelper sendEventToGAWithCategory:@"uiAction_Word" action:@"homophoneButtonPressed" label:spelling value:[NSNumber numberWithInt:1]];
-    
-    //track word view with Flurry
-    NSDictionary *flurryParameters = @{@"homophoneButtonPressed" : spelling};
-    [Flurry logEvent:@"uiAction_Word" withParameters:flurryParameters];
     
     NSSet *pronunciations = [DD2Words pronunciationsForWord:self.word];
     NSMutableArray *allHomophones = [[NSMutableArray alloc] init];
@@ -439,10 +416,6 @@ ApptimizeBoolean(hideCopySpellingToClipboardButton, NO);
     //track word event with GA manual sent with Value 1
     [DD2GlobalHelper sendEventToGAWithCategory:@"uiAction_Word" action:@"usukVariantPressed" label:self.spelling.text value:nil];
     
-    //track word view with Flurry
-    NSDictionary *flurryParameters = @{@"usukVariantPressed" : self.spelling.text};
-    [Flurry logEvent:@"uiAction_Word" withParameters:flurryParameters];
-    
     NSString *selection = sender.selectedSegmentIndex ? @"us" : @"uk";
     [self usukChangeMadeWithSelection:selection];
 }
@@ -450,10 +423,6 @@ ApptimizeBoolean(hideCopySpellingToClipboardButton, NO);
 - (IBAction)usukVariantButtonPressed:(UIButton *)sender {
     //track word event with GA manual sent with Value 1
     [DD2GlobalHelper sendEventToGAWithCategory:@"uiAction_Word" action:@"usukVariantPressed" label:self.spelling.text value:nil];
-    
-    //track word view with Flurry
-    NSDictionary *flurryParameters = @{@"usukVariantPressed" : self.spelling.text};
-    [Flurry logEvent:@"uiAction_Word" withParameters:flurryParameters];
     
     NSString *selection;
     if ([[self.word objectForKey:@"wordVariant"] isEqualToString:@"us"]) {
@@ -478,10 +447,6 @@ ApptimizeBoolean(hideCopySpellingToClipboardButton, NO);
     //track word event with GA manual sent with Value 1
     [DD2GlobalHelper sendEventToGAWithCategory:@"uiAction_Word" action:@"copyToClipboard" label:self.spelling.text value:nil];
     
-    //track word view with Flurry
-    NSDictionary *flurryParameters = @{@"copyToClipboard" : self.spelling.text};
-    [Flurry logEvent:@"uiAction_Word" withParameters:flurryParameters];
-    
 }
 
 
@@ -501,11 +466,6 @@ ApptimizeBoolean(hideCopySpellingToClipboardButton, NO);
             
             //track word event with GA auto sent with Value 2
             [DD2GlobalHelper sendEventToGAWithCategory:@"uiAction_Word" action:@"listenToWord" label:[pronunciationsArray lastObject] value:[NSNumber numberWithInt:2]];
-            
-            //track word view with Flurry
-            NSDictionary *flurryParameters = @{@"listenToWord" : [pronunciationsArray lastObject],
-                                               @"wordPlayMode" : @"Auto_Play"};
-            [Flurry logEvent:@"uiAction_Word" withParameters:flurryParameters];
         }
     }
 }
@@ -549,10 +509,6 @@ ApptimizeBoolean(hideCopySpellingToClipboardButton, NO);
     [super viewDidAppear:animated];
     //track screen with GA
     [DD2GlobalHelper sendViewToGAWithViewName:[NSString stringWithFormat:@"Viewed Word :%@", self.spelling.text]];
-    
-    //track word view with Flurry
-    NSDictionary *flurryParameters = @{@"Viewed Word": self.spelling.text};
-    [Flurry logEvent:@"uiAction_Word" withParameters:flurryParameters];
     
     //track word view with Apptimize
     [Apptimize track:@"Viewed Word" value:1];
