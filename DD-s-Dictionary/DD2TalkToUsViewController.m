@@ -91,7 +91,7 @@
 		[picker setSubject: @"DD's Dictionary Feedback"];
 		[picker setMessageBody: [NSString stringWithFormat:@"What do you like about DD's Dictionary? \r\n\r\n What would you like to see improved? \r\n\r\n How did you find the App? \r\n\r\n Any other thoughts? \r\n\r\n\r\n\r\n Thank you so much for taking the time to give us your feedback.\r\n\r\n Best regards Alison.\r\n (from Version: %@ on an %@)",[DD2GlobalHelper version], [DD2GlobalHelper deviceType]] isHTML: NO];
         
-		[self presentModalViewController: picker animated: YES];
+        [self presentViewController: picker animated: YES completion:nil];
 	}
 }
 
@@ -99,7 +99,7 @@
            didFinishWithResult: (MFMailComposeResult) result
                          error: (NSError *) error
 {
-	[self dismissModalViewControllerAnimated: YES];
+    [self dismissViewControllerAnimated: YES completion:nil];
 }
 
 

@@ -19,7 +19,7 @@
 @property (nonatomic, strong) NSArray *sections;    //only used in main tableview
 @property (nonatomic) BOOL showAddWordButton;
 @property (nonatomic, strong) NSString *currentSearchText;
-@property (nonatomic, assign) dispatch_queue_t workQueue;
+@property (nonatomic, strong) dispatch_queue_t workQueue;
 @end
 
 @implementation DD2AllWordSearchViewController
